@@ -1,0 +1,157 @@
+   1               		.file	"tasks.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	Tasks_Disable_Peripherals
+  18               	Tasks_Disable_Peripherals:
+  19               	.LFB6:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	/* epilogue start */
+  24               	.LM2:
+  25 0000 0895      		ret
+  26               	.LFE6:
+  28               	.global	Tasks_Task9
+  30               	Tasks_Task9:
+  31               	.LFB15:
+  32               	.LM3:
+  33               	/* prologue: function */
+  34               	/* frame size = 0 */
+  35               	.L4:
+  36               	.LM4:
+  37 0002 87E0      		ldi r24,lo8(7)
+  38 0004 90E0      		ldi r25,hi8(7)
+  39 0006 0E94 0000 		call Kernel_Task_Sleep
+  40 000a 00C0      		rjmp .L4
+  41               	.LFE15:
+  43               	.global	Tasks_Task8
+  45               	Tasks_Task8:
+  46               	.LFB14:
+  47               	.LM5:
+  48               	/* prologue: function */
+  49               	/* frame size = 0 */
+  50               	.L7:
+  51               	.LM6:
+  52 000c 87E0      		ldi r24,lo8(7)
+  53 000e 90E0      		ldi r25,hi8(7)
+  54 0010 0E94 0000 		call Kernel_Task_Sleep
+  55 0014 00C0      		rjmp .L7
+  56               	.LFE14:
+  58               	.global	Tasks_Task7
+  60               	Tasks_Task7:
+  61               	.LFB13:
+  62               	.LM7:
+  63               	/* prologue: function */
+  64               	/* frame size = 0 */
+  65               	.L10:
+  66               	.LM8:
+  67 0016 87E0      		ldi r24,lo8(7)
+  68 0018 90E0      		ldi r25,hi8(7)
+  69 001a 0E94 0000 		call Kernel_Task_Sleep
+  70 001e 00C0      		rjmp .L10
+  71               	.LFE13:
+  73               	.global	Tasks_Task6
+  75               	Tasks_Task6:
+  76               	.LFB12:
+  77               	.LM9:
+  78               	/* prologue: function */
+  79               	/* frame size = 0 */
+  80               	.L13:
+  81               	.LM10:
+  82 0020 87E0      		ldi r24,lo8(7)
+  83 0022 90E0      		ldi r25,hi8(7)
+  84 0024 0E94 0000 		call Kernel_Task_Sleep
+  85 0028 00C0      		rjmp .L13
+  86               	.LFE12:
+  88               	.global	Tasks_Task5
+  90               	Tasks_Task5:
+  91               	.LFB11:
+  92               	.LM11:
+  93               	/* prologue: function */
+  94               	/* frame size = 0 */
+  95               	.L16:
+  96               	.LM12:
+  97 002a 87E0      		ldi r24,lo8(7)
+  98 002c 90E0      		ldi r25,hi8(7)
+  99 002e 0E94 0000 		call Kernel_Task_Sleep
+ 100 0032 00C0      		rjmp .L16
+ 101               	.LFE11:
+ 103               	.global	Tasks_Task4
+ 105               	Tasks_Task4:
+ 106               	.LFB10:
+ 107               	.LM13:
+ 108               	/* prologue: function */
+ 109               	/* frame size = 0 */
+ 110               	.L19:
+ 111               	.LM14:
+ 112 0034 87E0      		ldi r24,lo8(7)
+ 113 0036 90E0      		ldi r25,hi8(7)
+ 114 0038 0E94 0000 		call Kernel_Task_Sleep
+ 115 003c 00C0      		rjmp .L19
+ 116               	.LFE10:
+ 118               	.global	Tasks_Task3
+ 120               	Tasks_Task3:
+ 121               	.LFB9:
+ 122               	.LM15:
+ 123               	/* prologue: function */
+ 124               	/* frame size = 0 */
+ 125               	.L22:
+ 126               	.LM16:
+ 127 003e 87E0      		ldi r24,lo8(7)
+ 128 0040 90E0      		ldi r25,hi8(7)
+ 129 0042 0E94 0000 		call Kernel_Task_Sleep
+ 130 0046 00C0      		rjmp .L22
+ 131               	.LFE9:
+ 133               	.global	Tasks_Task2
+ 135               	Tasks_Task2:
+ 136               	.LFB8:
+ 137               	.LM17:
+ 138               	/* prologue: function */
+ 139               	/* frame size = 0 */
+ 140               	.L25:
+ 141               	.LM18:
+ 142 0048 87E0      		ldi r24,lo8(7)
+ 143 004a 90E0      		ldi r25,hi8(7)
+ 144 004c 0E94 0000 		call Kernel_Task_Sleep
+ 145 0050 00C0      		rjmp .L25
+ 146               	.LFE8:
+ 148               	.global	Tasks_Task1
+ 150               	Tasks_Task1:
+ 151               	.LFB7:
+ 152               	.LM19:
+ 153               	/* prologue: function */
+ 154               	/* frame size = 0 */
+ 155               	.L28:
+ 156               	.LM20:
+ 157 0052 85E0      		ldi r24,lo8(5)
+ 158 0054 90E0      		ldi r25,hi8(5)
+ 159 0056 0E94 0000 		call Kernel_Task_Sleep
+ 160 005a 00C0      		rjmp .L28
+ 161               	.LFE7:
+ 259               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 tasks.c
+C:\Users\farid\AppData\Local\Temp/ccgs5fwf.s:2      *ABS*:0000003f __SREG__
+C:\Users\farid\AppData\Local\Temp/ccgs5fwf.s:3      *ABS*:0000003e __SP_H__
+C:\Users\farid\AppData\Local\Temp/ccgs5fwf.s:4      *ABS*:0000003d __SP_L__
+C:\Users\farid\AppData\Local\Temp/ccgs5fwf.s:5      *ABS*:00000034 __CCP__
+C:\Users\farid\AppData\Local\Temp/ccgs5fwf.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\farid\AppData\Local\Temp/ccgs5fwf.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\farid\AppData\Local\Temp/ccgs5fwf.s:18     .text:00000000 Tasks_Disable_Peripherals
+C:\Users\farid\AppData\Local\Temp/ccgs5fwf.s:30     .text:00000002 Tasks_Task9
+C:\Users\farid\AppData\Local\Temp/ccgs5fwf.s:45     .text:0000000c Tasks_Task8
+C:\Users\farid\AppData\Local\Temp/ccgs5fwf.s:60     .text:00000016 Tasks_Task7
+C:\Users\farid\AppData\Local\Temp/ccgs5fwf.s:75     .text:00000020 Tasks_Task6
+C:\Users\farid\AppData\Local\Temp/ccgs5fwf.s:90     .text:0000002a Tasks_Task5
+C:\Users\farid\AppData\Local\Temp/ccgs5fwf.s:105    .text:00000034 Tasks_Task4
+C:\Users\farid\AppData\Local\Temp/ccgs5fwf.s:120    .text:0000003e Tasks_Task3
+C:\Users\farid\AppData\Local\Temp/ccgs5fwf.s:135    .text:00000048 Tasks_Task2
+C:\Users\farid\AppData\Local\Temp/ccgs5fwf.s:150    .text:00000052 Tasks_Task1
+
+UNDEFINED SYMBOLS
+Kernel_Task_Sleep

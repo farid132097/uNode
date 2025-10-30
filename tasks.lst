@@ -134,36 +134,40 @@
  160               	.LM21:
  161               	/* prologue: function */
  162               	/* frame size = 0 */
- 163               	.L28:
- 164               	.LM22:
- 165 005e 86E0      		ldi r24,lo8(6)
- 166 0060 64E0      		ldi r22,lo8(4)
- 167 0062 0E94 0000 		call Peripherals_ADC_Sample
- 168               	.LM23:
- 169 0066 8CE3      		ldi r24,lo8(60)
- 170 0068 90E0      		ldi r25,hi8(60)
- 171 006a 0E94 0000 		call Kernel_Task_Sleep
- 172 006e 00C0      		rjmp .L28
- 173               	.LFE8:
- 271               	.Letext0:
+ 163               	.LM22:
+ 164 005e 529A      		sbi 42-32,2
+ 165               	.LM23:
+ 166 0060 5A98      		cbi 43-32,2
+ 167               	.L28:
+ 168               	.LM24:
+ 169 0062 86E0      		ldi r24,lo8(6)
+ 170 0064 64E0      		ldi r22,lo8(4)
+ 171 0066 0E94 0000 		call Peripherals_ADC_Sample
+ 172               	.LM25:
+ 173 006a 8CE3      		ldi r24,lo8(60)
+ 174 006c 90E0      		ldi r25,hi8(60)
+ 175 006e 0E94 0000 		call Kernel_Task_Sleep
+ 176 0072 00C0      		rjmp .L28
+ 177               	.LFE8:
+ 275               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 tasks.c
-C:\Users\farid\AppData\Local\Temp/ccc4lFG4.s:2      *ABS*:0000003f __SREG__
-C:\Users\farid\AppData\Local\Temp/ccc4lFG4.s:3      *ABS*:0000003e __SP_H__
-C:\Users\farid\AppData\Local\Temp/ccc4lFG4.s:4      *ABS*:0000003d __SP_L__
-C:\Users\farid\AppData\Local\Temp/ccc4lFG4.s:5      *ABS*:00000034 __CCP__
-C:\Users\farid\AppData\Local\Temp/ccc4lFG4.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\farid\AppData\Local\Temp/ccc4lFG4.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\farid\AppData\Local\Temp/ccc4lFG4.s:18     .text:00000000 Tasks_Disable_Peripherals
-C:\Users\farid\AppData\Local\Temp/ccc4lFG4.s:30     .text:00000002 Tasks_Task9
-C:\Users\farid\AppData\Local\Temp/ccc4lFG4.s:45     .text:0000000c Tasks_Task8
-C:\Users\farid\AppData\Local\Temp/ccc4lFG4.s:60     .text:00000016 Tasks_Task7
-C:\Users\farid\AppData\Local\Temp/ccc4lFG4.s:75     .text:00000020 Tasks_Task6
-C:\Users\farid\AppData\Local\Temp/ccc4lFG4.s:90     .text:0000002a Tasks_Task5
-C:\Users\farid\AppData\Local\Temp/ccc4lFG4.s:105    .text:00000034 Tasks_Task4
-C:\Users\farid\AppData\Local\Temp/ccc4lFG4.s:120    .text:0000003e Tasks_Task3
-C:\Users\farid\AppData\Local\Temp/ccc4lFG4.s:135    .text:00000048 Task_RGB_LED
-C:\Users\farid\AppData\Local\Temp/ccc4lFG4.s:158    .text:0000005e Task_Vin_Sense
+C:\Users\farid\AppData\Local\Temp/ccM9wkhL.s:2      *ABS*:0000003f __SREG__
+C:\Users\farid\AppData\Local\Temp/ccM9wkhL.s:3      *ABS*:0000003e __SP_H__
+C:\Users\farid\AppData\Local\Temp/ccM9wkhL.s:4      *ABS*:0000003d __SP_L__
+C:\Users\farid\AppData\Local\Temp/ccM9wkhL.s:5      *ABS*:00000034 __CCP__
+C:\Users\farid\AppData\Local\Temp/ccM9wkhL.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\farid\AppData\Local\Temp/ccM9wkhL.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\farid\AppData\Local\Temp/ccM9wkhL.s:18     .text:00000000 Tasks_Disable_Peripherals
+C:\Users\farid\AppData\Local\Temp/ccM9wkhL.s:30     .text:00000002 Tasks_Task9
+C:\Users\farid\AppData\Local\Temp/ccM9wkhL.s:45     .text:0000000c Tasks_Task8
+C:\Users\farid\AppData\Local\Temp/ccM9wkhL.s:60     .text:00000016 Tasks_Task7
+C:\Users\farid\AppData\Local\Temp/ccM9wkhL.s:75     .text:00000020 Tasks_Task6
+C:\Users\farid\AppData\Local\Temp/ccM9wkhL.s:90     .text:0000002a Tasks_Task5
+C:\Users\farid\AppData\Local\Temp/ccM9wkhL.s:105    .text:00000034 Tasks_Task4
+C:\Users\farid\AppData\Local\Temp/ccM9wkhL.s:120    .text:0000003e Tasks_Task3
+C:\Users\farid\AppData\Local\Temp/ccM9wkhL.s:135    .text:00000048 Task_RGB_LED
+C:\Users\farid\AppData\Local\Temp/ccM9wkhL.s:158    .text:0000005e Task_Vin_Sense
 
 UNDEFINED SYMBOLS
 Kernel_Task_Sleep

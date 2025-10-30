@@ -25,6 +25,10 @@ void Task_RGB_LED(void)
 
 void Task_Vin_Sense(void){
   
+  //Init and Disable Vinsense
+  DDRD  |= (1<<2);
+  PORTD &=~(1<<2);
+
   while(1){
     
     Peripherals_ADC_Sample(6, 4);

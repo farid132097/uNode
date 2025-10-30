@@ -62,5 +62,10 @@ uint16_t Peripherals_ADC_Sample(uint8_t channel, uint8_t nsamples)
 
 void Peripherals_Vin_Sense(void)
 {
-
+    //Status bit 0 indicates Vinsense is active
+    Peripherals.Status |= (1<<0);
+    PORTD |= (1<<2);
+    Peripherals.VinRawADC = Peripherals_ADC_Sample(6, 4);
+    PORTD |= (1<<2);
+    Peripherals.Status &=~(1<<0);
 }

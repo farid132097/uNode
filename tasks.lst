@@ -136,22 +136,22 @@
  259               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 tasks.c
-C:\Users\farid\AppData\Local\Temp/ccgs5fwf.s:2      *ABS*:0000003f __SREG__
-C:\Users\farid\AppData\Local\Temp/ccgs5fwf.s:3      *ABS*:0000003e __SP_H__
-C:\Users\farid\AppData\Local\Temp/ccgs5fwf.s:4      *ABS*:0000003d __SP_L__
-C:\Users\farid\AppData\Local\Temp/ccgs5fwf.s:5      *ABS*:00000034 __CCP__
-C:\Users\farid\AppData\Local\Temp/ccgs5fwf.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\farid\AppData\Local\Temp/ccgs5fwf.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\farid\AppData\Local\Temp/ccgs5fwf.s:18     .text:00000000 Tasks_Disable_Peripherals
-C:\Users\farid\AppData\Local\Temp/ccgs5fwf.s:30     .text:00000002 Tasks_Task9
-C:\Users\farid\AppData\Local\Temp/ccgs5fwf.s:45     .text:0000000c Tasks_Task8
-C:\Users\farid\AppData\Local\Temp/ccgs5fwf.s:60     .text:00000016 Tasks_Task7
-C:\Users\farid\AppData\Local\Temp/ccgs5fwf.s:75     .text:00000020 Tasks_Task6
-C:\Users\farid\AppData\Local\Temp/ccgs5fwf.s:90     .text:0000002a Tasks_Task5
-C:\Users\farid\AppData\Local\Temp/ccgs5fwf.s:105    .text:00000034 Tasks_Task4
-C:\Users\farid\AppData\Local\Temp/ccgs5fwf.s:120    .text:0000003e Tasks_Task3
-C:\Users\farid\AppData\Local\Temp/ccgs5fwf.s:135    .text:00000048 Tasks_Task2
-C:\Users\farid\AppData\Local\Temp/ccgs5fwf.s:150    .text:00000052 Tasks_Task1
+C:\Users\farid\AppData\Local\Temp/ccFUL4Uo.s:2      *ABS*:0000003f __SREG__
+C:\Users\farid\AppData\Local\Temp/ccFUL4Uo.s:3      *ABS*:0000003e __SP_H__
+C:\Users\farid\AppData\Local\Temp/ccFUL4Uo.s:4      *ABS*:0000003d __SP_L__
+C:\Users\farid\AppData\Local\Temp/ccFUL4Uo.s:5      *ABS*:00000034 __CCP__
+C:\Users\farid\AppData\Local\Temp/ccFUL4Uo.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\farid\AppData\Local\Temp/ccFUL4Uo.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\farid\AppData\Local\Temp/ccFUL4Uo.s:18     .text:00000000 Tasks_Disable_Peripherals
+C:\Users\farid\AppData\Local\Temp/ccFUL4Uo.s:30     .text:00000002 Tasks_Task9
+C:\Users\farid\AppData\Local\Temp/ccFUL4Uo.s:45     .text:0000000c Tasks_Task8
+C:\Users\farid\AppData\Local\Temp/ccFUL4Uo.s:60     .text:00000016 Tasks_Task7
+C:\Users\farid\AppData\Local\Temp/ccFUL4Uo.s:75     .text:00000020 Tasks_Task6
+C:\Users\farid\AppData\Local\Temp/ccFUL4Uo.s:90     .text:0000002a Tasks_Task5
+C:\Users\farid\AppData\Local\Temp/ccFUL4Uo.s:105    .text:00000034 Tasks_Task4
+C:\Users\farid\AppData\Local\Temp/ccFUL4Uo.s:120    .text:0000003e Tasks_Task3
+C:\Users\farid\AppData\Local\Temp/ccFUL4Uo.s:135    .text:00000048 Tasks_Task2
+C:\Users\farid\AppData\Local\Temp/ccFUL4Uo.s:150    .text:00000052 Tasks_Task1
 
 UNDEFINED SYMBOLS
 Kernel_Task_Sleep

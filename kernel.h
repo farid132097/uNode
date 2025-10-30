@@ -4,7 +4,7 @@
  * Author        : MD. Faridul Islam (faridmdislam@gmail.com)
  * Description   : AVR kernel for bare-metal RTOS
  * Created       : Jul 27, 2025, 9:30 PM
- * Last Modified : Sep 09, 2025, 3:16 PM
+ * Last Modified : Oct 30, 2025, 9:16 PM
  */
 
 
@@ -45,8 +45,9 @@
 //In idle time, cpu will be in sleep
 #define  KER_IDLE_AS_SLEEP
 
-//Before entering sleep, Kernel_Call_Func_Before_Sleep(func) will be called
-//User can disable peripherals before sleep
+//Before entering sleep, several peripherals needs to be disabled
+//User can hook a function which will disable peripherals before sleep
+//Add function by calling Kernel_PreSleep_Hook(func_name) before Kernel_Start_Tasks() 
 #define  KER_CALL_FUNC_BEFORE_SLEEP
 
 
@@ -145,4 +146,3 @@ extern uint8_t   Kernel_CPU_Usage_Get(void);
 
 
 #endif
-

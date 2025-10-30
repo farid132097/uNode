@@ -3,75 +3,77 @@ main.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00000a3c  00000000  00000000  00000074  2**1
+  0 .text         00000b40  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .bss          0000055a  00800100  00800100  00000ab0  2**0
+  1 .bss          00000563  00800100  00800100  00000bb4  2**0
                   ALLOC
-  2 .stab         00000a08  00000000  00000000  00000ab0  2**2
+  2 .stab         00000a08  00000000  00000000  00000bb4  2**2
                   CONTENTS, READONLY, DEBUGGING
-  3 .stabstr      00000037  00000000  00000000  000014b8  2**0
+  3 .stabstr      00000037  00000000  00000000  000015bc  2**0
                   CONTENTS, READONLY, DEBUGGING
-  4 .debug_aranges 00000040  00000000  00000000  000014ef  2**0
+  4 .debug_aranges 00000060  00000000  00000000  000015f3  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_pubnames 000000db  00000000  00000000  0000152f  2**0
+  5 .debug_pubnames 0000014f  00000000  00000000  00001653  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   0000019c  00000000  00000000  0000160a  2**0
+  6 .debug_info   00000323  00000000  00000000  000017a2  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000080  00000000  00000000  000017a6  2**0
+  7 .debug_abbrev 0000014a  00000000  00000000  00001ac5  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000001a9  00000000  00000000  00001826  2**0
+  8 .debug_line   000002df  00000000  00000000  00001c0f  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000000d0  00000000  00000000  000019d0  2**2
+  9 .debug_frame  00000110  00000000  00000000  00001ef0  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000010a  00000000  00000000  00001aa0  2**0
+ 10 .debug_str    000001cb  00000000  00000000  00002000  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000000b1  00000000  00000000  000021cb  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
 
 00000000 <__vectors>:
    0:	0c 94 45 00 	jmp	0x8a	; 0x8a <__ctors_end>
-   4:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
-   8:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
-   c:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
-  10:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
-  14:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
-  18:	0c 94 b5 00 	jmp	0x16a	; 0x16a <__vector_6>
-  1c:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
-  20:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
-  24:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
-  28:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
-  2c:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
-  30:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
-  34:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
-  38:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
-  3c:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
-  40:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
-  44:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
-  48:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
-  4c:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
-  50:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
-  54:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
-  58:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
-  5c:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
-  60:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
-  64:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+   4:	0c 94 57 00 	jmp	0xae	; 0xae <__bad_interrupt>
+   8:	0c 94 57 00 	jmp	0xae	; 0xae <__bad_interrupt>
+   c:	0c 94 57 00 	jmp	0xae	; 0xae <__bad_interrupt>
+  10:	0c 94 57 00 	jmp	0xae	; 0xae <__bad_interrupt>
+  14:	0c 94 57 00 	jmp	0xae	; 0xae <__bad_interrupt>
+  18:	0c 94 15 01 	jmp	0x22a	; 0x22a <__vector_6>
+  1c:	0c 94 57 00 	jmp	0xae	; 0xae <__bad_interrupt>
+  20:	0c 94 57 00 	jmp	0xae	; 0xae <__bad_interrupt>
+  24:	0c 94 57 00 	jmp	0xae	; 0xae <__bad_interrupt>
+  28:	0c 94 57 00 	jmp	0xae	; 0xae <__bad_interrupt>
+  2c:	0c 94 57 00 	jmp	0xae	; 0xae <__bad_interrupt>
+  30:	0c 94 57 00 	jmp	0xae	; 0xae <__bad_interrupt>
+  34:	0c 94 57 00 	jmp	0xae	; 0xae <__bad_interrupt>
+  38:	0c 94 57 00 	jmp	0xae	; 0xae <__bad_interrupt>
+  3c:	0c 94 57 00 	jmp	0xae	; 0xae <__bad_interrupt>
+  40:	0c 94 57 00 	jmp	0xae	; 0xae <__bad_interrupt>
+  44:	0c 94 57 00 	jmp	0xae	; 0xae <__bad_interrupt>
+  48:	0c 94 57 00 	jmp	0xae	; 0xae <__bad_interrupt>
+  4c:	0c 94 57 00 	jmp	0xae	; 0xae <__bad_interrupt>
+  50:	0c 94 57 00 	jmp	0xae	; 0xae <__bad_interrupt>
+  54:	0c 94 57 00 	jmp	0xae	; 0xae <__bad_interrupt>
+  58:	0c 94 57 00 	jmp	0xae	; 0xae <__bad_interrupt>
+  5c:	0c 94 57 00 	jmp	0xae	; 0xae <__bad_interrupt>
+  60:	0c 94 57 00 	jmp	0xae	; 0xae <__bad_interrupt>
+  64:	0c 94 57 00 	jmp	0xae	; 0xae <__bad_interrupt>
   68:	00 00       	nop
   6a:	00 00       	nop
   6c:	00 00       	nop
   6e:	00 00       	nop
   70:	00 00       	nop
   72:	00 00       	nop
-  74:	7a c0       	rjmp	.+244    	; 0x16a <__vector_6>
-  76:	13 c0       	rjmp	.+38     	; 0x9e <__bad_interrupt>
-  78:	12 c0       	rjmp	.+36     	; 0x9e <__bad_interrupt>
-  7a:	11 c0       	rjmp	.+34     	; 0x9e <__bad_interrupt>
+  74:	da c0       	rjmp	.+436    	; 0x22a <__vector_6>
+  76:	1b c0       	rjmp	.+54     	; 0xae <__bad_interrupt>
+  78:	1a c0       	rjmp	.+52     	; 0xae <__bad_interrupt>
+  7a:	19 c0       	rjmp	.+50     	; 0xae <__bad_interrupt>
   7c:	00 00       	nop
   7e:	00 00       	nop
   80:	00 00       	nop
   82:	00 00       	nop
   84:	00 00       	nop
   86:	00 00       	nop
-  88:	0a c0       	rjmp	.+20     	; 0x9e <__bad_interrupt>
+  88:	12 c0       	rjmp	.+36     	; 0xae <__bad_interrupt>
 
 0000008a <__ctors_end>:
   8a:	11 24       	eor	r1, r1
@@ -80,1597 +82,1783 @@ Disassembly of section .text:
   90:	d8 e0       	ldi	r29, 0x08	; 8
   92:	de bf       	out	0x3e, r29	; 62
   94:	cd bf       	out	0x3d, r28	; 61
-  96:	0e 94 51 00 	call	0xa2	; 0xa2 <main>
-  9a:	0c 94 1c 05 	jmp	0xa38	; 0xa38 <_exit>
 
-0000009e <__bad_interrupt>:
-  9e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+00000096 <__do_clear_bss>:
+  96:	16 e0       	ldi	r17, 0x06	; 6
+  98:	a0 e0       	ldi	r26, 0x00	; 0
+  9a:	b1 e0       	ldi	r27, 0x01	; 1
+  9c:	01 c0       	rjmp	.+2      	; 0xa0 <.do_clear_bss_start>
 
-000000a2 <main>:
+0000009e <.do_clear_bss_loop>:
+  9e:	1d 92       	st	X+, r1
+
+000000a0 <.do_clear_bss_start>:
+  a0:	a3 36       	cpi	r26, 0x63	; 99
+  a2:	b1 07       	cpc	r27, r17
+  a4:	e1 f7       	brne	.-8      	; 0x9e <.do_clear_bss_loop>
+  a6:	0e 94 59 00 	call	0xb2	; 0xb2 <main>
+  aa:	0c 94 9e 05 	jmp	0xb3c	; 0xb3c <_exit>
+
+000000ae <__bad_interrupt>:
+  ae:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000b2 <main>:
 
 
-
-int main(void) {
+int main(void) 
+{
     
 	Kernel_Init();
-  a2:	0e 94 06 03 	call	0x60c	; 0x60c <Kernel_Init>
+  b2:	0e 94 66 03 	call	0x6cc	; 0x6cc <Kernel_Init>
 
-	Kernel_Task_Create(Tasks_Task1,  5);
-  a6:	80 eb       	ldi	r24, 0xB0	; 176
-  a8:	90 e0       	ldi	r25, 0x00	; 0
-  aa:	65 e0       	ldi	r22, 0x05	; 5
-  ac:	0e 94 fc 01 	call	0x3f8	; 0x3f8 <Kernel_Task_Create>
-	Kernel_Task_Create(Tasks_Task2,  1);
-  b0:	8b ea       	ldi	r24, 0xAB	; 171
-  b2:	90 e0       	ldi	r25, 0x00	; 0
-  b4:	61 e0       	ldi	r22, 0x01	; 1
-  b6:	0e 94 fc 01 	call	0x3f8	; 0x3f8 <Kernel_Task_Create>
+	Kernel_Task_Create(Task_RGB_LED,  5);
+  b6:	83 eb       	ldi	r24, 0xB3	; 179
+  b8:	90 e0       	ldi	r25, 0x00	; 0
+  ba:	65 e0       	ldi	r22, 0x05	; 5
+  bc:	0e 94 5c 02 	call	0x4b8	; 0x4b8 <Kernel_Task_Create>
+	Kernel_Task_Create(Task_Vin_Sense,  1);
+  c0:	8e eb       	ldi	r24, 0xBE	; 190
+  c2:	90 e0       	ldi	r25, 0x00	; 0
+  c4:	61 e0       	ldi	r22, 0x01	; 1
+  c6:	0e 94 5c 02 	call	0x4b8	; 0x4b8 <Kernel_Task_Create>
 	Kernel_Task_Create(Tasks_Task3,  2);
-  ba:	86 ea       	ldi	r24, 0xA6	; 166
-  bc:	90 e0       	ldi	r25, 0x00	; 0
-  be:	62 e0       	ldi	r22, 0x02	; 2
-  c0:	0e 94 fc 01 	call	0x3f8	; 0x3f8 <Kernel_Task_Create>
+  ca:	8e ea       	ldi	r24, 0xAE	; 174
+  cc:	90 e0       	ldi	r25, 0x00	; 0
+  ce:	62 e0       	ldi	r22, 0x02	; 2
+  d0:	0e 94 5c 02 	call	0x4b8	; 0x4b8 <Kernel_Task_Create>
 	Kernel_Task_Create(Tasks_Task4,  3);
-  c4:	81 ea       	ldi	r24, 0xA1	; 161
-  c6:	90 e0       	ldi	r25, 0x00	; 0
-  c8:	63 e0       	ldi	r22, 0x03	; 3
-  ca:	0e 94 fc 01 	call	0x3f8	; 0x3f8 <Kernel_Task_Create>
+  d4:	89 ea       	ldi	r24, 0xA9	; 169
+  d6:	90 e0       	ldi	r25, 0x00	; 0
+  d8:	63 e0       	ldi	r22, 0x03	; 3
+  da:	0e 94 5c 02 	call	0x4b8	; 0x4b8 <Kernel_Task_Create>
 	Kernel_Task_Create(Tasks_Task5,  0);
-  ce:	8c e9       	ldi	r24, 0x9C	; 156
-  d0:	90 e0       	ldi	r25, 0x00	; 0
-  d2:	60 e0       	ldi	r22, 0x00	; 0
-  d4:	0e 94 fc 01 	call	0x3f8	; 0x3f8 <Kernel_Task_Create>
+  de:	84 ea       	ldi	r24, 0xA4	; 164
+  e0:	90 e0       	ldi	r25, 0x00	; 0
+  e2:	60 e0       	ldi	r22, 0x00	; 0
+  e4:	0e 94 5c 02 	call	0x4b8	; 0x4b8 <Kernel_Task_Create>
 	Kernel_Task_Create(Tasks_Task6,  6);
-  d8:	87 e9       	ldi	r24, 0x97	; 151
-  da:	90 e0       	ldi	r25, 0x00	; 0
-  dc:	66 e0       	ldi	r22, 0x06	; 6
-  de:	0e 94 fc 01 	call	0x3f8	; 0x3f8 <Kernel_Task_Create>
+  e8:	8f e9       	ldi	r24, 0x9F	; 159
+  ea:	90 e0       	ldi	r25, 0x00	; 0
+  ec:	66 e0       	ldi	r22, 0x06	; 6
+  ee:	0e 94 5c 02 	call	0x4b8	; 0x4b8 <Kernel_Task_Create>
 	Kernel_Task_Create(Tasks_Task7,  4);
-  e2:	82 e9       	ldi	r24, 0x92	; 146
-  e4:	90 e0       	ldi	r25, 0x00	; 0
-  e6:	64 e0       	ldi	r22, 0x04	; 4
-  e8:	0e 94 fc 01 	call	0x3f8	; 0x3f8 <Kernel_Task_Create>
+  f2:	8a e9       	ldi	r24, 0x9A	; 154
+  f4:	90 e0       	ldi	r25, 0x00	; 0
+  f6:	64 e0       	ldi	r22, 0x04	; 4
+  f8:	0e 94 5c 02 	call	0x4b8	; 0x4b8 <Kernel_Task_Create>
 	Kernel_Task_Create(Tasks_Task8,  8);
-  ec:	8d e8       	ldi	r24, 0x8D	; 141
-  ee:	90 e0       	ldi	r25, 0x00	; 0
-  f0:	68 e0       	ldi	r22, 0x08	; 8
-  f2:	0e 94 fc 01 	call	0x3f8	; 0x3f8 <Kernel_Task_Create>
+  fc:	85 e9       	ldi	r24, 0x95	; 149
+  fe:	90 e0       	ldi	r25, 0x00	; 0
+ 100:	68 e0       	ldi	r22, 0x08	; 8
+ 102:	0e 94 5c 02 	call	0x4b8	; 0x4b8 <Kernel_Task_Create>
 	Kernel_Task_Create(Tasks_Task9,  7);
-  f6:	88 e8       	ldi	r24, 0x88	; 136
-  f8:	90 e0       	ldi	r25, 0x00	; 0
-  fa:	67 e0       	ldi	r22, 0x07	; 7
-  fc:	0e 94 fc 01 	call	0x3f8	; 0x3f8 <Kernel_Task_Create>
+ 106:	80 e9       	ldi	r24, 0x90	; 144
+ 108:	90 e0       	ldi	r25, 0x00	; 0
+ 10a:	67 e0       	ldi	r22, 0x07	; 7
+ 10c:	0e 94 5c 02 	call	0x4b8	; 0x4b8 <Kernel_Task_Create>
 	Kernel_PreSleep_Hook(Tasks_Disable_Peripherals);
- 100:	87 e8       	ldi	r24, 0x87	; 135
- 102:	90 e0       	ldi	r25, 0x00	; 0
- 104:	0e 94 ef 04 	call	0x9de	; 0x9de <Kernel_PreSleep_Hook>
+ 110:	8f e8       	ldi	r24, 0x8F	; 143
+ 112:	90 e0       	ldi	r25, 0x00	; 0
+ 114:	0e 94 4f 05 	call	0xa9e	; 0xa9e <Kernel_PreSleep_Hook>
 	
 	Kernel_Start_Tasks();
- 108:	0e 94 74 02 	call	0x4e8	; 0x4e8 <Kernel_Start_Tasks>
- 10c:	ff cf       	rjmp	.-2      	; 0x10c <SRASSR+0x56>
+ 118:	0e 94 d4 02 	call	0x5a8	; 0x5a8 <Kernel_Start_Tasks>
+ 11c:	ff cf       	rjmp	.-2      	; 0x11c <SRASSR+0x66>
 
-0000010e <Tasks_Disable_Peripherals>:
-#include "kernel.h"
+0000011e <Tasks_Disable_Peripherals>:
 #include "tasks.h"
 
-void Tasks_Disable_Peripherals(void){
-  
+void Tasks_Disable_Peripherals(void)
+{
+    
 }
- 10e:	08 95       	ret
+ 11e:	08 95       	ret
 
-00000110 <Tasks_Task9>:
+00000120 <Tasks_Task9>:
 void Tasks_Task9(void){
   
   
   while(1){
     
     Kernel_Task_Sleep(7000/KER_TICK_TIME);
- 110:	87 e0       	ldi	r24, 0x07	; 7
- 112:	90 e0       	ldi	r25, 0x00	; 0
- 114:	0e 94 4d 03 	call	0x69a	; 0x69a <Kernel_Task_Sleep>
- 118:	fb cf       	rjmp	.-10     	; 0x110 <Tasks_Task9>
+ 120:	87 e0       	ldi	r24, 0x07	; 7
+ 122:	90 e0       	ldi	r25, 0x00	; 0
+ 124:	0e 94 ad 03 	call	0x75a	; 0x75a <Kernel_Task_Sleep>
+ 128:	fb cf       	rjmp	.-10     	; 0x120 <Tasks_Task9>
 
-0000011a <Tasks_Task8>:
+0000012a <Tasks_Task8>:
   
   
   while(1){
     
     
     Kernel_Task_Sleep(7000/KER_TICK_TIME);
- 11a:	87 e0       	ldi	r24, 0x07	; 7
- 11c:	90 e0       	ldi	r25, 0x00	; 0
- 11e:	0e 94 4d 03 	call	0x69a	; 0x69a <Kernel_Task_Sleep>
- 122:	fb cf       	rjmp	.-10     	; 0x11a <Tasks_Task8>
+ 12a:	87 e0       	ldi	r24, 0x07	; 7
+ 12c:	90 e0       	ldi	r25, 0x00	; 0
+ 12e:	0e 94 ad 03 	call	0x75a	; 0x75a <Kernel_Task_Sleep>
+ 132:	fb cf       	rjmp	.-10     	; 0x12a <Tasks_Task8>
 
-00000124 <Tasks_Task7>:
+00000134 <Tasks_Task7>:
   
   
   while(1){
 
     
     Kernel_Task_Sleep(7000/KER_TICK_TIME);
- 124:	87 e0       	ldi	r24, 0x07	; 7
- 126:	90 e0       	ldi	r25, 0x00	; 0
- 128:	0e 94 4d 03 	call	0x69a	; 0x69a <Kernel_Task_Sleep>
- 12c:	fb cf       	rjmp	.-10     	; 0x124 <Tasks_Task7>
+ 134:	87 e0       	ldi	r24, 0x07	; 7
+ 136:	90 e0       	ldi	r25, 0x00	; 0
+ 138:	0e 94 ad 03 	call	0x75a	; 0x75a <Kernel_Task_Sleep>
+ 13c:	fb cf       	rjmp	.-10     	; 0x134 <Tasks_Task7>
 
-0000012e <Tasks_Task6>:
+0000013e <Tasks_Task6>:
   
   
   while(1){
 
     
     Kernel_Task_Sleep(7000/KER_TICK_TIME);
- 12e:	87 e0       	ldi	r24, 0x07	; 7
- 130:	90 e0       	ldi	r25, 0x00	; 0
- 132:	0e 94 4d 03 	call	0x69a	; 0x69a <Kernel_Task_Sleep>
- 136:	fb cf       	rjmp	.-10     	; 0x12e <Tasks_Task6>
+ 13e:	87 e0       	ldi	r24, 0x07	; 7
+ 140:	90 e0       	ldi	r25, 0x00	; 0
+ 142:	0e 94 ad 03 	call	0x75a	; 0x75a <Kernel_Task_Sleep>
+ 146:	fb cf       	rjmp	.-10     	; 0x13e <Tasks_Task6>
 
-00000138 <Tasks_Task5>:
+00000148 <Tasks_Task5>:
 
 void Tasks_Task5(void){
   
   while(1){
     
     Kernel_Task_Sleep(7000/KER_TICK_TIME);
- 138:	87 e0       	ldi	r24, 0x07	; 7
- 13a:	90 e0       	ldi	r25, 0x00	; 0
- 13c:	0e 94 4d 03 	call	0x69a	; 0x69a <Kernel_Task_Sleep>
- 140:	fb cf       	rjmp	.-10     	; 0x138 <Tasks_Task5>
+ 148:	87 e0       	ldi	r24, 0x07	; 7
+ 14a:	90 e0       	ldi	r25, 0x00	; 0
+ 14c:	0e 94 ad 03 	call	0x75a	; 0x75a <Kernel_Task_Sleep>
+ 150:	fb cf       	rjmp	.-10     	; 0x148 <Tasks_Task5>
 
-00000142 <Tasks_Task4>:
-
-  
-  while(1){
-
-    
-    Kernel_Task_Sleep(7000/KER_TICK_TIME);
- 142:	87 e0       	ldi	r24, 0x07	; 7
- 144:	90 e0       	ldi	r25, 0x00	; 0
- 146:	0e 94 4d 03 	call	0x69a	; 0x69a <Kernel_Task_Sleep>
- 14a:	fb cf       	rjmp	.-10     	; 0x142 <Tasks_Task4>
-
-0000014c <Tasks_Task3>:
+00000152 <Tasks_Task4>:
 
   
   while(1){
 
     
     Kernel_Task_Sleep(7000/KER_TICK_TIME);
- 14c:	87 e0       	ldi	r24, 0x07	; 7
- 14e:	90 e0       	ldi	r25, 0x00	; 0
- 150:	0e 94 4d 03 	call	0x69a	; 0x69a <Kernel_Task_Sleep>
- 154:	fb cf       	rjmp	.-10     	; 0x14c <Tasks_Task3>
+ 152:	87 e0       	ldi	r24, 0x07	; 7
+ 154:	90 e0       	ldi	r25, 0x00	; 0
+ 156:	0e 94 ad 03 	call	0x75a	; 0x75a <Kernel_Task_Sleep>
+ 15a:	fb cf       	rjmp	.-10     	; 0x152 <Tasks_Task4>
 
-00000156 <Tasks_Task2>:
+0000015c <Tasks_Task3>:
+
+  
   while(1){
-    
 
     
-
     Kernel_Task_Sleep(7000/KER_TICK_TIME);
- 156:	87 e0       	ldi	r24, 0x07	; 7
- 158:	90 e0       	ldi	r25, 0x00	; 0
- 15a:	0e 94 4d 03 	call	0x69a	; 0x69a <Kernel_Task_Sleep>
- 15e:	fb cf       	rjmp	.-10     	; 0x156 <Tasks_Task2>
+ 15c:	87 e0       	ldi	r24, 0x07	; 7
+ 15e:	90 e0       	ldi	r25, 0x00	; 0
+ 160:	0e 94 ad 03 	call	0x75a	; 0x75a <Kernel_Task_Sleep>
+ 164:	fb cf       	rjmp	.-10     	; 0x15c <Tasks_Task3>
 
-00000160 <Tasks_Task1>:
+00000166 <Task_RGB_LED>:
+}
+
+void Task_RGB_LED(void)
+{
+    //Red, Blue, Green
+    DDRD |= (1<<5)|(1<<6)|(1<<7);
+ 166:	8a b1       	in	r24, 0x0a	; 10
+ 168:	80 6e       	ori	r24, 0xE0	; 224
+ 16a:	8a b9       	out	0x0a, r24	; 10
+    PORTD|= (1<<5)|(1<<6)|(1<<7);
+ 16c:	8b b1       	in	r24, 0x0b	; 11
+ 16e:	80 6e       	ori	r24, 0xE0	; 224
+ 170:	8b b9       	out	0x0b, r24	; 11
+  
+    while(1)
+    {
+        Kernel_Task_Sleep(30000/KER_TICK_TIME);
+ 172:	8e e1       	ldi	r24, 0x1E	; 30
+ 174:	90 e0       	ldi	r25, 0x00	; 0
+ 176:	0e 94 ad 03 	call	0x75a	; 0x75a <Kernel_Task_Sleep>
+ 17a:	fb cf       	rjmp	.-10     	; 0x172 <Task_RGB_LED+0xc>
+
+0000017c <Task_Vin_Sense>:
+
+void Task_Vin_Sense(void){
   
   while(1){
     
-    
+    Peripherals_ADC_Sample(6, 4);
+ 17c:	86 e0       	ldi	r24, 0x06	; 6
+ 17e:	64 e0       	ldi	r22, 0x04	; 4
+ 180:	0e 94 db 00 	call	0x1b6	; 0x1b6 <Peripherals_ADC_Sample>
+    Kernel_Task_Sleep(60000/KER_TICK_TIME);
+ 184:	8c e3       	ldi	r24, 0x3C	; 60
+ 186:	90 e0       	ldi	r25, 0x00	; 0
+ 188:	0e 94 ad 03 	call	0x75a	; 0x75a <Kernel_Task_Sleep>
+ 18c:	f7 cf       	rjmp	.-18     	; 0x17c <Task_Vin_Sense>
 
-    Kernel_Task_Sleep(5000/KER_TICK_TIME);
- 160:	85 e0       	ldi	r24, 0x05	; 5
- 162:	90 e0       	ldi	r25, 0x00	; 0
- 164:	0e 94 4d 03 	call	0x69a	; 0x69a <Kernel_Task_Sleep>
- 168:	fb cf       	rjmp	.-10     	; 0x160 <Tasks_Task1>
+0000018e <Peripherals_ADC_Init>:
+};
 
-0000016a <__vector_6>:
+
+void Peripherals_ADC_Init(void)
+{
+    if( !(ADCSRA & (1<<ADEN)) )
+ 18e:	80 91 7a 00 	lds	r24, 0x007A
+ 192:	87 fd       	sbrc	r24, 7
+ 194:	0f c0       	rjmp	.+30     	; 0x1b4 <Peripherals_ADC_Init+0x26>
+    {
+        ADMUX   = (1<<REFS1)|(1<<REFS0)|0x0F;
+ 196:	8f ec       	ldi	r24, 0xCF	; 207
+ 198:	80 93 7c 00 	sts	0x007C, r24
+        ADCSRA  = (1<<ADPS1)|(1<<ADPS2);
+ 19c:	86 e0       	ldi	r24, 0x06	; 6
+ 19e:	80 93 7a 00 	sts	0x007A, r24
+        ADCSRA |= (1<<ADEN) |(1<<ADSC);
+ 1a2:	80 91 7a 00 	lds	r24, 0x007A
+ 1a6:	80 6c       	ori	r24, 0xC0	; 192
+ 1a8:	80 93 7a 00 	sts	0x007A, r24
+        while (!(ADCSRA & (1<<ADIF))) 
+ 1ac:	80 91 7a 00 	lds	r24, 0x007A
+ 1b0:	84 ff       	sbrs	r24, 4
+ 1b2:	fc cf       	rjmp	.-8      	; 0x1ac <Peripherals_ADC_Init+0x1e>
+ 1b4:	08 95       	ret
+
+000001b6 <Peripherals_ADC_Sample>:
+        }
+    }
+}
+
+uint16_t Peripherals_ADC_Sample(uint8_t channel, uint8_t nsamples)
+{
+ 1b6:	df 92       	push	r13
+ 1b8:	ef 92       	push	r14
+ 1ba:	ff 92       	push	r15
+ 1bc:	0f 93       	push	r16
+ 1be:	1f 93       	push	r17
+ 1c0:	18 2f       	mov	r17, r24
+ 1c2:	d6 2e       	mov	r13, r22
+    uint8_t  temp;
+    uint32_t val = 0;
+    Peripherals_ADC_Init();
+ 1c4:	0e 94 c7 00 	call	0x18e	; 0x18e <Peripherals_ADC_Init>
+    temp  = ADMUX;
+ 1c8:	80 91 7c 00 	lds	r24, 0x007C
+    temp &= 0xF0;
+ 1cc:	80 7f       	andi	r24, 0xF0	; 240
+    temp |= channel;
+ 1ce:	81 2b       	or	r24, r17
+    ADMUX = temp;
+ 1d0:	80 93 7c 00 	sts	0x007C, r24
+ 1d4:	ee 24       	eor	r14, r14
+ 1d6:	ff 24       	eor	r15, r15
+ 1d8:	87 01       	movw	r16, r14
+ 1da:	20 e0       	ldi	r18, 0x00	; 0
+ 1dc:	14 c0       	rjmp	.+40     	; 0x206 <Peripherals_ADC_Sample+0x50>
+    for(uint8_t i=0; i<nsamples; i++)
+    {
+        ADCSRA |= (1<<ADSC);
+ 1de:	80 91 7a 00 	lds	r24, 0x007A
+ 1e2:	80 64       	ori	r24, 0x40	; 64
+ 1e4:	80 93 7a 00 	sts	0x007A, r24
+        while (!(ADCSRA & (1<<ADIF))) 
+ 1e8:	80 91 7a 00 	lds	r24, 0x007A
+ 1ec:	84 ff       	sbrs	r24, 4
+ 1ee:	fc cf       	rjmp	.-8      	; 0x1e8 <Peripherals_ADC_Sample+0x32>
+        {
+            //add timeout management
+        }
+        val += ADCW;
+ 1f0:	80 91 78 00 	lds	r24, 0x0078
+ 1f4:	90 91 79 00 	lds	r25, 0x0079
+ 1f8:	a0 e0       	ldi	r26, 0x00	; 0
+ 1fa:	b0 e0       	ldi	r27, 0x00	; 0
+ 1fc:	e8 0e       	add	r14, r24
+ 1fe:	f9 1e       	adc	r15, r25
+ 200:	0a 1f       	adc	r16, r26
+ 202:	1b 1f       	adc	r17, r27
+    Peripherals_ADC_Init();
+    temp  = ADMUX;
+    temp &= 0xF0;
+    temp |= channel;
+    ADMUX = temp;
+    for(uint8_t i=0; i<nsamples; i++)
+ 204:	2f 5f       	subi	r18, 0xFF	; 255
+ 206:	2d 15       	cp	r18, r13
+ 208:	50 f3       	brcs	.-44     	; 0x1de <Peripherals_ADC_Sample+0x28>
+ 20a:	2d 2d       	mov	r18, r13
+ 20c:	30 e0       	ldi	r19, 0x00	; 0
+ 20e:	40 e0       	ldi	r20, 0x00	; 0
+ 210:	50 e0       	ldi	r21, 0x00	; 0
+ 212:	c8 01       	movw	r24, r16
+ 214:	b7 01       	movw	r22, r14
+ 216:	0e 94 7c 05 	call	0xaf8	; 0xaf8 <__udivmodsi4>
+ 21a:	c9 01       	movw	r24, r18
+        }
+        val += ADCW;
+    }
+    val /= nsamples;
+    return (uint16_t)val;
+}
+ 21c:	1f 91       	pop	r17
+ 21e:	0f 91       	pop	r16
+ 220:	ff 90       	pop	r15
+ 222:	ef 90       	pop	r14
+ 224:	df 90       	pop	r13
+ 226:	08 95       	ret
+
+00000228 <Peripherals_Vin_Sense>:
+
+void Peripherals_Vin_Sense(void)
+{
+
+ 228:	08 95       	ret
+
+0000022a <__vector_6>:
 		BRSH   _KER_SCH_NEXT\@                            ;if prio>=lowest prio   (  2 clocks) 
 		;found new lowest priority                                                             
 		STS    KerBase+OFB_LPR   , R24                    ;save lowest priority   (  2 clocks) 
 		LDS    R18               , KerBase+OFB_TID        ;load task id           (  2 clocks) 
 		STS    KerBase+OFB_PTID  , R18                    ;save lowest priority   (  2 clocks) 
                                                                                                
- 16a:	5d 9a       	sbi	0x0b, 5	; 11
+ 22a:	5d 9a       	sbi	0x0b, 5	; 11
     _KER_SCH_NEXT\@:                                                                           
- 16c:	20 91 53 00 	lds	r18, 0x0053
- 170:	2e 7f       	andi	r18, 0xFE	; 254
- 172:	20 93 53 00 	sts	0x0053, r18
+ 22c:	20 91 53 00 	lds	r18, 0x0053
+ 230:	2e 7f       	andi	r18, 0xFE	; 254
+ 232:	20 93 53 00 	sts	0x0053, r18
 	    LDS    R18               , KerBase+OFB_TID        ;load task id           (  2 clocks) 
- 176:	0f 92       	push	r0
- 178:	0f b6       	in	r0, 0x3f	; 63
- 17a:	0f 92       	push	r0
- 17c:	1f 92       	push	r1
- 17e:	11 24       	eor	r1, r1
- 180:	2f 92       	push	r2
- 182:	3f 92       	push	r3
- 184:	4f 92       	push	r4
- 186:	5f 92       	push	r5
- 188:	6f 92       	push	r6
- 18a:	7f 92       	push	r7
- 18c:	8f 92       	push	r8
- 18e:	9f 92       	push	r9
- 190:	af 92       	push	r10
- 192:	bf 92       	push	r11
- 194:	cf 92       	push	r12
- 196:	df 92       	push	r13
- 198:	ef 92       	push	r14
- 19a:	ff 92       	push	r15
- 19c:	0f 93       	push	r16
- 19e:	1f 93       	push	r17
- 1a0:	2f 93       	push	r18
- 1a2:	3f 93       	push	r19
- 1a4:	4f 93       	push	r20
- 1a6:	5f 93       	push	r21
- 1a8:	6f 93       	push	r22
- 1aa:	7f 93       	push	r23
- 1ac:	8f 93       	push	r24
- 1ae:	9f 93       	push	r25
- 1b0:	af 93       	push	r26
- 1b2:	bf 93       	push	r27
- 1b4:	cf 93       	push	r28
- 1b6:	df 93       	push	r29
- 1b8:	ef 93       	push	r30
- 1ba:	ff 93       	push	r31
+ 236:	0f 92       	push	r0
+ 238:	0f b6       	in	r0, 0x3f	; 63
+ 23a:	0f 92       	push	r0
+ 23c:	1f 92       	push	r1
+ 23e:	11 24       	eor	r1, r1
+ 240:	2f 92       	push	r2
+ 242:	3f 92       	push	r3
+ 244:	4f 92       	push	r4
+ 246:	5f 92       	push	r5
+ 248:	6f 92       	push	r6
+ 24a:	7f 92       	push	r7
+ 24c:	8f 92       	push	r8
+ 24e:	9f 92       	push	r9
+ 250:	af 92       	push	r10
+ 252:	bf 92       	push	r11
+ 254:	cf 92       	push	r12
+ 256:	df 92       	push	r13
+ 258:	ef 92       	push	r14
+ 25a:	ff 92       	push	r15
+ 25c:	0f 93       	push	r16
+ 25e:	1f 93       	push	r17
+ 260:	2f 93       	push	r18
+ 262:	3f 93       	push	r19
+ 264:	4f 93       	push	r20
+ 266:	5f 93       	push	r21
+ 268:	6f 93       	push	r22
+ 26a:	7f 93       	push	r23
+ 26c:	8f 93       	push	r24
+ 26e:	9f 93       	push	r25
+ 270:	af 93       	push	r26
+ 272:	bf 93       	push	r27
+ 274:	cf 93       	push	r28
+ 276:	df 93       	push	r29
+ 278:	ef 93       	push	r30
+ 27a:	ff 93       	push	r31
 		INC    R18                                        ;increment by 1         (  1 clock ) 
- 1bc:	e0 e1       	ldi	r30, 0x10	; 16
- 1be:	f1 e0       	ldi	r31, 0x01	; 1
- 1c0:	20 91 07 01 	lds	r18, 0x0107
- 1c4:	22 0f       	add	r18, r18
- 1c6:	e2 0f       	add	r30, r18
- 1c8:	20 e0       	ldi	r18, 0x00	; 0
- 1ca:	f2 1f       	adc	r31, r18
- 1cc:	2d b7       	in	r18, 0x3d	; 61
- 1ce:	3e b7       	in	r19, 0x3e	; 62
- 1d0:	20 83       	st	Z, r18
- 1d2:	31 83       	std	Z+1, r19	; 0x01
-		LDS    R19               , KerBase+OFB_NTSK       ;load ntask             (  2 clocks) 
- 1d4:	20 91 06 01 	lds	r18, 0x0106
- 1d8:	20 93 46 00 	sts	0x0046, r18
-		CP     R18               , R19                    ;compare with ntask     (  2 clocks) 
- 1dc:	20 91 00 01 	lds	r18, 0x0100
- 1e0:	23 95       	inc	r18
- 1e2:	20 93 00 01 	sts	0x0100, r18
- 1e6:	30 e0       	ldi	r19, 0x00	; 0
- 1e8:	20 91 01 01 	lds	r18, 0x0101
- 1ec:	23 1f       	adc	r18, r19
- 1ee:	20 93 01 01 	sts	0x0101, r18
- 1f2:	20 91 02 01 	lds	r18, 0x0102
- 1f6:	23 1f       	adc	r18, r19
- 1f8:	20 93 02 01 	sts	0x0102, r18
- 1fc:	20 91 03 01 	lds	r18, 0x0103
- 200:	23 1f       	adc	r18, r19
- 202:	20 93 03 01 	sts	0x0103, r18
- 206:	20 91 04 01 	lds	r18, 0x0104
- 20a:	23 1f       	adc	r18, r19
- 20c:	20 93 04 01 	sts	0x0104, r18
-		BRSH   _KER_SCH_EXIT\@                            ;if task_id>=ntask      (  2 clocks) 
- 210:	80 e0       	ldi	r24, 0x00	; 0
-		RJMP   _KER_SCH_LOOP\@                            ;jump to entry          (  2 clocks) 
- 212:	2f ef       	ldi	r18, 0xFF	; 255
- 214:	20 93 09 01 	sts	0x0109, r18
- 218:	20 e0       	ldi	r18, 0x00	; 0
- 21a:	20 93 0a 01 	sts	0x010A, r18
- 21e:	58 2f       	mov	r21, r24
-
-00000220 <_KER_SCH_LOOP9>:
- 220:	20 93 07 01 	sts	0x0107, r18
- 224:	85 2f       	mov	r24, r21
- 226:	e6 e4       	ldi	r30, 0x46	; 70
- 228:	f1 e0       	ldi	r31, 0x01	; 1
- 22a:	20 91 07 01 	lds	r18, 0x0107
- 22e:	22 0f       	add	r18, r18
- 230:	e2 0f       	add	r30, r18
- 232:	20 e0       	ldi	r18, 0x00	; 0
- 234:	f2 1f       	adc	r31, r18
- 236:	20 81       	ld	r18, Z
- 238:	31 81       	ldd	r19, Z+1	; 0x01
- 23a:	42 2f       	mov	r20, r18
- 23c:	43 2b       	or	r20, r19
- 23e:	59 f0       	breq	.+22     	; 0x256 <_VAL_NULL10>
- 240:	81 30       	cpi	r24, 0x01	; 1
- 242:	99 f0       	breq	.+38     	; 0x26a <_VAL_NOT_NULL10>
- 244:	41 e0       	ldi	r20, 0x01	; 1
- 246:	24 1b       	sub	r18, r20
- 248:	40 e0       	ldi	r20, 0x00	; 0
- 24a:	34 0b       	sbc	r19, r20
- 24c:	20 83       	st	Z, r18
- 24e:	31 83       	std	Z+1, r19	; 0x01
- 250:	42 2f       	mov	r20, r18
- 252:	43 2b       	or	r20, r19
- 254:	51 f4       	brne	.+20     	; 0x26a <_VAL_NOT_NULL10>
-
-00000256 <_VAL_NULL10>:
- 256:	e2 e3       	ldi	r30, 0x32	; 50
- 258:	f1 e0       	ldi	r31, 0x01	; 1
- 25a:	20 91 07 01 	lds	r18, 0x0107
- 25e:	e2 0f       	add	r30, r18
- 260:	20 e0       	ldi	r18, 0x00	; 0
- 262:	f2 1f       	adc	r31, r18
- 264:	81 e0       	ldi	r24, 0x01	; 1
- 266:	80 83       	st	Z, r24
- 268:	08 c0       	rjmp	.+16     	; 0x27a <_EXIT_SLP_TIME10>
-
-0000026a <_VAL_NOT_NULL10>:
- 26a:	e2 e3       	ldi	r30, 0x32	; 50
- 26c:	f1 e0       	ldi	r31, 0x01	; 1
- 26e:	20 91 07 01 	lds	r18, 0x0107
- 272:	e2 0f       	add	r30, r18
- 274:	20 e0       	ldi	r18, 0x00	; 0
- 276:	f2 1f       	adc	r31, r18
- 278:	80 81       	ld	r24, Z
-
-0000027a <_EXIT_SLP_TIME10>:
- 27a:	81 30       	cpi	r24, 0x01	; 1
- 27c:	19 f0       	breq	.+6      	; 0x284 <_KER_CALC_PRIO9>
- 27e:	84 30       	cpi	r24, 0x04	; 4
- 280:	09 f0       	breq	.+2      	; 0x284 <_KER_CALC_PRIO9>
- 282:	12 c0       	rjmp	.+36     	; 0x2a8 <_KER_SCH_NEXT9>
-
-00000284 <_KER_CALC_PRIO9>:
- 284:	ec e3       	ldi	r30, 0x3C	; 60
- 286:	f1 e0       	ldi	r31, 0x01	; 1
+ 27c:	e9 e1       	ldi	r30, 0x19	; 25
+ 27e:	f1 e0       	ldi	r31, 0x01	; 1
+ 280:	20 91 10 01 	lds	r18, 0x0110
+ 284:	22 0f       	add	r18, r18
+ 286:	e2 0f       	add	r30, r18
  288:	20 e0       	ldi	r18, 0x00	; 0
- 28a:	80 91 07 01 	lds	r24, 0x0107
- 28e:	e8 0f       	add	r30, r24
- 290:	f2 1f       	adc	r31, r18
- 292:	80 81       	ld	r24, Z
- 294:	20 91 09 01 	lds	r18, 0x0109
- 298:	82 17       	cp	r24, r18
- 29a:	30 f4       	brcc	.+12     	; 0x2a8 <_KER_SCH_NEXT9>
- 29c:	80 93 09 01 	sts	0x0109, r24
- 2a0:	20 91 07 01 	lds	r18, 0x0107
- 2a4:	20 93 0a 01 	sts	0x010A, r18
+ 28a:	f2 1f       	adc	r31, r18
+ 28c:	2d b7       	in	r18, 0x3d	; 61
+ 28e:	3e b7       	in	r19, 0x3e	; 62
+ 290:	20 83       	st	Z, r18
+ 292:	31 83       	std	Z+1, r19	; 0x01
+		LDS    R19               , KerBase+OFB_NTSK       ;load ntask             (  2 clocks) 
+ 294:	20 91 0f 01 	lds	r18, 0x010F
+ 298:	20 93 46 00 	sts	0x0046, r18
+		CP     R18               , R19                    ;compare with ntask     (  2 clocks) 
+ 29c:	20 91 09 01 	lds	r18, 0x0109
+ 2a0:	23 95       	inc	r18
+ 2a2:	20 93 09 01 	sts	0x0109, r18
+ 2a6:	30 e0       	ldi	r19, 0x00	; 0
+ 2a8:	20 91 0a 01 	lds	r18, 0x010A
+ 2ac:	23 1f       	adc	r18, r19
+ 2ae:	20 93 0a 01 	sts	0x010A, r18
+ 2b2:	20 91 0b 01 	lds	r18, 0x010B
+ 2b6:	23 1f       	adc	r18, r19
+ 2b8:	20 93 0b 01 	sts	0x010B, r18
+ 2bc:	20 91 0c 01 	lds	r18, 0x010C
+ 2c0:	23 1f       	adc	r18, r19
+ 2c2:	20 93 0c 01 	sts	0x010C, r18
+ 2c6:	20 91 0d 01 	lds	r18, 0x010D
+ 2ca:	23 1f       	adc	r18, r19
+ 2cc:	20 93 0d 01 	sts	0x010D, r18
+		BRSH   _KER_SCH_EXIT\@                            ;if task_id>=ntask      (  2 clocks) 
+ 2d0:	80 e0       	ldi	r24, 0x00	; 0
+		RJMP   _KER_SCH_LOOP\@                            ;jump to entry          (  2 clocks) 
+ 2d2:	2f ef       	ldi	r18, 0xFF	; 255
+ 2d4:	20 93 12 01 	sts	0x0112, r18
+ 2d8:	20 e0       	ldi	r18, 0x00	; 0
+ 2da:	20 93 13 01 	sts	0x0113, r18
+ 2de:	58 2f       	mov	r21, r24
 
-000002a8 <_KER_SCH_NEXT9>:
- 2a8:	20 91 07 01 	lds	r18, 0x0107
- 2ac:	23 95       	inc	r18
- 2ae:	30 91 08 01 	lds	r19, 0x0108
- 2b2:	23 17       	cp	r18, r19
- 2b4:	08 f4       	brcc	.+2      	; 0x2b8 <_KER_SCH_EXIT9>
- 2b6:	b4 cf       	rjmp	.-152    	; 0x220 <_KER_SCH_LOOP9>
+000002e0 <_KER_SCH_LOOP9>:
+ 2e0:	20 93 10 01 	sts	0x0110, r18
+ 2e4:	85 2f       	mov	r24, r21
+ 2e6:	ef e4       	ldi	r30, 0x4F	; 79
+ 2e8:	f1 e0       	ldi	r31, 0x01	; 1
+ 2ea:	20 91 10 01 	lds	r18, 0x0110
+ 2ee:	22 0f       	add	r18, r18
+ 2f0:	e2 0f       	add	r30, r18
+ 2f2:	20 e0       	ldi	r18, 0x00	; 0
+ 2f4:	f2 1f       	adc	r31, r18
+ 2f6:	20 81       	ld	r18, Z
+ 2f8:	31 81       	ldd	r19, Z+1	; 0x01
+ 2fa:	42 2f       	mov	r20, r18
+ 2fc:	43 2b       	or	r20, r19
+ 2fe:	59 f0       	breq	.+22     	; 0x316 <_VAL_NULL10>
+ 300:	81 30       	cpi	r24, 0x01	; 1
+ 302:	99 f0       	breq	.+38     	; 0x32a <_VAL_NOT_NULL10>
+ 304:	41 e0       	ldi	r20, 0x01	; 1
+ 306:	24 1b       	sub	r18, r20
+ 308:	40 e0       	ldi	r20, 0x00	; 0
+ 30a:	34 0b       	sbc	r19, r20
+ 30c:	20 83       	st	Z, r18
+ 30e:	31 83       	std	Z+1, r19	; 0x01
+ 310:	42 2f       	mov	r20, r18
+ 312:	43 2b       	or	r20, r19
+ 314:	51 f4       	brne	.+20     	; 0x32a <_VAL_NOT_NULL10>
 
-000002b8 <_KER_SCH_EXIT9>:
- 2b8:	20 91 0a 01 	lds	r18, 0x010A
- 2bc:	20 93 07 01 	sts	0x0107, r18
+00000316 <_VAL_NULL10>:
+ 316:	eb e3       	ldi	r30, 0x3B	; 59
+ 318:	f1 e0       	ldi	r31, 0x01	; 1
+ 31a:	20 91 10 01 	lds	r18, 0x0110
+ 31e:	e2 0f       	add	r30, r18
+ 320:	20 e0       	ldi	r18, 0x00	; 0
+ 322:	f2 1f       	adc	r31, r18
+ 324:	81 e0       	ldi	r24, 0x01	; 1
+ 326:	80 83       	st	Z, r24
+ 328:	08 c0       	rjmp	.+16     	; 0x33a <_EXIT_SLP_TIME10>
+
+0000032a <_VAL_NOT_NULL10>:
+ 32a:	eb e3       	ldi	r30, 0x3B	; 59
+ 32c:	f1 e0       	ldi	r31, 0x01	; 1
+ 32e:	20 91 10 01 	lds	r18, 0x0110
+ 332:	e2 0f       	add	r30, r18
+ 334:	20 e0       	ldi	r18, 0x00	; 0
+ 336:	f2 1f       	adc	r31, r18
+ 338:	80 81       	ld	r24, Z
+
+0000033a <_EXIT_SLP_TIME10>:
+ 33a:	81 30       	cpi	r24, 0x01	; 1
+ 33c:	19 f0       	breq	.+6      	; 0x344 <_KER_CALC_PRIO9>
+ 33e:	84 30       	cpi	r24, 0x04	; 4
+ 340:	09 f0       	breq	.+2      	; 0x344 <_KER_CALC_PRIO9>
+ 342:	12 c0       	rjmp	.+36     	; 0x368 <_KER_SCH_NEXT9>
+
+00000344 <_KER_CALC_PRIO9>:
+ 344:	e5 e4       	ldi	r30, 0x45	; 69
+ 346:	f1 e0       	ldi	r31, 0x01	; 1
+ 348:	20 e0       	ldi	r18, 0x00	; 0
+ 34a:	80 91 10 01 	lds	r24, 0x0110
+ 34e:	e8 0f       	add	r30, r24
+ 350:	f2 1f       	adc	r31, r18
+ 352:	80 81       	ld	r24, Z
+ 354:	20 91 12 01 	lds	r18, 0x0112
+ 358:	82 17       	cp	r24, r18
+ 35a:	30 f4       	brcc	.+12     	; 0x368 <_KER_SCH_NEXT9>
+ 35c:	80 93 12 01 	sts	0x0112, r24
+ 360:	20 91 10 01 	lds	r18, 0x0110
+ 364:	20 93 13 01 	sts	0x0113, r18
+
+00000368 <_KER_SCH_NEXT9>:
+ 368:	20 91 10 01 	lds	r18, 0x0110
+ 36c:	23 95       	inc	r18
+ 36e:	30 91 11 01 	lds	r19, 0x0111
+ 372:	23 17       	cp	r18, r19
+ 374:	08 f4       	brcc	.+2      	; 0x378 <_KER_SCH_EXIT9>
+ 376:	b4 cf       	rjmp	.-152    	; 0x2e0 <_KER_SCH_LOOP9>
+
+00000378 <_KER_SCH_EXIT9>:
+ 378:	20 91 13 01 	lds	r18, 0x0113
+ 37c:	20 93 10 01 	sts	0x0110, r18
 	_KER_SCH_EXIT\@:                                                                           
- 2c0:	20 91 07 01 	lds	r18, 0x0107
- 2c4:	22 23       	and	r18, r18
- 2c6:	29 f0       	breq	.+10     	; 0x2d2 <_KER_USG_TICK15>
- 2c8:	20 91 0c 01 	lds	r18, 0x010C
- 2cc:	23 95       	inc	r18
- 2ce:	20 93 0c 01 	sts	0x010C, r18
+ 380:	20 91 10 01 	lds	r18, 0x0110
+ 384:	22 23       	and	r18, r18
+ 386:	29 f0       	breq	.+10     	; 0x392 <_KER_USG_TICK15>
+ 388:	20 91 15 01 	lds	r18, 0x0115
+ 38c:	23 95       	inc	r18
+ 38e:	20 93 15 01 	sts	0x0115, r18
 
-000002d2 <_KER_USG_TICK15>:
- 2d2:	20 91 0b 01 	lds	r18, 0x010B
- 2d6:	23 95       	inc	r18
- 2d8:	24 36       	cpi	r18, 0x64	; 100
- 2da:	40 f0       	brcs	.+16     	; 0x2ec <_KER_USG_UTC_SV15>
- 2dc:	20 e0       	ldi	r18, 0x00	; 0
- 2de:	30 91 0c 01 	lds	r19, 0x010C
- 2e2:	30 93 0d 01 	sts	0x010D, r19
- 2e6:	30 e0       	ldi	r19, 0x00	; 0
- 2e8:	30 93 0c 01 	sts	0x010C, r19
+00000392 <_KER_USG_TICK15>:
+ 392:	20 91 14 01 	lds	r18, 0x0114
+ 396:	23 95       	inc	r18
+ 398:	24 36       	cpi	r18, 0x64	; 100
+ 39a:	40 f0       	brcs	.+16     	; 0x3ac <_KER_USG_UTC_SV15>
+ 39c:	20 e0       	ldi	r18, 0x00	; 0
+ 39e:	30 91 15 01 	lds	r19, 0x0115
+ 3a2:	30 93 16 01 	sts	0x0116, r19
+ 3a6:	30 e0       	ldi	r19, 0x00	; 0
+ 3a8:	30 93 15 01 	sts	0x0115, r19
 
-000002ec <_KER_USG_UTC_SV15>:
- 2ec:	20 93 0b 01 	sts	0x010B, r18
+000003ac <_KER_USG_UTC_SV15>:
+ 3ac:	20 93 14 01 	sts	0x0114, r18
         LDS    R18               , KerBase+OFB_PTID       ;load high prio task id (  2 clocks) 
- 2f0:	e0 e1       	ldi	r30, 0x10	; 16
- 2f2:	f1 e0       	ldi	r31, 0x01	; 1
- 2f4:	20 91 07 01 	lds	r18, 0x0107
- 2f8:	22 0f       	add	r18, r18
- 2fa:	e2 0f       	add	r30, r18
- 2fc:	20 e0       	ldi	r18, 0x00	; 0
- 2fe:	f2 1f       	adc	r31, r18
- 300:	20 81       	ld	r18, Z
- 302:	31 81       	ldd	r19, Z+1	; 0x01
- 304:	2d bf       	out	0x3d, r18	; 61
- 306:	3e bf       	out	0x3e, r19	; 62
+ 3b0:	e9 e1       	ldi	r30, 0x19	; 25
+ 3b2:	f1 e0       	ldi	r31, 0x01	; 1
+ 3b4:	20 91 10 01 	lds	r18, 0x0110
+ 3b8:	22 0f       	add	r18, r18
+ 3ba:	e2 0f       	add	r30, r18
+ 3bc:	20 e0       	ldi	r18, 0x00	; 0
+ 3be:	f2 1f       	adc	r31, r18
+ 3c0:	20 81       	ld	r18, Z
+ 3c2:	31 81       	ldd	r19, Z+1	; 0x01
+ 3c4:	2d bf       	out	0x3d, r18	; 61
+ 3c6:	3e bf       	out	0x3e, r19	; 62
 		STS    KerBase+OFB_TID   , R18                    ;for test only          (  2 clocks) 
- 308:	ff 91       	pop	r31
- 30a:	ef 91       	pop	r30
- 30c:	df 91       	pop	r29
- 30e:	cf 91       	pop	r28
- 310:	bf 91       	pop	r27
- 312:	af 91       	pop	r26
- 314:	9f 91       	pop	r25
- 316:	8f 91       	pop	r24
- 318:	7f 91       	pop	r23
- 31a:	6f 91       	pop	r22
- 31c:	5f 91       	pop	r21
- 31e:	4f 91       	pop	r20
- 320:	3f 91       	pop	r19
- 322:	2f 91       	pop	r18
- 324:	1f 91       	pop	r17
- 326:	0f 91       	pop	r16
- 328:	ff 90       	pop	r15
- 32a:	ef 90       	pop	r14
- 32c:	df 90       	pop	r13
- 32e:	cf 90       	pop	r12
- 330:	bf 90       	pop	r11
- 332:	af 90       	pop	r10
- 334:	9f 90       	pop	r9
- 336:	8f 90       	pop	r8
- 338:	7f 90       	pop	r7
- 33a:	6f 90       	pop	r6
- 33c:	5f 90       	pop	r5
- 33e:	4f 90       	pop	r4
- 340:	3f 90       	pop	r3
- 342:	2f 90       	pop	r2
- 344:	1f 90       	pop	r1
- 346:	0f 90       	pop	r0
- 348:	0f be       	out	0x3f, r0	; 63
- 34a:	0f 90       	pop	r0
+ 3c8:	ff 91       	pop	r31
+ 3ca:	ef 91       	pop	r30
+ 3cc:	df 91       	pop	r29
+ 3ce:	cf 91       	pop	r28
+ 3d0:	bf 91       	pop	r27
+ 3d2:	af 91       	pop	r26
+ 3d4:	9f 91       	pop	r25
+ 3d6:	8f 91       	pop	r24
+ 3d8:	7f 91       	pop	r23
+ 3da:	6f 91       	pop	r22
+ 3dc:	5f 91       	pop	r21
+ 3de:	4f 91       	pop	r20
+ 3e0:	3f 91       	pop	r19
+ 3e2:	2f 91       	pop	r18
+ 3e4:	1f 91       	pop	r17
+ 3e6:	0f 91       	pop	r16
+ 3e8:	ff 90       	pop	r15
+ 3ea:	ef 90       	pop	r14
+ 3ec:	df 90       	pop	r13
+ 3ee:	cf 90       	pop	r12
+ 3f0:	bf 90       	pop	r11
+ 3f2:	af 90       	pop	r10
+ 3f4:	9f 90       	pop	r9
+ 3f6:	8f 90       	pop	r8
+ 3f8:	7f 90       	pop	r7
+ 3fa:	6f 90       	pop	r6
+ 3fc:	5f 90       	pop	r5
+ 3fe:	4f 90       	pop	r4
+ 400:	3f 90       	pop	r3
+ 402:	2f 90       	pop	r2
+ 404:	1f 90       	pop	r1
+ 406:	0f 90       	pop	r0
+ 408:	0f be       	out	0x3f, r0	; 63
+ 40a:	0f 90       	pop	r0
 .endm                                                                                          
- 34c:	5d 98       	cbi	0x0b, 5	; 11
+ 40c:	5d 98       	cbi	0x0b, 5	; 11
 ;;===================================run scheduler end======================================;; 
- 34e:	20 91 60 00 	lds	r18, 0x0060
+ 40e:	20 91 60 00 	lds	r18, 0x0060
 
- 352:	20 64       	ori	r18, 0x40	; 64
+ 412:	20 64       	ori	r18, 0x40	; 64
 
- 354:	20 93 60 00 	sts	0x0060, r18
+ 414:	20 93 60 00 	sts	0x0060, r18
 
- 358:	18 95       	reti
+ 418:	18 95       	reti
 
-0000035a <Kernel_SysTick_Reg_Init>:
+0000041a <Kernel_SysTick_Reg_Init>:
 ;used registers          : R18, R19, R22, R24, R26(XL), R27(XH), R30(ZL), R31(ZH)              
 ;arg registers           : R24(Prescaler), R22(ReloadVal)                                      
 ;return registers        : None                                                                
 ;unsafe access registers : R18, R19, R22, R24, R26(XL), R27(XH), R30(ZL), R31(ZH)              
 Kernel_SysTick_Reg_Init:                                  ;total 11.50uS @8MHz    ( 92 clocks) 
         CLI                                               ;disable global int     (  1 clock ) 
- 35a:	f8 94       	cli
+ 41a:	f8 94       	cli
 		KER_DEBUG_PIN_INIT                                ;debug pin init         (  4 clocks) 
- 35c:	5d 98       	cbi	0x0b, 5	; 11
- 35e:	55 9a       	sbi	0x0a, 5	; 10
+ 41c:	5d 98       	cbi	0x0b, 5	; 11
+ 41e:	55 9a       	sbi	0x0a, 5	; 10
         KER_PUSH_MSP_ZP                                   ;push MSP and ZP        ( 18 clocks) 
- 360:	a0 91 24 01 	lds	r26, 0x0124
- 364:	b0 91 25 01 	lds	r27, 0x0125
- 368:	2d b7       	in	r18, 0x3d	; 61
- 36a:	3e b7       	in	r19, 0x3e	; 62
- 36c:	2d 93       	st	X+, r18
- 36e:	3d 93       	st	X+, r19
- 370:	ed 93       	st	X+, r30
- 372:	fd 93       	st	X+, r31
- 374:	a0 93 24 01 	sts	0x0124, r26
- 378:	b0 93 25 01 	sts	0x0125, r27
+ 420:	a0 91 2d 01 	lds	r26, 0x012D
+ 424:	b0 91 2e 01 	lds	r27, 0x012E
+ 428:	2d b7       	in	r18, 0x3d	; 61
+ 42a:	3e b7       	in	r19, 0x3e	; 62
+ 42c:	2d 93       	st	X+, r18
+ 42e:	3d 93       	st	X+, r19
+ 430:	ed 93       	st	X+, r30
+ 432:	fd 93       	st	X+, r31
+ 434:	a0 93 2d 01 	sts	0x012D, r26
+ 438:	b0 93 2e 01 	sts	0x012E, r27
 		;clear reg                                                                             
 		LDI   R18                , 0x00                   ;set 0x00 to R18        (  1 clock ) 
- 37c:	20 e0       	ldi	r18, 0x00	; 0
+ 43c:	20 e0       	ldi	r18, 0x00	; 0
 		;clear tick counter                                                                    
 		STS   KerBase+OFB_TICK0  , R18                    ;clear  KerBase[0]      (  2 clocks) 
- 37e:	20 93 00 01 	sts	0x0100, r18
+ 43e:	20 93 09 01 	sts	0x0109, r18
 		STS   KerBase+OFB_TICK1  , R18                    ;clear  KerBase[1]      (  2 clocks) 
- 382:	20 93 01 01 	sts	0x0101, r18
+ 442:	20 93 0a 01 	sts	0x010A, r18
 		STS   KerBase+OFB_TICK2  , R18                    ;clear  KerBase[2]      (  2 clocks) 
- 386:	20 93 02 01 	sts	0x0102, r18
+ 446:	20 93 0b 01 	sts	0x010B, r18
 		STS   KerBase+OFB_TICK3  , R18                    ;clear  KerBase[3]      (  2 clocks) 
- 38a:	20 93 03 01 	sts	0x0103, r18
+ 44a:	20 93 0c 01 	sts	0x010C, r18
 		STS   KerBase+OFB_TICK4  , R18                    ;clear  KerBase[4]      (  2 clocks) 
- 38e:	20 93 04 01 	sts	0x0104, r18
+ 44e:	20 93 0d 01 	sts	0x010D, r18
 		;clear system registers                                                                
 		STS   KerBase+OFB_PRS    , R18                    ;clear  KerBase[5]      (  2 clocks) 
- 392:	20 93 05 01 	sts	0x0105, r18
+ 452:	20 93 0e 01 	sts	0x010E, r18
 		STS   KerBase+OFB_RLD    , R18                    ;clear  KerBase[6]      (  2 clocks) 
- 396:	20 93 06 01 	sts	0x0106, r18
+ 456:	20 93 0f 01 	sts	0x010F, r18
 		STS   KerBase+OFB_TID    , R18                    ;clear  KerBase[7]      (  2 clocks) 
- 39a:	20 93 07 01 	sts	0x0107, r18
+ 45a:	20 93 10 01 	sts	0x0110, r18
 		STS   KerBase+OFB_NTSK   , R18                    ;clear  KerBase[8]      (  2 clocks) 
- 39e:	20 93 08 01 	sts	0x0108, r18
+ 45e:	20 93 11 01 	sts	0x0111, r18
 		STS   KerBase+OFB_LPR    , R18                    ;clear  KerBase[9]      (  2 clocks) 
- 3a2:	20 93 09 01 	sts	0x0109, r18
+ 462:	20 93 12 01 	sts	0x0112, r18
         STS   KerBase+OFB_PTID   , R18                    ;clear  KerBase[10]     (  2 clocks) 
- 3a6:	20 93 0a 01 	sts	0x010A, r18
+ 466:	20 93 13 01 	sts	0x0113, r18
 		STS   KerBase+OFB_UTC    , R18                    ;clear  KerBase[11]     (  2 clocks) 
- 3aa:	20 93 0b 01 	sts	0x010B, r18
+ 46a:	20 93 14 01 	sts	0x0114, r18
 		STS   KerBase+OFB_UATC   , R18                    ;clear  KerBase[12]     (  2 clocks) 
- 3ae:	20 93 0c 01 	sts	0x010C, r18
+ 46e:	20 93 15 01 	sts	0x0115, r18
 		STS   KerBase+OFB_USAGE  , R18                    ;clear  KerBase[13]     (  2 clocks) 
- 3b2:	20 93 0d 01 	sts	0x010D, r18
+ 472:	20 93 16 01 	sts	0x0116, r18
 		STS   SROCR0A            , R18                    ;clear OCR0A            (  2 clocks) 
 		STS   SROCR0B            , R18                    ;clear OCR0B            (  2 clocks) 
 		STS   SRTCNT0            , R18                    ;clear TCNT0            (  2 clocks) 
 		#endif                                                                                 
         #ifdef KER_WDT_AS_TICK_SRC                                                             
 		WDR                                               ;reset wdt              (  1 clock ) 
- 3b6:	a8 95       	wdr
+ 476:	a8 95       	wdr
 		LDS   R18                , SRMCUSR                ;copy MCUSR             (  1 clock ) 
- 3b8:	20 91 54 00 	lds	r18, 0x0054
+ 478:	20 91 54 00 	lds	r18, 0x0054
 		ANDI  R18                , 0xFF & (0<<WDRF)       ;clear WDRF             (  1 clock ) 
- 3bc:	20 70       	andi	r18, 0x00	; 0
+ 47c:	20 70       	andi	r18, 0x00	; 0
 		STS   SRMCUSR            , R18                    ;set val                (  1 clock ) 
- 3be:	20 93 54 00 	sts	0x0054, r18
+ 47e:	20 93 54 00 	sts	0x0054, r18
 		LDS   R18                , SRWDTCSR               ;copy WDTCSR            (  2 clocks) 
- 3c2:	20 91 60 00 	lds	r18, 0x0060
+ 482:	20 91 60 00 	lds	r18, 0x0060
 		ORI   R18                , 0x18                   ;set WDCE,WDE           (  1 clock ) 
- 3c6:	28 61       	ori	r18, 0x18	; 24
+ 486:	28 61       	ori	r18, 0x18	; 24
 		STS   SRWDTCSR           , R18                    ;set val                (  2 clocks) 
- 3c8:	20 93 60 00 	sts	0x0060, r18
+ 488:	20 93 60 00 	sts	0x0060, r18
 		LDI   R18                , 0x00                   ;clear WDE              (  1 clock ) 
- 3cc:	20 e0       	ldi	r18, 0x00	; 0
+ 48c:	20 e0       	ldi	r18, 0x00	; 0
 		STS   SRWDTCSR           , R18                    ;set val                (  2 clocks) 
- 3ce:	20 93 60 00 	sts	0x0060, r18
+ 48e:	20 93 60 00 	sts	0x0060, r18
 		STS   SRTCCR2B           , R18                    ;set val to TCCR2B      (  2 clocks) 
 		LDI   R18                , 0x00                   ;clear AS2 bit          (  1 clock ) 
 		STS   SRASSR             , R18                    ;set val to ASSR        (  2 clocks) 
 		#endif                                                                                 
 		;save values for future use                                                            
 		STS   KerBase+OFB_PRS    , R24                    ;KerBase[5] prescaler   (  2 clocks) 
- 3d2:	80 93 05 01 	sts	0x0105, r24
+ 492:	80 93 0e 01 	sts	0x010E, r24
 		STS   KerBase+OFB_RLD    , R22                    ;KerBase[6] reload val  (  2 clocks) 
- 3d6:	60 93 06 01 	sts	0x0106, r22
+ 496:	60 93 0f 01 	sts	0x010F, r22
         KER_POP_MSP_ZP                                    ;pop MSP and ZP         ( 18 clocks) 
- 3da:	a0 91 24 01 	lds	r26, 0x0124
- 3de:	b0 91 25 01 	lds	r27, 0x0125
- 3e2:	fe 91       	ld	r31, -X
- 3e4:	ee 91       	ld	r30, -X
- 3e6:	3e 91       	ld	r19, -X
- 3e8:	2e 91       	ld	r18, -X
- 3ea:	2d bf       	out	0x3d, r18	; 61
- 3ec:	3e bf       	out	0x3e, r19	; 62
- 3ee:	a0 93 24 01 	sts	0x0124, r26
- 3f2:	b0 93 25 01 	sts	0x0125, r27
+ 49a:	a0 91 2d 01 	lds	r26, 0x012D
+ 49e:	b0 91 2e 01 	lds	r27, 0x012E
+ 4a2:	fe 91       	ld	r31, -X
+ 4a4:	ee 91       	ld	r30, -X
+ 4a6:	3e 91       	ld	r19, -X
+ 4a8:	2e 91       	ld	r18, -X
+ 4aa:	2d bf       	out	0x3d, r18	; 61
+ 4ac:	3e bf       	out	0x3e, r19	; 62
+ 4ae:	a0 93 2d 01 	sts	0x012D, r26
+ 4b2:	b0 93 2e 01 	sts	0x012E, r27
 		RET                                               ;return from subroutine (  4 clocks) 
- 3f6:	08 95       	ret
+ 4b6:	08 95       	ret
 
-000003f8 <Kernel_Task_Create>:
+000004b8 <Kernel_Task_Create>:
 ;used registers          : R18, R19, R20, R22, R24, R25, R26(XL), R27(XH), R30(ZL), R31(ZH)    
 ;arg registers           : R25:R24(FuncPtr), R22(TaskPriority)                                 
 ;return registers        : None                                                                
 ;unsafe access registers : R18, R19, R20, R22, R24, R25, R26(XL), R27(XH), R30(ZL), R31(ZH)    
 Kernel_Task_Create:                                       ;total 21.50uS @8MHz    (172 clocks) 
         KER_PUSH_MSP_ZP                                   ;push MSP and ZP        ( 18 clocks) 
- 3f8:	a0 91 24 01 	lds	r26, 0x0124
- 3fc:	b0 91 25 01 	lds	r27, 0x0125
- 400:	2d b7       	in	r18, 0x3d	; 61
- 402:	3e b7       	in	r19, 0x3e	; 62
- 404:	2d 93       	st	X+, r18
- 406:	3d 93       	st	X+, r19
- 408:	ed 93       	st	X+, r30
- 40a:	fd 93       	st	X+, r31
- 40c:	a0 93 24 01 	sts	0x0124, r26
- 410:	b0 93 25 01 	sts	0x0125, r27
+ 4b8:	a0 91 2d 01 	lds	r26, 0x012D
+ 4bc:	b0 91 2e 01 	lds	r27, 0x012E
+ 4c0:	2d b7       	in	r18, 0x3d	; 61
+ 4c2:	3e b7       	in	r19, 0x3e	; 62
+ 4c4:	2d 93       	st	X+, r18
+ 4c6:	3d 93       	st	X+, r19
+ 4c8:	ed 93       	st	X+, r30
+ 4ca:	fd 93       	st	X+, r31
+ 4cc:	a0 93 2d 01 	sts	0x012D, r26
+ 4d0:	b0 93 2e 01 	sts	0x012E, r27
 		;set priority to KerSchPr+task_id                                                      
 		LDI   ZL                 , lo8(KerSchPr)          ;load low byte          (  1 clock ) 
- 414:	ec e3       	ldi	r30, 0x3C	; 60
+ 4d4:	e5 e4       	ldi	r30, 0x45	; 69
 		LDI   ZH                 , hi8(KerSchPr)          ;load high byte         (  1 clock ) 
- 416:	f1 e0       	ldi	r31, 0x01	; 1
+ 4d6:	f1 e0       	ldi	r31, 0x01	; 1
 		KER_CALC_ADDR_OFF_BYTES                           ;calc offset            (  5 clocks) 
- 418:	20 91 07 01 	lds	r18, 0x0107
- 41c:	e2 0f       	add	r30, r18
- 41e:	20 e0       	ldi	r18, 0x00	; 0
- 420:	f2 1f       	adc	r31, r18
+ 4d8:	20 91 10 01 	lds	r18, 0x0110
+ 4dc:	e2 0f       	add	r30, r18
+ 4de:	20 e0       	ldi	r18, 0x00	; 0
+ 4e0:	f2 1f       	adc	r31, r18
 		ST    Z                  , R22                    ;save priority          (  2 clocks) 
- 422:	60 83       	st	Z, r22
+ 4e2:	60 83       	st	Z, r22
 		;set task status to KerSchSts+task_id                                                  
 		LDI   ZL                 , lo8(KerSchSts)         ;load low byte          (  1 clock ) 
- 424:	e2 e3       	ldi	r30, 0x32	; 50
+ 4e4:	eb e3       	ldi	r30, 0x3B	; 59
 		LDI   ZH                 , hi8(KerSchSts)         ;load high byte         (  1 clock ) 
- 426:	f1 e0       	ldi	r31, 0x01	; 1
+ 4e6:	f1 e0       	ldi	r31, 0x01	; 1
 		KER_CALC_ADDR_OFF_BYTES                           ;calc offset            (  5 clocks) 
- 428:	20 91 07 01 	lds	r18, 0x0107
- 42c:	e2 0f       	add	r30, r18
- 42e:	20 e0       	ldi	r18, 0x00	; 0
- 430:	f2 1f       	adc	r31, r18
+ 4e8:	20 91 10 01 	lds	r18, 0x0110
+ 4ec:	e2 0f       	add	r30, r18
+ 4ee:	20 e0       	ldi	r18, 0x00	; 0
+ 4f0:	f2 1f       	adc	r31, r18
 		LDI   R18                , TASK_READY             ;set status as ready    (  1 clock ) 
- 432:	21 e0       	ldi	r18, 0x01	; 1
+ 4f2:	21 e0       	ldi	r18, 0x01	; 1
 		ST    Z                  , R18                    ;save status            (  2 clocks) 
- 434:	20 83       	st	Z, r18
+ 4f4:	20 83       	st	Z, r18
 		;stack pointer for current task (KerStack + KER_STK_SZ*(task_id+1) - 1) ->stack top    
 		LDS   R18                , KerBase+OFB_TID        ;load task_id           (  2 clocks) 
- 436:	20 91 07 01 	lds	r18, 0x0107
+ 4f6:	20 91 10 01 	lds	r18, 0x0110
 		INC   R18                                         ;increment task_id      (  1 clock ) 
- 43a:	23 95       	inc	r18
+ 4fa:	23 95       	inc	r18
 		LDI   R19                , KER_STK_SZ             ;load stack size        (  1 clock ) 
- 43c:	30 e8       	ldi	r19, 0x80	; 128
+ 4fc:	30 e8       	ldi	r19, 0x80	; 128
 		MUL   R18                , R19                    ;multiply to get offset (  2 clocks) 
- 43e:	23 9f       	mul	r18, r19
+ 4fe:	23 9f       	mul	r18, r19
 		MOV   ZL                 , R0                     ;load multiplied low    (  1 clocks) 
- 440:	e0 2d       	mov	r30, r0
+ 500:	e0 2d       	mov	r30, r0
 		MOV   ZH                 , R1                     ;load multiplied high   (  1 clocks) 
- 442:	f1 2d       	mov	r31, r1
+ 502:	f1 2d       	mov	r31, r1
 		SBIW  ZL                 , 0x01                   ;dec multiplied val-1   (  2 clocks) 
- 444:	31 97       	sbiw	r30, 0x01	; 1
+ 504:	31 97       	sbiw	r30, 0x01	; 1
 		CLR   R1                                          ;gcc expects cleared    (  1 clock ) 
- 446:	11 24       	eor	r1, r1
+ 506:	11 24       	eor	r1, r1
 		LDI   R18                , lo8(KerStack)          ;load base addr low     (  1 clock ) 
- 448:	2a e5       	ldi	r18, 0x5A	; 90
+ 508:	23 e6       	ldi	r18, 0x63	; 99
 		LDI   R19                , hi8(KerStack)          ;load base addr high    (  1 clock ) 
- 44a:	31 e0       	ldi	r19, 0x01	; 1
+ 50a:	31 e0       	ldi	r19, 0x01	; 1
 		ADD   ZL                 , R18                    ;add low bytes          (  1 clock ) 
- 44c:	e2 0f       	add	r30, r18
+ 50c:	e2 0f       	add	r30, r18
 		ADC   ZH                 , R19                    ;add high bytes+carry   (  1 clock ) 
- 44e:	f3 1f       	adc	r31, r19
+ 50e:	f3 1f       	adc	r31, r19
 		OUT   IOSPL              , ZL                     ;load SPL               (  1 clock ) 
- 450:	ed bf       	out	0x3d, r30	; 61
+ 510:	ed bf       	out	0x3d, r30	; 61
         OUT   IOSPH              , ZH                     ;load SPH               (  1 clock ) 
- 452:	fe bf       	out	0x3e, r31	; 62
+ 512:	fe bf       	out	0x3e, r31	; 62
 		;function argument directly returns word address                                       
 	    PUSH  R24                                         ;push word addr low     (  2 clocks) 
- 454:	8f 93       	push	r24
+ 514:	8f 93       	push	r24
 		PUSH  R25                                         ;push word addr high    (  2 clocks) 
- 456:	9f 93       	push	r25
+ 516:	9f 93       	push	r25
 		;push context to stack of this task                                                    
 		KER_CONTEXT_SAVE_HANDLER                          ;save context           ( 68 clocks) 
- 458:	0f 92       	push	r0
- 45a:	0f b6       	in	r0, 0x3f	; 63
- 45c:	0f 92       	push	r0
- 45e:	1f 92       	push	r1
- 460:	11 24       	eor	r1, r1
- 462:	2f 92       	push	r2
- 464:	3f 92       	push	r3
- 466:	4f 92       	push	r4
- 468:	5f 92       	push	r5
- 46a:	6f 92       	push	r6
- 46c:	7f 92       	push	r7
- 46e:	8f 92       	push	r8
- 470:	9f 92       	push	r9
- 472:	af 92       	push	r10
- 474:	bf 92       	push	r11
- 476:	cf 92       	push	r12
- 478:	df 92       	push	r13
- 47a:	ef 92       	push	r14
- 47c:	ff 92       	push	r15
- 47e:	0f 93       	push	r16
- 480:	1f 93       	push	r17
- 482:	2f 93       	push	r18
- 484:	3f 93       	push	r19
- 486:	4f 93       	push	r20
- 488:	5f 93       	push	r21
- 48a:	6f 93       	push	r22
- 48c:	7f 93       	push	r23
- 48e:	8f 93       	push	r24
- 490:	9f 93       	push	r25
- 492:	af 93       	push	r26
- 494:	bf 93       	push	r27
- 496:	cf 93       	push	r28
- 498:	df 93       	push	r29
- 49a:	ef 93       	push	r30
- 49c:	ff 93       	push	r31
+ 518:	0f 92       	push	r0
+ 51a:	0f b6       	in	r0, 0x3f	; 63
+ 51c:	0f 92       	push	r0
+ 51e:	1f 92       	push	r1
+ 520:	11 24       	eor	r1, r1
+ 522:	2f 92       	push	r2
+ 524:	3f 92       	push	r3
+ 526:	4f 92       	push	r4
+ 528:	5f 92       	push	r5
+ 52a:	6f 92       	push	r6
+ 52c:	7f 92       	push	r7
+ 52e:	8f 92       	push	r8
+ 530:	9f 92       	push	r9
+ 532:	af 92       	push	r10
+ 534:	bf 92       	push	r11
+ 536:	cf 92       	push	r12
+ 538:	df 92       	push	r13
+ 53a:	ef 92       	push	r14
+ 53c:	ff 92       	push	r15
+ 53e:	0f 93       	push	r16
+ 540:	1f 93       	push	r17
+ 542:	2f 93       	push	r18
+ 544:	3f 93       	push	r19
+ 546:	4f 93       	push	r20
+ 548:	5f 93       	push	r21
+ 54a:	6f 93       	push	r22
+ 54c:	7f 93       	push	r23
+ 54e:	8f 93       	push	r24
+ 550:	9f 93       	push	r25
+ 552:	af 93       	push	r26
+ 554:	bf 93       	push	r27
+ 556:	cf 93       	push	r28
+ 558:	df 93       	push	r29
+ 55a:	ef 93       	push	r30
+ 55c:	ff 93       	push	r31
 		;read stack pointer of current task (necessary when restore)                           
 		IN    R18                , IOSPL                  ;read SPL               (  1 clock ) 
- 49e:	2d b7       	in	r18, 0x3d	; 61
+ 55e:	2d b7       	in	r18, 0x3d	; 61
         IN    R19                , IOSPH                  ;read SPH               (  1 clock ) 
- 4a0:	3e b7       	in	r19, 0x3e	; 62
+ 560:	3e b7       	in	r19, 0x3e	; 62
 		;calculate the address where current task's SP will be stored and store SP             
 		LDS   R20                , KerBase+OFB_TID        ;load task_id           (  2 clocks) 
- 4a2:	40 91 07 01 	lds	r20, 0x0107
+ 562:	40 91 10 01 	lds	r20, 0x0110
 		LSL   R20                                         ;left shift to multiply (  1 clock ) 
- 4a6:	44 0f       	add	r20, r20
+ 566:	44 0f       	add	r20, r20
 		LDI   ZL                 , lo8(KerPSP)            ;fetch base pos low     (  1 clock ) 
- 4a8:	e0 e1       	ldi	r30, 0x10	; 16
+ 568:	e9 e1       	ldi	r30, 0x19	; 25
 		LDI   ZH                 , hi8(KerPSP)            ;fetch base pos high    (  1 clock ) 
- 4aa:	f1 e0       	ldi	r31, 0x01	; 1
+ 56a:	f1 e0       	ldi	r31, 0x01	; 1
 		ADD   ZL                 , R20                    ;add offset to array    (  1 clock ) 
- 4ac:	e4 0f       	add	r30, r20
+ 56c:	e4 0f       	add	r30, r20
 		LDI   R20                , 0x00                   ;clear reg              (  1 clock ) 
- 4ae:	40 e0       	ldi	r20, 0x00	; 0
+ 56e:	40 e0       	ldi	r20, 0x00	; 0
 		ADC   ZH                 , R20                    ;add carry if any       (  1 clock ) 
- 4b0:	f4 1f       	adc	r31, r20
+ 570:	f4 1f       	adc	r31, r20
 		ST    Z+                 , R18                    ;SPL at KerPSp+offset   (  2 clocks) 
- 4b2:	21 93       	st	Z+, r18
+ 572:	21 93       	st	Z+, r18
 		ST    Z                  , R19                    ;SPH at KerPSp+offset   (  2 clocks) 
- 4b4:	30 83       	st	Z, r19
+ 574:	30 83       	st	Z, r19
 		;increment task_id                                                                     
 		LDS   R18                , KerBase+OFB_TID        ;load task_id           (  2 clocks) 
- 4b6:	20 91 07 01 	lds	r18, 0x0107
+ 576:	20 91 10 01 	lds	r18, 0x0110
 		INC   R18                                         ;increment task_id      (  1 clock ) 
- 4ba:	23 95       	inc	r18
+ 57a:	23 95       	inc	r18
 		STS   KerBase+OFB_TID    , R18                    ;store task_id          (  2 clocks) 
- 4bc:	20 93 07 01 	sts	0x0107, r18
+ 57c:	20 93 10 01 	sts	0x0110, r18
 		;increment ntask                                                                       
 		LDS   R18                , KerBase+OFB_NTSK       ;load ntask             (  2 clocks) 
- 4c0:	20 91 08 01 	lds	r18, 0x0108
+ 580:	20 91 11 01 	lds	r18, 0x0111
 		INC   R18                                         ;increment ntask        (  1 clock ) 
- 4c4:	23 95       	inc	r18
+ 584:	23 95       	inc	r18
 		STS   KerBase+OFB_NTSK   , R18                    ;store ntask            (  2 clocks) 
- 4c6:	20 93 08 01 	sts	0x0108, r18
+ 586:	20 93 11 01 	sts	0x0111, r18
 		KER_POP_MSP_ZP                                    ;pop MSP and ZP         ( 18 clocks) 
- 4ca:	a0 91 24 01 	lds	r26, 0x0124
- 4ce:	b0 91 25 01 	lds	r27, 0x0125
- 4d2:	fe 91       	ld	r31, -X
- 4d4:	ee 91       	ld	r30, -X
- 4d6:	3e 91       	ld	r19, -X
- 4d8:	2e 91       	ld	r18, -X
- 4da:	2d bf       	out	0x3d, r18	; 61
- 4dc:	3e bf       	out	0x3e, r19	; 62
- 4de:	a0 93 24 01 	sts	0x0124, r26
- 4e2:	b0 93 25 01 	sts	0x0125, r27
+ 58a:	a0 91 2d 01 	lds	r26, 0x012D
+ 58e:	b0 91 2e 01 	lds	r27, 0x012E
+ 592:	fe 91       	ld	r31, -X
+ 594:	ee 91       	ld	r30, -X
+ 596:	3e 91       	ld	r19, -X
+ 598:	2e 91       	ld	r18, -X
+ 59a:	2d bf       	out	0x3d, r18	; 61
+ 59c:	3e bf       	out	0x3e, r19	; 62
+ 59e:	a0 93 2d 01 	sts	0x012D, r26
+ 5a2:	b0 93 2e 01 	sts	0x012E, r27
 		RET                                               ;return from subroutine (  4 clocks) 
- 4e6:	08 95       	ret
+ 5a6:	08 95       	ret
 
-000004e8 <Kernel_Start_Tasks>:
+000005a8 <Kernel_Start_Tasks>:
 ;used registers          : R0~R31                                                              
 ;arg registers           : None                                                                
 ;return registers        : None                                                                
 ;unsafe access registers : R18, R19, R20, R24, R25, R30(ZL), R31(ZH)                           
 Kernel_Start_Tasks:                                       ;total 25.63uS @8MHz    (205 clocks) 
 		LDI    R24               , SCH_MODE_THREAD        ;set sch mode           (  1 clock ) 
- 4e8:	81 e0       	ldi	r24, 0x01	; 1
+ 5a8:	81 e0       	ldi	r24, 0x01	; 1
 		KER_RUN_SCHEDULER                                 ;run scheduler          (106 clocks) 
- 4ea:	2f ef       	ldi	r18, 0xFF	; 255
- 4ec:	20 93 09 01 	sts	0x0109, r18
- 4f0:	20 e0       	ldi	r18, 0x00	; 0
- 4f2:	20 93 0a 01 	sts	0x010A, r18
- 4f6:	58 2f       	mov	r21, r24
+ 5aa:	2f ef       	ldi	r18, 0xFF	; 255
+ 5ac:	20 93 12 01 	sts	0x0112, r18
+ 5b0:	20 e0       	ldi	r18, 0x00	; 0
+ 5b2:	20 93 13 01 	sts	0x0113, r18
+ 5b6:	58 2f       	mov	r21, r24
 
-000004f8 <_KER_SCH_LOOP32>:
- 4f8:	20 93 07 01 	sts	0x0107, r18
- 4fc:	85 2f       	mov	r24, r21
- 4fe:	e6 e4       	ldi	r30, 0x46	; 70
- 500:	f1 e0       	ldi	r31, 0x01	; 1
- 502:	20 91 07 01 	lds	r18, 0x0107
- 506:	22 0f       	add	r18, r18
- 508:	e2 0f       	add	r30, r18
- 50a:	20 e0       	ldi	r18, 0x00	; 0
- 50c:	f2 1f       	adc	r31, r18
- 50e:	20 81       	ld	r18, Z
- 510:	31 81       	ldd	r19, Z+1	; 0x01
- 512:	42 2f       	mov	r20, r18
- 514:	43 2b       	or	r20, r19
- 516:	59 f0       	breq	.+22     	; 0x52e <_VAL_NULL33>
- 518:	81 30       	cpi	r24, 0x01	; 1
- 51a:	99 f0       	breq	.+38     	; 0x542 <_VAL_NOT_NULL33>
- 51c:	41 e0       	ldi	r20, 0x01	; 1
- 51e:	24 1b       	sub	r18, r20
- 520:	40 e0       	ldi	r20, 0x00	; 0
- 522:	34 0b       	sbc	r19, r20
- 524:	20 83       	st	Z, r18
- 526:	31 83       	std	Z+1, r19	; 0x01
- 528:	42 2f       	mov	r20, r18
- 52a:	43 2b       	or	r20, r19
- 52c:	51 f4       	brne	.+20     	; 0x542 <_VAL_NOT_NULL33>
+000005b8 <_KER_SCH_LOOP32>:
+ 5b8:	20 93 10 01 	sts	0x0110, r18
+ 5bc:	85 2f       	mov	r24, r21
+ 5be:	ef e4       	ldi	r30, 0x4F	; 79
+ 5c0:	f1 e0       	ldi	r31, 0x01	; 1
+ 5c2:	20 91 10 01 	lds	r18, 0x0110
+ 5c6:	22 0f       	add	r18, r18
+ 5c8:	e2 0f       	add	r30, r18
+ 5ca:	20 e0       	ldi	r18, 0x00	; 0
+ 5cc:	f2 1f       	adc	r31, r18
+ 5ce:	20 81       	ld	r18, Z
+ 5d0:	31 81       	ldd	r19, Z+1	; 0x01
+ 5d2:	42 2f       	mov	r20, r18
+ 5d4:	43 2b       	or	r20, r19
+ 5d6:	59 f0       	breq	.+22     	; 0x5ee <_VAL_NULL33>
+ 5d8:	81 30       	cpi	r24, 0x01	; 1
+ 5da:	99 f0       	breq	.+38     	; 0x602 <_VAL_NOT_NULL33>
+ 5dc:	41 e0       	ldi	r20, 0x01	; 1
+ 5de:	24 1b       	sub	r18, r20
+ 5e0:	40 e0       	ldi	r20, 0x00	; 0
+ 5e2:	34 0b       	sbc	r19, r20
+ 5e4:	20 83       	st	Z, r18
+ 5e6:	31 83       	std	Z+1, r19	; 0x01
+ 5e8:	42 2f       	mov	r20, r18
+ 5ea:	43 2b       	or	r20, r19
+ 5ec:	51 f4       	brne	.+20     	; 0x602 <_VAL_NOT_NULL33>
 
-0000052e <_VAL_NULL33>:
- 52e:	e2 e3       	ldi	r30, 0x32	; 50
- 530:	f1 e0       	ldi	r31, 0x01	; 1
- 532:	20 91 07 01 	lds	r18, 0x0107
- 536:	e2 0f       	add	r30, r18
- 538:	20 e0       	ldi	r18, 0x00	; 0
- 53a:	f2 1f       	adc	r31, r18
- 53c:	81 e0       	ldi	r24, 0x01	; 1
- 53e:	80 83       	st	Z, r24
- 540:	08 c0       	rjmp	.+16     	; 0x552 <_EXIT_SLP_TIME33>
+000005ee <_VAL_NULL33>:
+ 5ee:	eb e3       	ldi	r30, 0x3B	; 59
+ 5f0:	f1 e0       	ldi	r31, 0x01	; 1
+ 5f2:	20 91 10 01 	lds	r18, 0x0110
+ 5f6:	e2 0f       	add	r30, r18
+ 5f8:	20 e0       	ldi	r18, 0x00	; 0
+ 5fa:	f2 1f       	adc	r31, r18
+ 5fc:	81 e0       	ldi	r24, 0x01	; 1
+ 5fe:	80 83       	st	Z, r24
+ 600:	08 c0       	rjmp	.+16     	; 0x612 <_EXIT_SLP_TIME33>
 
-00000542 <_VAL_NOT_NULL33>:
- 542:	e2 e3       	ldi	r30, 0x32	; 50
- 544:	f1 e0       	ldi	r31, 0x01	; 1
- 546:	20 91 07 01 	lds	r18, 0x0107
- 54a:	e2 0f       	add	r30, r18
- 54c:	20 e0       	ldi	r18, 0x00	; 0
- 54e:	f2 1f       	adc	r31, r18
- 550:	80 81       	ld	r24, Z
+00000602 <_VAL_NOT_NULL33>:
+ 602:	eb e3       	ldi	r30, 0x3B	; 59
+ 604:	f1 e0       	ldi	r31, 0x01	; 1
+ 606:	20 91 10 01 	lds	r18, 0x0110
+ 60a:	e2 0f       	add	r30, r18
+ 60c:	20 e0       	ldi	r18, 0x00	; 0
+ 60e:	f2 1f       	adc	r31, r18
+ 610:	80 81       	ld	r24, Z
 
-00000552 <_EXIT_SLP_TIME33>:
- 552:	81 30       	cpi	r24, 0x01	; 1
- 554:	19 f0       	breq	.+6      	; 0x55c <_KER_CALC_PRIO32>
- 556:	84 30       	cpi	r24, 0x04	; 4
- 558:	09 f0       	breq	.+2      	; 0x55c <_KER_CALC_PRIO32>
- 55a:	12 c0       	rjmp	.+36     	; 0x580 <_KER_SCH_NEXT32>
+00000612 <_EXIT_SLP_TIME33>:
+ 612:	81 30       	cpi	r24, 0x01	; 1
+ 614:	19 f0       	breq	.+6      	; 0x61c <_KER_CALC_PRIO32>
+ 616:	84 30       	cpi	r24, 0x04	; 4
+ 618:	09 f0       	breq	.+2      	; 0x61c <_KER_CALC_PRIO32>
+ 61a:	12 c0       	rjmp	.+36     	; 0x640 <_KER_SCH_NEXT32>
 
-0000055c <_KER_CALC_PRIO32>:
- 55c:	ec e3       	ldi	r30, 0x3C	; 60
- 55e:	f1 e0       	ldi	r31, 0x01	; 1
- 560:	20 e0       	ldi	r18, 0x00	; 0
- 562:	80 91 07 01 	lds	r24, 0x0107
- 566:	e8 0f       	add	r30, r24
- 568:	f2 1f       	adc	r31, r18
- 56a:	80 81       	ld	r24, Z
- 56c:	20 91 09 01 	lds	r18, 0x0109
- 570:	82 17       	cp	r24, r18
- 572:	30 f4       	brcc	.+12     	; 0x580 <_KER_SCH_NEXT32>
- 574:	80 93 09 01 	sts	0x0109, r24
- 578:	20 91 07 01 	lds	r18, 0x0107
- 57c:	20 93 0a 01 	sts	0x010A, r18
+0000061c <_KER_CALC_PRIO32>:
+ 61c:	e5 e4       	ldi	r30, 0x45	; 69
+ 61e:	f1 e0       	ldi	r31, 0x01	; 1
+ 620:	20 e0       	ldi	r18, 0x00	; 0
+ 622:	80 91 10 01 	lds	r24, 0x0110
+ 626:	e8 0f       	add	r30, r24
+ 628:	f2 1f       	adc	r31, r18
+ 62a:	80 81       	ld	r24, Z
+ 62c:	20 91 12 01 	lds	r18, 0x0112
+ 630:	82 17       	cp	r24, r18
+ 632:	30 f4       	brcc	.+12     	; 0x640 <_KER_SCH_NEXT32>
+ 634:	80 93 12 01 	sts	0x0112, r24
+ 638:	20 91 10 01 	lds	r18, 0x0110
+ 63c:	20 93 13 01 	sts	0x0113, r18
 
-00000580 <_KER_SCH_NEXT32>:
- 580:	20 91 07 01 	lds	r18, 0x0107
- 584:	23 95       	inc	r18
- 586:	30 91 08 01 	lds	r19, 0x0108
- 58a:	23 17       	cp	r18, r19
- 58c:	08 f4       	brcc	.+2      	; 0x590 <_KER_SCH_EXIT32>
- 58e:	b4 cf       	rjmp	.-152    	; 0x4f8 <_KER_SCH_LOOP32>
+00000640 <_KER_SCH_NEXT32>:
+ 640:	20 91 10 01 	lds	r18, 0x0110
+ 644:	23 95       	inc	r18
+ 646:	30 91 11 01 	lds	r19, 0x0111
+ 64a:	23 17       	cp	r18, r19
+ 64c:	08 f4       	brcc	.+2      	; 0x650 <_KER_SCH_EXIT32>
+ 64e:	b4 cf       	rjmp	.-152    	; 0x5b8 <_KER_SCH_LOOP32>
 
-00000590 <_KER_SCH_EXIT32>:
- 590:	20 91 0a 01 	lds	r18, 0x010A
- 594:	20 93 07 01 	sts	0x0107, r18
+00000650 <_KER_SCH_EXIT32>:
+ 650:	20 91 13 01 	lds	r18, 0x0113
+ 654:	20 93 10 01 	sts	0x0110, r18
 		KER_LOAD_TASK_ID_AND_SP                           ;load next task id, SP  ( 14 clocks) 
- 598:	e0 e1       	ldi	r30, 0x10	; 16
- 59a:	f1 e0       	ldi	r31, 0x01	; 1
- 59c:	20 91 07 01 	lds	r18, 0x0107
- 5a0:	22 0f       	add	r18, r18
- 5a2:	e2 0f       	add	r30, r18
- 5a4:	20 e0       	ldi	r18, 0x00	; 0
- 5a6:	f2 1f       	adc	r31, r18
- 5a8:	20 81       	ld	r18, Z
- 5aa:	31 81       	ldd	r19, Z+1	; 0x01
- 5ac:	2d bf       	out	0x3d, r18	; 61
- 5ae:	3e bf       	out	0x3e, r19	; 62
+ 658:	e9 e1       	ldi	r30, 0x19	; 25
+ 65a:	f1 e0       	ldi	r31, 0x01	; 1
+ 65c:	20 91 10 01 	lds	r18, 0x0110
+ 660:	22 0f       	add	r18, r18
+ 662:	e2 0f       	add	r30, r18
+ 664:	20 e0       	ldi	r18, 0x00	; 0
+ 666:	f2 1f       	adc	r31, r18
+ 668:	20 81       	ld	r18, Z
+ 66a:	31 81       	ldd	r19, Z+1	; 0x01
+ 66c:	2d bf       	out	0x3d, r18	; 61
+ 66e:	3e bf       	out	0x3e, r19	; 62
 		KER_CONTEXT_RESTORE_THREAD                        ;restore context        ( 68 clocks) 
- 5b0:	ff 91       	pop	r31
- 5b2:	ef 91       	pop	r30
- 5b4:	df 91       	pop	r29
- 5b6:	cf 91       	pop	r28
- 5b8:	bf 91       	pop	r27
- 5ba:	af 91       	pop	r26
- 5bc:	9f 91       	pop	r25
- 5be:	8f 91       	pop	r24
- 5c0:	7f 91       	pop	r23
- 5c2:	6f 91       	pop	r22
- 5c4:	5f 91       	pop	r21
- 5c6:	4f 91       	pop	r20
- 5c8:	3f 91       	pop	r19
- 5ca:	2f 91       	pop	r18
- 5cc:	1f 91       	pop	r17
- 5ce:	0f 91       	pop	r16
- 5d0:	ff 90       	pop	r15
- 5d2:	ef 90       	pop	r14
- 5d4:	df 90       	pop	r13
- 5d6:	cf 90       	pop	r12
- 5d8:	bf 90       	pop	r11
- 5da:	af 90       	pop	r10
- 5dc:	9f 90       	pop	r9
- 5de:	8f 90       	pop	r8
- 5e0:	7f 90       	pop	r7
- 5e2:	6f 90       	pop	r6
- 5e4:	5f 90       	pop	r5
- 5e6:	4f 90       	pop	r4
- 5e8:	3f 90       	pop	r3
- 5ea:	2f 90       	pop	r2
- 5ec:	1f 90       	pop	r1
- 5ee:	0f 90       	pop	r0
- 5f0:	0f be       	out	0x3f, r0	; 63
- 5f2:	0f 90       	pop	r0
- 5f4:	78 94       	sei
+ 670:	ff 91       	pop	r31
+ 672:	ef 91       	pop	r30
+ 674:	df 91       	pop	r29
+ 676:	cf 91       	pop	r28
+ 678:	bf 91       	pop	r27
+ 67a:	af 91       	pop	r26
+ 67c:	9f 91       	pop	r25
+ 67e:	8f 91       	pop	r24
+ 680:	7f 91       	pop	r23
+ 682:	6f 91       	pop	r22
+ 684:	5f 91       	pop	r21
+ 686:	4f 91       	pop	r20
+ 688:	3f 91       	pop	r19
+ 68a:	2f 91       	pop	r18
+ 68c:	1f 91       	pop	r17
+ 68e:	0f 91       	pop	r16
+ 690:	ff 90       	pop	r15
+ 692:	ef 90       	pop	r14
+ 694:	df 90       	pop	r13
+ 696:	cf 90       	pop	r12
+ 698:	bf 90       	pop	r11
+ 69a:	af 90       	pop	r10
+ 69c:	9f 90       	pop	r9
+ 69e:	8f 90       	pop	r8
+ 6a0:	7f 90       	pop	r7
+ 6a2:	6f 90       	pop	r6
+ 6a4:	5f 90       	pop	r5
+ 6a6:	4f 90       	pop	r4
+ 6a8:	3f 90       	pop	r3
+ 6aa:	2f 90       	pop	r2
+ 6ac:	1f 90       	pop	r1
+ 6ae:	0f 90       	pop	r0
+ 6b0:	0f be       	out	0x3f, r0	; 63
+ 6b2:	0f 90       	pop	r0
+ 6b4:	78 94       	sei
 		LDI   R18                , 0x01                   ;bit mask TOIE0         (  1 clock ) 
 		STS   SRTIMSK0           , R18                    ;set to TIMSK0          (  2 clocks) 
 		SEI                                               ;force enable interrupt (  1 clock ) 
 		#endif                                                                                 
 		                                                                                       
 		#ifdef KER_WDT_AS_TICK_SRC                                                             
- 5f6:	a8 95       	wdr
- 5f8:	20 91 60 00 	lds	r18, 0x0060
- 5fc:	28 61       	ori	r18, 0x18	; 24
- 5fe:	20 93 60 00 	sts	0x0060, r18
+ 6b6:	a8 95       	wdr
+ 6b8:	20 91 60 00 	lds	r18, 0x0060
+ 6bc:	28 61       	ori	r18, 0x18	; 24
+ 6be:	20 93 60 00 	sts	0x0060, r18
 		                                                                                       
 		#ifdef KER_WDT_TICK_500MS                                                              
 		LDI   R18                , 0x45                   ;WDIE, WDPS1, WDPS2     (  1 clock ) 
 		#endif                                                                                 
 		                                                                                       
 		#ifdef KER_WDT_TICK_1000MS                                                             
- 602:	26 e4       	ldi	r18, 0x46	; 70
- 604:	20 93 60 00 	sts	0x0060, r18
- 608:	78 94       	sei
+ 6c2:	26 e4       	ldi	r18, 0x46	; 70
+ 6c4:	20 93 60 00 	sts	0x0060, r18
+ 6c8:	78 94       	sei
 		KER_LOAD_TASK_ID_AND_SP                           ;load next task id, SP  ( 14 clocks) 
 		KER_CONTEXT_RESTORE_THREAD                        ;restore context        ( 68 clocks) 
 		;config timer for system tick                                                          
 		KER_TIMER_INIT                                    ;init timer, int enable ( 12 clocks) 
 		;execute return to jump to highest priority task                                       
 		RET                                               ;return from subroutine (  4 clocks) 
- 60a:	08 95       	ret
+ 6ca:	08 95       	ret
 
-0000060c <Kernel_Init>:
+000006cc <Kernel_Init>:
 ;used registers          : R1, R18, R19, R22, R24, R25, R26(XL), R27(XH), R30(ZL), R31(ZH)     
 ;arg registers           : None                                                                
 ;return registers        : None                                                                
 ;unsafe access registers : R1, R18, R19, R22, R24, R25, R26(XL), R27(XH), R30(ZL), R31(ZH)     
 Kernel_Init:                                              ;total 39.75uS @8MHz    (318 clocks) 
 		CLR   R1                                          ;gcc expects            (  1 clock ) 
- 60c:	11 24       	eor	r1, r1
+ 6cc:	11 24       	eor	r1, r1
         ;store stack top (for MSP) addr to KerSSZ+OFM_MSPI0:1                                  
 		LDI   R18                , lo8(KerSSZ+OFM_MSPS)   ;load low address       (  1 clock ) 
- 60e:	26 e2       	ldi	r18, 0x26	; 38
+ 6ce:	2f e2       	ldi	r18, 0x2F	; 47
 		LDI   R19                , hi8(KerSSZ+OFM_MSPS)   ;load high address      (  1 clock ) 
- 610:	31 e0       	ldi	r19, 0x01	; 1
+ 6d0:	31 e0       	ldi	r19, 0x01	; 1
         STS   KerSSZ+OFM_MSPI+0  , R18                    ;set mspi to stack top  (  2 clocks) 
- 612:	20 93 24 01 	sts	0x0124, r18
+ 6d2:	20 93 2d 01 	sts	0x012D, r18
 		STS   KerSSZ+OFM_MSPI+1  , R19                    ;set mspi to stack top  (  2 clocks) 
- 616:	30 93 25 01 	sts	0x0125, r19
+ 6d6:	30 93 2e 01 	sts	0x012E, r19
 		KER_PUSH_MSP_ZP                                   ;push MSP and ZP        ( 18 clocks) 
- 61a:	a0 91 24 01 	lds	r26, 0x0124
- 61e:	b0 91 25 01 	lds	r27, 0x0125
- 622:	2d b7       	in	r18, 0x3d	; 61
- 624:	3e b7       	in	r19, 0x3e	; 62
- 626:	2d 93       	st	X+, r18
- 628:	3d 93       	st	X+, r19
- 62a:	ed 93       	st	X+, r30
- 62c:	fd 93       	st	X+, r31
- 62e:	a0 93 24 01 	sts	0x0124, r26
- 632:	b0 93 25 01 	sts	0x0125, r27
+ 6da:	a0 91 2d 01 	lds	r26, 0x012D
+ 6de:	b0 91 2e 01 	lds	r27, 0x012E
+ 6e2:	2d b7       	in	r18, 0x3d	; 61
+ 6e4:	3e b7       	in	r19, 0x3e	; 62
+ 6e6:	2d 93       	st	X+, r18
+ 6e8:	3d 93       	st	X+, r19
+ 6ea:	ed 93       	st	X+, r30
+ 6ec:	fd 93       	st	X+, r31
+ 6ee:	a0 93 2d 01 	sts	0x012D, r26
+ 6f2:	b0 93 2e 01 	sts	0x012E, r27
 		;init timer for kernel                                                                 
 		LDI   R24                , 0x03                   ;set prescaler          (  1 clock ) 
- 636:	83 e0       	ldi	r24, 0x03	; 3
+ 6f6:	83 e0       	ldi	r24, 0x03	; 3
 		LDI   R22                , 0x82                   ;set reload val         (  1 clock ) 
- 638:	62 e8       	ldi	r22, 0x82	; 130
+ 6f8:	62 e8       	ldi	r22, 0x82	; 130
 		CALL  Kernel_SysTick_Reg_Init                     ;init timer             ( 92 clocks) 
- 63a:	0e 94 ad 01 	call	0x35a	; 0x35a <Kernel_SysTick_Reg_Init>
+ 6fa:	0e 94 0d 02 	call	0x41a	; 0x41a <Kernel_SysTick_Reg_Init>
 		;create idle task at task_id 0, priority 0xFF (lowest)                                 
 		LDI   R24                , lo8(Kernel_Task_Idle)  ;load func addr low     (  1 clock ) 
- 63e:	8a e6       	ldi	r24, 0x6A	; 106
+ 6fe:	8a e2       	ldi	r24, 0x2A	; 42
 		LDI   R25                , hi8(Kernel_Task_Idle)  ;load func addr high    (  1 clock ) 
- 640:	96 e0       	ldi	r25, 0x06	; 6
+ 700:	97 e0       	ldi	r25, 0x07	; 7
 		LSR   R25                                         ;right shift to divide  (  1 clock ) 
- 642:	96 95       	lsr	r25
+ 702:	96 95       	lsr	r25
 		ROR   R24                                         ;rotate right th carry  (  1 clock ) 
- 644:	87 95       	ror	r24
+ 704:	87 95       	ror	r24
 		LDI   R22                , 0xFF                   ;set max val            (  1 clock ) 
- 646:	6f ef       	ldi	r22, 0xFF	; 255
+ 706:	6f ef       	ldi	r22, 0xFF	; 255
 		CALL  Kernel_Task_Create                          ;init idle task         (172 clocks) 
- 648:	0e 94 fc 01 	call	0x3f8	; 0x3f8 <Kernel_Task_Create>
+ 708:	0e 94 5c 02 	call	0x4b8	; 0x4b8 <Kernel_Task_Create>
 		KER_POP_MSP_ZP                                    ;pop MSP and ZP         ( 18 clocks) 
- 64c:	a0 91 24 01 	lds	r26, 0x0124
- 650:	b0 91 25 01 	lds	r27, 0x0125
- 654:	fe 91       	ld	r31, -X
- 656:	ee 91       	ld	r30, -X
- 658:	3e 91       	ld	r19, -X
- 65a:	2e 91       	ld	r18, -X
- 65c:	2d bf       	out	0x3d, r18	; 61
- 65e:	3e bf       	out	0x3e, r19	; 62
- 660:	a0 93 24 01 	sts	0x0124, r26
- 664:	b0 93 25 01 	sts	0x0125, r27
+ 70c:	a0 91 2d 01 	lds	r26, 0x012D
+ 710:	b0 91 2e 01 	lds	r27, 0x012E
+ 714:	fe 91       	ld	r31, -X
+ 716:	ee 91       	ld	r30, -X
+ 718:	3e 91       	ld	r19, -X
+ 71a:	2e 91       	ld	r18, -X
+ 71c:	2d bf       	out	0x3d, r18	; 61
+ 71e:	3e bf       	out	0x3e, r19	; 62
+ 720:	a0 93 2d 01 	sts	0x012D, r26
+ 724:	b0 93 2e 01 	sts	0x012E, r27
 		;execute return to jump to task0, pushed while task init                               
 		RET                                               ;return from subroutine (  4 clocks) 
- 668:	08 95       	ret
+ 728:	08 95       	ret
 
-0000066a <Kernel_Task_Idle>:
+0000072a <Kernel_Task_Idle>:
                                                                                                
 		#ifdef KER_SLEEP_MODE_ADC_NR                                                           
 		LDI   R18                , 0x02                   ;set SM[2:0] val        (  1 clock ) 
 		#endif
                                                                                                
 		#ifdef KER_SLEEP_MODE_POWER_DOWN                                                       
- 66a:	24 e0       	ldi	r18, 0x04	; 4
- 66c:	20 93 53 00 	sts	0x0053, r18
- 670:	20 93 0e 01 	sts	0x010E, r18
+ 72a:	24 e0       	ldi	r18, 0x04	; 4
+ 72c:	20 93 53 00 	sts	0x0053, r18
+ 730:	20 93 17 01 	sts	0x0117, r18
 
-00000674 <_IDLE_LOOP>:
+00000734 <_IDLE_LOOP>:
 ;return registers        : None                                                                
 ;unsafe access registers : None                                                                
 Kernel_Task_Idle:                                                                              
 	    KER_SLEEP_INIT                                    ;sleep init             (  5 clocks) 
     _IDLE_LOOP:                                           ;forever loop                        
 	    KER_DISABLE_ANALOG_DOMAIN                         ;disable adc, ac        ( 10 clocks) 
- 674:	20 91 7a 00 	lds	r18, 0x007A
- 678:	2f 7e       	andi	r18, 0xEF	; 239
- 67a:	20 93 7a 00 	sts	0x007A, r18
- 67e:	20 91 50 00 	lds	r18, 0x0050
- 682:	20 68       	ori	r18, 0x80	; 128
- 684:	20 93 50 00 	sts	0x0050, r18
+ 734:	20 91 7a 00 	lds	r18, 0x007A
+ 738:	2f 7e       	andi	r18, 0xEF	; 239
+ 73a:	20 93 7a 00 	sts	0x007A, r18
+ 73e:	20 91 50 00 	lds	r18, 0x0050
+ 742:	20 68       	ori	r18, 0x80	; 128
+ 744:	20 93 50 00 	sts	0x0050, r18
 		#ifdef KER_CALL_FUNC_BEFORE_SLEEP                                                      
 		CALL  Kernel_PreSleep_Hook                        ;call func before sleep (  8 clocks) 
- 688:	0e 94 ef 04 	call	0x9de	; 0x9de <Kernel_PreSleep_Hook>
+ 748:	0e 94 4f 05 	call	0xa9e	; 0xa9e <Kernel_PreSleep_Hook>
 		#endif                                                                                 
 	    KER_ENTER_SLEEP                                   ;enter sleep mode       (  6 clocks) 
- 68c:	20 91 53 00 	lds	r18, 0x0053
- 690:	21 60       	ori	r18, 0x01	; 1
- 692:	20 93 53 00 	sts	0x0053, r18
- 696:	88 95       	sleep
+ 74c:	20 91 53 00 	lds	r18, 0x0053
+ 750:	21 60       	ori	r18, 0x01	; 1
+ 752:	20 93 53 00 	sts	0x0053, r18
+ 756:	88 95       	sleep
 		RJMP  _IDLE_LOOP                                  ;jump to loop start     (  2 clocks) 
- 698:	ed cf       	rjmp	.-38     	; 0x674 <_IDLE_LOOP>
+ 758:	ed cf       	rjmp	.-38     	; 0x734 <_IDLE_LOOP>
 
-0000069a <Kernel_Task_Sleep>:
+0000075a <Kernel_Task_Sleep>:
 ;arg registers           : R25:R24(SleepTime)                                                  
 ;return registers        : None                                                                
 ;unsafe access registers : R18, R19, R20, R24, R25, R30(ZL), R31(ZH)                           
 Kernel_Task_Sleep:                                        ;total 37.25uS @8MHz    (298 clocks) 
         ;save current context                                                                  
         KER_CONTEXT_SAVE_THREAD                           ;save context           ( 69 clocks) 
- 69a:	0f 92       	push	r0
- 69c:	0f b6       	in	r0, 0x3f	; 63
- 69e:	f8 94       	cli
- 6a0:	0f 92       	push	r0
- 6a2:	1f 92       	push	r1
- 6a4:	11 24       	eor	r1, r1
- 6a6:	2f 92       	push	r2
- 6a8:	3f 92       	push	r3
- 6aa:	4f 92       	push	r4
- 6ac:	5f 92       	push	r5
- 6ae:	6f 92       	push	r6
- 6b0:	7f 92       	push	r7
- 6b2:	8f 92       	push	r8
- 6b4:	9f 92       	push	r9
- 6b6:	af 92       	push	r10
- 6b8:	bf 92       	push	r11
- 6ba:	cf 92       	push	r12
- 6bc:	df 92       	push	r13
- 6be:	ef 92       	push	r14
- 6c0:	ff 92       	push	r15
- 6c2:	0f 93       	push	r16
- 6c4:	1f 93       	push	r17
- 6c6:	2f 93       	push	r18
- 6c8:	3f 93       	push	r19
- 6ca:	4f 93       	push	r20
- 6cc:	5f 93       	push	r21
- 6ce:	6f 93       	push	r22
- 6d0:	7f 93       	push	r23
- 6d2:	8f 93       	push	r24
- 6d4:	9f 93       	push	r25
- 6d6:	af 93       	push	r26
- 6d8:	bf 93       	push	r27
- 6da:	cf 93       	push	r28
- 6dc:	df 93       	push	r29
- 6de:	ef 93       	push	r30
- 6e0:	ff 93       	push	r31
+ 75a:	0f 92       	push	r0
+ 75c:	0f b6       	in	r0, 0x3f	; 63
+ 75e:	f8 94       	cli
+ 760:	0f 92       	push	r0
+ 762:	1f 92       	push	r1
+ 764:	11 24       	eor	r1, r1
+ 766:	2f 92       	push	r2
+ 768:	3f 92       	push	r3
+ 76a:	4f 92       	push	r4
+ 76c:	5f 92       	push	r5
+ 76e:	6f 92       	push	r6
+ 770:	7f 92       	push	r7
+ 772:	8f 92       	push	r8
+ 774:	9f 92       	push	r9
+ 776:	af 92       	push	r10
+ 778:	bf 92       	push	r11
+ 77a:	cf 92       	push	r12
+ 77c:	df 92       	push	r13
+ 77e:	ef 92       	push	r14
+ 780:	ff 92       	push	r15
+ 782:	0f 93       	push	r16
+ 784:	1f 93       	push	r17
+ 786:	2f 93       	push	r18
+ 788:	3f 93       	push	r19
+ 78a:	4f 93       	push	r20
+ 78c:	5f 93       	push	r21
+ 78e:	6f 93       	push	r22
+ 790:	7f 93       	push	r23
+ 792:	8f 93       	push	r24
+ 794:	9f 93       	push	r25
+ 796:	af 93       	push	r26
+ 798:	bf 93       	push	r27
+ 79a:	cf 93       	push	r28
+ 79c:	df 93       	push	r29
+ 79e:	ef 93       	push	r30
+ 7a0:	ff 93       	push	r31
 		KER_SAVE_CURR_TASK_SP                             ;save current task SP   ( 14 clocks) 
- 6e2:	e0 e1       	ldi	r30, 0x10	; 16
- 6e4:	f1 e0       	ldi	r31, 0x01	; 1
- 6e6:	20 91 07 01 	lds	r18, 0x0107
- 6ea:	22 0f       	add	r18, r18
- 6ec:	e2 0f       	add	r30, r18
- 6ee:	20 e0       	ldi	r18, 0x00	; 0
- 6f0:	f2 1f       	adc	r31, r18
- 6f2:	2d b7       	in	r18, 0x3d	; 61
- 6f4:	3e b7       	in	r19, 0x3e	; 62
- 6f6:	20 83       	st	Z, r18
- 6f8:	31 83       	std	Z+1, r19	; 0x01
+ 7a2:	e9 e1       	ldi	r30, 0x19	; 25
+ 7a4:	f1 e0       	ldi	r31, 0x01	; 1
+ 7a6:	20 91 10 01 	lds	r18, 0x0110
+ 7aa:	22 0f       	add	r18, r18
+ 7ac:	e2 0f       	add	r30, r18
+ 7ae:	20 e0       	ldi	r18, 0x00	; 0
+ 7b0:	f2 1f       	adc	r31, r18
+ 7b2:	2d b7       	in	r18, 0x3d	; 61
+ 7b4:	3e b7       	in	r19, 0x3e	; 62
+ 7b6:	20 83       	st	Z, r18
+ 7b8:	31 83       	std	Z+1, r19	; 0x01
 		;create next task wakeup time (args R25:R24)                                           
 		LDI   ZL                 , lo8(KerSchSlp)         ;load low byte          (  1 clock ) 
- 6fa:	e6 e4       	ldi	r30, 0x46	; 70
+ 7ba:	ef e4       	ldi	r30, 0x4F	; 79
 		LDI   ZH                 , hi8(KerSchSlp)         ;load high byte         (  1 clock ) 
- 6fc:	f1 e0       	ldi	r31, 0x01	; 1
+ 7bc:	f1 e0       	ldi	r31, 0x01	; 1
 		KER_CALC_ADDR_OFF_WORD                            ;offset calc            (  6 clocks) 
- 6fe:	20 91 07 01 	lds	r18, 0x0107
- 702:	22 0f       	add	r18, r18
- 704:	e2 0f       	add	r30, r18
- 706:	20 e0       	ldi	r18, 0x00	; 0
- 708:	f2 1f       	adc	r31, r18
+ 7be:	20 91 10 01 	lds	r18, 0x0110
+ 7c2:	22 0f       	add	r18, r18
+ 7c4:	e2 0f       	add	r30, r18
+ 7c6:	20 e0       	ldi	r18, 0x00	; 0
+ 7c8:	f2 1f       	adc	r31, r18
 		STD   Z+0                , R24                    ;save sleep time low    (  2 clocks) 
- 70a:	80 83       	st	Z, r24
+ 7ca:	80 83       	st	Z, r24
 		STD   Z+1                , R25                    ;save sleep time high   (  2 clocks) 
- 70c:	91 83       	std	Z+1, r25	; 0x01
+ 7cc:	91 83       	std	Z+1, r25	; 0x01
 		;update task scheduler status as blocked                                               
 		LDI   ZL                 , lo8(KerSchSts)         ;load low byte          (  1 clock ) 
- 70e:	e2 e3       	ldi	r30, 0x32	; 50
+ 7ce:	eb e3       	ldi	r30, 0x3B	; 59
 		LDI   ZH                 , hi8(KerSchSts)         ;load high byte         (  1 clock ) 
- 710:	f1 e0       	ldi	r31, 0x01	; 1
+ 7d0:	f1 e0       	ldi	r31, 0x01	; 1
 		KER_CALC_ADDR_OFF_BYTES                           ;offset calc            (  5 clocks) 
- 712:	20 91 07 01 	lds	r18, 0x0107
- 716:	e2 0f       	add	r30, r18
- 718:	20 e0       	ldi	r18, 0x00	; 0
- 71a:	f2 1f       	adc	r31, r18
+ 7d2:	20 91 10 01 	lds	r18, 0x0110
+ 7d6:	e2 0f       	add	r30, r18
+ 7d8:	20 e0       	ldi	r18, 0x00	; 0
+ 7da:	f2 1f       	adc	r31, r18
         LDI   R18                , TASK_BLOCKED           ;block task until cnt=0 (  1 clock ) 
- 71c:	20 e0       	ldi	r18, 0x00	; 0
+ 7dc:	20 e0       	ldi	r18, 0x00	; 0
 		STD   Z+0                , R18                    ;save block flag        (  2 clocks) 
- 71e:	20 83       	st	Z, r18
+ 7de:	20 83       	st	Z, r18
 		;run scheduler, load next task sp, restore context                                     
 		LDI    R24               , SCH_MODE_THREAD        ;set sch mode           (  1 clock ) 
- 720:	81 e0       	ldi	r24, 0x01	; 1
+ 7e0:	81 e0       	ldi	r24, 0x01	; 1
 		KER_RUN_SCHEDULER                                 ;run scheduler          (106 clocks) 
- 722:	2f ef       	ldi	r18, 0xFF	; 255
- 724:	20 93 09 01 	sts	0x0109, r18
- 728:	20 e0       	ldi	r18, 0x00	; 0
- 72a:	20 93 0a 01 	sts	0x010A, r18
- 72e:	58 2f       	mov	r21, r24
+ 7e2:	2f ef       	ldi	r18, 0xFF	; 255
+ 7e4:	20 93 12 01 	sts	0x0112, r18
+ 7e8:	20 e0       	ldi	r18, 0x00	; 0
+ 7ea:	20 93 13 01 	sts	0x0113, r18
+ 7ee:	58 2f       	mov	r21, r24
 
-00000730 <_KER_SCH_LOOP56>:
- 730:	20 93 07 01 	sts	0x0107, r18
- 734:	85 2f       	mov	r24, r21
- 736:	e6 e4       	ldi	r30, 0x46	; 70
- 738:	f1 e0       	ldi	r31, 0x01	; 1
- 73a:	20 91 07 01 	lds	r18, 0x0107
- 73e:	22 0f       	add	r18, r18
- 740:	e2 0f       	add	r30, r18
- 742:	20 e0       	ldi	r18, 0x00	; 0
- 744:	f2 1f       	adc	r31, r18
- 746:	20 81       	ld	r18, Z
- 748:	31 81       	ldd	r19, Z+1	; 0x01
- 74a:	42 2f       	mov	r20, r18
- 74c:	43 2b       	or	r20, r19
- 74e:	59 f0       	breq	.+22     	; 0x766 <_VAL_NULL57>
- 750:	81 30       	cpi	r24, 0x01	; 1
- 752:	99 f0       	breq	.+38     	; 0x77a <_VAL_NOT_NULL57>
- 754:	41 e0       	ldi	r20, 0x01	; 1
- 756:	24 1b       	sub	r18, r20
- 758:	40 e0       	ldi	r20, 0x00	; 0
- 75a:	34 0b       	sbc	r19, r20
- 75c:	20 83       	st	Z, r18
- 75e:	31 83       	std	Z+1, r19	; 0x01
- 760:	42 2f       	mov	r20, r18
- 762:	43 2b       	or	r20, r19
- 764:	51 f4       	brne	.+20     	; 0x77a <_VAL_NOT_NULL57>
+000007f0 <_KER_SCH_LOOP56>:
+ 7f0:	20 93 10 01 	sts	0x0110, r18
+ 7f4:	85 2f       	mov	r24, r21
+ 7f6:	ef e4       	ldi	r30, 0x4F	; 79
+ 7f8:	f1 e0       	ldi	r31, 0x01	; 1
+ 7fa:	20 91 10 01 	lds	r18, 0x0110
+ 7fe:	22 0f       	add	r18, r18
+ 800:	e2 0f       	add	r30, r18
+ 802:	20 e0       	ldi	r18, 0x00	; 0
+ 804:	f2 1f       	adc	r31, r18
+ 806:	20 81       	ld	r18, Z
+ 808:	31 81       	ldd	r19, Z+1	; 0x01
+ 80a:	42 2f       	mov	r20, r18
+ 80c:	43 2b       	or	r20, r19
+ 80e:	59 f0       	breq	.+22     	; 0x826 <_VAL_NULL57>
+ 810:	81 30       	cpi	r24, 0x01	; 1
+ 812:	99 f0       	breq	.+38     	; 0x83a <_VAL_NOT_NULL57>
+ 814:	41 e0       	ldi	r20, 0x01	; 1
+ 816:	24 1b       	sub	r18, r20
+ 818:	40 e0       	ldi	r20, 0x00	; 0
+ 81a:	34 0b       	sbc	r19, r20
+ 81c:	20 83       	st	Z, r18
+ 81e:	31 83       	std	Z+1, r19	; 0x01
+ 820:	42 2f       	mov	r20, r18
+ 822:	43 2b       	or	r20, r19
+ 824:	51 f4       	brne	.+20     	; 0x83a <_VAL_NOT_NULL57>
 
-00000766 <_VAL_NULL57>:
- 766:	e2 e3       	ldi	r30, 0x32	; 50
- 768:	f1 e0       	ldi	r31, 0x01	; 1
- 76a:	20 91 07 01 	lds	r18, 0x0107
- 76e:	e2 0f       	add	r30, r18
- 770:	20 e0       	ldi	r18, 0x00	; 0
- 772:	f2 1f       	adc	r31, r18
- 774:	81 e0       	ldi	r24, 0x01	; 1
- 776:	80 83       	st	Z, r24
- 778:	08 c0       	rjmp	.+16     	; 0x78a <_EXIT_SLP_TIME57>
+00000826 <_VAL_NULL57>:
+ 826:	eb e3       	ldi	r30, 0x3B	; 59
+ 828:	f1 e0       	ldi	r31, 0x01	; 1
+ 82a:	20 91 10 01 	lds	r18, 0x0110
+ 82e:	e2 0f       	add	r30, r18
+ 830:	20 e0       	ldi	r18, 0x00	; 0
+ 832:	f2 1f       	adc	r31, r18
+ 834:	81 e0       	ldi	r24, 0x01	; 1
+ 836:	80 83       	st	Z, r24
+ 838:	08 c0       	rjmp	.+16     	; 0x84a <_EXIT_SLP_TIME57>
 
-0000077a <_VAL_NOT_NULL57>:
- 77a:	e2 e3       	ldi	r30, 0x32	; 50
- 77c:	f1 e0       	ldi	r31, 0x01	; 1
- 77e:	20 91 07 01 	lds	r18, 0x0107
- 782:	e2 0f       	add	r30, r18
- 784:	20 e0       	ldi	r18, 0x00	; 0
- 786:	f2 1f       	adc	r31, r18
- 788:	80 81       	ld	r24, Z
+0000083a <_VAL_NOT_NULL57>:
+ 83a:	eb e3       	ldi	r30, 0x3B	; 59
+ 83c:	f1 e0       	ldi	r31, 0x01	; 1
+ 83e:	20 91 10 01 	lds	r18, 0x0110
+ 842:	e2 0f       	add	r30, r18
+ 844:	20 e0       	ldi	r18, 0x00	; 0
+ 846:	f2 1f       	adc	r31, r18
+ 848:	80 81       	ld	r24, Z
 
-0000078a <_EXIT_SLP_TIME57>:
- 78a:	81 30       	cpi	r24, 0x01	; 1
- 78c:	19 f0       	breq	.+6      	; 0x794 <_KER_CALC_PRIO56>
- 78e:	84 30       	cpi	r24, 0x04	; 4
- 790:	09 f0       	breq	.+2      	; 0x794 <_KER_CALC_PRIO56>
- 792:	12 c0       	rjmp	.+36     	; 0x7b8 <_KER_SCH_NEXT56>
+0000084a <_EXIT_SLP_TIME57>:
+ 84a:	81 30       	cpi	r24, 0x01	; 1
+ 84c:	19 f0       	breq	.+6      	; 0x854 <_KER_CALC_PRIO56>
+ 84e:	84 30       	cpi	r24, 0x04	; 4
+ 850:	09 f0       	breq	.+2      	; 0x854 <_KER_CALC_PRIO56>
+ 852:	12 c0       	rjmp	.+36     	; 0x878 <_KER_SCH_NEXT56>
 
-00000794 <_KER_CALC_PRIO56>:
- 794:	ec e3       	ldi	r30, 0x3C	; 60
- 796:	f1 e0       	ldi	r31, 0x01	; 1
- 798:	20 e0       	ldi	r18, 0x00	; 0
- 79a:	80 91 07 01 	lds	r24, 0x0107
- 79e:	e8 0f       	add	r30, r24
- 7a0:	f2 1f       	adc	r31, r18
- 7a2:	80 81       	ld	r24, Z
- 7a4:	20 91 09 01 	lds	r18, 0x0109
- 7a8:	82 17       	cp	r24, r18
- 7aa:	30 f4       	brcc	.+12     	; 0x7b8 <_KER_SCH_NEXT56>
- 7ac:	80 93 09 01 	sts	0x0109, r24
- 7b0:	20 91 07 01 	lds	r18, 0x0107
- 7b4:	20 93 0a 01 	sts	0x010A, r18
+00000854 <_KER_CALC_PRIO56>:
+ 854:	e5 e4       	ldi	r30, 0x45	; 69
+ 856:	f1 e0       	ldi	r31, 0x01	; 1
+ 858:	20 e0       	ldi	r18, 0x00	; 0
+ 85a:	80 91 10 01 	lds	r24, 0x0110
+ 85e:	e8 0f       	add	r30, r24
+ 860:	f2 1f       	adc	r31, r18
+ 862:	80 81       	ld	r24, Z
+ 864:	20 91 12 01 	lds	r18, 0x0112
+ 868:	82 17       	cp	r24, r18
+ 86a:	30 f4       	brcc	.+12     	; 0x878 <_KER_SCH_NEXT56>
+ 86c:	80 93 12 01 	sts	0x0112, r24
+ 870:	20 91 10 01 	lds	r18, 0x0110
+ 874:	20 93 13 01 	sts	0x0113, r18
 
-000007b8 <_KER_SCH_NEXT56>:
- 7b8:	20 91 07 01 	lds	r18, 0x0107
- 7bc:	23 95       	inc	r18
- 7be:	30 91 08 01 	lds	r19, 0x0108
- 7c2:	23 17       	cp	r18, r19
- 7c4:	08 f4       	brcc	.+2      	; 0x7c8 <_KER_SCH_EXIT56>
- 7c6:	b4 cf       	rjmp	.-152    	; 0x730 <_KER_SCH_LOOP56>
+00000878 <_KER_SCH_NEXT56>:
+ 878:	20 91 10 01 	lds	r18, 0x0110
+ 87c:	23 95       	inc	r18
+ 87e:	30 91 11 01 	lds	r19, 0x0111
+ 882:	23 17       	cp	r18, r19
+ 884:	08 f4       	brcc	.+2      	; 0x888 <_KER_SCH_EXIT56>
+ 886:	b4 cf       	rjmp	.-152    	; 0x7f0 <_KER_SCH_LOOP56>
 
-000007c8 <_KER_SCH_EXIT56>:
- 7c8:	20 91 0a 01 	lds	r18, 0x010A
- 7cc:	20 93 07 01 	sts	0x0107, r18
+00000888 <_KER_SCH_EXIT56>:
+ 888:	20 91 13 01 	lds	r18, 0x0113
+ 88c:	20 93 10 01 	sts	0x0110, r18
 		KER_LOAD_TASK_ID_AND_SP                           ;load next task id, SP  ( 14 clocks) 
- 7d0:	e0 e1       	ldi	r30, 0x10	; 16
- 7d2:	f1 e0       	ldi	r31, 0x01	; 1
- 7d4:	20 91 07 01 	lds	r18, 0x0107
- 7d8:	22 0f       	add	r18, r18
- 7da:	e2 0f       	add	r30, r18
- 7dc:	20 e0       	ldi	r18, 0x00	; 0
- 7de:	f2 1f       	adc	r31, r18
- 7e0:	20 81       	ld	r18, Z
- 7e2:	31 81       	ldd	r19, Z+1	; 0x01
- 7e4:	2d bf       	out	0x3d, r18	; 61
- 7e6:	3e bf       	out	0x3e, r19	; 62
+ 890:	e9 e1       	ldi	r30, 0x19	; 25
+ 892:	f1 e0       	ldi	r31, 0x01	; 1
+ 894:	20 91 10 01 	lds	r18, 0x0110
+ 898:	22 0f       	add	r18, r18
+ 89a:	e2 0f       	add	r30, r18
+ 89c:	20 e0       	ldi	r18, 0x00	; 0
+ 89e:	f2 1f       	adc	r31, r18
+ 8a0:	20 81       	ld	r18, Z
+ 8a2:	31 81       	ldd	r19, Z+1	; 0x01
+ 8a4:	2d bf       	out	0x3d, r18	; 61
+ 8a6:	3e bf       	out	0x3e, r19	; 62
 		KER_CONTEXT_RESTORE_THREAD                        ;restore context        ( 68 clocks) 
- 7e8:	ff 91       	pop	r31
- 7ea:	ef 91       	pop	r30
- 7ec:	df 91       	pop	r29
- 7ee:	cf 91       	pop	r28
- 7f0:	bf 91       	pop	r27
- 7f2:	af 91       	pop	r26
- 7f4:	9f 91       	pop	r25
- 7f6:	8f 91       	pop	r24
- 7f8:	7f 91       	pop	r23
- 7fa:	6f 91       	pop	r22
- 7fc:	5f 91       	pop	r21
- 7fe:	4f 91       	pop	r20
- 800:	3f 91       	pop	r19
- 802:	2f 91       	pop	r18
- 804:	1f 91       	pop	r17
- 806:	0f 91       	pop	r16
- 808:	ff 90       	pop	r15
- 80a:	ef 90       	pop	r14
- 80c:	df 90       	pop	r13
- 80e:	cf 90       	pop	r12
- 810:	bf 90       	pop	r11
- 812:	af 90       	pop	r10
- 814:	9f 90       	pop	r9
- 816:	8f 90       	pop	r8
- 818:	7f 90       	pop	r7
- 81a:	6f 90       	pop	r6
- 81c:	5f 90       	pop	r5
- 81e:	4f 90       	pop	r4
- 820:	3f 90       	pop	r3
- 822:	2f 90       	pop	r2
- 824:	1f 90       	pop	r1
- 826:	0f 90       	pop	r0
- 828:	0f be       	out	0x3f, r0	; 63
- 82a:	0f 90       	pop	r0
- 82c:	78 94       	sei
+ 8a8:	ff 91       	pop	r31
+ 8aa:	ef 91       	pop	r30
+ 8ac:	df 91       	pop	r29
+ 8ae:	cf 91       	pop	r28
+ 8b0:	bf 91       	pop	r27
+ 8b2:	af 91       	pop	r26
+ 8b4:	9f 91       	pop	r25
+ 8b6:	8f 91       	pop	r24
+ 8b8:	7f 91       	pop	r23
+ 8ba:	6f 91       	pop	r22
+ 8bc:	5f 91       	pop	r21
+ 8be:	4f 91       	pop	r20
+ 8c0:	3f 91       	pop	r19
+ 8c2:	2f 91       	pop	r18
+ 8c4:	1f 91       	pop	r17
+ 8c6:	0f 91       	pop	r16
+ 8c8:	ff 90       	pop	r15
+ 8ca:	ef 90       	pop	r14
+ 8cc:	df 90       	pop	r13
+ 8ce:	cf 90       	pop	r12
+ 8d0:	bf 90       	pop	r11
+ 8d2:	af 90       	pop	r10
+ 8d4:	9f 90       	pop	r9
+ 8d6:	8f 90       	pop	r8
+ 8d8:	7f 90       	pop	r7
+ 8da:	6f 90       	pop	r6
+ 8dc:	5f 90       	pop	r5
+ 8de:	4f 90       	pop	r4
+ 8e0:	3f 90       	pop	r3
+ 8e2:	2f 90       	pop	r2
+ 8e4:	1f 90       	pop	r1
+ 8e6:	0f 90       	pop	r0
+ 8e8:	0f be       	out	0x3f, r0	; 63
+ 8ea:	0f 90       	pop	r0
+ 8ec:	78 94       	sei
 		RET                                               ;return from subroutine (  4 clocks) 
- 82e:	08 95       	ret
+ 8ee:	08 95       	ret
 
-00000830 <Kernel_Task_Constant_Latency>:
+000008f0 <Kernel_Task_Constant_Latency>:
 ;arg registers           : R25:R24(SleepTime)                                                  
 ;return registers        : None                                                                
 ;unsafe access registers : R18, R24, R25, R30(ZL), R31(ZH)                                     
 Kernel_Task_Constant_Latency:                             ;total 3.50uS @8MHz     ( 28 clocks) 
 		;create next task wakeup time (args R25:R24)                                           
 		CLI                                               ;disable interrupt      (  1 clock ) 
- 830:	f8 94       	cli
+ 8f0:	f8 94       	cli
 		LDI   ZL                 , lo8(KerSchSlp)         ;load low byte          (  1 clock ) 
- 832:	e6 e4       	ldi	r30, 0x46	; 70
+ 8f2:	ef e4       	ldi	r30, 0x4F	; 79
 		LDI   ZH                 , hi8(KerSchSlp)         ;load high byte         (  1 clock ) 
- 834:	f1 e0       	ldi	r31, 0x01	; 1
+ 8f4:	f1 e0       	ldi	r31, 0x01	; 1
 		KER_CALC_ADDR_OFF_WORD                            ;offset calc            (  6 clocks) 
- 836:	20 91 07 01 	lds	r18, 0x0107
- 83a:	22 0f       	add	r18, r18
- 83c:	e2 0f       	add	r30, r18
- 83e:	20 e0       	ldi	r18, 0x00	; 0
- 840:	f2 1f       	adc	r31, r18
+ 8f6:	20 91 10 01 	lds	r18, 0x0110
+ 8fa:	22 0f       	add	r18, r18
+ 8fc:	e2 0f       	add	r30, r18
+ 8fe:	20 e0       	ldi	r18, 0x00	; 0
+ 900:	f2 1f       	adc	r31, r18
 		STD   Z+0                , R24                    ;save sleep time low    (  2 clocks) 
- 842:	80 83       	st	Z, r24
+ 902:	80 83       	st	Z, r24
 		STD   Z+1                , R25                    ;save sleep time high   (  2 clocks) 
- 844:	91 83       	std	Z+1, r25	; 0x01
+ 904:	91 83       	std	Z+1, r25	; 0x01
 		;update task scheduler status as constant latency                                      
 		LDI   ZL                 , lo8(KerSchSts)         ;load low byte          (  1 clock ) 
- 846:	e2 e3       	ldi	r30, 0x32	; 50
+ 906:	eb e3       	ldi	r30, 0x3B	; 59
 		LDI   ZH                 , hi8(KerSchSts)         ;load high byte         (  1 clock ) 
- 848:	f1 e0       	ldi	r31, 0x01	; 1
+ 908:	f1 e0       	ldi	r31, 0x01	; 1
 		KER_CALC_ADDR_OFF_BYTES                           ;offset calc            (  5 clocks) 
- 84a:	20 91 07 01 	lds	r18, 0x0107
- 84e:	e2 0f       	add	r30, r18
- 850:	20 e0       	ldi	r18, 0x00	; 0
- 852:	f2 1f       	adc	r31, r18
+ 90a:	20 91 10 01 	lds	r18, 0x0110
+ 90e:	e2 0f       	add	r30, r18
+ 910:	20 e0       	ldi	r18, 0x00	; 0
+ 912:	f2 1f       	adc	r31, r18
         LDI   R18                , TASK_CONS_LAT          ;save as cons_lat       (  1 clock ) 
- 854:	24 e0       	ldi	r18, 0x04	; 4
+ 914:	24 e0       	ldi	r18, 0x04	; 4
 		STD   Z+0                , R18                    ;save block flag        (  2 clocks) 
- 856:	20 83       	st	Z, r18
+ 916:	20 83       	st	Z, r18
 		SEI                                               ;enable interrupt       (  1 clock ) 
- 858:	78 94       	sei
+ 918:	78 94       	sei
 		RET                                               ;return from subroutine (  4 clocks) 
- 85a:	08 95       	ret
+ 91a:	08 95       	ret
 
-0000085c <Kernel_Task_Constant_Latency_Sleep>:
+0000091c <Kernel_Task_Constant_Latency_Sleep>:
 ;arg registers           : R25:R24(SleepTime)                                                  
 ;return registers        : None                                                                
 ;unsafe access registers : R18, R19, R20, R24, R25, R30(ZL), R31(ZH)                           
 Kernel_Task_Constant_Latency_Sleep:                       ;total 35.75uS @8MHz    (286 clocks) 
 		;save current context                                                                  
         KER_CONTEXT_SAVE_THREAD                           ;save context           ( 69 clocks) 
- 85c:	0f 92       	push	r0
- 85e:	0f b6       	in	r0, 0x3f	; 63
- 860:	f8 94       	cli
- 862:	0f 92       	push	r0
- 864:	1f 92       	push	r1
- 866:	11 24       	eor	r1, r1
- 868:	2f 92       	push	r2
- 86a:	3f 92       	push	r3
- 86c:	4f 92       	push	r4
- 86e:	5f 92       	push	r5
- 870:	6f 92       	push	r6
- 872:	7f 92       	push	r7
- 874:	8f 92       	push	r8
- 876:	9f 92       	push	r9
- 878:	af 92       	push	r10
- 87a:	bf 92       	push	r11
- 87c:	cf 92       	push	r12
- 87e:	df 92       	push	r13
- 880:	ef 92       	push	r14
- 882:	ff 92       	push	r15
- 884:	0f 93       	push	r16
- 886:	1f 93       	push	r17
- 888:	2f 93       	push	r18
- 88a:	3f 93       	push	r19
- 88c:	4f 93       	push	r20
- 88e:	5f 93       	push	r21
- 890:	6f 93       	push	r22
- 892:	7f 93       	push	r23
- 894:	8f 93       	push	r24
- 896:	9f 93       	push	r25
- 898:	af 93       	push	r26
- 89a:	bf 93       	push	r27
- 89c:	cf 93       	push	r28
- 89e:	df 93       	push	r29
- 8a0:	ef 93       	push	r30
- 8a2:	ff 93       	push	r31
+ 91c:	0f 92       	push	r0
+ 91e:	0f b6       	in	r0, 0x3f	; 63
+ 920:	f8 94       	cli
+ 922:	0f 92       	push	r0
+ 924:	1f 92       	push	r1
+ 926:	11 24       	eor	r1, r1
+ 928:	2f 92       	push	r2
+ 92a:	3f 92       	push	r3
+ 92c:	4f 92       	push	r4
+ 92e:	5f 92       	push	r5
+ 930:	6f 92       	push	r6
+ 932:	7f 92       	push	r7
+ 934:	8f 92       	push	r8
+ 936:	9f 92       	push	r9
+ 938:	af 92       	push	r10
+ 93a:	bf 92       	push	r11
+ 93c:	cf 92       	push	r12
+ 93e:	df 92       	push	r13
+ 940:	ef 92       	push	r14
+ 942:	ff 92       	push	r15
+ 944:	0f 93       	push	r16
+ 946:	1f 93       	push	r17
+ 948:	2f 93       	push	r18
+ 94a:	3f 93       	push	r19
+ 94c:	4f 93       	push	r20
+ 94e:	5f 93       	push	r21
+ 950:	6f 93       	push	r22
+ 952:	7f 93       	push	r23
+ 954:	8f 93       	push	r24
+ 956:	9f 93       	push	r25
+ 958:	af 93       	push	r26
+ 95a:	bf 93       	push	r27
+ 95c:	cf 93       	push	r28
+ 95e:	df 93       	push	r29
+ 960:	ef 93       	push	r30
+ 962:	ff 93       	push	r31
 		KER_SAVE_CURR_TASK_SP                             ;save current task SP   ( 14 clocks) 
- 8a4:	e0 e1       	ldi	r30, 0x10	; 16
- 8a6:	f1 e0       	ldi	r31, 0x01	; 1
- 8a8:	20 91 07 01 	lds	r18, 0x0107
- 8ac:	22 0f       	add	r18, r18
- 8ae:	e2 0f       	add	r30, r18
- 8b0:	20 e0       	ldi	r18, 0x00	; 0
- 8b2:	f2 1f       	adc	r31, r18
- 8b4:	2d b7       	in	r18, 0x3d	; 61
- 8b6:	3e b7       	in	r19, 0x3e	; 62
- 8b8:	20 83       	st	Z, r18
- 8ba:	31 83       	std	Z+1, r19	; 0x01
+ 964:	e9 e1       	ldi	r30, 0x19	; 25
+ 966:	f1 e0       	ldi	r31, 0x01	; 1
+ 968:	20 91 10 01 	lds	r18, 0x0110
+ 96c:	22 0f       	add	r18, r18
+ 96e:	e2 0f       	add	r30, r18
+ 970:	20 e0       	ldi	r18, 0x00	; 0
+ 972:	f2 1f       	adc	r31, r18
+ 974:	2d b7       	in	r18, 0x3d	; 61
+ 976:	3e b7       	in	r19, 0x3e	; 62
+ 978:	20 83       	st	Z, r18
+ 97a:	31 83       	std	Z+1, r19	; 0x01
 		;update task scheduler status as blocked                                               
 		LDI   ZL                 , lo8(KerSchSts)         ;load low byte          (  1 clock ) 
- 8bc:	e2 e3       	ldi	r30, 0x32	; 50
+ 97c:	eb e3       	ldi	r30, 0x3B	; 59
 		LDI   ZH                 , hi8(KerSchSts)         ;load high byte         (  1 clock ) 
- 8be:	f1 e0       	ldi	r31, 0x01	; 1
+ 97e:	f1 e0       	ldi	r31, 0x01	; 1
 		KER_CALC_ADDR_OFF_BYTES                           ;offset calc            (  5 clocks) 
- 8c0:	20 91 07 01 	lds	r18, 0x0107
- 8c4:	e2 0f       	add	r30, r18
- 8c6:	20 e0       	ldi	r18, 0x00	; 0
- 8c8:	f2 1f       	adc	r31, r18
+ 980:	20 91 10 01 	lds	r18, 0x0110
+ 984:	e2 0f       	add	r30, r18
+ 986:	20 e0       	ldi	r18, 0x00	; 0
+ 988:	f2 1f       	adc	r31, r18
         LDI   R18                , TASK_BLOCKED           ;blocked until cnt=0    (  1 clock ) 
- 8ca:	20 e0       	ldi	r18, 0x00	; 0
+ 98a:	20 e0       	ldi	r18, 0x00	; 0
 		STD   Z+0                , R18                    ;save block flag        (  2 clocks) 
- 8cc:	20 83       	st	Z, r18
+ 98c:	20 83       	st	Z, r18
 		;run scheduler, load next task sp, restore context                                     
 		LDI    R24               , SCH_MODE_THREAD        ;set sch mode           (  1 clock ) 
- 8ce:	81 e0       	ldi	r24, 0x01	; 1
+ 98e:	81 e0       	ldi	r24, 0x01	; 1
 		KER_RUN_SCHEDULER                                 ;run scheduler          (106 clocks) 
- 8d0:	2f ef       	ldi	r18, 0xFF	; 255
- 8d2:	20 93 09 01 	sts	0x0109, r18
- 8d6:	20 e0       	ldi	r18, 0x00	; 0
- 8d8:	20 93 0a 01 	sts	0x010A, r18
- 8dc:	58 2f       	mov	r21, r24
+ 990:	2f ef       	ldi	r18, 0xFF	; 255
+ 992:	20 93 12 01 	sts	0x0112, r18
+ 996:	20 e0       	ldi	r18, 0x00	; 0
+ 998:	20 93 13 01 	sts	0x0113, r18
+ 99c:	58 2f       	mov	r21, r24
 
-000008de <_KER_SCH_LOOP75>:
- 8de:	20 93 07 01 	sts	0x0107, r18
- 8e2:	85 2f       	mov	r24, r21
- 8e4:	e6 e4       	ldi	r30, 0x46	; 70
- 8e6:	f1 e0       	ldi	r31, 0x01	; 1
- 8e8:	20 91 07 01 	lds	r18, 0x0107
- 8ec:	22 0f       	add	r18, r18
- 8ee:	e2 0f       	add	r30, r18
- 8f0:	20 e0       	ldi	r18, 0x00	; 0
- 8f2:	f2 1f       	adc	r31, r18
- 8f4:	20 81       	ld	r18, Z
- 8f6:	31 81       	ldd	r19, Z+1	; 0x01
- 8f8:	42 2f       	mov	r20, r18
- 8fa:	43 2b       	or	r20, r19
- 8fc:	59 f0       	breq	.+22     	; 0x914 <_VAL_NULL76>
- 8fe:	81 30       	cpi	r24, 0x01	; 1
- 900:	99 f0       	breq	.+38     	; 0x928 <_VAL_NOT_NULL76>
- 902:	41 e0       	ldi	r20, 0x01	; 1
- 904:	24 1b       	sub	r18, r20
- 906:	40 e0       	ldi	r20, 0x00	; 0
- 908:	34 0b       	sbc	r19, r20
- 90a:	20 83       	st	Z, r18
- 90c:	31 83       	std	Z+1, r19	; 0x01
- 90e:	42 2f       	mov	r20, r18
- 910:	43 2b       	or	r20, r19
- 912:	51 f4       	brne	.+20     	; 0x928 <_VAL_NOT_NULL76>
+0000099e <_KER_SCH_LOOP75>:
+ 99e:	20 93 10 01 	sts	0x0110, r18
+ 9a2:	85 2f       	mov	r24, r21
+ 9a4:	ef e4       	ldi	r30, 0x4F	; 79
+ 9a6:	f1 e0       	ldi	r31, 0x01	; 1
+ 9a8:	20 91 10 01 	lds	r18, 0x0110
+ 9ac:	22 0f       	add	r18, r18
+ 9ae:	e2 0f       	add	r30, r18
+ 9b0:	20 e0       	ldi	r18, 0x00	; 0
+ 9b2:	f2 1f       	adc	r31, r18
+ 9b4:	20 81       	ld	r18, Z
+ 9b6:	31 81       	ldd	r19, Z+1	; 0x01
+ 9b8:	42 2f       	mov	r20, r18
+ 9ba:	43 2b       	or	r20, r19
+ 9bc:	59 f0       	breq	.+22     	; 0x9d4 <_VAL_NULL76>
+ 9be:	81 30       	cpi	r24, 0x01	; 1
+ 9c0:	99 f0       	breq	.+38     	; 0x9e8 <_VAL_NOT_NULL76>
+ 9c2:	41 e0       	ldi	r20, 0x01	; 1
+ 9c4:	24 1b       	sub	r18, r20
+ 9c6:	40 e0       	ldi	r20, 0x00	; 0
+ 9c8:	34 0b       	sbc	r19, r20
+ 9ca:	20 83       	st	Z, r18
+ 9cc:	31 83       	std	Z+1, r19	; 0x01
+ 9ce:	42 2f       	mov	r20, r18
+ 9d0:	43 2b       	or	r20, r19
+ 9d2:	51 f4       	brne	.+20     	; 0x9e8 <_VAL_NOT_NULL76>
 
-00000914 <_VAL_NULL76>:
- 914:	e2 e3       	ldi	r30, 0x32	; 50
- 916:	f1 e0       	ldi	r31, 0x01	; 1
- 918:	20 91 07 01 	lds	r18, 0x0107
- 91c:	e2 0f       	add	r30, r18
- 91e:	20 e0       	ldi	r18, 0x00	; 0
- 920:	f2 1f       	adc	r31, r18
- 922:	81 e0       	ldi	r24, 0x01	; 1
- 924:	80 83       	st	Z, r24
- 926:	08 c0       	rjmp	.+16     	; 0x938 <_EXIT_SLP_TIME76>
+000009d4 <_VAL_NULL76>:
+ 9d4:	eb e3       	ldi	r30, 0x3B	; 59
+ 9d6:	f1 e0       	ldi	r31, 0x01	; 1
+ 9d8:	20 91 10 01 	lds	r18, 0x0110
+ 9dc:	e2 0f       	add	r30, r18
+ 9de:	20 e0       	ldi	r18, 0x00	; 0
+ 9e0:	f2 1f       	adc	r31, r18
+ 9e2:	81 e0       	ldi	r24, 0x01	; 1
+ 9e4:	80 83       	st	Z, r24
+ 9e6:	08 c0       	rjmp	.+16     	; 0x9f8 <_EXIT_SLP_TIME76>
 
-00000928 <_VAL_NOT_NULL76>:
- 928:	e2 e3       	ldi	r30, 0x32	; 50
- 92a:	f1 e0       	ldi	r31, 0x01	; 1
- 92c:	20 91 07 01 	lds	r18, 0x0107
- 930:	e2 0f       	add	r30, r18
- 932:	20 e0       	ldi	r18, 0x00	; 0
- 934:	f2 1f       	adc	r31, r18
- 936:	80 81       	ld	r24, Z
+000009e8 <_VAL_NOT_NULL76>:
+ 9e8:	eb e3       	ldi	r30, 0x3B	; 59
+ 9ea:	f1 e0       	ldi	r31, 0x01	; 1
+ 9ec:	20 91 10 01 	lds	r18, 0x0110
+ 9f0:	e2 0f       	add	r30, r18
+ 9f2:	20 e0       	ldi	r18, 0x00	; 0
+ 9f4:	f2 1f       	adc	r31, r18
+ 9f6:	80 81       	ld	r24, Z
 
-00000938 <_EXIT_SLP_TIME76>:
- 938:	81 30       	cpi	r24, 0x01	; 1
- 93a:	19 f0       	breq	.+6      	; 0x942 <_KER_CALC_PRIO75>
- 93c:	84 30       	cpi	r24, 0x04	; 4
- 93e:	09 f0       	breq	.+2      	; 0x942 <_KER_CALC_PRIO75>
- 940:	12 c0       	rjmp	.+36     	; 0x966 <_KER_SCH_NEXT75>
+000009f8 <_EXIT_SLP_TIME76>:
+ 9f8:	81 30       	cpi	r24, 0x01	; 1
+ 9fa:	19 f0       	breq	.+6      	; 0xa02 <_KER_CALC_PRIO75>
+ 9fc:	84 30       	cpi	r24, 0x04	; 4
+ 9fe:	09 f0       	breq	.+2      	; 0xa02 <_KER_CALC_PRIO75>
+ a00:	12 c0       	rjmp	.+36     	; 0xa26 <_KER_SCH_NEXT75>
 
-00000942 <_KER_CALC_PRIO75>:
- 942:	ec e3       	ldi	r30, 0x3C	; 60
- 944:	f1 e0       	ldi	r31, 0x01	; 1
- 946:	20 e0       	ldi	r18, 0x00	; 0
- 948:	80 91 07 01 	lds	r24, 0x0107
- 94c:	e8 0f       	add	r30, r24
- 94e:	f2 1f       	adc	r31, r18
- 950:	80 81       	ld	r24, Z
- 952:	20 91 09 01 	lds	r18, 0x0109
- 956:	82 17       	cp	r24, r18
- 958:	30 f4       	brcc	.+12     	; 0x966 <_KER_SCH_NEXT75>
- 95a:	80 93 09 01 	sts	0x0109, r24
- 95e:	20 91 07 01 	lds	r18, 0x0107
- 962:	20 93 0a 01 	sts	0x010A, r18
+00000a02 <_KER_CALC_PRIO75>:
+ a02:	e5 e4       	ldi	r30, 0x45	; 69
+ a04:	f1 e0       	ldi	r31, 0x01	; 1
+ a06:	20 e0       	ldi	r18, 0x00	; 0
+ a08:	80 91 10 01 	lds	r24, 0x0110
+ a0c:	e8 0f       	add	r30, r24
+ a0e:	f2 1f       	adc	r31, r18
+ a10:	80 81       	ld	r24, Z
+ a12:	20 91 12 01 	lds	r18, 0x0112
+ a16:	82 17       	cp	r24, r18
+ a18:	30 f4       	brcc	.+12     	; 0xa26 <_KER_SCH_NEXT75>
+ a1a:	80 93 12 01 	sts	0x0112, r24
+ a1e:	20 91 10 01 	lds	r18, 0x0110
+ a22:	20 93 13 01 	sts	0x0113, r18
 
-00000966 <_KER_SCH_NEXT75>:
- 966:	20 91 07 01 	lds	r18, 0x0107
- 96a:	23 95       	inc	r18
- 96c:	30 91 08 01 	lds	r19, 0x0108
- 970:	23 17       	cp	r18, r19
- 972:	08 f4       	brcc	.+2      	; 0x976 <_KER_SCH_EXIT75>
- 974:	b4 cf       	rjmp	.-152    	; 0x8de <_KER_SCH_LOOP75>
+00000a26 <_KER_SCH_NEXT75>:
+ a26:	20 91 10 01 	lds	r18, 0x0110
+ a2a:	23 95       	inc	r18
+ a2c:	30 91 11 01 	lds	r19, 0x0111
+ a30:	23 17       	cp	r18, r19
+ a32:	08 f4       	brcc	.+2      	; 0xa36 <_KER_SCH_EXIT75>
+ a34:	b4 cf       	rjmp	.-152    	; 0x99e <_KER_SCH_LOOP75>
 
-00000976 <_KER_SCH_EXIT75>:
- 976:	20 91 0a 01 	lds	r18, 0x010A
- 97a:	20 93 07 01 	sts	0x0107, r18
+00000a36 <_KER_SCH_EXIT75>:
+ a36:	20 91 13 01 	lds	r18, 0x0113
+ a3a:	20 93 10 01 	sts	0x0110, r18
 		KER_LOAD_TASK_ID_AND_SP                           ;load next task id, SP  ( 14 clocks) 
- 97e:	e0 e1       	ldi	r30, 0x10	; 16
- 980:	f1 e0       	ldi	r31, 0x01	; 1
- 982:	20 91 07 01 	lds	r18, 0x0107
- 986:	22 0f       	add	r18, r18
- 988:	e2 0f       	add	r30, r18
- 98a:	20 e0       	ldi	r18, 0x00	; 0
- 98c:	f2 1f       	adc	r31, r18
- 98e:	20 81       	ld	r18, Z
- 990:	31 81       	ldd	r19, Z+1	; 0x01
- 992:	2d bf       	out	0x3d, r18	; 61
- 994:	3e bf       	out	0x3e, r19	; 62
+ a3e:	e9 e1       	ldi	r30, 0x19	; 25
+ a40:	f1 e0       	ldi	r31, 0x01	; 1
+ a42:	20 91 10 01 	lds	r18, 0x0110
+ a46:	22 0f       	add	r18, r18
+ a48:	e2 0f       	add	r30, r18
+ a4a:	20 e0       	ldi	r18, 0x00	; 0
+ a4c:	f2 1f       	adc	r31, r18
+ a4e:	20 81       	ld	r18, Z
+ a50:	31 81       	ldd	r19, Z+1	; 0x01
+ a52:	2d bf       	out	0x3d, r18	; 61
+ a54:	3e bf       	out	0x3e, r19	; 62
 		KER_CONTEXT_RESTORE_THREAD                        ;restore context        ( 68 clocks) 
- 996:	ff 91       	pop	r31
- 998:	ef 91       	pop	r30
- 99a:	df 91       	pop	r29
- 99c:	cf 91       	pop	r28
- 99e:	bf 91       	pop	r27
- 9a0:	af 91       	pop	r26
- 9a2:	9f 91       	pop	r25
- 9a4:	8f 91       	pop	r24
- 9a6:	7f 91       	pop	r23
- 9a8:	6f 91       	pop	r22
- 9aa:	5f 91       	pop	r21
- 9ac:	4f 91       	pop	r20
- 9ae:	3f 91       	pop	r19
- 9b0:	2f 91       	pop	r18
- 9b2:	1f 91       	pop	r17
- 9b4:	0f 91       	pop	r16
- 9b6:	ff 90       	pop	r15
- 9b8:	ef 90       	pop	r14
- 9ba:	df 90       	pop	r13
- 9bc:	cf 90       	pop	r12
- 9be:	bf 90       	pop	r11
- 9c0:	af 90       	pop	r10
- 9c2:	9f 90       	pop	r9
- 9c4:	8f 90       	pop	r8
- 9c6:	7f 90       	pop	r7
- 9c8:	6f 90       	pop	r6
- 9ca:	5f 90       	pop	r5
- 9cc:	4f 90       	pop	r4
- 9ce:	3f 90       	pop	r3
- 9d0:	2f 90       	pop	r2
- 9d2:	1f 90       	pop	r1
- 9d4:	0f 90       	pop	r0
- 9d6:	0f be       	out	0x3f, r0	; 63
- 9d8:	0f 90       	pop	r0
- 9da:	78 94       	sei
+ a56:	ff 91       	pop	r31
+ a58:	ef 91       	pop	r30
+ a5a:	df 91       	pop	r29
+ a5c:	cf 91       	pop	r28
+ a5e:	bf 91       	pop	r27
+ a60:	af 91       	pop	r26
+ a62:	9f 91       	pop	r25
+ a64:	8f 91       	pop	r24
+ a66:	7f 91       	pop	r23
+ a68:	6f 91       	pop	r22
+ a6a:	5f 91       	pop	r21
+ a6c:	4f 91       	pop	r20
+ a6e:	3f 91       	pop	r19
+ a70:	2f 91       	pop	r18
+ a72:	1f 91       	pop	r17
+ a74:	0f 91       	pop	r16
+ a76:	ff 90       	pop	r15
+ a78:	ef 90       	pop	r14
+ a7a:	df 90       	pop	r13
+ a7c:	cf 90       	pop	r12
+ a7e:	bf 90       	pop	r11
+ a80:	af 90       	pop	r10
+ a82:	9f 90       	pop	r9
+ a84:	8f 90       	pop	r8
+ a86:	7f 90       	pop	r7
+ a88:	6f 90       	pop	r6
+ a8a:	5f 90       	pop	r5
+ a8c:	4f 90       	pop	r4
+ a8e:	3f 90       	pop	r3
+ a90:	2f 90       	pop	r2
+ a92:	1f 90       	pop	r1
+ a94:	0f 90       	pop	r0
+ a96:	0f be       	out	0x3f, r0	; 63
+ a98:	0f 90       	pop	r0
+ a9a:	78 94       	sei
 		RET                                               ;return from subroutine (  4 clocks) 
- 9dc:	08 95       	ret
+ a9c:	08 95       	ret
 
-000009de <Kernel_PreSleep_Hook>:
+00000a9e <Kernel_PreSleep_Hook>:
 ;used registers          : R24, R25, R30(ZL), R31(ZH)                                          
 ;arg registers           : R25:R24(FunctionPtr)                                                
 ;return registers        : None                                                                
 ;unsafe access registers : R24, R25, R30(ZL), R31(ZH)                                          
 Kernel_PreSleep_Hook:                                     ;total 1.00uS @8MHz     (  8 clocks) 
         MOVW  R30                , R24                    ;move pointer to Z      (  1 clock ) 
- 9de:	fc 01       	movw	r30, r24
+ a9e:	fc 01       	movw	r30, r24
 		ICALL                                             ;indirect call          (  3 clocks) 
- 9e0:	09 95       	icall
+ aa0:	09 95       	icall
 		RET                                               ;return from subroutine (  4 clocks) 
- 9e2:	08 95       	ret
+ aa2:	08 95       	ret
 
-000009e4 <Kernel_Task_Sleep_Time_Get>:
+00000aa4 <Kernel_Task_Sleep_Time_Get>:
 ;used registers          : R18, R24, R25, R30(ZL), R31(ZH)                                     
 ;arg registers           : R24(TaskID)                                                         
 ;return registers        : R25:R24(SleepTime)                                                  
 ;unsafe access registers : R18, R24, R25, R30(ZL), R31(ZH)                                     
 Kernel_Task_Sleep_Time_Get:                               ;total 1.88uS @8MHz     ( 15 clocks) 
 		MOV   R18                , R24                    ;copy                   (  1 clock ) 
- 9e4:	28 2f       	mov	r18, r24
+ aa4:	28 2f       	mov	r18, r24
 		LSL   R18                                         ;x2                     (  1 clock ) 
- 9e6:	22 0f       	add	r18, r18
+ aa6:	22 0f       	add	r18, r18
 		LDI   ZL                 , lo8(KerSchSlp)         ;load low byte          (  1 clock ) 
- 9e8:	e6 e4       	ldi	r30, 0x46	; 70
+ aa8:	ef e4       	ldi	r30, 0x4F	; 79
 		LDI   ZH                 , hi8(KerSchSlp)         ;load high byte         (  1 clock ) 
- 9ea:	f1 e0       	ldi	r31, 0x01	; 1
+ aaa:	f1 e0       	ldi	r31, 0x01	; 1
 		ADD   ZL                 , R18                    ;add low bytes          (  1 clock ) 
- 9ec:	e2 0f       	add	r30, r18
+ aac:	e2 0f       	add	r30, r18
 		LDI   R18                , 0x00                   ;load 0                 (  1 clock ) 
- 9ee:	20 e0       	ldi	r18, 0x00	; 0
+ aae:	20 e0       	ldi	r18, 0x00	; 0
 		ADC   ZH                 , R18                    ;add high byte+carry    (  1 clock ) 
- 9f0:	f2 1f       	adc	r31, r18
+ ab0:	f2 1f       	adc	r31, r18
 		LDD   R24                , Z+0                    ;load sleep time        (  2 clocks) 
- 9f2:	80 81       	ld	r24, Z
+ ab2:	80 81       	ld	r24, Z
 		LDD   R25                , Z+1                    ;load sleep time        (  2 clocks) 
- 9f4:	91 81       	ldd	r25, Z+1	; 0x01
+ ab4:	91 81       	ldd	r25, Z+1	; 0x01
 		RET                                               ;return from subroutine (  4 clocks) 
- 9f6:	08 95       	ret
+ ab6:	08 95       	ret
 
-000009f8 <Kernel_Task_Status_Get>:
+00000ab8 <Kernel_Task_Status_Get>:
 ;used registers          : R18, R24, R30(ZL), R31(ZH)                                          
 ;arg registers           : R24(TaskID)                                                         
 ;return registers        : R24(TaskSts)                                                        
 ;unsafe access registers : R18, R24, R30(ZL), R31(ZH)                                          
 Kernel_Task_Status_Get:                                   ;total 1.50uS @8MHz     ( 12 clocks) 
 		MOV   R18                , R24                    ;copy                   (  1 clock ) 
- 9f8:	28 2f       	mov	r18, r24
+ ab8:	28 2f       	mov	r18, r24
 		LDI   ZL                 , lo8(KerSchSts)         ;load low byte          (  1 clock ) 
- 9fa:	e2 e3       	ldi	r30, 0x32	; 50
+ aba:	eb e3       	ldi	r30, 0x3B	; 59
 		LDI   ZH                 , hi8(KerSchSts)         ;load high byte         (  1 clock ) 
- 9fc:	f1 e0       	ldi	r31, 0x01	; 1
+ abc:	f1 e0       	ldi	r31, 0x01	; 1
 		ADD   ZL                 , R18                    ;add low bytes          (  1 clock ) 
- 9fe:	e2 0f       	add	r30, r18
+ abe:	e2 0f       	add	r30, r18
 		LDI   R18                , 0x00                   ;load 0                 (  1 clock ) 
- a00:	20 e0       	ldi	r18, 0x00	; 0
+ ac0:	20 e0       	ldi	r18, 0x00	; 0
 		ADC   ZH                 , R18                    ;add high byte+carry    (  1 clock ) 
- a02:	f2 1f       	adc	r31, r18
+ ac2:	f2 1f       	adc	r31, r18
 		LD    R24                , Z                      ;load task status       (  2 clocks) 
- a04:	80 81       	ld	r24, Z
+ ac4:	80 81       	ld	r24, Z
 		RET                                               ;return from subroutine (  4 clocks) 
- a06:	08 95       	ret
+ ac6:	08 95       	ret
 
-00000a08 <Kernel_NTask_Get>:
+00000ac8 <Kernel_NTask_Get>:
 ;used registers          : R24                                                                 
 ;arg registers           : None                                                                
 ;return registers        : R24(NTask)                                                          
 ;unsafe access registers : R24                                                                 
 Kernel_NTask_Get:                                         ;total 0.75uS @8MHz     (  6 clocks) 
 		LDS   R24                 , KerBase+OFB_NTSK      ;load ntask             (  2 clock ) 
- a08:	80 91 08 01 	lds	r24, 0x0108
+ ac8:	80 91 11 01 	lds	r24, 0x0111
 		RET                                               ;return from subroutine (  4 clocks) 
- a0c:	08 95       	ret
+ acc:	08 95       	ret
 
-00000a0e <Kernel_Task_Prio_Get>:
+00000ace <Kernel_Task_Prio_Get>:
 ;arg registers           : R24(TaskID)                                                         
 ;return registers        : R24(TaskPriority)                                                   
 ;unsafe access registers : R18, R24, R30(ZL), R31(ZH)                                          
 Kernel_Task_Prio_Get:                                     ;total 1.50uS @8MHz     ( 12 clocks) 
 		;get priority of the task id, arg (task_id->R24), return R24                           
 		MOV   R18                , R24                    ;copy task_id           (  1 clock ) 
- a0e:	28 2f       	mov	r18, r24
+ ace:	28 2f       	mov	r18, r24
 		LDI   ZL                 , lo8(KerSchPr)          ;load low byte          (  1 clock ) 
- a10:	ec e3       	ldi	r30, 0x3C	; 60
+ ad0:	e5 e4       	ldi	r30, 0x45	; 69
 		LDI   ZH                 , hi8(KerSchPr)          ;load high byte         (  1 clock ) 
- a12:	f1 e0       	ldi	r31, 0x01	; 1
+ ad2:	f1 e0       	ldi	r31, 0x01	; 1
 		ADD   ZL                 , R18                    ;add low bytes          (  1 clock ) 
- a14:	e2 0f       	add	r30, r18
+ ad4:	e2 0f       	add	r30, r18
 		LDI   R18                , 0x00                   ;clear reg              (  1 clock ) 
- a16:	20 e0       	ldi	r18, 0x00	; 0
+ ad6:	20 e0       	ldi	r18, 0x00	; 0
 		ADC   ZH                 , R18                    ;add high byte+carry    (  1 clock ) 
- a18:	f2 1f       	adc	r31, r18
+ ad8:	f2 1f       	adc	r31, r18
 		LD    R24                , Z                      ;load priority          (  2 clocks) 
- a1a:	80 81       	ld	r24, Z
+ ada:	80 81       	ld	r24, Z
 		RET                                               ;return from subroutine (  4 clocks) 
- a1c:	08 95       	ret
+ adc:	08 95       	ret
 
-00000a1e <Kernel_Lowest_Prio_Get>:
+00000ade <Kernel_Lowest_Prio_Get>:
 ;used registers          : R24                                                                 
 ;arg registers           : None                                                                
 ;return registers        : R24(LowestPriorityVal)                                              
 ;unsafe access registers : R24                                                                 
 Kernel_Lowest_Prio_Get:                                   ;total 0.75uS @8MHz     (  6 clocks) 
 		LDS   R24                , KerBase+OFB_LPR        ;load lowest priority   (  2 clocks) 
- a1e:	80 91 09 01 	lds	r24, 0x0109
+ ade:	80 91 12 01 	lds	r24, 0x0112
 		RET                                               ;return from subroutine (  4 clocks) 
- a22:	08 95       	ret
+ ae2:	08 95       	ret
 
-00000a24 <Kernel_High_Prio_Task_ID_Get>:
+00000ae4 <Kernel_High_Prio_Task_ID_Get>:
 ;used registers          : R24                                                                 
 ;arg registers           : None                                                                
 ;return registers        : R24(HighstPriorityTaskID)->UserTaskID (Excluding Idle Task)         
 ;unsafe access registers : R24                                                                 
 Kernel_High_Prio_Task_ID_Get:                             ;total 0.88uS @8MHz     (  7 clocks) 
 		LDS   R24                , KerBase+OFB_PTID       ;load priority tak_id   (  2 clocks) 
- a24:	80 91 0a 01 	lds	r24, 0x010A
+ ae4:	80 91 13 01 	lds	r24, 0x0113
 		DEC   R24                                         ;decrement by 1         (  1 clock ) 
- a28:	8a 95       	dec	r24
+ ae8:	8a 95       	dec	r24
 		RET                                               ;return from subroutine (  4 clocks) 
- a2a:	08 95       	ret
+ aea:	08 95       	ret
 
-00000a2c <Kernel_Abs_High_Prio_Task_ID_Get>:
+00000aec <Kernel_Abs_High_Prio_Task_ID_Get>:
 ;used registers          : R24                                                                 
 ;arg registers           : None                                                                
 ;return registers        : R24(HighstPriorityTaskID)->AbsoluteTaskID (Including Idle Task)     
 ;unsafe access registers : R24                                                                 
 Kernel_Abs_High_Prio_Task_ID_Get:                         ;total 0.75uS @8MHz     (  6 clocks) 
 		LDS   R24                , KerBase+OFB_PTID       ;load priority tak_id   (  2 clocks) 
- a2c:	80 91 0a 01 	lds	r24, 0x010A
+ aec:	80 91 13 01 	lds	r24, 0x0113
 		RET                                               ;return from subroutine (  4 clocks) 
- a30:	08 95       	ret
+ af0:	08 95       	ret
 
-00000a32 <Kernel_CPU_Usage_Get>:
+00000af2 <Kernel_CPU_Usage_Get>:
 ;arg registers           : None                                                                
 ;return registers        : R24(CurrentCpuUsage)->In percentage                                 
 ;unsafe access registers : R24                                                                 
 Kernel_CPU_Usage_Get:                                     ;total 0.75uS @8MHz     (  6 clocks) 
 		;get cpu usage, return R24                                                             
 		LDS   R24                , KerBase+OFB_USAGE      ;load cpu usage         (  2 clocks) 
- a32:	80 91 0d 01 	lds	r24, 0x010D
+ af2:	80 91 16 01 	lds	r24, 0x0116
 		RET                                               ;return from subroutine (  4 clocks) 
- a36:	08 95       	ret
+ af6:	08 95       	ret
 
-00000a38 <_exit>:
- a38:	f8 94       	cli
+00000af8 <__udivmodsi4>:
+ af8:	a1 e2       	ldi	r26, 0x21	; 33
+ afa:	1a 2e       	mov	r1, r26
+ afc:	aa 1b       	sub	r26, r26
+ afe:	bb 1b       	sub	r27, r27
+ b00:	fd 01       	movw	r30, r26
+ b02:	0d c0       	rjmp	.+26     	; 0xb1e <__udivmodsi4_ep>
 
-00000a3a <__stop_program>:
- a3a:	ff cf       	rjmp	.-2      	; 0xa3a <__stop_program>
+00000b04 <__udivmodsi4_loop>:
+ b04:	aa 1f       	adc	r26, r26
+ b06:	bb 1f       	adc	r27, r27
+ b08:	ee 1f       	adc	r30, r30
+ b0a:	ff 1f       	adc	r31, r31
+ b0c:	a2 17       	cp	r26, r18
+ b0e:	b3 07       	cpc	r27, r19
+ b10:	e4 07       	cpc	r30, r20
+ b12:	f5 07       	cpc	r31, r21
+ b14:	20 f0       	brcs	.+8      	; 0xb1e <__udivmodsi4_ep>
+ b16:	a2 1b       	sub	r26, r18
+ b18:	b3 0b       	sbc	r27, r19
+ b1a:	e4 0b       	sbc	r30, r20
+ b1c:	f5 0b       	sbc	r31, r21
+
+00000b1e <__udivmodsi4_ep>:
+ b1e:	66 1f       	adc	r22, r22
+ b20:	77 1f       	adc	r23, r23
+ b22:	88 1f       	adc	r24, r24
+ b24:	99 1f       	adc	r25, r25
+ b26:	1a 94       	dec	r1
+ b28:	69 f7       	brne	.-38     	; 0xb04 <__udivmodsi4_loop>
+ b2a:	60 95       	com	r22
+ b2c:	70 95       	com	r23
+ b2e:	80 95       	com	r24
+ b30:	90 95       	com	r25
+ b32:	9b 01       	movw	r18, r22
+ b34:	ac 01       	movw	r20, r24
+ b36:	bd 01       	movw	r22, r26
+ b38:	cf 01       	movw	r24, r30
+ b3a:	08 95       	ret
+
+00000b3c <_exit>:
+ b3c:	f8 94       	cli
+
+00000b3e <__stop_program>:
+ b3e:	ff cf       	rjmp	.-2      	; 0xb3e <__stop_program>

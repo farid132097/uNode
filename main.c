@@ -8,12 +8,13 @@
 
 
 
-int main(void) {
+int main(void) 
+{
     
 	Kernel_Init();
 
-	Kernel_Task_Create(Tasks_Task1,  5);
-	Kernel_Task_Create(Tasks_Task2,  1);
+	Kernel_Task_Create(Task_RGB_LED,  5);
+	Kernel_Task_Create(Task_Vin_Sense,  1);
 	Kernel_Task_Create(Tasks_Task3,  2);
 	Kernel_Task_Create(Tasks_Task4,  3);
 	Kernel_Task_Create(Tasks_Task5,  0);
@@ -25,7 +26,8 @@ int main(void) {
 	
 	Kernel_Start_Tasks();
 	
-    while(1){
+    while(1)
+	{
 		
         
     }

@@ -2,35 +2,33 @@
 
 #include <avr/io.h>
 #include <util/delay.h>
+#include "peripherals.h"
 #include "kernel.h"
 #include "tasks.h"
 
-void Tasks_Disable_Peripherals(void){
-  
+void Tasks_Disable_Peripherals(void)
+{
+    
 }
 
-void Tasks_Task1(void){
+void Task_RGB_LED(void)
+{
+    //Red, Blue, Green
+    DDRD |= (1<<5)|(1<<6)|(1<<7);
+    PORTD|= (1<<5)|(1<<6)|(1<<7);
   
-  
+    while(1)
+    {
+        Kernel_Task_Sleep(30000/KER_TICK_TIME);
+    }
+}
+
+void Task_Vin_Sense(void){
   
   while(1){
     
-    
-
-    Kernel_Task_Sleep(5000/KER_TICK_TIME);
-    
-  }
-}
-
-void Tasks_Task2(void){
-
-  
-  while(1){
-    
-
-    
-
-    Kernel_Task_Sleep(7000/KER_TICK_TIME);
+    Peripherals_ADC_Sample(6, 4);
+    Kernel_Task_Sleep(60000/KER_TICK_TIME);
 	
   }
 }

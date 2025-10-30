@@ -1,0 +1,155 @@
+   1               		.file	"peripherals.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	Peripherals_ADC_Init
+  18               	Peripherals_ADC_Init:
+  19               	.LFB6:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 8091 7A00 		lds r24,122
+  25 0004 87FD      		sbrc r24,7
+  26 0006 00C0      		rjmp .L4
+  27               	.LM3:
+  28 0008 8FEC      		ldi r24,lo8(-49)
+  29 000a 8093 7C00 		sts 124,r24
+  30               	.LM4:
+  31 000e 86E0      		ldi r24,lo8(6)
+  32 0010 8093 7A00 		sts 122,r24
+  33               	.LM5:
+  34 0014 8091 7A00 		lds r24,122
+  35 0018 806C      		ori r24,lo8(-64)
+  36 001a 8093 7A00 		sts 122,r24
+  37               	.L3:
+  38               	.LM6:
+  39 001e 8091 7A00 		lds r24,122
+  40 0022 84FF      		sbrs r24,4
+  41 0024 00C0      		rjmp .L3
+  42               	.L4:
+  43 0026 0895      		ret
+  44               	.LFE6:
+  46               	.global	Peripherals_ADC_Sample
+  48               	Peripherals_ADC_Sample:
+  49               	.LFB7:
+  50               	.LM7:
+  51               	.LVL0:
+  52 0028 DF92      		push r13
+  53 002a EF92      		push r14
+  54 002c FF92      		push r15
+  55 002e 0F93      		push r16
+  56 0030 1F93      		push r17
+  57               	/* prologue: function */
+  58               	/* frame size = 0 */
+  59 0032 182F      		mov r17,r24
+  60 0034 D62E      		mov r13,r22
+  61               	.LM8:
+  62 0036 0E94 0000 		call Peripherals_ADC_Init
+  63               	.LVL1:
+  64               	.LM9:
+  65 003a 8091 7C00 		lds r24,124
+  66               	.LVL2:
+  67               	.LM10:
+  68 003e 807F      		andi r24,lo8(-16)
+  69               	.LM11:
+  70 0040 812B      		or r24,r17
+  71               	.LM12:
+  72 0042 8093 7C00 		sts 124,r24
+  73 0046 EE24      		clr r14
+  74 0048 FF24      		clr r15
+  75 004a 8701      		movw r16,r14
+  76               	.LVL3:
+  77 004c 20E0      		ldi r18,lo8(0)
+  78               	.LVL4:
+  79 004e 00C0      		rjmp .L7
+  80               	.L9:
+  81               	.LBB2:
+  82               	.LM13:
+  83 0050 8091 7A00 		lds r24,122
+  84               	.LVL5:
+  85 0054 8064      		ori r24,lo8(64)
+  86 0056 8093 7A00 		sts 122,r24
+  87               	.L8:
+  88               	.LM14:
+  89 005a 8091 7A00 		lds r24,122
+  90 005e 84FF      		sbrs r24,4
+  91 0060 00C0      		rjmp .L8
+  92               	.LM15:
+  93 0062 8091 7800 		lds r24,120
+  94 0066 9091 7900 		lds r25,(120)+1
+  95 006a A0E0      		ldi r26,lo8(0)
+  96 006c B0E0      		ldi r27,hi8(0)
+  97 006e E80E      		add r14,r24
+  98 0070 F91E      		adc r15,r25
+  99 0072 0A1F      		adc r16,r26
+ 100 0074 1B1F      		adc r17,r27
+ 101               	.LM16:
+ 102 0076 2F5F      		subi r18,lo8(-(1))
+ 103               	.LVL6:
+ 104               	.L7:
+ 105 0078 2D15      		cp r18,r13
+ 106 007a 00F0      		brlo .L9
+ 107 007c 2D2D      		mov r18,r13
+ 108               	.LVL7:
+ 109 007e 30E0      		ldi r19,lo8(0)
+ 110               	.LVL8:
+ 111 0080 40E0      		ldi r20,lo8(0)
+ 112 0082 50E0      		ldi r21,hi8(0)
+ 113               	.LVL9:
+ 114 0084 C801      		movw r24,r16
+ 115 0086 B701      		movw r22,r14
+ 116 0088 0E94 0000 		call __udivmodsi4
+ 117 008c C901      		movw r24,r18
+ 118               	.LVL10:
+ 119               	/* epilogue start */
+ 120               	.LBE2:
+ 121               	.LM17:
+ 122 008e 1F91      		pop r17
+ 123               	.LVL11:
+ 124 0090 0F91      		pop r16
+ 125 0092 FF90      		pop r15
+ 126 0094 EF90      		pop r14
+ 127               	.LVL12:
+ 128 0096 DF90      		pop r13
+ 129               	.LVL13:
+ 130 0098 0895      		ret
+ 131               	.LFE7:
+ 133               	.global	Peripherals_Vin_Sense
+ 135               	Peripherals_Vin_Sense:
+ 136               	.LFB8:
+ 137               	.LM18:
+ 138               	/* prologue: function */
+ 139               	/* frame size = 0 */
+ 140               	/* epilogue start */
+ 141               	.LM19:
+ 142 009a 0895      		ret
+ 143               	.LFE8:
+ 145               	.global	Peripherals
+ 146               	.global	Peripherals
+ 147               		.section .bss
+ 150               	Peripherals:
+ 151 0000 0000 0000 		.skip 9,0
+ 151      0000 0000 
+ 151      00
+ 192               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 peripherals.c
+C:\Users\farid\AppData\Local\Temp/ccqwJUUX.s:2      *ABS*:0000003f __SREG__
+C:\Users\farid\AppData\Local\Temp/ccqwJUUX.s:3      *ABS*:0000003e __SP_H__
+C:\Users\farid\AppData\Local\Temp/ccqwJUUX.s:4      *ABS*:0000003d __SP_L__
+C:\Users\farid\AppData\Local\Temp/ccqwJUUX.s:5      *ABS*:00000034 __CCP__
+C:\Users\farid\AppData\Local\Temp/ccqwJUUX.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\farid\AppData\Local\Temp/ccqwJUUX.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\farid\AppData\Local\Temp/ccqwJUUX.s:18     .text:00000000 Peripherals_ADC_Init
+C:\Users\farid\AppData\Local\Temp/ccqwJUUX.s:48     .text:00000028 Peripherals_ADC_Sample
+C:\Users\farid\AppData\Local\Temp/ccqwJUUX.s:135    .text:0000009a Peripherals_Vin_Sense
+C:\Users\farid\AppData\Local\Temp/ccqwJUUX.s:150    .bss:00000000 Peripherals
+
+UNDEFINED SYMBOLS
+__udivmodsi4
+__do_clear_bss

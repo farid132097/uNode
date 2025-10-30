@@ -15,13 +15,13 @@
   23               	.LM2:
   24 0000 0E94 0000 		call Kernel_Init
   25               	.LM3:
-  26 0004 80E0      		ldi r24,lo8(gs(Tasks_Task1))
-  27 0006 90E0      		ldi r25,hi8(gs(Tasks_Task1))
+  26 0004 80E0      		ldi r24,lo8(gs(Task_RGB_LED))
+  27 0006 90E0      		ldi r25,hi8(gs(Task_RGB_LED))
   28 0008 65E0      		ldi r22,lo8(5)
   29 000a 0E94 0000 		call Kernel_Task_Create
   30               	.LM4:
-  31 000e 80E0      		ldi r24,lo8(gs(Tasks_Task2))
-  32 0010 90E0      		ldi r25,hi8(gs(Tasks_Task2))
+  31 000e 80E0      		ldi r24,lo8(gs(Task_Vin_Sense))
+  32 0010 90E0      		ldi r25,hi8(gs(Task_Vin_Sense))
   33 0012 61E0      		ldi r22,lo8(1)
   34 0014 0E94 0000 		call Kernel_Task_Create
   35               	.LM5:
@@ -71,19 +71,19 @@
  104               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\farid\AppData\Local\Temp/ccXfQOzl.s:2      *ABS*:0000003f __SREG__
-C:\Users\farid\AppData\Local\Temp/ccXfQOzl.s:3      *ABS*:0000003e __SP_H__
-C:\Users\farid\AppData\Local\Temp/ccXfQOzl.s:4      *ABS*:0000003d __SP_L__
-C:\Users\farid\AppData\Local\Temp/ccXfQOzl.s:5      *ABS*:00000034 __CCP__
-C:\Users\farid\AppData\Local\Temp/ccXfQOzl.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\farid\AppData\Local\Temp/ccXfQOzl.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\farid\AppData\Local\Temp/ccXfQOzl.s:18     .text:00000000 main
+C:\Users\farid\AppData\Local\Temp/ccT7I4I1.s:2      *ABS*:0000003f __SREG__
+C:\Users\farid\AppData\Local\Temp/ccT7I4I1.s:3      *ABS*:0000003e __SP_H__
+C:\Users\farid\AppData\Local\Temp/ccT7I4I1.s:4      *ABS*:0000003d __SP_L__
+C:\Users\farid\AppData\Local\Temp/ccT7I4I1.s:5      *ABS*:00000034 __CCP__
+C:\Users\farid\AppData\Local\Temp/ccT7I4I1.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\farid\AppData\Local\Temp/ccT7I4I1.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\farid\AppData\Local\Temp/ccT7I4I1.s:18     .text:00000000 main
 
 UNDEFINED SYMBOLS
 Kernel_Init
-Tasks_Task1
+Task_RGB_LED
 Kernel_Task_Create
-Tasks_Task2
+Task_Vin_Sense
 Tasks_Task3
 Tasks_Task4
 Tasks_Task5

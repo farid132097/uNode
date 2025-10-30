@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "*.asm": "asm",
+        "*.S": "asm",
+        "*.s": "asm",
+        "kernel.h": "c",
+        "tasks.h": "c"
+    }
+}

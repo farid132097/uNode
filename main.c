@@ -16,7 +16,7 @@ int main(void)
 	Kernel_Task_Create(Task_RGB_LED,  5);
 	Kernel_Task_Create(Task_Vin_Sense,  1);
 	Kernel_Task_Create(Task_Radio,  2);
-	//Kernel_Task_Create(Tasks_Task4,  3);
+	Kernel_Task_Create(Task_Sensor,  3);
 	//Kernel_Task_Create(Tasks_Task5,  0);
 	//Kernel_Task_Create(Tasks_Task6,  6);
 	//Kernel_Task_Create(Tasks_Task7,  4);

@@ -3,6 +3,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include "peripherals.h"
+#include "nrf24l01p.h"
 #include "kernel.h"
 #include "tasks.h"
 
@@ -35,30 +36,33 @@ void Task_Vin_Sense(void){
   while(1){
     
     Peripherals_ADC_Sample(6, 4);
-    Kernel_Task_Sleep(60000/KER_TICK_TIME);
+    Kernel_Task_Sleep(6000/KER_TICK_TIME);
 	
   }
 }
 
 void Task_Radio(void){
   
-
+  nRF24L01P_Init();
   
   while(1){
 
     
-    Kernel_Task_Sleep(7000/KER_TICK_TIME);
+    Kernel_Task_Sleep(3000/KER_TICK_TIME);
 	
   }
 }
 
-void Tasks_Task4(void){
-
+void Task_Sensor(void){
+  
+  //Init and Disable SenswEn
+  DDRD  |= (1<<3);
+  PORTD |= (1<<3);
   
   while(1){
 
     
-    Kernel_Task_Sleep(7000/KER_TICK_TIME);
+    Kernel_Task_Sleep(3000/KER_TICK_TIME);
 	
   }
 }
@@ -68,7 +72,7 @@ void Tasks_Task5(void){
   while(1){
     
     Kernel_Task_Sleep(7000/KER_TICK_TIME);
-	
+	  
   }
 }
 

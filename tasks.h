@@ -9,7 +9,7 @@
 void     Tasks_Disable_Peripherals(void);
 void     Task_RGB_LED(void);
 void     Task_Vin_Sense(void);
-void     Tasks_Task2(void);
+void     Task_Radio(void);
 void     Tasks_Task3(void);
 void     Tasks_Task4(void);
 void     Tasks_Task5(void);

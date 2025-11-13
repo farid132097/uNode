@@ -15,21 +15,21 @@
 
 
 //Enable or disable kernel debug via gpio
-#define  KER_DBG_ENABLE
+//#define  KER_DBG_ENABLE
 
 //Uncomment only one
 //#define  KER_TIMER0_AS_TICK_SRC
-#define  KER_WDT_AS_TICK_SRC
-//#define  KER_TOSC_AS_TICK_SRC
+//#define  KER_WDT_AS_TICK_SRC
+#define  KER_TOSC_AS_TICK_SRC
 
 //Uncomment only one
 //#define  KER_WDT_TICK_16MS
 //#define  KER_WDT_TICK_32MS
 //#define  KER_WDT_TICK_64MS
-//#define  KER_WDT_TICK_125MS
+#define  KER_WDT_TICK_125MS
 //#define  KER_WDT_TICK_250MS
 //#define  KER_WDT_TICK_500MS
-#define  KER_WDT_TICK_1000MS
+//#define  KER_WDT_TICK_1000MS
 
 //Uncomment only one
 //#define  KER_TOSC_TICK_1MS
@@ -48,7 +48,7 @@
 //Before entering sleep, several peripherals needs to be disabled
 //User can hook a function which will disable peripherals before sleep
 //Add function by calling Kernel_PreSleep_Hook(func_name) before Kernel_Start_Tasks() 
-#define  KER_CALL_FUNC_BEFORE_SLEEP
+//#define  KER_CALL_FUNC_BEFORE_SLEEP
 
 
 //Define IO address of the DDR & PORT for debug
@@ -63,6 +63,7 @@
 //Do not change below section
 #ifdef KER_TIMER0_AS_TICK_SRC
 #define  KER_SLEEP_MODE_IDLE
+#define KER_TICK_TIME 1U
 #endif
 
 #ifdef KER_WDT_AS_TICK_SRC

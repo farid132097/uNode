@@ -13,13 +13,16 @@ void Tasks_Disable_Peripherals(void)
 
 void Task_RGB_LED(void)
 {
-    //Red, Blue, Green
+    //Red, Green, Blue
     DDRD |= (1<<5)|(1<<6)|(1<<7);
     PORTD|= (1<<5)|(1<<6)|(1<<7);
   
     while(1)
     {
-        Kernel_Task_Sleep(30000/KER_TICK_TIME);
+        PORTD &=~ (1<<6);
+        _delay_ms(2);
+        PORTD |=  (1<<6);
+        Kernel_Task_Sleep(3000/KER_TICK_TIME);
     }
 }
 
@@ -37,7 +40,7 @@ void Task_Vin_Sense(void){
   }
 }
 
-void Tasks_Task3(void){
+void Task_Radio(void){
   
 
   

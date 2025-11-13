@@ -1498,22 +1498,22 @@
  945               			STS    KerBase+OFB_LPR   , R24                    ;save lowest priority   (  2 clocks) 
  946               			LDS    R18               , KerBase+OFB_TID        ;load task id           (  2 clocks) 
  947               			STS    KerBase+OFB_PTID  , R18                    ;save lowest priority   (  2 clocks) 
- 948:kernel.S      ****                                                                                                
- 949:kernel.S      ****     _KER_SCH_NEXT\@:                                                                           
- 950:kernel.S      **** 	    LDS    R18               , KerBase+OFB_TID        ;load task id           (  2 clocks) 
- 951:kernel.S      **** 		INC    R18                                        ;increment by 1         (  1 clock ) 
- 952:kernel.S      **** 		LDS    R19               , KerBase+OFB_NTSK       ;load ntask             (  2 clocks) 
- 953:kernel.S      **** 		CP     R18               , R19                    ;compare with ntask     (  2 clocks) 
- 954:kernel.S      **** 		BRSH   _KER_SCH_EXIT\@                            ;if task_id>=ntask      (  2 clocks) 
- 955:kernel.S      **** 		RJMP   _KER_SCH_LOOP\@                            ;jump to entry          (  2 clocks) 
- 956:kernel.S      **** 	_KER_SCH_EXIT\@:                                                                           
- 957:kernel.S      ****         LDS    R18               , KerBase+OFB_PTID       ;load high prio task id (  2 clocks) 
- 958:kernel.S      **** 		STS    KerBase+OFB_TID   , R18                    ;for test only          (  2 clocks) 
- 959:kernel.S      **** .endm                                                                                          
- 960:kernel.S      **** ;;===================================run scheduler end======================================;; 
- 961:kernel.S      **** 
- 962:kernel.S      **** 
- 963:kernel.S      **** 
+ 948               	                                                                                               
+ 949               	    _KER_SCH_NEXT\@:                                                                           
+ 950               		    LDS    R18               , KerBase+OFB_TID        ;load task id           (  2 clocks) 
+ 951               			INC    R18                                        ;increment by 1         (  1 clock ) 
+ 952               			LDS    R19               , KerBase+OFB_NTSK       ;load ntask             (  2 clocks) 
+ 953               			CP     R18               , R19                    ;compare with ntask     (  2 clocks) 
+ 954               			BRSH   _KER_SCH_EXIT\@                            ;if task_id>=ntask      (  2 clocks) 
+ 955               			RJMP   _KER_SCH_LOOP\@                            ;jump to entry          (  2 clocks) 
+ 956               		_KER_SCH_EXIT\@:                                                                           
+ 957               	        LDS    R18               , KerBase+OFB_PTID       ;load high prio task id (  2 clocks) 
+ 958               			STS    KerBase+OFB_TID   , R18                    ;for test only          (  2 clocks) 
+ 959               	.endm                                                                                          
+ 960               	;;===================================run scheduler end======================================;; 
+ 961               	
+ 962               	
+ 963               	
  964               	
  965               	
  966               	;;================================calc cpu usage starting===================================;; 
@@ -1664,34 +1664,34 @@
  1111               	#ifdef  KER_TOSC_AS_TICK_SRC                                                                   
  1112               	.global  __vector_7                                                                            
  1113               	    __vector_7:                                           ;total 40.00uS @8MHz    (344 clocks) 
- 1114               		    KER_DEBUG_PIN_SET                                 ;debug pin set          (  2 clocks) 
- 1115               			KER_EXIT_SLEEP                                    ;exit sleep if enabled  (  5 clocks) 
- 1116               	        KER_CONTEXT_SAVE_HANDLER                          ;save context           ( 68 clocks) 
- 1117               			KER_SAVE_CURR_TASK_SP                             ;save current task SP   ( 14 clocks) 
- 1118               			KER_COUNTER_RELOAD                                ;counter reload         (  4 clocks) 
- 1119               			KER_TICK_INCREMENT                                ;increment tick counter ( 26 clocks) 
- 1120               			LDI    R24               , SCH_MODE_HANDLER       ;set sch mode           (  1 clock ) 
- 1121               			KER_RUN_SCHEDULER                                 ;run scheduler          (106 clocks) 
- 1122               			KER_CPU_USAGE                                     ;calc cpu usage         ( 26 clocks) 
- 1123               			KER_LOAD_TASK_ID_AND_SP                           ;load next task id, SP  ( 14 clocks) 
- 1124               			KER_CONTEXT_RESTORE_HANDLER                       ;restore context        ( 67 clocks) 
- 1125               		    KER_DEBUG_PIN_CLEAR                               ;debug pin clear        (  2 clocks) 
- 1126               			RETI                                              ;return from interrupt  (  4 clocks) 
+1114:kernel.S      **** 	    KER_DEBUG_PIN_SET                                 ;debug pin set          (  2 clocks) 
+1115:kernel.S      **** 		KER_EXIT_SLEEP                                    ;exit sleep if enabled  (  5 clocks) 
+1116:kernel.S      ****         KER_CONTEXT_SAVE_HANDLER                          ;save context           ( 68 clocks) 
+1117:kernel.S      **** 		KER_SAVE_CURR_TASK_SP                             ;save current task SP   ( 14 clocks) 
+1118:kernel.S      **** 		KER_COUNTER_RELOAD                                ;counter reload         (  4 clocks) 
+1119:kernel.S      **** 		KER_TICK_INCREMENT                                ;increment tick counter ( 26 clocks) 
+1120:kernel.S      **** 		LDI    R24               , SCH_MODE_HANDLER       ;set sch mode           (  1 clock ) 
+1121:kernel.S      **** 		KER_RUN_SCHEDULER                                 ;run scheduler          (106 clocks) 
+1122:kernel.S      **** 		KER_CPU_USAGE                                     ;calc cpu usage         ( 26 clocks) 
+1123:kernel.S      **** 		KER_LOAD_TASK_ID_AND_SP                           ;load next task id, SP  ( 14 clocks) 
+1124:kernel.S      **** 		KER_CONTEXT_RESTORE_HANDLER                       ;restore context        ( 67 clocks) 
+1125:kernel.S      **** 	    KER_DEBUG_PIN_CLEAR                               ;debug pin clear        (  2 clocks) 
+1126:kernel.S      **** 		RETI                                              ;return from interrupt  (  4 clocks) 
  1127               	.global  __vector_9                                                                            
  1128               	    __vector_9:                                           ;total 40.00uS @8MHz    (344 clocks) 
- 1129               		    KER_DEBUG_PIN_SET                                 ;debug pin set          (  2 clocks) 
- 1130               			KER_EXIT_SLEEP                                    ;exit sleep if enabled  (  5 clocks) 
- 1131               	        KER_CONTEXT_SAVE_HANDLER                          ;save context           ( 68 clocks) 
- 1132               			KER_SAVE_CURR_TASK_SP                             ;save current task SP   ( 14 clocks) 
- 1133               			KER_COUNTER_RELOAD                                ;counter reload         (  4 clocks) 
- 1134               			KER_TICK_INCREMENT                                ;increment tick counter ( 26 clocks) 
- 1135               			LDI    R24               , SCH_MODE_HANDLER       ;set sch mode           (  1 clock ) 
- 1136               			KER_RUN_SCHEDULER                                 ;run scheduler          (106 clocks) 
- 1137               			KER_CPU_USAGE                                     ;calc cpu usage         ( 26 clocks) 
- 1138               			KER_LOAD_TASK_ID_AND_SP                           ;load next task id, SP  ( 14 clocks) 
- 1139               			KER_CONTEXT_RESTORE_HANDLER                       ;restore context        ( 67 clocks) 
- 1140               		    KER_DEBUG_PIN_CLEAR                               ;debug pin clear        (  2 clocks) 
- 1141               			RETI                                              ;return from interrupt  (  4 clocks) 
+1129:kernel.S      **** 	    KER_DEBUG_PIN_SET                                 ;debug pin set          (  2 clocks) 
+1130:kernel.S      **** 		KER_EXIT_SLEEP                                    ;exit sleep if enabled  (  5 clocks) 
+1131:kernel.S      ****         KER_CONTEXT_SAVE_HANDLER                          ;save context           ( 68 clocks) 
+1132:kernel.S      **** 		KER_SAVE_CURR_TASK_SP                             ;save current task SP   ( 14 clocks) 
+1133:kernel.S      **** 		KER_COUNTER_RELOAD                                ;counter reload         (  4 clocks) 
+1134:kernel.S      **** 		KER_TICK_INCREMENT                                ;increment tick counter ( 26 clocks) 
+1135:kernel.S      **** 		LDI    R24               , SCH_MODE_HANDLER       ;set sch mode           (  1 clock ) 
+1136:kernel.S      **** 		KER_RUN_SCHEDULER                                 ;run scheduler          (106 clocks) 
+1137:kernel.S      **** 		KER_CPU_USAGE                                     ;calc cpu usage         ( 26 clocks) 
+1138:kernel.S      **** 		KER_LOAD_TASK_ID_AND_SP                           ;load next task id, SP  ( 14 clocks) 
+1139:kernel.S      **** 		KER_CONTEXT_RESTORE_HANDLER                       ;restore context        ( 67 clocks) 
+1140:kernel.S      **** 	    KER_DEBUG_PIN_CLEAR                               ;debug pin clear        (  2 clocks) 
+1141:kernel.S      **** 		RETI                                              ;return from interrupt  (  4 clocks) 
  1142               	#endif                                                                                         
  1143               	
  1144               	#ifdef  KER_TIMER0_AS_TICK_SRC                                                                 
@@ -1764,14 +1764,14 @@
 1211:kernel.S      **** 		STS   SRWDTCSR           , R18                    ;set val                (  2 clocks) 
 1212:kernel.S      **** 		LDI   R18                , 0x00                   ;clear WDE              (  1 clock ) 
 1213:kernel.S      **** 		STS   SRWDTCSR           , R18                    ;set val                (  2 clocks) 
- 1214               			#endif                                                                                 
- 1215               			#ifdef KER_TOSC_AS_TICK_SRC                                                            
- 1216               	        LDI   R18                , 0x00                   ;clear interrupt enbits (  1 clock ) 
- 1217               			STS   SRTIMSK2           , R18                    ;set val to TIMSK2      (  2 clocks) 
- 1218               			LDI   R18                , 0x00                   ;clear reg              (  1 clock ) 
- 1219               			STS   SRTCCR2B           , R18                    ;set val to TCCR2B      (  2 clocks) 
- 1220               			LDI   R18                , 0x00                   ;clear AS2 bit          (  1 clock ) 
- 1221               			STS   SRASSR             , R18                    ;set val to ASSR        (  2 clocks) 
+1214:kernel.S      **** 		#endif                                                                                 
+1215:kernel.S      **** 		#ifdef KER_TOSC_AS_TICK_SRC                                                            
+1216:kernel.S      ****         LDI   R18                , 0x00                   ;clear interrupt enbits (  1 clock ) 
+1217:kernel.S      **** 		STS   SRTIMSK2           , R18                    ;set val to TIMSK2      (  2 clocks) 
+1218:kernel.S      **** 		LDI   R18                , 0x00                   ;clear reg              (  1 clock ) 
+1219:kernel.S      **** 		STS   SRTCCR2B           , R18                    ;set val to TCCR2B      (  2 clocks) 
+1220:kernel.S      **** 		LDI   R18                , 0x00                   ;clear AS2 bit          (  1 clock ) 
+1221:kernel.S      **** 		STS   SRASSR             , R18                    ;set val to ASSR        (  2 clocks) 
  1222               			#endif                                                                                 
  1223               			;save values for future use                                                            
 1224:kernel.S      **** 		STS   KerBase+OFB_PRS    , R24                    ;KerBase[5] prescaler   (  2 clocks) 
@@ -1914,7 +1914,7 @@
  1361               	    _IDLE_LOOP:                                           ;forever loop                        
 1362:kernel.S      **** 	    KER_DISABLE_ANALOG_DOMAIN                         ;disable adc, ac        ( 10 clocks) 
  1363               			#ifdef KER_CALL_FUNC_BEFORE_SLEEP                                                      
-1364:kernel.S      **** 		CALL  Kernel_PreSleep_Hook                        ;call func before sleep (  8 clocks) 
+ 1364               			CALL  Kernel_PreSleep_Hook                        ;call func before sleep (  8 clocks) 
  1365               			#endif                                                                                 
 1366:kernel.S      **** 	    KER_ENTER_SLEEP                                   ;enter sleep mode       (  6 clocks) 
 1367:kernel.S      **** 		RJMP  _IDLE_LOOP                                  ;jump to loop start     (  2 clocks) 
@@ -2235,60 +2235,78 @@ DEFINED SYMBOLS
             kernel.S:136    .bss:0000003c KerSchPr
             kernel.S:139    .bss:00000046 KerSchSlp
             kernel.S:142    .bss:0000005a KerStack
-            kernel.S:947    .text:00000000 __vector_6
-            kernel.S:1172   .text:000001f0 Kernel_SysTick_Reg_Init
-            kernel.S:1326   .text:000004a2 Kernel_Init
-            kernel.S:1239   .text:0000028e Kernel_Task_Create
-            kernel.S:1306   .text:0000037e Kernel_Start_Tasks
-            kernel.S:1359   .text:00000500 Kernel_Task_Idle
-            kernel.S:1379   .text:00000530 Kernel_Task_Sleep
-            kernel.S:1412   .text:000006c6 Kernel_Task_Constant_Latency
-            kernel.S:1439   .text:000006f2 Kernel_Task_Constant_Latency_Sleep
-            kernel.S:1466   .text:00000874 Kernel_PreSleep_Hook
-            kernel.S:1481   .text:0000087a Kernel_Task_Sleep_Time_Get
-            kernel.S:1503   .text:0000088e Kernel_Task_Status_Get
-            kernel.S:1523   .text:0000089e Kernel_NTask_Get
-            kernel.S:1537   .text:000008a4 Kernel_Task_Prio_Get
-            kernel.S:1558   .text:000008b4 Kernel_Lowest_Prio_Get
-            kernel.S:1572   .text:000008ba Kernel_High_Prio_Task_ID_Get
-            kernel.S:1587   .text:000008c2 Kernel_Abs_High_Prio_Task_ID_Get
-            kernel.S:1601   .text:000008c8 Kernel_CPU_Usage_Get
-            kernel.S:955    .text:000000b6 _KER_SCH_LOOP9
-            kernel.S:955    .text:000000ec _VAL_NULL10
-            kernel.S:955    .text:00000100 _VAL_NOT_NULL10
-            kernel.S:955    .text:00000110 _EXIT_SLP_TIME10
-            kernel.S:955    .text:0000011a _KER_CALC_PRIO9
-            kernel.S:955    .text:0000013e _KER_SCH_NEXT9
-            kernel.S:955    .text:0000014e _KER_SCH_EXIT9
-            kernel.S:956    .text:00000168 _KER_USG_TICK15
-            kernel.S:956    .text:00000182 _KER_USG_UTC_SV15
-            kernel.S:1308   .text:0000038e _KER_SCH_LOOP32
-            kernel.S:1308   .text:000003c4 _VAL_NULL33
-            kernel.S:1308   .text:000003d8 _VAL_NOT_NULL33
-            kernel.S:1308   .text:000003e8 _EXIT_SLP_TIME33
-            kernel.S:1308   .text:000003f2 _KER_CALC_PRIO32
-            kernel.S:1308   .text:00000416 _KER_SCH_NEXT32
-            kernel.S:1308   .text:00000426 _KER_SCH_EXIT32
-            kernel.S:1361   .text:0000050a _IDLE_LOOP
-            kernel.S:1397   .text:000005c6 _KER_SCH_LOOP56
-            kernel.S:1397   .text:000005fc _VAL_NULL57
-            kernel.S:1397   .text:00000610 _VAL_NOT_NULL57
-            kernel.S:1397   .text:00000620 _EXIT_SLP_TIME57
-            kernel.S:1397   .text:0000062a _KER_CALC_PRIO56
-            kernel.S:1397   .text:0000064e _KER_SCH_NEXT56
-            kernel.S:1397   .text:0000065e _KER_SCH_EXIT56
-            kernel.S:1451   .text:00000774 _KER_SCH_LOOP75
-            kernel.S:1451   .text:000007aa _VAL_NULL76
-            kernel.S:1451   .text:000007be _VAL_NOT_NULL76
-            kernel.S:1451   .text:000007ce _EXIT_SLP_TIME76
-            kernel.S:1451   .text:000007d8 _KER_CALC_PRIO75
-            kernel.S:1451   .text:000007fc _KER_SCH_NEXT75
-            kernel.S:1451   .text:0000080c _KER_SCH_EXIT75
+            kernel.S:1113   .text:00000000 __vector_7
+            kernel.S:1128   .text:000001e2 __vector_9
+            kernel.S:1172   .text:000003c4 Kernel_SysTick_Reg_Init
+            kernel.S:1326   .text:000006d8 Kernel_Init
+            kernel.S:1239   .text:00000454 Kernel_Task_Create
+            kernel.S:1306   .text:00000544 Kernel_Start_Tasks
+            kernel.S:1359   .text:00000736 Kernel_Task_Idle
+            kernel.S:1379   .text:00000762 Kernel_Task_Sleep
+            kernel.S:1412   .text:000008f8 Kernel_Task_Constant_Latency
+            kernel.S:1439   .text:00000924 Kernel_Task_Constant_Latency_Sleep
+            kernel.S:1466   .text:00000aa6 Kernel_PreSleep_Hook
+            kernel.S:1481   .text:00000aac Kernel_Task_Sleep_Time_Get
+            kernel.S:1503   .text:00000ac0 Kernel_Task_Status_Get
+            kernel.S:1523   .text:00000ad0 Kernel_NTask_Get
+            kernel.S:1537   .text:00000ad6 Kernel_Task_Prio_Get
+            kernel.S:1558   .text:00000ae6 Kernel_Lowest_Prio_Get
+            kernel.S:1572   .text:00000aec Kernel_High_Prio_Task_ID_Get
+            kernel.S:1587   .text:00000af4 Kernel_Abs_High_Prio_Task_ID_Get
+            kernel.S:1601   .text:00000afa Kernel_CPU_Usage_Get
+            kernel.S:1121   .text:000000b4 _KER_SCH_LOOP9
+            kernel.S:1121   .text:000000ea _VAL_NULL10
+            kernel.S:1121   .text:000000fe _VAL_NOT_NULL10
+            kernel.S:1121   .text:0000010e _EXIT_SLP_TIME10
+            kernel.S:1121   .text:00000118 _KER_CALC_PRIO9
+            kernel.S:1121   .text:0000013c _KER_SCH_NEXT9
+            kernel.S:1121   .text:0000014c _KER_SCH_EXIT9
+            kernel.S:1122   .text:00000166 _KER_USG_TICK15
+            kernel.S:1122   .text:00000180 _KER_USG_UTC_SV15
+            kernel.S:1136   .text:00000296 _KER_SCH_LOOP31
+            kernel.S:1136   .text:000002cc _VAL_NULL32
+            kernel.S:1136   .text:000002e0 _VAL_NOT_NULL32
+            kernel.S:1136   .text:000002f0 _EXIT_SLP_TIME32
+            kernel.S:1136   .text:000002fa _KER_CALC_PRIO31
+            kernel.S:1136   .text:0000031e _KER_SCH_NEXT31
+            kernel.S:1136   .text:0000032e _KER_SCH_EXIT31
+            kernel.S:1137   .text:00000348 _KER_USG_TICK37
+            kernel.S:1137   .text:00000362 _KER_USG_UTC_SV37
+            kernel.S:1308   .text:00000554 _KER_SCH_LOOP54
+            kernel.S:1308   .text:0000058a _VAL_NULL55
+            kernel.S:1308   .text:0000059e _VAL_NOT_NULL55
+            kernel.S:1308   .text:000005ae _EXIT_SLP_TIME55
+            kernel.S:1308   .text:000005b8 _KER_CALC_PRIO54
+            kernel.S:1308   .text:000005dc _KER_SCH_NEXT54
+            kernel.S:1308   .text:000005ec _KER_SCH_EXIT54
+            kernel.S:311    .text:0000067c _KER_TC2_AUB65
+            kernel.S:311    .text:00000684 _KER_TC2_BUB65
+            kernel.S:311    .text:0000068c _KER_OC2_AUB65
+            kernel.S:311    .text:00000694 _KER_OC2_BUB65
+            kernel.S:311    .text:0000069c _KER_TC2_UB65
+            kernel.S:311    .text:000006a4 _KER_TC2_TOV265
+            kernel.S:311    .text:000006b2 _KER_TC2_OCF2A65
+            kernel.S:311    .text:000006c0 _KER_TC2_OCF2B65
+            kernel.S:311    .text:000006ce _KER_TC2_INTEN65
+            kernel.S:1361   .text:00000740 _IDLE_LOOP
+            kernel.S:1397   .text:000007f8 _KER_SCH_LOOP78
+            kernel.S:1397   .text:0000082e _VAL_NULL79
+            kernel.S:1397   .text:00000842 _VAL_NOT_NULL79
+            kernel.S:1397   .text:00000852 _EXIT_SLP_TIME79
+            kernel.S:1397   .text:0000085c _KER_CALC_PRIO78
+            kernel.S:1397   .text:00000880 _KER_SCH_NEXT78
+            kernel.S:1397   .text:00000890 _KER_SCH_EXIT78
+            kernel.S:1451   .text:000009a6 _KER_SCH_LOOP97
+            kernel.S:1451   .text:000009dc _VAL_NULL98
+            kernel.S:1451   .text:000009f0 _VAL_NOT_NULL98
+            kernel.S:1451   .text:00000a00 _EXIT_SLP_TIME98
+            kernel.S:1451   .text:00000a0a _KER_CALC_PRIO97
+            kernel.S:1451   .text:00000a2e _KER_SCH_NEXT97
+            kernel.S:1451   .text:00000a3e _KER_SCH_EXIT97
 
 UNDEFINED SYMBOLS
-__vector_7
+__vector_6
 __vector_8
-__vector_9
 __vector_16
 Kernel_SysTick_Val_Get
 Kernel_SysTick_Val_Safely_Get

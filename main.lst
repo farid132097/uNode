@@ -25,72 +25,36 @@
   33 0012 61E0      		ldi r22,lo8(1)
   34 0014 0E94 0000 		call Kernel_Task_Create
   35               	.LM5:
-  36 0018 80E0      		ldi r24,lo8(gs(Tasks_Task3))
-  37 001a 90E0      		ldi r25,hi8(gs(Tasks_Task3))
+  36 0018 80E0      		ldi r24,lo8(gs(Task_Radio))
+  37 001a 90E0      		ldi r25,hi8(gs(Task_Radio))
   38 001c 62E0      		ldi r22,lo8(2)
   39 001e 0E94 0000 		call Kernel_Task_Create
   40               	.LM6:
-  41 0022 80E0      		ldi r24,lo8(gs(Tasks_Task4))
-  42 0024 90E0      		ldi r25,hi8(gs(Tasks_Task4))
-  43 0026 63E0      		ldi r22,lo8(3)
-  44 0028 0E94 0000 		call Kernel_Task_Create
-  45               	.LM7:
-  46 002c 80E0      		ldi r24,lo8(gs(Tasks_Task5))
-  47 002e 90E0      		ldi r25,hi8(gs(Tasks_Task5))
-  48 0030 60E0      		ldi r22,lo8(0)
-  49 0032 0E94 0000 		call Kernel_Task_Create
-  50               	.LM8:
-  51 0036 80E0      		ldi r24,lo8(gs(Tasks_Task6))
-  52 0038 90E0      		ldi r25,hi8(gs(Tasks_Task6))
-  53 003a 66E0      		ldi r22,lo8(6)
-  54 003c 0E94 0000 		call Kernel_Task_Create
-  55               	.LM9:
-  56 0040 80E0      		ldi r24,lo8(gs(Tasks_Task7))
-  57 0042 90E0      		ldi r25,hi8(gs(Tasks_Task7))
-  58 0044 64E0      		ldi r22,lo8(4)
-  59 0046 0E94 0000 		call Kernel_Task_Create
-  60               	.LM10:
-  61 004a 80E0      		ldi r24,lo8(gs(Tasks_Task8))
-  62 004c 90E0      		ldi r25,hi8(gs(Tasks_Task8))
-  63 004e 68E0      		ldi r22,lo8(8)
-  64 0050 0E94 0000 		call Kernel_Task_Create
-  65               	.LM11:
-  66 0054 80E0      		ldi r24,lo8(gs(Tasks_Task9))
-  67 0056 90E0      		ldi r25,hi8(gs(Tasks_Task9))
-  68 0058 67E0      		ldi r22,lo8(7)
-  69 005a 0E94 0000 		call Kernel_Task_Create
-  70               	.LM12:
-  71 005e 80E0      		ldi r24,lo8(gs(Tasks_Disable_Peripherals))
-  72 0060 90E0      		ldi r25,hi8(gs(Tasks_Disable_Peripherals))
-  73 0062 0E94 0000 		call Kernel_PreSleep_Hook
-  74               	.LM13:
-  75 0066 0E94 0000 		call Kernel_Start_Tasks
-  76               	.L2:
-  77 006a 00C0      		rjmp .L2
-  78               	.LFE6:
- 104               	.Letext0:
+  41 0022 80E0      		ldi r24,lo8(gs(Tasks_Disable_Peripherals))
+  42 0024 90E0      		ldi r25,hi8(gs(Tasks_Disable_Peripherals))
+  43 0026 0E94 0000 		call Kernel_PreSleep_Hook
+  44               	.LM7:
+  45 002a 0E94 0000 		call Kernel_Start_Tasks
+  46               	.L2:
+  47 002e 00C0      		rjmp .L2
+  48               	.LFE6:
+  74               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\farid\AppData\Local\Temp/ccT7I4I1.s:2      *ABS*:0000003f __SREG__
-C:\Users\farid\AppData\Local\Temp/ccT7I4I1.s:3      *ABS*:0000003e __SP_H__
-C:\Users\farid\AppData\Local\Temp/ccT7I4I1.s:4      *ABS*:0000003d __SP_L__
-C:\Users\farid\AppData\Local\Temp/ccT7I4I1.s:5      *ABS*:00000034 __CCP__
-C:\Users\farid\AppData\Local\Temp/ccT7I4I1.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\farid\AppData\Local\Temp/ccT7I4I1.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\farid\AppData\Local\Temp/ccT7I4I1.s:18     .text:00000000 main
+C:\Users\farid\AppData\Local\Temp/ccjxTErT.s:2      *ABS*:0000003f __SREG__
+C:\Users\farid\AppData\Local\Temp/ccjxTErT.s:3      *ABS*:0000003e __SP_H__
+C:\Users\farid\AppData\Local\Temp/ccjxTErT.s:4      *ABS*:0000003d __SP_L__
+C:\Users\farid\AppData\Local\Temp/ccjxTErT.s:5      *ABS*:00000034 __CCP__
+C:\Users\farid\AppData\Local\Temp/ccjxTErT.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\farid\AppData\Local\Temp/ccjxTErT.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\farid\AppData\Local\Temp/ccjxTErT.s:18     .text:00000000 main
 
 UNDEFINED SYMBOLS
 Kernel_Init
 Task_RGB_LED
 Kernel_Task_Create
 Task_Vin_Sense
-Tasks_Task3
-Tasks_Task4
-Tasks_Task5
-Tasks_Task6
-Tasks_Task7
-Tasks_Task8
-Tasks_Task9
+Task_Radio
 Tasks_Disable_Peripherals
 Kernel_PreSleep_Hook
 Kernel_Start_Tasks

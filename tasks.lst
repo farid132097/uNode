@@ -24,8 +24,8 @@
   34               	/* frame size = 0 */
   35               	.L4:
   36               	.LM4:
-  37 0002 87E0      		ldi r24,lo8(7)
-  38 0004 90E0      		ldi r25,hi8(7)
+  37 0002 86E4      		ldi r24,lo8(70)
+  38 0004 90E0      		ldi r25,hi8(70)
   39 0006 0E94 0000 		call Kernel_Task_Sleep
   40 000a 00C0      		rjmp .L4
   41               	.LFE15:
@@ -37,8 +37,8 @@
   49               	/* frame size = 0 */
   50               	.L7:
   51               	.LM6:
-  52 000c 87E0      		ldi r24,lo8(7)
-  53 000e 90E0      		ldi r25,hi8(7)
+  52 000c 86E4      		ldi r24,lo8(70)
+  53 000e 90E0      		ldi r25,hi8(70)
   54 0010 0E94 0000 		call Kernel_Task_Sleep
   55 0014 00C0      		rjmp .L7
   56               	.LFE14:
@@ -50,8 +50,8 @@
   64               	/* frame size = 0 */
   65               	.L10:
   66               	.LM8:
-  67 0016 87E0      		ldi r24,lo8(7)
-  68 0018 90E0      		ldi r25,hi8(7)
+  67 0016 86E4      		ldi r24,lo8(70)
+  68 0018 90E0      		ldi r25,hi8(70)
   69 001a 0E94 0000 		call Kernel_Task_Sleep
   70 001e 00C0      		rjmp .L10
   71               	.LFE13:
@@ -63,8 +63,8 @@
   79               	/* frame size = 0 */
   80               	.L13:
   81               	.LM10:
-  82 0020 87E0      		ldi r24,lo8(7)
-  83 0022 90E0      		ldi r25,hi8(7)
+  82 0020 86E4      		ldi r24,lo8(70)
+  83 0022 90E0      		ldi r25,hi8(70)
   84 0024 0E94 0000 		call Kernel_Task_Sleep
   85 0028 00C0      		rjmp .L13
   86               	.LFE12:
@@ -76,8 +76,8 @@
   94               	/* frame size = 0 */
   95               	.L16:
   96               	.LM12:
-  97 002a 87E0      		ldi r24,lo8(7)
-  98 002c 90E0      		ldi r25,hi8(7)
+  97 002a 86E4      		ldi r24,lo8(70)
+  98 002c 90E0      		ldi r25,hi8(70)
   99 002e 0E94 0000 		call Kernel_Task_Sleep
  100 0032 00C0      		rjmp .L16
  101               	.LFE11:
@@ -89,21 +89,21 @@
  109               	/* frame size = 0 */
  110               	.L19:
  111               	.LM14:
- 112 0034 87E0      		ldi r24,lo8(7)
- 113 0036 90E0      		ldi r25,hi8(7)
+ 112 0034 86E4      		ldi r24,lo8(70)
+ 113 0036 90E0      		ldi r25,hi8(70)
  114 0038 0E94 0000 		call Kernel_Task_Sleep
  115 003c 00C0      		rjmp .L19
  116               	.LFE10:
- 118               	.global	Tasks_Task3
- 120               	Tasks_Task3:
+ 118               	.global	Task_Radio
+ 120               	Task_Radio:
  121               	.LFB9:
  122               	.LM15:
  123               	/* prologue: function */
  124               	/* frame size = 0 */
  125               	.L22:
  126               	.LM16:
- 127 003e 87E0      		ldi r24,lo8(7)
- 128 0040 90E0      		ldi r25,hi8(7)
+ 127 003e 86E4      		ldi r24,lo8(70)
+ 128 0040 90E0      		ldi r25,hi8(70)
  129 0042 0E94 0000 		call Kernel_Task_Sleep
  130 0046 00C0      		rjmp .L22
  131               	.LFE9:
@@ -111,63 +111,98 @@
  135               	Task_RGB_LED:
  136               	.LFB7:
  137               	.LM17:
- 138               	/* prologue: function */
- 139               	/* frame size = 0 */
- 140               	.LM18:
- 141 0048 8AB1      		in r24,42-32
- 142 004a 806E      		ori r24,lo8(-32)
- 143 004c 8AB9      		out 42-32,r24
- 144               	.LM19:
- 145 004e 8BB1      		in r24,43-32
- 146 0050 806E      		ori r24,lo8(-32)
- 147 0052 8BB9      		out 43-32,r24
- 148               	.L25:
- 149               	.LM20:
- 150 0054 8EE1      		ldi r24,lo8(30)
- 151 0056 90E0      		ldi r25,hi8(30)
- 152 0058 0E94 0000 		call Kernel_Task_Sleep
- 153 005c 00C0      		rjmp .L25
- 154               	.LFE7:
- 156               	.global	Task_Vin_Sense
- 158               	Task_Vin_Sense:
- 159               	.LFB8:
- 160               	.LM21:
- 161               	/* prologue: function */
- 162               	/* frame size = 0 */
- 163               	.LM22:
- 164 005e 529A      		sbi 42-32,2
- 165               	.LM23:
- 166 0060 5A98      		cbi 43-32,2
- 167               	.L28:
- 168               	.LM24:
- 169 0062 86E0      		ldi r24,lo8(6)
- 170 0064 64E0      		ldi r22,lo8(4)
- 171 0066 0E94 0000 		call Peripherals_ADC_Sample
- 172               	.LM25:
- 173 006a 8CE3      		ldi r24,lo8(60)
- 174 006c 90E0      		ldi r25,hi8(60)
- 175 006e 0E94 0000 		call Kernel_Task_Sleep
- 176 0072 00C0      		rjmp .L28
- 177               	.LFE8:
- 275               	.Letext0:
+ 138 0048 CF93      		push r28
+ 139 004a DF93      		push r29
+ 140               	/* prologue: function */
+ 141               	/* frame size = 0 */
+ 142               	.LM18:
+ 143 004c 8AB1      		in r24,42-32
+ 144 004e 806E      		ori r24,lo8(-32)
+ 145 0050 8AB9      		out 42-32,r24
+ 146               	.LM19:
+ 147 0052 8BB1      		in r24,43-32
+ 148 0054 806E      		ori r24,lo8(-32)
+ 149 0056 8BB9      		out 43-32,r24
+ 150               	.LBB12:
+ 151               	.LBB13:
+ 152               	.LBB14:
+ 153               	.LBB15:
+ 154               	.LM20:
+ 155 0058 C0EA      		ldi r28,lo8(4000)
+ 156 005a DFE0      		ldi r29,hi8(4000)
+ 157               	.L25:
+ 158               	.LBE15:
+ 159               	.LBE14:
+ 160               	.LBE13:
+ 161               	.LBE12:
+ 162               	.LM21:
+ 163 005c 5E98      		cbi 43-32,6
+ 164               	.LBB19:
+ 165               	.LBB18:
+ 166               	.LBB17:
+ 167               	.LBB16:
+ 168               	.LM22:
+ 169 005e CE01      		movw r24,r28
+ 170               	.LVL0:
+ 171               	/* #APP */
+ 172               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 173 0060 0197      		1: sbiw r24,1
+ 174 0062 01F4      		brne 1b
+ 175               	 ;  0 "" 2
+ 176               	/* #NOAPP */
+ 177               	.LBE16:
+ 178               	.LBE17:
+ 179               	.LBE18:
+ 180               	.LBE19:
+ 181               	.LM23:
+ 182 0064 5E9A      		sbi 43-32,6
+ 183               	.LM24:
+ 184 0066 8EE1      		ldi r24,lo8(30)
+ 185 0068 90E0      		ldi r25,hi8(30)
+ 186               	.LVL1:
+ 187 006a 0E94 0000 		call Kernel_Task_Sleep
+ 188 006e 00C0      		rjmp .L25
+ 189               	.LFE7:
+ 191               	.global	Task_Vin_Sense
+ 193               	Task_Vin_Sense:
+ 194               	.LFB8:
+ 195               	.LM25:
+ 196               	/* prologue: function */
+ 197               	/* frame size = 0 */
+ 198               	.LM26:
+ 199 0070 529A      		sbi 42-32,2
+ 200               	.LM27:
+ 201 0072 5A98      		cbi 43-32,2
+ 202               	.L28:
+ 203               	.LM28:
+ 204 0074 86E0      		ldi r24,lo8(6)
+ 205 0076 64E0      		ldi r22,lo8(4)
+ 206 0078 0E94 0000 		call Peripherals_ADC_Sample
+ 207               	.LM29:
+ 208 007c 88E5      		ldi r24,lo8(600)
+ 209 007e 92E0      		ldi r25,hi8(600)
+ 210 0080 0E94 0000 		call Kernel_Task_Sleep
+ 211 0084 00C0      		rjmp .L28
+ 212               	.LFE8:
+ 310               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 tasks.c
-C:\Users\farid\AppData\Local\Temp/ccM9wkhL.s:2      *ABS*:0000003f __SREG__
-C:\Users\farid\AppData\Local\Temp/ccM9wkhL.s:3      *ABS*:0000003e __SP_H__
-C:\Users\farid\AppData\Local\Temp/ccM9wkhL.s:4      *ABS*:0000003d __SP_L__
-C:\Users\farid\AppData\Local\Temp/ccM9wkhL.s:5      *ABS*:00000034 __CCP__
-C:\Users\farid\AppData\Local\Temp/ccM9wkhL.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\farid\AppData\Local\Temp/ccM9wkhL.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\farid\AppData\Local\Temp/ccM9wkhL.s:18     .text:00000000 Tasks_Disable_Peripherals
-C:\Users\farid\AppData\Local\Temp/ccM9wkhL.s:30     .text:00000002 Tasks_Task9
-C:\Users\farid\AppData\Local\Temp/ccM9wkhL.s:45     .text:0000000c Tasks_Task8
-C:\Users\farid\AppData\Local\Temp/ccM9wkhL.s:60     .text:00000016 Tasks_Task7
-C:\Users\farid\AppData\Local\Temp/ccM9wkhL.s:75     .text:00000020 Tasks_Task6
-C:\Users\farid\AppData\Local\Temp/ccM9wkhL.s:90     .text:0000002a Tasks_Task5
-C:\Users\farid\AppData\Local\Temp/ccM9wkhL.s:105    .text:00000034 Tasks_Task4
-C:\Users\farid\AppData\Local\Temp/ccM9wkhL.s:120    .text:0000003e Tasks_Task3
-C:\Users\farid\AppData\Local\Temp/ccM9wkhL.s:135    .text:00000048 Task_RGB_LED
-C:\Users\farid\AppData\Local\Temp/ccM9wkhL.s:158    .text:0000005e Task_Vin_Sense
+C:\Users\farid\AppData\Local\Temp/ccjl1zwY.s:2      *ABS*:0000003f __SREG__
+C:\Users\farid\AppData\Local\Temp/ccjl1zwY.s:3      *ABS*:0000003e __SP_H__
+C:\Users\farid\AppData\Local\Temp/ccjl1zwY.s:4      *ABS*:0000003d __SP_L__
+C:\Users\farid\AppData\Local\Temp/ccjl1zwY.s:5      *ABS*:00000034 __CCP__
+C:\Users\farid\AppData\Local\Temp/ccjl1zwY.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\farid\AppData\Local\Temp/ccjl1zwY.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\farid\AppData\Local\Temp/ccjl1zwY.s:18     .text:00000000 Tasks_Disable_Peripherals
+C:\Users\farid\AppData\Local\Temp/ccjl1zwY.s:30     .text:00000002 Tasks_Task9
+C:\Users\farid\AppData\Local\Temp/ccjl1zwY.s:45     .text:0000000c Tasks_Task8
+C:\Users\farid\AppData\Local\Temp/ccjl1zwY.s:60     .text:00000016 Tasks_Task7
+C:\Users\farid\AppData\Local\Temp/ccjl1zwY.s:75     .text:00000020 Tasks_Task6
+C:\Users\farid\AppData\Local\Temp/ccjl1zwY.s:90     .text:0000002a Tasks_Task5
+C:\Users\farid\AppData\Local\Temp/ccjl1zwY.s:105    .text:00000034 Tasks_Task4
+C:\Users\farid\AppData\Local\Temp/ccjl1zwY.s:120    .text:0000003e Task_Radio
+C:\Users\farid\AppData\Local\Temp/ccjl1zwY.s:135    .text:00000048 Task_RGB_LED
+C:\Users\farid\AppData\Local\Temp/ccjl1zwY.s:193    .text:00000070 Task_Vin_Sense
 
 UNDEFINED SYMBOLS
 Kernel_Task_Sleep

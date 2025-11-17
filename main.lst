@@ -17,7 +17,7 @@
   25               	.LM3:
   26 0004 80E0      		ldi r24,lo8(gs(Task_RGB_LED))
   27 0006 90E0      		ldi r25,hi8(gs(Task_RGB_LED))
-  28 0008 65E0      		ldi r22,lo8(5)
+  28 0008 60E0      		ldi r22,lo8(0)
   29 000a 0E94 0000 		call Kernel_Task_Create
   30               	.LM4:
   31 000e 80E0      		ldi r24,lo8(gs(Task_Vin_Sense))
@@ -46,13 +46,13 @@
   79               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\farid\AppData\Local\Temp/ccq4B0Mg.s:2      *ABS*:0000003f __SREG__
-C:\Users\farid\AppData\Local\Temp/ccq4B0Mg.s:3      *ABS*:0000003e __SP_H__
-C:\Users\farid\AppData\Local\Temp/ccq4B0Mg.s:4      *ABS*:0000003d __SP_L__
-C:\Users\farid\AppData\Local\Temp/ccq4B0Mg.s:5      *ABS*:00000034 __CCP__
-C:\Users\farid\AppData\Local\Temp/ccq4B0Mg.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\farid\AppData\Local\Temp/ccq4B0Mg.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\farid\AppData\Local\Temp/ccq4B0Mg.s:18     .text:00000000 main
+C:\Users\WALTON\AppData\Local\Temp/cctyFXir.s:2      *ABS*:0000003f __SREG__
+C:\Users\WALTON\AppData\Local\Temp/cctyFXir.s:3      *ABS*:0000003e __SP_H__
+C:\Users\WALTON\AppData\Local\Temp/cctyFXir.s:4      *ABS*:0000003d __SP_L__
+C:\Users\WALTON\AppData\Local\Temp/cctyFXir.s:5      *ABS*:00000034 __CCP__
+C:\Users\WALTON\AppData\Local\Temp/cctyFXir.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\WALTON\AppData\Local\Temp/cctyFXir.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\WALTON\AppData\Local\Temp/cctyFXir.s:18     .text:00000000 main
 
 UNDEFINED SYMBOLS
 Kernel_Init

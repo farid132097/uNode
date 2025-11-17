@@ -98,119 +98,120 @@
  118 003c 0E94 0000 		call Kernel_Task_Sleep
  119 0040 00C0      		rjmp .L19
  120               	.LFE10:
- 122               	.global	Task_RGB_LED
- 124               	Task_RGB_LED:
- 125               	.LFB7:
+ 122               	.global	Task_Vin_Sense
+ 124               	Task_Vin_Sense:
+ 125               	.LFB8:
  126               	.LM17:
- 127 0042 CF93      		push r28
- 128 0044 DF93      		push r29
- 129               	/* prologue: function */
- 130               	/* frame size = 0 */
- 131               	.LM18:
- 132 0046 8AB1      		in r24,42-32
- 133 0048 806E      		ori r24,lo8(-32)
- 134 004a 8AB9      		out 42-32,r24
- 135               	.LM19:
- 136 004c 8BB1      		in r24,43-32
- 137 004e 806E      		ori r24,lo8(-32)
- 138 0050 8BB9      		out 43-32,r24
- 139               	.LBB12:
- 140               	.LBB13:
- 141               	.LBB14:
- 142               	.LBB15:
- 143               	.LM20:
- 144 0052 C0EA      		ldi r28,lo8(4000)
- 145 0054 DFE0      		ldi r29,hi8(4000)
- 146               	.L22:
- 147               	.LBE15:
- 148               	.LBE14:
- 149               	.LBE13:
- 150               	.LBE12:
- 151               	.LM21:
- 152 0056 5E98      		cbi 43-32,6
- 153               	.LBB19:
- 154               	.LBB18:
- 155               	.LBB17:
- 156               	.LBB16:
- 157               	.LM22:
- 158 0058 CE01      		movw r24,r28
- 159               	.LVL0:
- 160               	/* #APP */
- 161               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
- 162 005a 0197      		1: sbiw r24,1
- 163 005c 01F4      		brne 1b
- 164               	 ;  0 "" 2
- 165               	/* #NOAPP */
- 166               	.LBE16:
- 167               	.LBE17:
- 168               	.LBE18:
- 169               	.LBE19:
- 170               	.LM23:
- 171 005e 5E9A      		sbi 43-32,6
- 172               	.LM24:
- 173 0060 8EE1      		ldi r24,lo8(30)
- 174 0062 90E0      		ldi r25,hi8(30)
- 175               	.LVL1:
- 176 0064 0E94 0000 		call Kernel_Task_Sleep
- 177 0068 00C0      		rjmp .L22
- 178               	.LFE7:
- 180               	.global	Task_Radio
- 182               	Task_Radio:
- 183               	.LFB9:
- 184               	.LM25:
- 185               	/* prologue: function */
- 186               	/* frame size = 0 */
- 187               	.LM26:
- 188 006a 0E94 0000 		call nRF24L01P_Init
- 189               	.L25:
- 190               	.LM27:
- 191 006e 8EE1      		ldi r24,lo8(30)
- 192 0070 90E0      		ldi r25,hi8(30)
- 193 0072 0E94 0000 		call Kernel_Task_Sleep
- 194 0076 00C0      		rjmp .L25
- 195               	.LFE9:
- 197               	.global	Task_Vin_Sense
- 199               	Task_Vin_Sense:
- 200               	.LFB8:
- 201               	.LM28:
- 202               	/* prologue: function */
- 203               	/* frame size = 0 */
- 204               	.LM29:
- 205 0078 529A      		sbi 42-32,2
+ 127               	/* prologue: function */
+ 128               	/* frame size = 0 */
+ 129               	.LM18:
+ 130 0042 529A      		sbi 42-32,2
+ 131               	.LM19:
+ 132 0044 5A98      		cbi 43-32,2
+ 133               	.L22:
+ 134               	.LM20:
+ 135 0046 8CE3      		ldi r24,lo8(60)
+ 136 0048 90E0      		ldi r25,hi8(60)
+ 137 004a 0E94 0000 		call Kernel_Task_Sleep
+ 138 004e 00C0      		rjmp .L22
+ 139               	.LFE8:
+ 141               	.global	Task_RGB_LED
+ 143               	Task_RGB_LED:
+ 144               	.LFB7:
+ 145               	.LM21:
+ 146 0050 CF93      		push r28
+ 147 0052 DF93      		push r29
+ 148               	/* prologue: function */
+ 149               	/* frame size = 0 */
+ 150               	.LM22:
+ 151 0054 8AB1      		in r24,42-32
+ 152 0056 806E      		ori r24,lo8(-32)
+ 153 0058 8AB9      		out 42-32,r24
+ 154               	.LM23:
+ 155 005a 8BB1      		in r24,43-32
+ 156 005c 806E      		ori r24,lo8(-32)
+ 157 005e 8BB9      		out 43-32,r24
+ 158               	.LBB12:
+ 159               	.LBB13:
+ 160               	.LBB14:
+ 161               	.LBB15:
+ 162               	.LM24:
+ 163 0060 C0EA      		ldi r28,lo8(4000)
+ 164 0062 DFE0      		ldi r29,hi8(4000)
+ 165               	.L25:
+ 166               	.LBE15:
+ 167               	.LBE14:
+ 168               	.LBE13:
+ 169               	.LBE12:
+ 170               	.LM25:
+ 171 0064 5E98      		cbi 43-32,6
+ 172               	.LBB19:
+ 173               	.LBB18:
+ 174               	.LBB17:
+ 175               	.LBB16:
+ 176               	.LM26:
+ 177 0066 CE01      		movw r24,r28
+ 178               	.LVL0:
+ 179               	/* #APP */
+ 180               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 181 0068 0197      		1: sbiw r24,1
+ 182 006a 01F4      		brne 1b
+ 183               	 ;  0 "" 2
+ 184               	/* #NOAPP */
+ 185               	.LBE16:
+ 186               	.LBE17:
+ 187               	.LBE18:
+ 188               	.LBE19:
+ 189               	.LM27:
+ 190 006c 5E9A      		sbi 43-32,6
+ 191               	.LM28:
+ 192 006e 8EE1      		ldi r24,lo8(30)
+ 193 0070 90E0      		ldi r25,hi8(30)
+ 194               	.LVL1:
+ 195 0072 0E94 0000 		call Kernel_Task_Sleep
+ 196 0076 00C0      		rjmp .L25
+ 197               	.LFE7:
+ 199               	.global	Task_Radio
+ 201               	Task_Radio:
+ 202               	.LFB9:
+ 203               	.LM29:
+ 204               	/* prologue: function */
+ 205               	/* frame size = 0 */
  206               	.LM30:
- 207 007a 5A98      		cbi 43-32,2
- 208               	.L28:
- 209               	.LM31:
- 210 007c 86E0      		ldi r24,lo8(6)
- 211 007e 64E0      		ldi r22,lo8(4)
- 212 0080 0E94 0000 		call Peripherals_ADC_Sample
- 213               	.LM32:
- 214 0084 8CE3      		ldi r24,lo8(60)
- 215 0086 90E0      		ldi r25,hi8(60)
+ 207 0078 0E94 0000 		call nRF24L01P_Init
+ 208               	.LM31:
+ 209 007c 0E94 0000 		call nRF24L01P_Disable_SPI
+ 210               	.LM32:
+ 211 0080 0E94 0000 		call nRF24L01P_Disable_GPIO
+ 212               	.L28:
+ 213               	.LM33:
+ 214 0084 8EE1      		ldi r24,lo8(30)
+ 215 0086 90E0      		ldi r25,hi8(30)
  216 0088 0E94 0000 		call Kernel_Task_Sleep
  217 008c 00C0      		rjmp .L28
- 218               	.LFE8:
+ 218               	.LFE9:
  316               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 tasks.c
-C:\Users\farid\AppData\Local\Temp/ccpSYBkh.s:2      *ABS*:0000003f __SREG__
-C:\Users\farid\AppData\Local\Temp/ccpSYBkh.s:3      *ABS*:0000003e __SP_H__
-C:\Users\farid\AppData\Local\Temp/ccpSYBkh.s:4      *ABS*:0000003d __SP_L__
-C:\Users\farid\AppData\Local\Temp/ccpSYBkh.s:5      *ABS*:00000034 __CCP__
-C:\Users\farid\AppData\Local\Temp/ccpSYBkh.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\farid\AppData\Local\Temp/ccpSYBkh.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\farid\AppData\Local\Temp/ccpSYBkh.s:18     .text:00000000 Tasks_Disable_Peripherals
-C:\Users\farid\AppData\Local\Temp/ccpSYBkh.s:30     .text:00000002 Tasks_Task9
-C:\Users\farid\AppData\Local\Temp/ccpSYBkh.s:45     .text:0000000c Tasks_Task8
-C:\Users\farid\AppData\Local\Temp/ccpSYBkh.s:60     .text:00000016 Tasks_Task7
-C:\Users\farid\AppData\Local\Temp/ccpSYBkh.s:75     .text:00000020 Tasks_Task6
-C:\Users\farid\AppData\Local\Temp/ccpSYBkh.s:90     .text:0000002a Tasks_Task5
-C:\Users\farid\AppData\Local\Temp/ccpSYBkh.s:105    .text:00000034 Task_Sensor
-C:\Users\farid\AppData\Local\Temp/ccpSYBkh.s:124    .text:00000042 Task_RGB_LED
-C:\Users\farid\AppData\Local\Temp/ccpSYBkh.s:182    .text:0000006a Task_Radio
-C:\Users\farid\AppData\Local\Temp/ccpSYBkh.s:199    .text:00000078 Task_Vin_Sense
+C:\Users\WALTON\AppData\Local\Temp/ccRYTQht.s:2      *ABS*:0000003f __SREG__
+C:\Users\WALTON\AppData\Local\Temp/ccRYTQht.s:3      *ABS*:0000003e __SP_H__
+C:\Users\WALTON\AppData\Local\Temp/ccRYTQht.s:4      *ABS*:0000003d __SP_L__
+C:\Users\WALTON\AppData\Local\Temp/ccRYTQht.s:5      *ABS*:00000034 __CCP__
+C:\Users\WALTON\AppData\Local\Temp/ccRYTQht.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\WALTON\AppData\Local\Temp/ccRYTQht.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\WALTON\AppData\Local\Temp/ccRYTQht.s:18     .text:00000000 Tasks_Disable_Peripherals
+C:\Users\WALTON\AppData\Local\Temp/ccRYTQht.s:30     .text:00000002 Tasks_Task9
+C:\Users\WALTON\AppData\Local\Temp/ccRYTQht.s:45     .text:0000000c Tasks_Task8
+C:\Users\WALTON\AppData\Local\Temp/ccRYTQht.s:60     .text:00000016 Tasks_Task7
+C:\Users\WALTON\AppData\Local\Temp/ccRYTQht.s:75     .text:00000020 Tasks_Task6
+C:\Users\WALTON\AppData\Local\Temp/ccRYTQht.s:90     .text:0000002a Tasks_Task5
+C:\Users\WALTON\AppData\Local\Temp/ccRYTQht.s:105    .text:00000034 Task_Sensor
+C:\Users\WALTON\AppData\Local\Temp/ccRYTQht.s:124    .text:00000042 Task_Vin_Sense
+C:\Users\WALTON\AppData\Local\Temp/ccRYTQht.s:143    .text:00000050 Task_RGB_LED
+C:\Users\WALTON\AppData\Local\Temp/ccRYTQht.s:201    .text:00000078 Task_Radio
 
 UNDEFINED SYMBOLS
 Kernel_Task_Sleep
 nRF24L01P_Init
-Peripherals_ADC_Sample
+nRF24L01P_Disable_SPI
+nRF24L01P_Disable_GPIO

@@ -35,7 +35,6 @@ void Task_Vin_Sense(void){
 
   while(1){
     
-    Peripherals_ADC_Sample(6, 4);
     Kernel_Task_Sleep(6000/KER_TICK_TIME);
 	
   }
@@ -44,6 +43,8 @@ void Task_Vin_Sense(void){
 void Task_Radio(void){
   
   nRF24L01P_Init();
+  nRF24L01P_Disable_SPI();
+	nRF24L01P_Disable_GPIO();
   
   while(1){
 

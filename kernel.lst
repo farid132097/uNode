@@ -2279,15 +2279,15 @@ DEFINED SYMBOLS
             kernel.S:1308   .text:000005b8 _KER_CALC_PRIO54
             kernel.S:1308   .text:000005dc _KER_SCH_NEXT54
             kernel.S:1308   .text:000005ec _KER_SCH_EXIT54
-            kernel.S:311    .text:0000067c _KER_TC2_AUB65
-            kernel.S:311    .text:00000684 _KER_TC2_BUB65
-            kernel.S:311    .text:0000068c _KER_OC2_AUB65
-            kernel.S:311    .text:00000694 _KER_OC2_BUB65
-            kernel.S:311    .text:0000069c _KER_TC2_UB65
-            kernel.S:311    .text:000006a4 _KER_TC2_TOV265
-            kernel.S:311    .text:000006b2 _KER_TC2_OCF2A65
-            kernel.S:311    .text:000006c0 _KER_TC2_OCF2B65
-            kernel.S:311    .text:000006ce _KER_TC2_INTEN65
+            kernel.S:309    .text:0000067c _KER_TC2_AUB65
+            kernel.S:309    .text:00000684 _KER_TC2_BUB65
+            kernel.S:309    .text:0000068c _KER_OC2_AUB65
+            kernel.S:309    .text:00000694 _KER_OC2_BUB65
+            kernel.S:309    .text:0000069c _KER_TC2_UB65
+            kernel.S:309    .text:000006a4 _KER_TC2_TOV265
+            kernel.S:309    .text:000006b2 _KER_TC2_OCF2A65
+            kernel.S:309    .text:000006c0 _KER_TC2_OCF2B65
+            kernel.S:309    .text:000006ce _KER_TC2_INTEN65
             kernel.S:1361   .text:00000740 _IDLE_LOOP
             kernel.S:1397   .text:000007f8 _KER_SCH_LOOP78
             kernel.S:1397   .text:0000082e _VAL_NULL79

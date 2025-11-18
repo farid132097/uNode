@@ -7,115 +7,89 @@
 #include "kernel.h"
 #include "tasks.h"
 
-void Tasks_Disable_Peripherals(void)
-{
-    
+void Tasks_Disable_Peripherals(void){
+  ADCSRA &=~(1<<ADEN);
+  ACSR   |= (1<<ACD);
 }
 
-void Task_RGB_LED(void)
-{
-    //Red, Green, Blue
-    DDRD |= (1<<5)|(1<<6)|(1<<7);
-    PORTD|= (1<<5)|(1<<6)|(1<<7);
+void Task_RGB_LED(void){
+
+  //Red, Green, Blue
+  DDRD |= (1<<5)|(1<<6)|(1<<7);
+  //Turn off all LEDs
+  PORTD|= (1<<5)|(1<<6)|(1<<7);
   
-    while(1)
-    {
-        PORTD &=~ (1<<6);
-        _delay_ms(2);
-        PORTD |=  (1<<6);
-        Kernel_Task_Sleep(3000/KER_TICK_TIME);
-    }
+  while(1){
+
+    //Red LED on
+    PORTD &=~ (1<<5);
+
+    //Blocking delay
+    _delay_us(100);
+
+    //Red LED off
+    PORTD |=  (1<<5);
+
+    //Delay 5000 ms
+    Kernel_Task_Sleep(5000/KER_TICK_TIME);
+
+  }
 }
 
 void Task_Vin_Sense(void){
   
-  //Init and Disable Vinsense
+  //Init VinSense
   DDRD  |= (1<<2);
+
+  //Disable VinSense
   PORTD &=~(1<<2);
 
   while(1){
+
+    //Enable VinSense
+    PORTD |= (1<<2);
+
+    //Vin Sample
+    Peripherals_ADC_Init();
+
+    //Enable VinSense
+    PORTD &=~(1<<2);
     
-    Kernel_Task_Sleep(6000/KER_TICK_TIME);
+    //Delay 6000ms
+    Kernel_Task_Sleep(5000/KER_TICK_TIME);
 	
   }
 }
 
 void Task_Radio(void){
   
+  //Radio init
   nRF24L01P_Init();
+
+  //SPI disable
   nRF24L01P_Disable_SPI();
+
+  //Disable gpio for deep sleep
 	nRF24L01P_Disable_GPIO();
   
   while(1){
 
     
-    Kernel_Task_Sleep(3000/KER_TICK_TIME);
+    Kernel_Task_Sleep(5000/KER_TICK_TIME);
 	
   }
 }
 
 void Task_Sensor(void){
   
-  //Init and Disable SenswEn
+  //Init and Disable SenseEn
   DDRD  |= (1<<3);
   PORTD |= (1<<3);
   
   while(1){
 
     
-    Kernel_Task_Sleep(3000/KER_TICK_TIME);
-	
-  }
-}
-
-void Tasks_Task5(void){
-  
-  while(1){
-    
-    Kernel_Task_Sleep(7000/KER_TICK_TIME);
-	  
-  }
-}
-
-void Tasks_Task6(void){
-  
-  
-  while(1){
-
-    
-    Kernel_Task_Sleep(7000/KER_TICK_TIME);
-	
-  }
-}
-
-void Tasks_Task7(void){
-  
-  
-  while(1){
-
-    
-    Kernel_Task_Sleep(7000/KER_TICK_TIME);
-	
-  }
-}
-
-void Tasks_Task8(void){
-  
-  
-  while(1){
-    
-    
-    Kernel_Task_Sleep(7000/KER_TICK_TIME);
-	
-  }
-}
-
-void Tasks_Task9(void){
-  
-  
-  while(1){
-    
-    Kernel_Task_Sleep(7000/KER_TICK_TIME);
+    Kernel_Task_Sleep(5000/KER_TICK_TIME);
 	
   }
 }

@@ -4,7 +4,7 @@
  ; Author        : MD. Faridul Islam (faridmdislam@gmail.com)
  ; Description   : AVR kernel for bare-metal RTOS
  ; Created       : Jul 27, 2025, 09:30 PM
- ; Last Modified : Oct 07, 2025, 10:42 PM
+ ; Last Modified : Nov 20, 2025, 04:59 AM
 
 
 
@@ -1003,7 +1003,7 @@ KerStack:  .skip KER_STK_SZ*KER_MX_NTSK                   ;KER_STK_SZ bytes for 
 .macro KER_DISABLE_ANALOG_DOMAIN                          ;total 0.75uS @8MHz     ( 10 clocks) 
     #ifdef KER_IDLE_AS_SLEEP                                                                   
 		LDS   R18                , SRADCSRA               ;load ADCSRA            (  2 clocks) 
-		ANDI  R18                , 0xEF                   ;clear ADEN             (  1 clock ) 
+		ANDI  R18                , 0x7F                   ;clear ADEN             (  1 clock ) 
 		STS   SRADCSRA           , R18                    ;set val                (  2 clocks) 
 		LDS   R18                , SRACSR                 ;load ACSR              (  2 clocks) 
 		ORI   R18                , 0x80                   ;set ACD                (  1 clock ) 

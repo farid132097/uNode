@@ -7,7 +7,7 @@
    4               	 ; Author        : MD. Faridul Islam (faridmdislam@gmail.com)
    5               	 ; Description   : AVR kernel for bare-metal RTOS
    6               	 ; Created       : Jul 27, 2025, 09:30 PM
-   7               	 ; Last Modified : Oct 07, 2025, 10:42 PM
+   7               	 ; Last Modified : Nov 20, 2025, 04:59 AM
    8               	
    9               	
   10               	
@@ -1556,7 +1556,7 @@
  1003               	.macro KER_DISABLE_ANALOG_DOMAIN                          ;total 0.75uS @8MHz     ( 10 clocks) 
  1004               	    #ifdef KER_IDLE_AS_SLEEP                                                                   
  1005               			LDS   R18                , SRADCSRA               ;load ADCSRA            (  2 clocks) 
- 1006               			ANDI  R18                , 0xEF                   ;clear ADEN             (  1 clock ) 
+ 1006               			ANDI  R18                , 0x7F                   ;clear ADEN             (  1 clock ) 
  1007               			STS   SRADCSRA           , R18                    ;set val                (  2 clocks) 
  1008               			LDS   R18                , SRACSR                 ;load ACSR              (  2 clocks) 
  1009               			ORI   R18                , 0x80                   ;set ACD                (  1 clock ) 

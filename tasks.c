@@ -8,8 +8,10 @@
 #include "tasks.h"
 
 void Tasks_Disable_Peripherals(void){
-  ADCSRA &=~(1<<ADEN);
-  ACSR   |= (1<<ACD);
+  //ADC and Analog comparator will be 
+  //turned off automatically by the kernel
+  //Put radio to deep sleep
+  
 }
 
 void Task_RGB_LED(void){
@@ -46,16 +48,10 @@ void Task_Vin_Sense(void){
 
   while(1){
 
-    //Enable VinSense
-    PORTD |= (1<<2);
-
     //Vin Sample
-    Peripherals_ADC_Init();
-
-    //Enable VinSense
-    PORTD &=~(1<<2);
+    Peripherals_Vin_Sense();
     
-    //Delay 6000ms
+    //Delay 5000ms
     Kernel_Task_Sleep(5000/KER_TICK_TIME);
 	
   }
@@ -63,18 +59,22 @@ void Task_Vin_Sense(void){
 
 void Task_Radio(void){
   
-  //Radio init
+  uint16_t temp;
+  uint8_t  buf[32];
+
+  //Radio init with deep sleep
   nRF24L01P_Init();
 
-  //SPI disable
-  nRF24L01P_Disable_SPI();
-
-  //Disable gpio for deep sleep
-	nRF24L01P_Disable_GPIO();
-  
   while(1){
-
     
+    temp = Peripherals_Vin_RawADC();
+    buf[0] = ((temp/1000) & 0xFF) + 48;
+    buf[1] = ((temp/100) & 0xFF) + 48;
+    buf[2] = ((temp/10) & 0xFF) + 48;
+    buf[3] = ((temp/1) & 0xFF) + 48;
+    nRF24L01P_WakeUp();
+    //nRF24L01P_Transmit_Basic(buf, 4);
+    nRF24L01P_Deep_Sleep();
     Kernel_Task_Sleep(5000/KER_TICK_TIME);
 	
   }

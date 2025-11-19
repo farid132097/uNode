@@ -47,7 +47,7 @@ nrf24l01p_t *nRF24L01P;
 
 void nRF24L01P_Struct_Init(void){
   nRF24L01P=&nRF24L01P_type;
-  nRF24L01P->Mode=0x00;
+  nRF24L01P->Mode=0x04;
   nRF24L01P->TempBuf[0]=0x00;
   nRF24L01P->TempBuf[1]=0x00;
   nRF24L01P->Address.Own=0x00;
@@ -278,7 +278,7 @@ uint8_t nRF24L01P_Get_Mode(void){
 	  }
     }else{
       nRF24L01P->Mode=0x00;
-      return 0;   //pwr down
+      return 0; //pwr down
     }
   }else{
     return 0;
@@ -298,8 +298,8 @@ void nRF24L01P_Set_Mode_Tx(void){
     nRF24L01P->TempBuf[0]=0x72;
     nRF24L01P_CE_Low();
     nRF24L01P_ReadWrite_Register(0x00,0,nRF24L01P->TempBuf,1);
-	nRF24L01P_Flush_Transmit_Buffer();
-	nRF24L01P->Mode=0x02;
+	  nRF24L01P_Flush_Transmit_Buffer();
+	  nRF24L01P->Mode=0x02;
   }
 }
 
@@ -308,7 +308,7 @@ void nRF24L01P_Set_Mode_Rx(void){
     nRF24L01P->TempBuf[0]=0x73;
     nRF24L01P_CE_High();
     nRF24L01P_ReadWrite_Register(0x00,0,nRF24L01P->TempBuf,1);
-	nRF24L01P->Mode=0x01;
+	  nRF24L01P->Mode=0x01;
   }
 }
 
@@ -435,7 +435,7 @@ void nRF24L01P_Set_MaxRetransmission(uint16_t val){
 }
 
 void nRF24L01P_Deep_Sleep(void){
-  if(nRF24L01P->Mode!=0x00){
+  if(nRF24L01P->Mode != 0x00){
     nRF24L01P_Set_Mode_Sleep();
     nRF24L01P_Disable();
   }
@@ -443,7 +443,7 @@ void nRF24L01P_Deep_Sleep(void){
 
 
 void nRF24L01P_WakeUp(void){
-  if(nRF24L01P->Mode==0x00){
+  if(nRF24L01P->Mode == 0x00){ 
     nRF24L01P_Enable();
     nRF24L01P_Set_Mode_Rx();
   }
@@ -474,7 +474,7 @@ void nRF24L01P_Init(void){
   nRF24L01P_ReadWrite_Register(0x0E,0,(uint8_t*)"PIPE4",5);
   nRF24L01P_ReadWrite_Register(0x0F,0,(uint8_t*)"PIPE5",5);
   nRF24L01P_Set_Receive_Timeout(32);
-  nRF24L01P_Set_Mode_Sleep();
+  nRF24L01P_Deep_Sleep();
 }
 
 void nRF24L01P_Transmit_Basic(uint8_t *buf, uint8_t len){

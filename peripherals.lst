@@ -147,26 +147,39 @@
  159               	.LM24:
  160 00c2 0895      		ret
  161               	.LFE8:
- 163               	.global	Peripherals
- 164               	.global	Peripherals
- 165               		.section .bss
- 168               	Peripherals:
- 169 0000 0000 0000 		.skip 9,0
- 169      0000 0000 
- 169      00
- 210               	.Letext0:
+ 163               	.global	Peripherals_Vin_RawADC
+ 165               	Peripherals_Vin_RawADC:
+ 166               	.LFB9:
+ 167               	.LM25:
+ 168               	/* prologue: function */
+ 169               	/* frame size = 0 */
+ 170               	.LM26:
+ 171 00c4 8091 0000 		lds r24,Peripherals+1
+ 172 00c8 9091 0000 		lds r25,Peripherals+2
+ 173               	/* epilogue start */
+ 174 00cc 0895      		ret
+ 175               	.LFE9:
+ 177               	.global	Peripherals
+ 178               	.global	Peripherals
+ 179               		.section .bss
+ 182               	Peripherals:
+ 183 0000 0000 0000 		.skip 9,0
+ 183      0000 0000 
+ 183      00
+ 232               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 peripherals.c
-C:\Users\farid\AppData\Local\Temp/cc77s9kc.s:2      *ABS*:0000003f __SREG__
-C:\Users\farid\AppData\Local\Temp/cc77s9kc.s:3      *ABS*:0000003e __SP_H__
-C:\Users\farid\AppData\Local\Temp/cc77s9kc.s:4      *ABS*:0000003d __SP_L__
-C:\Users\farid\AppData\Local\Temp/cc77s9kc.s:5      *ABS*:00000034 __CCP__
-C:\Users\farid\AppData\Local\Temp/cc77s9kc.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\farid\AppData\Local\Temp/cc77s9kc.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\farid\AppData\Local\Temp/cc77s9kc.s:18     .text:00000000 Peripherals_ADC_Init
-C:\Users\farid\AppData\Local\Temp/cc77s9kc.s:48     .text:00000028 Peripherals_ADC_Sample
-C:\Users\farid\AppData\Local\Temp/cc77s9kc.s:135    .text:0000009a Peripherals_Vin_Sense
-C:\Users\farid\AppData\Local\Temp/cc77s9kc.s:168    .bss:00000000 Peripherals
+C:\Users\farid\AppData\Local\Temp/ccLAAklR.s:2      *ABS*:0000003f __SREG__
+C:\Users\farid\AppData\Local\Temp/ccLAAklR.s:3      *ABS*:0000003e __SP_H__
+C:\Users\farid\AppData\Local\Temp/ccLAAklR.s:4      *ABS*:0000003d __SP_L__
+C:\Users\farid\AppData\Local\Temp/ccLAAklR.s:5      *ABS*:00000034 __CCP__
+C:\Users\farid\AppData\Local\Temp/ccLAAklR.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\farid\AppData\Local\Temp/ccLAAklR.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\farid\AppData\Local\Temp/ccLAAklR.s:18     .text:00000000 Peripherals_ADC_Init
+C:\Users\farid\AppData\Local\Temp/ccLAAklR.s:48     .text:00000028 Peripherals_ADC_Sample
+C:\Users\farid\AppData\Local\Temp/ccLAAklR.s:135    .text:0000009a Peripherals_Vin_Sense
+C:\Users\farid\AppData\Local\Temp/ccLAAklR.s:182    .bss:00000000 Peripherals
+C:\Users\farid\AppData\Local\Temp/ccLAAklR.s:165    .text:000000c4 Peripherals_Vin_RawADC
 
 UNDEFINED SYMBOLS
 __udivmodsi4

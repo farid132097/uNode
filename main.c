@@ -8,9 +8,8 @@
 
 
 
-int main(void) 
-{
-    
+int main(void) {
+	
 	Kernel_Init();
 	Kernel_Task_Create(Task_RGB_LED,  0);
 	Kernel_Task_Create(Task_Vin_Sense,  1);

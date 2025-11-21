@@ -1,0 +1,81 @@
+   1               		.file	"rgb.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	RGB_Init
+  18               	RGB_Init:
+  19               	.LFB2:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 5D9A      		sbi 43-32,5
+  25               	.LM3:
+  26 0002 5E9A      		sbi 43-32,6
+  27               	.LM4:
+  28 0004 5F9A      		sbi 43-32,7
+  29               	.LM5:
+  30 0006 559A      		sbi 42-32,5
+  31               	.LM6:
+  32 0008 569A      		sbi 42-32,6
+  33               	.LM7:
+  34 000a 569A      		sbi 42-32,6
+  35               	/* epilogue start */
+  36               	.LM8:
+  37 000c 0895      		ret
+  38               	.LFE2:
+  40               	.global	RGB_Set_State
+  42               	RGB_Set_State:
+  43               	.LFB3:
+  44               	.LM9:
+  45               	.LVL0:
+  46               	/* prologue: function */
+  47               	/* frame size = 0 */
+  48               	.LM10:
+  49 000e 8130      		cpi r24,lo8(1)
+  50 0010 01F4      		brne .L4
+  51               	.LM11:
+  52 0012 5D98      		cbi 43-32,5
+  53 0014 00C0      		rjmp .L5
+  54               	.L4:
+  55               	.LM12:
+  56 0016 5D9A      		sbi 43-32,5
+  57               	.L5:
+  58               	.LM13:
+  59 0018 6130      		cpi r22,lo8(1)
+  60 001a 01F4      		brne .L6
+  61               	.LM14:
+  62 001c 5E98      		cbi 43-32,6
+  63 001e 00C0      		rjmp .L7
+  64               	.L6:
+  65               	.LM15:
+  66 0020 5E9A      		sbi 43-32,6
+  67               	.L7:
+  68               	.LM16:
+  69 0022 4130      		cpi r20,lo8(1)
+  70 0024 01F4      		brne .L8
+  71               	.LM17:
+  72 0026 5F98      		cbi 43-32,7
+  73 0028 0895      		ret
+  74               	.L8:
+  75               	.LM18:
+  76 002a 5F9A      		sbi 43-32,7
+  77 002c 0895      		ret
+  78               	.LFE3:
+ 112               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 rgb.c
+C:\Users\farid\AppData\Local\Temp/cctpgSqM.s:2      *ABS*:0000003f __SREG__
+C:\Users\farid\AppData\Local\Temp/cctpgSqM.s:3      *ABS*:0000003e __SP_H__
+C:\Users\farid\AppData\Local\Temp/cctpgSqM.s:4      *ABS*:0000003d __SP_L__
+C:\Users\farid\AppData\Local\Temp/cctpgSqM.s:5      *ABS*:00000034 __CCP__
+C:\Users\farid\AppData\Local\Temp/cctpgSqM.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\farid\AppData\Local\Temp/cctpgSqM.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\farid\AppData\Local\Temp/cctpgSqM.s:18     .text:00000000 RGB_Init
+C:\Users\farid\AppData\Local\Temp/cctpgSqM.s:42     .text:0000000e RGB_Set_State
+
+NO UNDEFINED SYMBOLS

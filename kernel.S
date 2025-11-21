@@ -117,6 +117,25 @@
 
 
 
+;;===============================define vector section starting=============================;; 
+;.section .vectors, "ax", @progbits                                                             
+                                                                                               
+;.org    0x000C                                            ;isr location for wdt                
+;        JMP   __vector_6                                                                       
+;.org    0x000E                                            ;isr location for timer2compa async  
+;        JMP   __vector_7                                                                       
+;.org    0x0010                                            ;isr location for timer2compb async  
+;        JMP   __vector_8                                                                       
+;.org    0x0012                                            ;isr location for timer2ovf async    
+;        JMP   __vector_9                                                                       
+;.org    0x0020                                            ;isr location for timer0ovf          
+;        JMP   __vector_16                                                                      
+;;=================================define vector section end================================;; 
+
+
+
+
+
 ;;=============================define global variables starting=============================;; 
 .section   .bss                                                                                
                                                                                                
@@ -141,25 +160,6 @@ KerSchSlp: .skip KER_MX_NTSK*2                            ;timing(2)
 .global    KerStack                                       ;space for stack                     
 KerStack:  .skip KER_STK_SZ*KER_MX_NTSK                   ;KER_STK_SZ bytes for each task      
 ;;==============================define global variables end=================================;; 
-
-
-
-
-
-;;===============================define vector section starting=============================;; 
-.section .vectors, "ax", @progbits                                                             
-                                                                                               
-.org    0x000C                                            ;isr location for wdt                
-        RJMP  __vector_6                                                                       
-.org    0x000E                                            ;isr location for timer2compa async  
-        RJMP  __vector_7                                                                       
-.org    0x0010                                            ;isr location for timer2compb async  
-        RJMP  __vector_8                                                                       
-.org    0x0012                                            ;isr location for timer2ovf async    
-        RJMP  __vector_9                                                                       
-.org    0x0020                                            ;isr location for timer0ovf          
-        RJMP  __vector_16                                                                      
-;;=================================define vector section end================================;; 
 
 
 
@@ -1364,7 +1364,7 @@ Kernel_Task_Idle:
 		CALL  Kernel_PreSleep_Hook                        ;call func before sleep (  8 clocks) 
 		#endif                                                                                 
 	    KER_ENTER_SLEEP                                   ;enter sleep mode       (  6 clocks) 
-		RJMP  _IDLE_LOOP                                  ;jump to loop start     (  2 clocks) 
+		JMP   _IDLE_LOOP                                  ;jump to loop start     (  2 clocks) 
 ;;==================================kernel idle task end====================================;; 
 
 

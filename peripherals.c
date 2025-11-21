@@ -3,6 +3,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include "peripherals.h"
+#include "sensors.h"
 
 typedef struct peripherals_t{
   uint8_t  Status;
@@ -52,15 +53,30 @@ uint16_t Peripherals_ADC_Sample(uint8_t channel, uint8_t nsamples){
   return (uint16_t)val;
 }
 
-void Peripherals_Vin_Sense(void){
+void Peripherals_Vin_Sense_Sample(void){
   //Status bit 0 indicates Vinsense is active
   Peripherals.Status |= (1<<0);
+  //Enable VinSense
   PORTD |= (1<<2);
+  //Sample ADC
   Peripherals.VinRawADC = Peripherals_ADC_Sample(6, 4);
-  PORTD |= (1<<2);
+  //Disable VinSense
+  PORTD &=~(1<<2);
   Peripherals.Status &=~(1<<0);
 }
 
-uint16_t Peripherals_Vin_RawADC(void){
+uint16_t Peripherals_Vin_RawADC_Get(void){
   return Peripherals.VinRawADC;
+}
+
+int16_t Peripherals_Analog_Temp_Get(void){
+  return 0;
+}
+
+int16_t Peripherals_Digital_Temp_Get(void){
+  return 0;
+}
+
+uint16_t Peripherals_Digital_RH_Get(void){
+  return Sensors_HDC1080_RH_Get();
 }

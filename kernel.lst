@@ -548,171 +548,167 @@
  117               	
  118               	
  119               	
- 120               	;;=============================define global variables starting=============================;; 
- 121               	.section   .bss                                                                                
+ 120               	;;===============================define vector section starting=============================;; 
+ 121               	;.section .vectors, "ax", @progbits                                                             
  122               	                                                                                               
- 123               	.global    KerBase                                        ;declare global space for kernel     
- 124 0000 0000 0000 	KerBase:   .skip 16                                       ;see offset section                  
- 124      0000 0000 
- 124      0000 0000 
- 124      0000 0000 
- 125               	                                                                                               
- 126               	.global    KerPSP                                         ;space for process stack pointers    
- 127 0010 0000 0000 	KerPSP:    .skip KER_MX_NTSK*2                            ;2 bytes for each task               
- 127      0000 0000 
- 127      0000 0000 
- 127      0000 0000 
- 127      0000 0000 
- 128               	                                                                                               
- 129               	.global    KerSSZ                                         ;stack for main stack pointers       
- 130 0024 0000 0000 	KerSSZ:    .skip 14                                       ;stack_ptr(2), MSPZPn(4)             
- 130      0000 0000 
- 130      0000 0000 
- 130      0000 
- 131               	                                                                                               
- 132               	.global    KerSchSts                                      ;space for scheduler status          
- 133 0032 0000 0000 	KerSchSts: .skip KER_MX_NTSK*1                            ;status(1)                           
- 133      0000 0000 
- 133      0000 
- 134               	                                                                                               
- 135               	.global    KerSchPr                                       ;space for scheduler priority        
- 136 003c 0000 0000 	KerSchPr:  .skip KER_MX_NTSK*1                            ;priority(1)                         
- 136      0000 0000 
- 136      0000 
- 137               	                                                                                               
- 138               	.global    KerSchSlp                                      ;space for task sleep                
- 139 0046 0000 0000 	KerSchSlp: .skip KER_MX_NTSK*2                            ;timing(2)                           
- 139      0000 0000 
- 139      0000 0000 
- 139      0000 0000 
- 139      0000 0000 
- 140               	                                                                                               
- 141               	.global    KerStack                                       ;space for stack                     
- 142 005a 0000 0000 	KerStack:  .skip KER_STK_SZ*KER_MX_NTSK                   ;KER_STK_SZ bytes for each task      
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 142      0000 0000 
- 143               	;;==============================define global variables end=================================;; 
- 144               	
- 145               	
- 146               	
- 147               	
- 148               	
- 149               	;;===============================define vector section starting=============================;; 
- 150               	.section .vectors, "ax", @progbits                                                             
- 151               	                                                                                               
- 152 0000 0000 0000 	.org    0x000C                                            ;isr location for wdt                
+ 123               	;.org    0x000C                                            ;isr location for wdt                
+ 124               	;        JMP   __vector_6                                                                       
+ 125               	;.org    0x000E                                            ;isr location for timer2compa async  
+ 126               	;        JMP   __vector_7                                                                       
+ 127               	;.org    0x0010                                            ;isr location for timer2compb async  
+ 128               	;        JMP   __vector_8                                                                       
+ 129               	;.org    0x0012                                            ;isr location for timer2ovf async    
+ 130               	;        JMP   __vector_9                                                                       
+ 131               	;.org    0x0020                                            ;isr location for timer0ovf          
+ 132               	;        JMP   __vector_16                                                                      
+ 133               	;;=================================define vector section end================================;; 
+ 134               	
+ 135               	
+ 136               	
+ 137               	
+ 138               	
+ 139               	;;=============================define global variables starting=============================;; 
+ 140               	.section   .bss                                                                                
+ 141               	                                                                                               
+ 142               	.global    KerBase                                        ;declare global space for kernel     
+ 143 0000 0000 0000 	KerBase:   .skip 16                                       ;see offset section                  
+ 143      0000 0000 
+ 143      0000 0000 
+ 143      0000 0000 
+ 144               	                                                                                               
+ 145               	.global    KerPSP                                         ;space for process stack pointers    
+ 146 0010 0000 0000 	KerPSP:    .skip KER_MX_NTSK*2                            ;2 bytes for each task               
+ 146      0000 0000 
+ 146      0000 0000 
+ 146      0000 0000 
+ 146      0000 0000 
+ 147               	                                                                                               
+ 148               	.global    KerSSZ                                         ;stack for main stack pointers       
+ 149 0024 0000 0000 	KerSSZ:    .skip 14                                       ;stack_ptr(2), MSPZPn(4)             
+ 149      0000 0000 
+ 149      0000 0000 
+ 149      0000 
+ 150               	                                                                                               
+ 151               	.global    KerSchSts                                      ;space for scheduler status          
+ 152 0032 0000 0000 	KerSchSts: .skip KER_MX_NTSK*1                            ;status(1)                           
  152      0000 0000 
- 152      0000 0000 
- 153:kernel.S      ****         RJMP  __vector_6                                                                       
- 154               	.org    0x000E                                            ;isr location for timer2compa async  
- 155:kernel.S      ****         RJMP  __vector_7                                                                       
- 156               	.org    0x0010                                            ;isr location for timer2compb async  
- 157:kernel.S      ****         RJMP  __vector_8                                                                       
- 158               	.org    0x0012                                            ;isr location for timer2ovf async    
- 159:kernel.S      ****         RJMP  __vector_9                                                                       
- 160 0014 0000 0000 	.org    0x0020                                            ;isr location for timer0ovf          
- 160      0000 0000 
- 160      0000 0000 
- 161:kernel.S      ****         RJMP  __vector_16                                                                      
- 162               	;;=================================define vector section end================================;; 
+ 152      0000 
+ 153               	                                                                                               
+ 154               	.global    KerSchPr                                       ;space for scheduler priority        
+ 155 003c 0000 0000 	KerSchPr:  .skip KER_MX_NTSK*1                            ;priority(1)                         
+ 155      0000 0000 
+ 155      0000 
+ 156               	                                                                                               
+ 157               	.global    KerSchSlp                                      ;space for task sleep                
+ 158 0046 0000 0000 	KerSchSlp: .skip KER_MX_NTSK*2                            ;timing(2)                           
+ 158      0000 0000 
+ 158      0000 0000 
+ 158      0000 0000 
+ 158      0000 0000 
+ 159               	                                                                                               
+ 160               	.global    KerStack                                       ;space for stack                     
+ 161 005a 0000 0000 	KerStack:  .skip KER_STK_SZ*KER_MX_NTSK                   ;KER_STK_SZ bytes for each task      
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 161      0000 0000 
+ 162               	;;==============================define global variables end=================================;; 
  163               	
  164               	
  165               	
@@ -1917,7 +1913,7 @@
  1364               			CALL  Kernel_PreSleep_Hook                        ;call func before sleep (  8 clocks) 
  1365               			#endif                                                                                 
 1366:kernel.S      **** 	    KER_ENTER_SLEEP                                   ;enter sleep mode       (  6 clocks) 
-1367:kernel.S      **** 		RJMP  _IDLE_LOOP                                  ;jump to loop start     (  2 clocks) 
+1367:kernel.S      **** 		JMP   _IDLE_LOOP                                  ;jump to loop start     (  2 clocks) 
  1368               	;;==================================kernel idle task end====================================;; 
  1369               	
  1370               	
@@ -2228,32 +2224,31 @@ DEFINED SYMBOLS
             kernel.S:111    *ABS*:00000017 IOTIFR2
             kernel.S:112    *ABS*:00000016 IOTIFR1
             kernel.S:113    *ABS*:00000015 IOTIFR0
-            kernel.S:124    .bss:00000000 KerBase
-            kernel.S:127    .bss:00000010 KerPSP
-            kernel.S:130    .bss:00000024 KerSSZ
-            kernel.S:133    .bss:00000032 KerSchSts
-            kernel.S:136    .bss:0000003c KerSchPr
-            kernel.S:139    .bss:00000046 KerSchSlp
-            kernel.S:142    .bss:0000005a KerStack
-            kernel.S:1113   .text:00000000 __vector_7
-            kernel.S:1128   .text:000001e2 __vector_9
+            kernel.S:143    .bss:00000000 KerBase
+            kernel.S:146    .bss:00000010 KerPSP
+            kernel.S:149    .bss:00000024 KerSSZ
+            kernel.S:152    .bss:00000032 KerSchSts
+            kernel.S:155    .bss:0000003c KerSchPr
+            kernel.S:158    .bss:00000046 KerSchSlp
+            kernel.S:161    .bss:0000005a KerStack
             kernel.S:1172   .text:000003c4 Kernel_SysTick_Reg_Init
             kernel.S:1326   .text:000006d8 Kernel_Init
             kernel.S:1239   .text:00000454 Kernel_Task_Create
             kernel.S:1306   .text:00000544 Kernel_Start_Tasks
             kernel.S:1359   .text:00000736 Kernel_Task_Idle
-            kernel.S:1379   .text:00000762 Kernel_Task_Sleep
-            kernel.S:1412   .text:000008f8 Kernel_Task_Constant_Latency
-            kernel.S:1439   .text:00000924 Kernel_Task_Constant_Latency_Sleep
-            kernel.S:1466   .text:00000aa6 Kernel_PreSleep_Hook
-            kernel.S:1481   .text:00000aac Kernel_Task_Sleep_Time_Get
-            kernel.S:1503   .text:00000ac0 Kernel_Task_Status_Get
-            kernel.S:1523   .text:00000ad0 Kernel_NTask_Get
-            kernel.S:1537   .text:00000ad6 Kernel_Task_Prio_Get
-            kernel.S:1558   .text:00000ae6 Kernel_Lowest_Prio_Get
-            kernel.S:1572   .text:00000aec Kernel_High_Prio_Task_ID_Get
-            kernel.S:1587   .text:00000af4 Kernel_Abs_High_Prio_Task_ID_Get
-            kernel.S:1601   .text:00000afa Kernel_CPU_Usage_Get
+            kernel.S:1379   .text:00000764 Kernel_Task_Sleep
+            kernel.S:1412   .text:000008fa Kernel_Task_Constant_Latency
+            kernel.S:1439   .text:00000926 Kernel_Task_Constant_Latency_Sleep
+            kernel.S:1466   .text:00000aa8 Kernel_PreSleep_Hook
+            kernel.S:1481   .text:00000aae Kernel_Task_Sleep_Time_Get
+            kernel.S:1503   .text:00000ac2 Kernel_Task_Status_Get
+            kernel.S:1523   .text:00000ad2 Kernel_NTask_Get
+            kernel.S:1537   .text:00000ad8 Kernel_Task_Prio_Get
+            kernel.S:1558   .text:00000ae8 Kernel_Lowest_Prio_Get
+            kernel.S:1572   .text:00000aee Kernel_High_Prio_Task_ID_Get
+            kernel.S:1587   .text:00000af6 Kernel_Abs_High_Prio_Task_ID_Get
+            kernel.S:1601   .text:00000afc Kernel_CPU_Usage_Get
+            kernel.S:1113   .text:00000000 __vector_7
             kernel.S:1121   .text:000000b4 _KER_SCH_LOOP9
             kernel.S:1121   .text:000000ea _VAL_NULL10
             kernel.S:1121   .text:000000fe _VAL_NOT_NULL10
@@ -2263,6 +2258,7 @@ DEFINED SYMBOLS
             kernel.S:1121   .text:0000014c _KER_SCH_EXIT9
             kernel.S:1122   .text:00000166 _KER_USG_TICK15
             kernel.S:1122   .text:00000180 _KER_USG_UTC_SV15
+            kernel.S:1128   .text:000001e2 __vector_9
             kernel.S:1136   .text:00000296 _KER_SCH_LOOP31
             kernel.S:1136   .text:000002cc _VAL_NULL32
             kernel.S:1136   .text:000002e0 _VAL_NOT_NULL32
@@ -2289,25 +2285,22 @@ DEFINED SYMBOLS
             kernel.S:309    .text:000006c0 _KER_TC2_OCF2B65
             kernel.S:309    .text:000006ce _KER_TC2_INTEN65
             kernel.S:1361   .text:00000740 _IDLE_LOOP
-            kernel.S:1397   .text:000007f8 _KER_SCH_LOOP78
-            kernel.S:1397   .text:0000082e _VAL_NULL79
-            kernel.S:1397   .text:00000842 _VAL_NOT_NULL79
-            kernel.S:1397   .text:00000852 _EXIT_SLP_TIME79
-            kernel.S:1397   .text:0000085c _KER_CALC_PRIO78
-            kernel.S:1397   .text:00000880 _KER_SCH_NEXT78
-            kernel.S:1397   .text:00000890 _KER_SCH_EXIT78
-            kernel.S:1451   .text:000009a6 _KER_SCH_LOOP97
-            kernel.S:1451   .text:000009dc _VAL_NULL98
-            kernel.S:1451   .text:000009f0 _VAL_NOT_NULL98
-            kernel.S:1451   .text:00000a00 _EXIT_SLP_TIME98
-            kernel.S:1451   .text:00000a0a _KER_CALC_PRIO97
-            kernel.S:1451   .text:00000a2e _KER_SCH_NEXT97
-            kernel.S:1451   .text:00000a3e _KER_SCH_EXIT97
+            kernel.S:1397   .text:000007fa _KER_SCH_LOOP78
+            kernel.S:1397   .text:00000830 _VAL_NULL79
+            kernel.S:1397   .text:00000844 _VAL_NOT_NULL79
+            kernel.S:1397   .text:00000854 _EXIT_SLP_TIME79
+            kernel.S:1397   .text:0000085e _KER_CALC_PRIO78
+            kernel.S:1397   .text:00000882 _KER_SCH_NEXT78
+            kernel.S:1397   .text:00000892 _KER_SCH_EXIT78
+            kernel.S:1451   .text:000009a8 _KER_SCH_LOOP97
+            kernel.S:1451   .text:000009de _VAL_NULL98
+            kernel.S:1451   .text:000009f2 _VAL_NOT_NULL98
+            kernel.S:1451   .text:00000a02 _EXIT_SLP_TIME98
+            kernel.S:1451   .text:00000a0c _KER_CALC_PRIO97
+            kernel.S:1451   .text:00000a30 _KER_SCH_NEXT97
+            kernel.S:1451   .text:00000a40 _KER_SCH_EXIT97
 
 UNDEFINED SYMBOLS
-__vector_6
-__vector_8
-__vector_16
 Kernel_SysTick_Val_Get
 Kernel_SysTick_Val_Safely_Get
 Kernel_Interrupt_Sts_Get

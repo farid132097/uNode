@@ -1,0 +1,1010 @@
+   1               		.file	"sensors.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	Sensors_HDC1080_Struct_Init
+  18               	Sensors_HDC1080_Struct_Init:
+  19               	.LFB6:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 1092 0000 		sts HDC1080,__zero_reg__
+  25               	.LM3:
+  26 0004 1092 0000 		sts HDC1080+1,__zero_reg__
+  27               	.LM4:
+  28 0008 1092 0000 		sts (HDC1080+2)+1,__zero_reg__
+  29 000c 1092 0000 		sts HDC1080+2,__zero_reg__
+  30               	.LM5:
+  31 0010 1092 0000 		sts (HDC1080+4)+1,__zero_reg__
+  32 0014 1092 0000 		sts HDC1080+4,__zero_reg__
+  33               	.LM6:
+  34 0018 1092 0000 		sts (HDC1080+6)+1,__zero_reg__
+  35 001c 1092 0000 		sts HDC1080+6,__zero_reg__
+  36               	.LM7:
+  37 0020 1092 0000 		sts HDC1080+8,__zero_reg__
+  38               	.LM8:
+  39 0024 1092 0000 		sts HDC1080+9,__zero_reg__
+  40               	/* epilogue start */
+  41               	.LM9:
+  42 0028 0895      		ret
+  43               	.LFE6:
+  45               	.global	Sensors_Init
+  47               	Sensors_Init:
+  48               	.LFB7:
+  49               	.LM10:
+  50               	/* prologue: function */
+  51               	/* frame size = 0 */
+  52               	.LM11:
+  53 002a 0E94 0000 		call Sensors_HDC1080_Struct_Init
+  54               	.LM12:
+  55 002e 5B9A      		sbi 43-32,3
+  56               	.LM13:
+  57 0030 539A      		sbi 42-32,3
+  58               	.LM14:
+  59 0032 4598      		cbi 40-32,5
+  60               	.LM15:
+  61 0034 3D98      		cbi 39-32,5
+  62               	.LM16:
+  63 0036 4498      		cbi 40-32,4
+  64               	.LM17:
+  65 0038 3C98      		cbi 39-32,4
+  66               	/* epilogue start */
+  67               	.LM18:
+  68 003a 0895      		ret
+  69               	.LFE7:
+  71               	.global	Sensors_I2C_Enable
+  73               	Sensors_I2C_Enable:
+  74               	.LFB8:
+  75               	.LM19:
+  76               	/* prologue: function */
+  77               	/* frame size = 0 */
+  78               	.LM20:
+  79 003c 82E1      		ldi r24,lo8(18)
+  80 003e 8093 B800 		sts 184,r24
+  81               	.LM21:
+  82 0042 ECEB      		ldi r30,lo8(188)
+  83 0044 F0E0      		ldi r31,hi8(188)
+  84 0046 8081      		ld r24,Z
+  85 0048 8460      		ori r24,lo8(4)
+  86 004a 8083      		st Z,r24
+  87               	.LM22:
+  88 004c 8081      		ld r24,Z
+  89 004e 8160      		ori r24,lo8(1)
+  90 0050 8083      		st Z,r24
+  91               	/* epilogue start */
+  92               	.LM23:
+  93 0052 0895      		ret
+  94               	.LFE8:
+  96               	.global	Sensors_I2C_Disable
+  98               	Sensors_I2C_Disable:
+  99               	.LFB9:
+ 100               	.LM24:
+ 101               	/* prologue: function */
+ 102               	/* frame size = 0 */
+ 103               	.LM25:
+ 104 0054 1092 B800 		sts 184,__zero_reg__
+ 105               	.LM26:
+ 106 0058 1092 BC00 		sts 188,__zero_reg__
+ 107               	/* epilogue start */
+ 108               	.LM27:
+ 109 005c 0895      		ret
+ 110               	.LFE9:
+ 112               	.global	Sensors_HDC1080_Timeout_Clear
+ 114               	Sensors_HDC1080_Timeout_Clear:
+ 115               	.LFB10:
+ 116               	.LM28:
+ 117               	/* prologue: function */
+ 118               	/* frame size = 0 */
+ 119               	.LM29:
+ 120 005e 1092 0000 		sts (HDC1080+2)+1,__zero_reg__
+ 121 0062 1092 0000 		sts HDC1080+2,__zero_reg__
+ 122               	.LM30:
+ 123 0066 1092 0000 		sts HDC1080+8,__zero_reg__
+ 124               	/* epilogue start */
+ 125               	.LM31:
+ 126 006a 0895      		ret
+ 127               	.LFE10:
+ 129               	.global	Sensors_HDC1080_Timeout
+ 131               	Sensors_HDC1080_Timeout:
+ 132               	.LFB11:
+ 133               	.LM32:
+ 134               	/* prologue: function */
+ 135               	/* frame size = 0 */
+ 136               	.LBB65:
+ 137               	.LBB66:
+ 138               	.LBB67:
+ 139               	.LBB68:
+ 140               	.LM33:
+ 141 006c 8AE1      		ldi r24,lo8(26)
+ 142               	.LVL0:
+ 143               	/* #APP */
+ 144               	 ;  83 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 145 006e 8A95      		1: dec r24
+ 146 0070 01F4      		brne 1b
+ 147               	 ;  0 "" 2
+ 148               	/* #NOAPP */
+ 149               	.LBE68:
+ 150               	.LBE67:
+ 151               	.LBE66:
+ 152               	.LBE65:
+ 153               	.LM34:
+ 154 0072 8091 0000 		lds r24,HDC1080+2
+ 155 0076 9091 0000 		lds r25,(HDC1080+2)+1
+ 156               	.LVL1:
+ 157 007a 0196      		adiw r24,1
+ 158 007c 9093 0000 		sts (HDC1080+2)+1,r25
+ 159 0080 8093 0000 		sts HDC1080+2,r24
+ 160               	.LM35:
+ 161 0084 8536      		cpi r24,101
+ 162 0086 9105      		cpc r25,__zero_reg__
+ 163 0088 00F4      		brsh .L12
+ 164 008a 80E0      		ldi r24,lo8(0)
+ 165               	.LVL2:
+ 166 008c 0895      		ret
+ 167               	.LVL3:
+ 168               	.L12:
+ 169               	.LM36:
+ 170 008e 1092 0000 		sts (HDC1080+2)+1,__zero_reg__
+ 171 0092 1092 0000 		sts HDC1080+2,__zero_reg__
+ 172 0096 81E0      		ldi r24,lo8(1)
+ 173               	.LVL4:
+ 174               	.LVL5:
+ 175               	.LM37:
+ 176 0098 0895      		ret
+ 177               	.LFE11:
+ 179               	.global	Sensors_HDC1080_I2C_Start
+ 181               	Sensors_HDC1080_I2C_Start:
+ 182               	.LFB12:
+ 183               	.LM38:
+ 184               	/* prologue: function */
+ 185               	/* frame size = 0 */
+ 186               	.LM39:
+ 187 009a 8091 0000 		lds r24,HDC1080+8
+ 188 009e 8823      		tst r24
+ 189 00a0 01F4      		brne .L20
+ 190               	.LM40:
+ 191 00a2 84EA      		ldi r24,lo8(-92)
+ 192 00a4 8093 BC00 		sts 188,r24
+ 193               	.LBB69:
+ 194               	.LBB70:
+ 195               	.LM41:
+ 196 00a8 1092 0000 		sts (HDC1080+2)+1,__zero_reg__
+ 197 00ac 1092 0000 		sts HDC1080+2,__zero_reg__
+ 198               	.LM42:
+ 199 00b0 1092 0000 		sts HDC1080+8,__zero_reg__
+ 200 00b4 00C0      		rjmp .L17
+ 201               	.L19:
+ 202               	.LBE70:
+ 203               	.LBE69:
+ 204               	.LM43:
+ 205 00b6 0E94 0000 		call Sensors_HDC1080_Timeout
+ 206 00ba 8823      		tst r24
+ 207 00bc 01F0      		breq .L17
+ 208               	.LM44:
+ 209 00be 80EF      		ldi r24,lo8(-16)
+ 210 00c0 8093 0000 		sts HDC1080+8,r24
+ 211 00c4 00C0      		rjmp .L18
+ 212               	.L17:
+ 213               	.LM45:
+ 214 00c6 8091 BC00 		lds r24,188
+ 215 00ca 87FF      		sbrs r24,7
+ 216 00cc 00C0      		rjmp .L19
+ 217               	.L18:
+ 218               	.LM46:
+ 219 00ce 8091 B900 		lds r24,185
+ 220 00d2 887F      		andi r24,lo8(-8)
+ 221 00d4 8093 0000 		sts HDC1080,r24
+ 222               	.L20:
+ 223 00d8 0895      		ret
+ 224               	.LFE12:
+ 226               	.global	Sensors_HDC1080_I2C_Stop
+ 228               	Sensors_HDC1080_I2C_Stop:
+ 229               	.LFB13:
+ 230               	.LM47:
+ 231               	/* prologue: function */
+ 232               	/* frame size = 0 */
+ 233               	.LM48:
+ 234 00da 8091 0000 		lds r24,HDC1080+8
+ 235 00de 8823      		tst r24
+ 236 00e0 01F4      		brne .L24
+ 237               	.LM49:
+ 238 00e2 84E9      		ldi r24,lo8(-108)
+ 239 00e4 8093 BC00 		sts 188,r24
+ 240               	.L24:
+ 241 00e8 0895      		ret
+ 242               	.LFE13:
+ 244               	.global	Sensors_HDC1080_I2C_Read
+ 246               	Sensors_HDC1080_I2C_Read:
+ 247               	.LFB14:
+ 248               	.LM50:
+ 249               	/* prologue: function */
+ 250               	/* frame size = 0 */
+ 251               	.LM51:
+ 252 00ea 8091 0000 		lds r24,HDC1080+8
+ 253 00ee 8823      		tst r24
+ 254 00f0 01F0      		breq .L26
+ 255 00f2 80E0      		ldi r24,lo8(0)
+ 256 00f4 0895      		ret
+ 257               	.L26:
+ 258               	.LM52:
+ 259 00f6 84EC      		ldi r24,lo8(-60)
+ 260 00f8 8093 BC00 		sts 188,r24
+ 261               	.LBB71:
+ 262               	.LBB72:
+ 263               	.LM53:
+ 264 00fc 1092 0000 		sts (HDC1080+2)+1,__zero_reg__
+ 265 0100 1092 0000 		sts HDC1080+2,__zero_reg__
+ 266               	.LM54:
+ 267 0104 1092 0000 		sts HDC1080+8,__zero_reg__
+ 268 0108 00C0      		rjmp .L28
+ 269               	.L30:
+ 270               	.LBE72:
+ 271               	.LBE71:
+ 272               	.LM55:
+ 273 010a 0E94 0000 		call Sensors_HDC1080_Timeout
+ 274 010e 8823      		tst r24
+ 275 0110 01F0      		breq .L28
+ 276               	.LM56:
+ 277 0112 82EF      		ldi r24,lo8(-14)
+ 278 0114 8093 0000 		sts HDC1080+8,r24
+ 279 0118 00C0      		rjmp .L29
+ 280               	.L28:
+ 281               	.LM57:
+ 282 011a 8091 BC00 		lds r24,188
+ 283 011e 87FF      		sbrs r24,7
+ 284 0120 00C0      		rjmp .L30
+ 285               	.L29:
+ 286               	.LM58:
+ 287 0122 8091 B900 		lds r24,185
+ 288 0126 887F      		andi r24,lo8(-8)
+ 289 0128 8093 0000 		sts HDC1080,r24
+ 290               	.LM59:
+ 291 012c 8091 BB00 		lds r24,187
+ 292               	.LM60:
+ 293 0130 0895      		ret
+ 294               	.LFE14:
+ 296               	.global	Sensors_HDC1080_I2C_Write
+ 298               	Sensors_HDC1080_I2C_Write:
+ 299               	.LFB15:
+ 300               	.LM61:
+ 301               	.LVL6:
+ 302               	/* prologue: function */
+ 303               	/* frame size = 0 */
+ 304 0132 982F      		mov r25,r24
+ 305               	.LM62:
+ 306 0134 8091 0000 		lds r24,HDC1080+8
+ 307               	.LVL7:
+ 308 0138 8823      		tst r24
+ 309 013a 01F4      		brne .L38
+ 310               	.LM63:
+ 311 013c 9093 BB00 		sts 187,r25
+ 312               	.LM64:
+ 313 0140 84EC      		ldi r24,lo8(-60)
+ 314 0142 8093 BC00 		sts 188,r24
+ 315               	.LBB73:
+ 316               	.LBB74:
+ 317               	.LM65:
+ 318 0146 1092 0000 		sts (HDC1080+2)+1,__zero_reg__
+ 319 014a 1092 0000 		sts HDC1080+2,__zero_reg__
+ 320               	.LM66:
+ 321 014e 1092 0000 		sts HDC1080+8,__zero_reg__
+ 322 0152 00C0      		rjmp .L35
+ 323               	.L37:
+ 324               	.LBE74:
+ 325               	.LBE73:
+ 326               	.LM67:
+ 327 0154 0E94 0000 		call Sensors_HDC1080_Timeout
+ 328               	.LVL8:
+ 329 0158 8823      		tst r24
+ 330 015a 01F0      		breq .L35
+ 331               	.LM68:
+ 332 015c 81EF      		ldi r24,lo8(-15)
+ 333 015e 8093 0000 		sts HDC1080+8,r24
+ 334 0162 00C0      		rjmp .L36
+ 335               	.LVL9:
+ 336               	.L35:
+ 337               	.LM69:
+ 338 0164 8091 BC00 		lds r24,188
+ 339 0168 87FF      		sbrs r24,7
+ 340 016a 00C0      		rjmp .L37
+ 341               	.L36:
+ 342               	.LM70:
+ 343 016c 8091 B900 		lds r24,185
+ 344 0170 887F      		andi r24,lo8(-8)
+ 345 0172 8093 0000 		sts HDC1080,r24
+ 346               	.L38:
+ 347 0176 0895      		ret
+ 348               	.LFE15:
+ 350               	.global	Sensors_HDC1080_I2C_Read_Nack
+ 352               	Sensors_HDC1080_I2C_Read_Nack:
+ 353               	.LFB16:
+ 354               	.LM71:
+ 355               	/* prologue: function */
+ 356               	/* frame size = 0 */
+ 357               	.LM72:
+ 358 0178 8091 0000 		lds r24,HDC1080+8
+ 359 017c 8823      		tst r24
+ 360 017e 01F0      		breq .L41
+ 361 0180 80E0      		ldi r24,lo8(0)
+ 362 0182 0895      		ret
+ 363               	.L41:
+ 364               	.LM73:
+ 365 0184 84E8      		ldi r24,lo8(-124)
+ 366 0186 8093 BC00 		sts 188,r24
+ 367               	.LBB75:
+ 368               	.LBB76:
+ 369               	.LM74:
+ 370 018a 1092 0000 		sts (HDC1080+2)+1,__zero_reg__
+ 371 018e 1092 0000 		sts HDC1080+2,__zero_reg__
+ 372               	.LM75:
+ 373 0192 1092 0000 		sts HDC1080+8,__zero_reg__
+ 374 0196 00C0      		rjmp .L43
+ 375               	.L45:
+ 376               	.LBE76:
+ 377               	.LBE75:
+ 378               	.LM76:
+ 379 0198 0E94 0000 		call Sensors_HDC1080_Timeout
+ 380 019c 8823      		tst r24
+ 381 019e 01F0      		breq .L43
+ 382               	.LM77:
+ 383 01a0 83EF      		ldi r24,lo8(-13)
+ 384 01a2 8093 0000 		sts HDC1080+8,r24
+ 385 01a6 00C0      		rjmp .L44
+ 386               	.L43:
+ 387               	.LM78:
+ 388 01a8 8091 BC00 		lds r24,188
+ 389 01ac 87FF      		sbrs r24,7
+ 390 01ae 00C0      		rjmp .L45
+ 391               	.L44:
+ 392               	.LM79:
+ 393 01b0 8091 B900 		lds r24,185
+ 394 01b4 887F      		andi r24,lo8(-8)
+ 395 01b6 8093 0000 		sts HDC1080,r24
+ 396               	.LM80:
+ 397 01ba 8091 BB00 		lds r24,187
+ 398               	.LM81:
+ 399 01be 0895      		ret
+ 400               	.LFE16:
+ 402               	.global	Sensors_HDC1080_Find_Address
+ 404               	Sensors_HDC1080_Find_Address:
+ 405               	.LFB17:
+ 406               	.LM82:
+ 407 01c0 0F93      		push r16
+ 408 01c2 1F93      		push r17
+ 409               	/* prologue: function */
+ 410               	/* frame size = 0 */
+ 411               	.LM83:
+ 412 01c4 10E0      		ldi r17,lo8(0)
+ 413               	.LVL10:
+ 414               	.LBB77:
+ 415               	.LBB78:
+ 416               	.LBB79:
+ 417               	.LM84:
+ 418 01c6 04E9      		ldi r16,lo8(-108)
+ 419               	.L51:
+ 420               	.LBE79:
+ 421               	.LBE78:
+ 422               	.LM85:
+ 423 01c8 0E94 0000 		call Sensors_HDC1080_I2C_Start
+ 424               	.LM86:
+ 425 01cc 812F      		mov r24,r17
+ 426 01ce 880F      		lsl r24
+ 427 01d0 0E94 0000 		call Sensors_HDC1080_I2C_Write
+ 428               	.LBB81:
+ 429               	.LBB80:
+ 430               	.LM87:
+ 431 01d4 8091 0000 		lds r24,HDC1080+8
+ 432 01d8 8823      		tst r24
+ 433 01da 01F4      		brne .L49
+ 434               	.LM88:
+ 435 01dc 0093 BC00 		sts 188,r16
+ 436               	.LBE80:
+ 437               	.LBE81:
+ 438               	.LM89:
+ 439 01e0 8091 0000 		lds r24,HDC1080
+ 440 01e4 8831      		cpi r24,lo8(24)
+ 441 01e6 01F4      		brne .L49
+ 442               	.LM90:
+ 443 01e8 1093 0000 		sts HDC1080+1,r17
+ 444 01ec 812F      		mov r24,r17
+ 445               	.LVL11:
+ 446 01ee 00C0      		rjmp .L50
+ 447               	.LVL12:
+ 448               	.L49:
+ 449               	.LM91:
+ 450 01f0 1F5F      		subi r17,lo8(-(1))
+ 451 01f2 1F37      		cpi r17,lo8(127)
+ 452 01f4 01F4      		brne .L51
+ 453 01f6 80E0      		ldi r24,lo8(0)
+ 454               	.LVL13:
+ 455               	.L50:
+ 456               	.LVL14:
+ 457               	/* epilogue start */
+ 458               	.LBE77:
+ 459               	.LM92:
+ 460 01f8 1F91      		pop r17
+ 461               	.LVL15:
+ 462 01fa 0F91      		pop r16
+ 463 01fc 0895      		ret
+ 464               	.LFE17:
+ 466               	.global	Sensors_HDC1080_Read_Reg
+ 468               	Sensors_HDC1080_Read_Reg:
+ 469               	.LFB18:
+ 470               	.LM93:
+ 471               	.LVL16:
+ 472 01fe 0F93      		push r16
+ 473 0200 1F93      		push r17
+ 474               	/* prologue: function */
+ 475               	/* frame size = 0 */
+ 476 0202 082F      		mov r16,r24
+ 477               	.LM94:
+ 478 0204 0E94 0000 		call Sensors_HDC1080_I2C_Start
+ 479               	.LVL17:
+ 480               	.LM95:
+ 481 0208 8091 0000 		lds r24,HDC1080+1
+ 482 020c 880F      		lsl r24
+ 483 020e 0E94 0000 		call Sensors_HDC1080_I2C_Write
+ 484               	.LM96:
+ 485 0212 8091 0000 		lds r24,HDC1080
+ 486 0216 8831      		cpi r24,lo8(24)
+ 487 0218 01F4      		brne .L55
+ 488               	.LM97:
+ 489 021a 802F      		mov r24,r16
+ 490 021c 0E94 0000 		call Sensors_HDC1080_I2C_Write
+ 491               	.LM98:
+ 492 0220 8091 0000 		lds r24,HDC1080
+ 493 0224 8832      		cpi r24,lo8(40)
+ 494 0226 01F4      		brne .L56
+ 495               	.LBB82:
+ 496               	.LBB83:
+ 497               	.LM99:
+ 498 0228 8091 0000 		lds r24,HDC1080+8
+ 499 022c 8823      		tst r24
+ 500 022e 01F4      		brne .L57
+ 501               	.LM100:
+ 502 0230 84E9      		ldi r24,lo8(-108)
+ 503 0232 8093 BC00 		sts 188,r24
+ 504               	.L57:
+ 505               	.LBE83:
+ 506               	.LBE82:
+ 507               	.LM101:
+ 508 0236 0E94 0000 		call Sensors_HDC1080_I2C_Start
+ 509               	.LM102:
+ 510 023a 8091 0000 		lds r24,HDC1080+1
+ 511 023e 880F      		lsl r24
+ 512 0240 8160      		ori r24,lo8(1)
+ 513 0242 0E94 0000 		call Sensors_HDC1080_I2C_Write
+ 514               	.LM103:
+ 515 0246 8091 0000 		lds r24,HDC1080
+ 516 024a 8034      		cpi r24,lo8(64)
+ 517 024c 01F4      		brne .L58
+ 518               	.LM104:
+ 519 024e 0E94 0000 		call Sensors_HDC1080_I2C_Read
+ 520 0252 282F      		mov r18,r24
+ 521               	.LVL18:
+ 522 0254 30E0      		ldi r19,lo8(0)
+ 523               	.LVL19:
+ 524               	.LM105:
+ 525 0256 8091 0000 		lds r24,HDC1080
+ 526 025a 8035      		cpi r24,lo8(80)
+ 527 025c 01F4      		brne .L59
+ 528               	.LM106:
+ 529 025e 122F      		mov r17,r18
+ 530 0260 0027      		clr r16
+ 531               	.LVL20:
+ 532               	.LM107:
+ 533 0262 0E94 0000 		call Sensors_HDC1080_I2C_Read_Nack
+ 534               	.LVL21:
+ 535 0266 282F      		mov r18,r24
+ 536               	.LVL22:
+ 537 0268 30E0      		ldi r19,lo8(0)
+ 538               	.LVL23:
+ 539 026a 202B      		or r18,r16
+ 540 026c 312B      		or r19,r17
+ 541               	.LVL24:
+ 542               	.LM108:
+ 543 026e 8091 0000 		lds r24,HDC1080
+ 544 0272 8835      		cpi r24,lo8(88)
+ 545 0274 01F4      		brne .L60
+ 546               	.LM109:
+ 547 0276 1092 0000 		sts HDC1080+9,__zero_reg__
+ 548 027a 00C0      		rjmp .L61
+ 549               	.L60:
+ 550               	.LM110:
+ 551 027c 85E0      		ldi r24,lo8(5)
+ 552 027e 00C0      		rjmp .L66
+ 553               	.LVL25:
+ 554               	.L59:
+ 555               	.LM111:
+ 556 0280 84E0      		ldi r24,lo8(4)
+ 557               	.L66:
+ 558 0282 8093 0000 		sts HDC1080+9,r24
+ 559 0286 00C0      		rjmp .L61
+ 560               	.LVL26:
+ 561               	.L58:
+ 562               	.LM112:
+ 563 0288 83E0      		ldi r24,lo8(3)
+ 564 028a 00C0      		rjmp .L65
+ 565               	.L56:
+ 566               	.LM113:
+ 567 028c 82E0      		ldi r24,lo8(2)
+ 568 028e 00C0      		rjmp .L65
+ 569               	.L55:
+ 570               	.LM114:
+ 571 0290 81E0      		ldi r24,lo8(1)
+ 572               	.L65:
+ 573 0292 8093 0000 		sts HDC1080+9,r24
+ 574 0296 20E0      		ldi r18,lo8(0)
+ 575 0298 30E0      		ldi r19,hi8(0)
+ 576               	.LVL27:
+ 577               	.L61:
+ 578               	.LBB84:
+ 579               	.LBB85:
+ 580               	.LM115:
+ 581 029a 8091 0000 		lds r24,HDC1080+8
+ 582 029e 8823      		tst r24
+ 583 02a0 01F4      		brne .L62
+ 584               	.LM116:
+ 585 02a2 84E9      		ldi r24,lo8(-108)
+ 586 02a4 8093 BC00 		sts 188,r24
+ 587               	.L62:
+ 588               	.LBE85:
+ 589               	.LBE84:
+ 590               	.LM117:
+ 591 02a8 8091 0000 		lds r24,HDC1080+9
+ 592 02ac 8823      		tst r24
+ 593 02ae 01F0      		breq .L63
+ 594 02b0 20E0      		ldi r18,lo8(0)
+ 595 02b2 30E0      		ldi r19,hi8(0)
+ 596               	.L63:
+ 597               	.LM118:
+ 598 02b4 C901      		movw r24,r18
+ 599               	.LVL28:
+ 600               	/* epilogue start */
+ 601 02b6 1F91      		pop r17
+ 602 02b8 0F91      		pop r16
+ 603               	.LVL29:
+ 604 02ba 0895      		ret
+ 605               	.LFE18:
+ 607               	.global	Sensors_HDC1080_Write_Reg
+ 609               	Sensors_HDC1080_Write_Reg:
+ 610               	.LFB19:
+ 611               	.LM119:
+ 612               	.LVL30:
+ 613 02bc FF92      		push r15
+ 614 02be 0F93      		push r16
+ 615 02c0 1F93      		push r17
+ 616               	/* prologue: function */
+ 617               	/* frame size = 0 */
+ 618 02c2 182F      		mov r17,r24
+ 619 02c4 F62E      		mov r15,r22
+ 620 02c6 072F      		mov r16,r23
+ 621               	.LVL31:
+ 622               	.LM120:
+ 623 02c8 0E94 0000 		call Sensors_HDC1080_I2C_Start
+ 624               	.LVL32:
+ 625               	.LM121:
+ 626 02cc 8091 0000 		lds r24,HDC1080+1
+ 627 02d0 880F      		lsl r24
+ 628 02d2 0E94 0000 		call Sensors_HDC1080_I2C_Write
+ 629               	.LM122:
+ 630 02d6 8091 0000 		lds r24,HDC1080
+ 631 02da 8831      		cpi r24,lo8(24)
+ 632 02dc 01F4      		brne .L68
+ 633               	.LM123:
+ 634 02de 812F      		mov r24,r17
+ 635 02e0 0E94 0000 		call Sensors_HDC1080_I2C_Write
+ 636               	.LM124:
+ 637 02e4 8091 0000 		lds r24,HDC1080
+ 638 02e8 8832      		cpi r24,lo8(40)
+ 639 02ea 01F4      		brne .L69
+ 640               	.LM125:
+ 641 02ec 802F      		mov r24,r16
+ 642 02ee 0E94 0000 		call Sensors_HDC1080_I2C_Write
+ 643               	.LM126:
+ 644 02f2 8091 0000 		lds r24,HDC1080
+ 645 02f6 8832      		cpi r24,lo8(40)
+ 646 02f8 01F4      		brne .L70
+ 647               	.LM127:
+ 648 02fa 8F2D      		mov r24,r15
+ 649 02fc 0E94 0000 		call Sensors_HDC1080_I2C_Write
+ 650               	.LM128:
+ 651 0300 8091 0000 		lds r24,HDC1080
+ 652 0304 8832      		cpi r24,lo8(40)
+ 653 0306 01F4      		brne .L71
+ 654               	.LM129:
+ 655 0308 1092 0000 		sts HDC1080+9,__zero_reg__
+ 656 030c 00C0      		rjmp .L72
+ 657               	.L71:
+ 658               	.LM130:
+ 659 030e 84E1      		ldi r24,lo8(20)
+ 660 0310 00C0      		rjmp .L75
+ 661               	.L70:
+ 662               	.LM131:
+ 663 0312 83E1      		ldi r24,lo8(19)
+ 664 0314 00C0      		rjmp .L75
+ 665               	.L69:
+ 666               	.LM132:
+ 667 0316 82E1      		ldi r24,lo8(18)
+ 668 0318 00C0      		rjmp .L75
+ 669               	.L68:
+ 670               	.LM133:
+ 671 031a 81E1      		ldi r24,lo8(17)
+ 672               	.L75:
+ 673 031c 8093 0000 		sts HDC1080+9,r24
+ 674               	.L72:
+ 675               	.LBB86:
+ 676               	.LBB87:
+ 677               	.LM134:
+ 678 0320 8091 0000 		lds r24,HDC1080+8
+ 679 0324 8823      		tst r24
+ 680 0326 01F4      		brne .L74
+ 681               	.LM135:
+ 682 0328 84E9      		ldi r24,lo8(-108)
+ 683 032a 8093 BC00 		sts 188,r24
+ 684               	.L74:
+ 685               	/* epilogue start */
+ 686               	.LBE87:
+ 687               	.LBE86:
+ 688               	.LM136:
+ 689 032e 1F91      		pop r17
+ 690               	.LVL33:
+ 691 0330 0F91      		pop r16
+ 692               	.LVL34:
+ 693 0332 FF90      		pop r15
+ 694               	.LVL35:
+ 695 0334 0895      		ret
+ 696               	.LFE19:
+ 698               	.global	Sensors_HDC1080_Trigger_Humidity_Measurement
+ 700               	Sensors_HDC1080_Trigger_Humidity_Measurement:
+ 701               	.LFB20:
+ 702               	.LM137:
+ 703               	/* prologue: function */
+ 704               	/* frame size = 0 */
+ 705               	.LM138:
+ 706 0336 0E94 0000 		call Sensors_HDC1080_I2C_Start
+ 707               	.LM139:
+ 708 033a 8091 0000 		lds r24,HDC1080+1
+ 709 033e 880F      		lsl r24
+ 710 0340 0E94 0000 		call Sensors_HDC1080_I2C_Write
+ 711               	.LM140:
+ 712 0344 8091 0000 		lds r24,HDC1080
+ 713 0348 8831      		cpi r24,lo8(24)
+ 714 034a 01F4      		brne .L77
+ 715               	.LM141:
+ 716 034c 81E0      		ldi r24,lo8(1)
+ 717 034e 0E94 0000 		call Sensors_HDC1080_I2C_Write
+ 718               	.LM142:
+ 719 0352 8091 0000 		lds r24,HDC1080
+ 720 0356 8832      		cpi r24,lo8(40)
+ 721 0358 01F4      		brne .L78
+ 722               	.LM143:
+ 723 035a 1092 0000 		sts HDC1080+9,__zero_reg__
+ 724 035e 00C0      		rjmp .L79
+ 725               	.L78:
+ 726               	.LM144:
+ 727 0360 82E2      		ldi r24,lo8(34)
+ 728 0362 00C0      		rjmp .L82
+ 729               	.L77:
+ 730               	.LM145:
+ 731 0364 81E2      		ldi r24,lo8(33)
+ 732               	.L82:
+ 733 0366 8093 0000 		sts HDC1080+9,r24
+ 734               	.L79:
+ 735               	.LBB88:
+ 736               	.LBB89:
+ 737               	.LM146:
+ 738 036a 8091 0000 		lds r24,HDC1080+8
+ 739 036e 8823      		tst r24
+ 740 0370 01F4      		brne .L81
+ 741               	.LM147:
+ 742 0372 84E9      		ldi r24,lo8(-108)
+ 743 0374 8093 BC00 		sts 188,r24
+ 744               	.L81:
+ 745 0378 0895      		ret
+ 746               	.LBE89:
+ 747               	.LBE88:
+ 748               	.LFE20:
+ 750               	.global	Sensors_HDC1080_Read_Humidity_Plain
+ 752               	Sensors_HDC1080_Read_Humidity_Plain:
+ 753               	.LFB21:
+ 754               	.LM148:
+ 755 037a 1F93      		push r17
+ 756               	/* prologue: function */
+ 757               	/* frame size = 0 */
+ 758               	.LBB90:
+ 759               	.LBB91:
+ 760               	.LM149:
+ 761 037c 1092 0000 		sts (HDC1080+2)+1,__zero_reg__
+ 762 0380 1092 0000 		sts HDC1080+2,__zero_reg__
+ 763               	.LM150:
+ 764 0384 1092 0000 		sts HDC1080+8,__zero_reg__
+ 765               	.LBE91:
+ 766               	.LBE90:
+ 767               	.LBB92:
+ 768               	.LBB93:
+ 769               	.LBB94:
+ 770               	.LBB95:
+ 771               	.LM151:
+ 772 0388 80E4      		ldi r24,lo8(-25536)
+ 773 038a 9CE9      		ldi r25,hi8(-25536)
+ 774               	.LVL36:
+ 775               	/* #APP */
+ 776               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 777 038c 0197      		1: sbiw r24,1
+ 778 038e 01F4      		brne 1b
+ 779               	 ;  0 "" 2
+ 780               	/* #NOAPP */
+ 781               	.LBE95:
+ 782               	.LBE94:
+ 783               	.LBE93:
+ 784               	.LBE92:
+ 785               	.LM152:
+ 786 0390 0E94 0000 		call Sensors_HDC1080_I2C_Start
+ 787               	.LVL37:
+ 788               	.LM153:
+ 789 0394 8091 0000 		lds r24,HDC1080+1
+ 790 0398 880F      		lsl r24
+ 791 039a 8160      		ori r24,lo8(1)
+ 792 039c 0E94 0000 		call Sensors_HDC1080_I2C_Write
+ 793               	.LM154:
+ 794 03a0 0E94 0000 		call Sensors_HDC1080_I2C_Read
+ 795 03a4 182F      		mov r17,r24
+ 796               	.LM155:
+ 797 03a6 0E94 0000 		call Sensors_HDC1080_I2C_Read_Nack
+ 798 03aa 282F      		mov r18,r24
+ 799               	.LBB96:
+ 800               	.LBB97:
+ 801               	.LM156:
+ 802 03ac 8091 0000 		lds r24,HDC1080+8
+ 803 03b0 8823      		tst r24
+ 804 03b2 01F0      		breq .L84
+ 805 03b4 20E0      		ldi r18,lo8(0)
+ 806 03b6 30E0      		ldi r19,hi8(0)
+ 807 03b8 40E0      		ldi r20,hlo8(0)
+ 808 03ba 50E0      		ldi r21,hhi8(0)
+ 809               	.LVL38:
+ 810 03bc 00C0      		rjmp .L85
+ 811               	.LVL39:
+ 812               	.L84:
+ 813               	.LM157:
+ 814 03be 84E9      		ldi r24,lo8(-108)
+ 815 03c0 8093 BC00 		sts 188,r24
+ 816               	.LBE97:
+ 817               	.LBE96:
+ 818               	.LM158:
+ 819 03c4 612F      		mov r22,r17
+ 820               	.LVL40:
+ 821 03c6 70E0      		ldi r23,lo8(0)
+ 822               	.LVL41:
+ 823 03c8 80E0      		ldi r24,lo8(0)
+ 824 03ca 90E0      		ldi r25,hi8(0)
+ 825               	.LVL42:
+ 826               	.LM159:
+ 827 03cc 982F      		mov r25,r24
+ 828 03ce 872F      		mov r24,r23
+ 829 03d0 762F      		mov r23,r22
+ 830 03d2 6627      		clr r22
+ 831               	.LVL43:
+ 832               	.LM160:
+ 833 03d4 30E0      		ldi r19,lo8(0)
+ 834 03d6 40E0      		ldi r20,lo8(0)
+ 835 03d8 50E0      		ldi r21,hi8(0)
+ 836 03da 622B      		or r22,r18
+ 837 03dc 732B      		or r23,r19
+ 838 03de 842B      		or r24,r20
+ 839 03e0 952B      		or r25,r21
+ 840               	.LM161:
+ 841 03e2 24E6      		ldi r18,lo8(100)
+ 842 03e4 30E0      		ldi r19,hi8(100)
+ 843 03e6 40E0      		ldi r20,hlo8(100)
+ 844 03e8 50E0      		ldi r21,hhi8(100)
+ 845 03ea 0E94 0000 		call __mulsi3
+ 846               	.LVL44:
+ 847               	.LM162:
+ 848 03ee 2FEF      		ldi r18,lo8(65535)
+ 849 03f0 3FEF      		ldi r19,hi8(65535)
+ 850 03f2 40E0      		ldi r20,hlo8(65535)
+ 851 03f4 50E0      		ldi r21,hhi8(65535)
+ 852 03f6 0E94 0000 		call __udivmodsi4
+ 853 03fa C901      		movw r24,r18
+ 854               	.LVL45:
+ 855 03fc DA01      		movw r26,r20
+ 856 03fe 9C01      		movw r18,r24
+ 857 0400 AD01      		movw r20,r26
+ 858               	.LVL46:
+ 859               	.LM163:
+ 860 0402 3093 0000 		sts (HDC1080+6)+1,r19
+ 861 0406 2093 0000 		sts HDC1080+6,r18
+ 862               	.LVL47:
+ 863               	.L85:
+ 864               	.LM164:
+ 865 040a C901      		movw r24,r18
+ 866               	.LVL48:
+ 867               	/* epilogue start */
+ 868 040c 1F91      		pop r17
+ 869 040e 0895      		ret
+ 870               	.LFE21:
+ 872               	.global	Sensors_Sample
+ 874               	Sensors_Sample:
+ 875               	.LFB22:
+ 876               	.LM165:
+ 877 0410 EF92      		push r14
+ 878 0412 FF92      		push r15
+ 879 0414 0F93      		push r16
+ 880 0416 1F93      		push r17
+ 881               	/* prologue: function */
+ 882               	/* frame size = 0 */
+ 883               	.LM166:
+ 884 0418 5B98      		cbi 43-32,3
+ 885               	.LBB98:
+ 886               	.LBB99:
+ 887               	.LM167:
+ 888 041a 48EB      		ldi r20,lo8(184)
+ 889 041c E42E      		mov r14,r20
+ 890 041e F12C      		mov r15,__zero_reg__
+ 891 0420 82E1      		ldi r24,lo8(18)
+ 892 0422 F701      		movw r30,r14
+ 893 0424 8083      		st Z,r24
+ 894               	.LM168:
+ 895 0426 0CEB      		ldi r16,lo8(188)
+ 896 0428 10E0      		ldi r17,hi8(188)
+ 897 042a F801      		movw r30,r16
+ 898 042c 8081      		ld r24,Z
+ 899 042e 8460      		ori r24,lo8(4)
+ 900 0430 8083      		st Z,r24
+ 901               	.LM169:
+ 902 0432 8081      		ld r24,Z
+ 903 0434 8160      		ori r24,lo8(1)
+ 904 0436 8083      		st Z,r24
+ 905               	.LBE99:
+ 906               	.LBE98:
+ 907               	.LBB100:
+ 908               	.LBB101:
+ 909               	.LBB102:
+ 910               	.LBB103:
+ 911               	.LM170:
+ 912 0438 80EA      		ldi r24,lo8(4000)
+ 913 043a 9FE0      		ldi r25,hi8(4000)
+ 914               	.LVL49:
+ 915               	/* #APP */
+ 916               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 917 043c 0197      		1: sbiw r24,1
+ 918 043e 01F4      		brne 1b
+ 919               	 ;  0 "" 2
+ 920               	/* #NOAPP */
+ 921               	.LBE103:
+ 922               	.LBE102:
+ 923               	.LBE101:
+ 924               	.LBE100:
+ 925               	.LM171:
+ 926 0440 0E94 0000 		call Sensors_HDC1080_Find_Address
+ 927               	.LVL50:
+ 928               	.LM172:
+ 929 0444 82E0      		ldi r24,lo8(2)
+ 930 0446 60E0      		ldi r22,lo8(0)
+ 931 0448 70E0      		ldi r23,hi8(0)
+ 932 044a 0E94 0000 		call Sensors_HDC1080_Write_Reg
+ 933               	.LM173:
+ 934 044e 0E94 0000 		call Sensors_HDC1080_Trigger_Humidity_Measurement
+ 935               	.LM174:
+ 936 0452 0E94 0000 		call Sensors_HDC1080_Read_Humidity_Plain
+ 937               	.LBB104:
+ 938               	.LBB105:
+ 939               	.LM175:
+ 940 0456 F701      		movw r30,r14
+ 941 0458 1082      		st Z,__zero_reg__
+ 942               	.LM176:
+ 943 045a F801      		movw r30,r16
+ 944 045c 1082      		st Z,__zero_reg__
+ 945               	.LBE105:
+ 946               	.LBE104:
+ 947               	.LM177:
+ 948 045e 5B9A      		sbi 43-32,3
+ 949               	/* epilogue start */
+ 950               	.LM178:
+ 951 0460 1F91      		pop r17
+ 952 0462 0F91      		pop r16
+ 953 0464 FF90      		pop r15
+ 954 0466 EF90      		pop r14
+ 955 0468 0895      		ret
+ 956               	.LFE22:
+ 958               	.global	Sensors_HDC1080_Status_Get
+ 960               	Sensors_HDC1080_Status_Get:
+ 961               	.LFB23:
+ 962               	.LM179:
+ 963               	/* prologue: function */
+ 964               	/* frame size = 0 */
+ 965               	.LM180:
+ 966 046a 8091 0000 		lds r24,HDC1080
+ 967               	/* epilogue start */
+ 968 046e 0895      		ret
+ 969               	.LFE23:
+ 971               	.global	Sensors_HDC1080_Address_Get
+ 973               	Sensors_HDC1080_Address_Get:
+ 974               	.LFB24:
+ 975               	.LM181:
+ 976               	/* prologue: function */
+ 977               	/* frame size = 0 */
+ 978               	.LM182:
+ 979 0470 8091 0000 		lds r24,HDC1080+1
+ 980               	/* epilogue start */
+ 981 0474 0895      		ret
+ 982               	.LFE24:
+ 984               	.global	Sensors_HDC1080_Error_Get
+ 986               	Sensors_HDC1080_Error_Get:
+ 987               	.LFB25:
+ 988               	.LM183:
+ 989               	/* prologue: function */
+ 990               	/* frame size = 0 */
+ 991               	.LM184:
+ 992 0476 8091 0000 		lds r24,HDC1080+9
+ 993               	/* epilogue start */
+ 994 047a 0895      		ret
+ 995               	.LFE25:
+ 997               	.global	Sensors_HDC1080_Timeout_Error_Get
+ 999               	Sensors_HDC1080_Timeout_Error_Get:
+ 1000               	.LFB26:
+ 1001               	.LM185:
+ 1002               	/* prologue: function */
+ 1003               	/* frame size = 0 */
+ 1004               	.LM186:
+ 1005 047c 8091 0000 		lds r24,HDC1080+8
+ 1006               	/* epilogue start */
+ 1007 0480 0895      		ret
+ 1008               	.LFE26:
+ 1010               	.global	Sensors_HDC1080_RH_Get
+ 1012               	Sensors_HDC1080_RH_Get:
+ 1013               	.LFB27:
+ 1014               	.LM187:
+ 1015               	/* prologue: function */
+ 1016               	/* frame size = 0 */
+ 1017               	.LM188:
+ 1018 0482 8091 0000 		lds r24,HDC1080+6
+ 1019 0486 9091 0000 		lds r25,HDC1080+7
+ 1020               	/* epilogue start */
+ 1021 048a 0895      		ret
+ 1022               	.LFE27:
+ 1024               		.comm HDC1080,10,1
+ 1217               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 sensors.c
+C:\Users\farid\AppData\Local\Temp/ccxHGC5R.s:2      *ABS*:0000003f __SREG__
+C:\Users\farid\AppData\Local\Temp/ccxHGC5R.s:3      *ABS*:0000003e __SP_H__
+C:\Users\farid\AppData\Local\Temp/ccxHGC5R.s:4      *ABS*:0000003d __SP_L__
+C:\Users\farid\AppData\Local\Temp/ccxHGC5R.s:5      *ABS*:00000034 __CCP__
+C:\Users\farid\AppData\Local\Temp/ccxHGC5R.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\farid\AppData\Local\Temp/ccxHGC5R.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\farid\AppData\Local\Temp/ccxHGC5R.s:18     .text:00000000 Sensors_HDC1080_Struct_Init
+                            *COM*:0000000a HDC1080
+C:\Users\farid\AppData\Local\Temp/ccxHGC5R.s:47     .text:0000002a Sensors_Init
+C:\Users\farid\AppData\Local\Temp/ccxHGC5R.s:73     .text:0000003c Sensors_I2C_Enable
+C:\Users\farid\AppData\Local\Temp/ccxHGC5R.s:98     .text:00000054 Sensors_I2C_Disable
+C:\Users\farid\AppData\Local\Temp/ccxHGC5R.s:114    .text:0000005e Sensors_HDC1080_Timeout_Clear
+C:\Users\farid\AppData\Local\Temp/ccxHGC5R.s:131    .text:0000006c Sensors_HDC1080_Timeout
+C:\Users\farid\AppData\Local\Temp/ccxHGC5R.s:181    .text:0000009a Sensors_HDC1080_I2C_Start
+C:\Users\farid\AppData\Local\Temp/ccxHGC5R.s:228    .text:000000da Sensors_HDC1080_I2C_Stop
+C:\Users\farid\AppData\Local\Temp/ccxHGC5R.s:246    .text:000000ea Sensors_HDC1080_I2C_Read
+C:\Users\farid\AppData\Local\Temp/ccxHGC5R.s:298    .text:00000132 Sensors_HDC1080_I2C_Write
+C:\Users\farid\AppData\Local\Temp/ccxHGC5R.s:352    .text:00000178 Sensors_HDC1080_I2C_Read_Nack
+C:\Users\farid\AppData\Local\Temp/ccxHGC5R.s:404    .text:000001c0 Sensors_HDC1080_Find_Address
+C:\Users\farid\AppData\Local\Temp/ccxHGC5R.s:468    .text:000001fe Sensors_HDC1080_Read_Reg
+C:\Users\farid\AppData\Local\Temp/ccxHGC5R.s:609    .text:000002bc Sensors_HDC1080_Write_Reg
+C:\Users\farid\AppData\Local\Temp/ccxHGC5R.s:700    .text:00000336 Sensors_HDC1080_Trigger_Humidity_Measurement
+C:\Users\farid\AppData\Local\Temp/ccxHGC5R.s:752    .text:0000037a Sensors_HDC1080_Read_Humidity_Plain
+C:\Users\farid\AppData\Local\Temp/ccxHGC5R.s:874    .text:00000410 Sensors_Sample
+C:\Users\farid\AppData\Local\Temp/ccxHGC5R.s:960    .text:0000046a Sensors_HDC1080_Status_Get
+C:\Users\farid\AppData\Local\Temp/ccxHGC5R.s:973    .text:00000470 Sensors_HDC1080_Address_Get
+C:\Users\farid\AppData\Local\Temp/ccxHGC5R.s:986    .text:00000476 Sensors_HDC1080_Error_Get
+C:\Users\farid\AppData\Local\Temp/ccxHGC5R.s:999    .text:0000047c Sensors_HDC1080_Timeout_Error_Get
+C:\Users\farid\AppData\Local\Temp/ccxHGC5R.s:1012   .text:00000482 Sensors_HDC1080_RH_Get
+
+UNDEFINED SYMBOLS
+__mulsi3
+__udivmodsi4
+__do_clear_bss

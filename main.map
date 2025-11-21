@@ -1,5 +1,7 @@
 Archive member included because of file (symbol)
 
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+                              sensors.o (__mulsi3)
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
                               peripherals.o (__udivmodsi4)
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
@@ -13,6 +15,7 @@ Allocating common symbols
 Common symbol       size              file
 
 nRF24L01P_type      0x13              nrf24l01p.o
+HDC1080             0xa               sensors.o
 nRF24L01P           0x2               nrf24l01p.o
 
 Memory Configuration
@@ -34,6 +37,8 @@ LOAD main.o
 LOAD tasks.o
 LOAD nrf24l01p.o
 LOAD peripherals.o
+LOAD rgb.o
+LOAD sensors.o
 LOAD kernel.o
 LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libm.a
 LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
@@ -130,49 +135,48 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x1736
+.text           0x00000000     0x1c7e
  *(.vectors)
  .vectors       0x00000000       0x68 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
                 0x00000000                __vectors
                 0x00000000                __vector_default
- .vectors       0x00000068       0x22 kernel.o
  *(.vectors)
  *(.progmem.gcc*)
  *(.progmem*)
-                0x0000008a                . = ALIGN (0x2)
-                0x0000008a                __trampolines_start = .
+                0x00000068                . = ALIGN (0x2)
+                0x00000068                __trampolines_start = .
  *(.trampolines)
- .trampolines   0x0000008a        0x0 linker stubs
+ .trampolines   0x00000068        0x0 linker stubs
  *(.trampolines*)
-                0x0000008a                __trampolines_end = .
+                0x00000068                __trampolines_end = .
  *(.jumptables)
  *(.jumptables*)
  *(.lowtext)
  *(.lowtext*)
-                0x0000008a                __ctors_start = .
+                0x00000068                __ctors_start = .
  *(.ctors)
-                0x0000008a                __ctors_end = .
-                0x0000008a                __dtors_start = .
+                0x00000068                __ctors_end = .
+                0x00000068                __dtors_start = .
  *(.dtors)
-                0x0000008a                __dtors_end = .
+                0x00000068                __dtors_end = .
  SORT(*)(.ctors)
  SORT(*)(.dtors)
  *(.init0)
- .init0         0x0000008a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
-                0x0000008a                __init
+ .init0         0x00000068        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
+                0x00000068                __init
  *(.init0)
  *(.init1)
  *(.init1)
  *(.init2)
- .init2         0x0000008a        0xc c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
+ .init2         0x00000068        0xc c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
  *(.init2)
  *(.init3)
  *(.init3)
  *(.init4)
- .init4         0x00000096       0x16 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
-                0x00000096                __do_copy_data
- .init4         0x000000ac       0x10 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
-                0x000000ac                __do_clear_bss
+ .init4         0x00000074       0x16 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+                0x00000074                __do_copy_data
+ .init4         0x0000008a       0x10 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+                0x0000008a                __do_clear_bss
  *(.init4)
  *(.init5)
  *(.init5)
@@ -183,132 +187,164 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x000000bc        0x8 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
+ .init9         0x0000009a        0x8 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
  *(.init9)
  *(.text)
- .text          0x000000c4        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
-                0x000000c4                __vector_22
-                0x000000c4                __vector_1
-                0x000000c4                __vector_24
-                0x000000c4                __vector_12
-                0x000000c4                __bad_interrupt
-                0x000000c4                __vector_6
-                0x000000c4                __vector_3
-                0x000000c4                __vector_23
-                0x000000c4                __vector_25
-                0x000000c4                __vector_11
-                0x000000c4                __vector_13
-                0x000000c4                __vector_17
-                0x000000c4                __vector_19
-                0x000000c4                __vector_5
-                0x000000c4                __vector_4
-                0x000000c4                __vector_2
-                0x000000c4                __vector_21
-                0x000000c4                __vector_15
-                0x000000c4                __vector_8
-                0x000000c4                __vector_14
-                0x000000c4                __vector_10
-                0x000000c4                __vector_16
-                0x000000c4                __vector_18
-                0x000000c4                __vector_20
- .text          0x000000c8       0x3a main.o
-                0x000000c8                main
- .text          0x00000102       0x64 tasks.o
-                0x00000154                Task_Vin_Sense
-                0x00000112                Task_RGB_LED
-                0x00000104                Task_Sensor
-                0x0000013a                Task_Radio
-                0x00000102                Tasks_Disable_Peripherals
- .text          0x00000166      0x9ba nrf24l01p.o
-                0x000007f8                nRF24L01P_Init
-                0x000007a0                nRF24L01P_Set_Destination_Address
-                0x00000506                nRF24L01P_Set_Mode_Tx
-                0x00000aaa                nRF24L01P_Transmit_With_ACK
-                0x0000027c                nRF24L01P_SPI_Transfer
-                0x000002ba                nRF24L01P_Calcuate_CRC
-                0x00000430                nRF24L01P_Flush_Receive_Buffer
-                0x000001f8                nRF24L01P_Enable_SPI
-                0x0000053a                nRF24L01P_Set_Mode_Rx
-                0x000004de                nRF24L01P_Set_Mode_Sleep
-                0x000007ba                nRF24L01P_Set_MaxRetransmission
-                0x000001c8                nRF24L01P_CSN_High
-                0x0000063c                nRF24L01P_Get_Speed
-                0x00000692                nRF24L01P_Set_Speed
-                0x000002e6                nRF24L01P_Calcuate_CRC_Block
-                0x000006f4                nRF24L01P_Get_Tx_Power
-                0x0000046a                nRF24L01P_Receive_Buffer_Not_Empty
-                0x000003c6                nRF24L01P_Transmit_Buffer_Empty
-                0x00000208                nRF24L01P_Enable
-                0x000001cc                nRF24L01P_CSN_Low
-                0x00000726                nRF24L01P_Set_Tx_Power
-                0x00000230                nRF24L01P_Get_Error
-                0x00000252                nRF24L01P_Error_Timeout
-                0x00000794                nRF24L01P_Set_Own_Address
-                0x000007ac                nRF24L01P_Set_Receive_Timeout
-                0x0000056a                nRF24L01P_ReadModifyWrite
-                0x000001ea                nRF24L01P_Disable_GPIO
-                0x00000216                nRF24L01P_Disable
-                0x000009ac                nRF24L01P_Transmit_Basic
-                0x00000612                nRF24L01P_Set_Channel
-                0x000005e6                nRF24L01P_Get_Channel
-                0x00000220                nRF24L01P_Error_Clear
-                0x0000049c                nRF24L01P_Get_Mode
-                0x000001d8                nRF24L01P_Enable_GPIO
-                0x00000402                nRF24L01P_Wait_Till_Transmission_Completes
-                0x00000a0a                nRF24L01P_Recieve_Basic
-                0x000003aa                nRF24L01P_Write_Data_To_Transmit_Buffer
-                0x0000023c                nRF24L01P_No_Error
-                0x0000038c                nRF24L01P_Flush_Transmit_Buffer
-                0x000007e0                nRF24L01P_WakeUp
-                0x00000adc                nRF24L01P_Recieve_With_ACK
-                0x00000202                nRF24L01P_Disable_SPI
-                0x00000166                nRF24L01P_Struct_Init
-                0x000007c8                nRF24L01P_Deep_Sleep
-                0x000001d0                nRF24L01P_CE_High
-                0x000001d4                nRF24L01P_CE_Low
-                0x0000044e                nRF24L01P_Read_Data_From_Receive_Buffer
-                0x00000316                nRF24L01P_ReadWrite_Register
- .text          0x00000b20       0xce peripherals.o
-                0x00000be4                Peripherals_Vin_RawADC
-                0x00000bba                Peripherals_Vin_Sense
-                0x00000b20                Peripherals_ADC_Init
-                0x00000b48                Peripherals_ADC_Sample
- .text          0x00000bee      0xb00 kernel.o
-                0x000014e6                Kernel_Task_Constant_Latency
-                0x000016e2                Kernel_Abs_High_Prio_Task_ID_Get
-                0x00000fb2                Kernel_SysTick_Reg_Init
-                0x00001350                Kernel_Task_Sleep
-                0x0000169a                Kernel_Task_Sleep_Time_Get
-                0x000016c4                Kernel_Task_Prio_Get
-                0x00001694                Kernel_PreSleep_Hook
-                0x000016d4                Kernel_Lowest_Prio_Get
-                0x000016e8                Kernel_CPU_Usage_Get
-                0x000016be                Kernel_NTask_Get
-                0x00001324                Kernel_Task_Idle
-                0x00001132                Kernel_Start_Tasks
-                0x000016ae                Kernel_Task_Status_Get
-                0x00000bee                __vector_7
-                0x000012c6                Kernel_Init
-                0x00000dd0                __vector_9
-                0x00001042                Kernel_Task_Create
-                0x00001512                Kernel_Task_Constant_Latency_Sleep
-                0x000016da                Kernel_High_Prio_Task_ID_Get
- .text          0x000016ee        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
- .text          0x000016ee        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text          0x000016ee        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
- .text          0x000016ee        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
-                0x000016ee                . = ALIGN (0x2)
+ .text          0x000000a2        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
+                0x000000a2                __vector_22
+                0x000000a2                __vector_1
+                0x000000a2                __vector_24
+                0x000000a2                __vector_12
+                0x000000a2                __bad_interrupt
+                0x000000a2                __vector_6
+                0x000000a2                __vector_3
+                0x000000a2                __vector_23
+                0x000000a2                __vector_25
+                0x000000a2                __vector_11
+                0x000000a2                __vector_13
+                0x000000a2                __vector_17
+                0x000000a2                __vector_19
+                0x000000a2                __vector_5
+                0x000000a2                __vector_4
+                0x000000a2                __vector_2
+                0x000000a2                __vector_21
+                0x000000a2                __vector_15
+                0x000000a2                __vector_8
+                0x000000a2                __vector_14
+                0x000000a2                __vector_10
+                0x000000a2                __vector_16
+                0x000000a2                __vector_18
+                0x000000a2                __vector_20
+ .text          0x000000a6       0x3a main.o
+                0x000000a6                main
+ .text          0x000000e0       0xc2 tasks.o
+                0x00000160                Task_Vin_Sense
+                0x00000172                Task_RGB_LED
+                0x000000e2                Task_Sensor
+                0x000000f4                Task_Radio
+                0x000000e0                Tasks_Disable_Peripherals
+ .text          0x000001a2      0x9ba nrf24l01p.o
+                0x00000834                nRF24L01P_Init
+                0x000007dc                nRF24L01P_Set_Destination_Address
+                0x00000542                nRF24L01P_Set_Mode_Tx
+                0x00000ae6                nRF24L01P_Transmit_With_ACK
+                0x000002b8                nRF24L01P_SPI_Transfer
+                0x000002f6                nRF24L01P_Calcuate_CRC
+                0x0000046c                nRF24L01P_Flush_Receive_Buffer
+                0x00000234                nRF24L01P_Enable_SPI
+                0x00000576                nRF24L01P_Set_Mode_Rx
+                0x0000051a                nRF24L01P_Set_Mode_Sleep
+                0x000007f6                nRF24L01P_Set_MaxRetransmission
+                0x00000204                nRF24L01P_CSN_High
+                0x00000678                nRF24L01P_Get_Speed
+                0x000006ce                nRF24L01P_Set_Speed
+                0x00000322                nRF24L01P_Calcuate_CRC_Block
+                0x00000730                nRF24L01P_Get_Tx_Power
+                0x000004a6                nRF24L01P_Receive_Buffer_Not_Empty
+                0x00000402                nRF24L01P_Transmit_Buffer_Empty
+                0x00000244                nRF24L01P_Enable
+                0x00000208                nRF24L01P_CSN_Low
+                0x00000762                nRF24L01P_Set_Tx_Power
+                0x0000026c                nRF24L01P_Get_Error
+                0x0000028e                nRF24L01P_Error_Timeout
+                0x000007d0                nRF24L01P_Set_Own_Address
+                0x000007e8                nRF24L01P_Set_Receive_Timeout
+                0x000005a6                nRF24L01P_ReadModifyWrite
+                0x00000226                nRF24L01P_Disable_GPIO
+                0x00000252                nRF24L01P_Disable
+                0x000009e8                nRF24L01P_Transmit_Basic
+                0x0000064e                nRF24L01P_Set_Channel
+                0x00000622                nRF24L01P_Get_Channel
+                0x0000025c                nRF24L01P_Error_Clear
+                0x000004d8                nRF24L01P_Get_Mode
+                0x00000214                nRF24L01P_Enable_GPIO
+                0x0000043e                nRF24L01P_Wait_Till_Transmission_Completes
+                0x00000a46                nRF24L01P_Recieve_Basic
+                0x000003e6                nRF24L01P_Write_Data_To_Transmit_Buffer
+                0x00000278                nRF24L01P_No_Error
+                0x000003c8                nRF24L01P_Flush_Transmit_Buffer
+                0x0000081c                nRF24L01P_WakeUp
+                0x00000b18                nRF24L01P_Recieve_With_ACK
+                0x0000023e                nRF24L01P_Disable_SPI
+                0x000001a2                nRF24L01P_Struct_Init
+                0x00000804                nRF24L01P_Deep_Sleep
+                0x0000020c                nRF24L01P_CE_High
+                0x00000210                nRF24L01P_CE_Low
+                0x0000048a                nRF24L01P_Read_Data_From_Receive_Buffer
+                0x00000352                nRF24L01P_ReadWrite_Register
+ .text          0x00000b5c       0xe0 peripherals.o
+                0x00000c2a                Peripherals_Analog_Temp_Get
+                0x00000c20                Peripherals_Vin_RawADC_Get
+                0x00000c30                Peripherals_Digital_Temp_Get
+                0x00000b5c                Peripherals_ADC_Init
+                0x00000c36                Peripherals_Digital_RH_Get
+                0x00000bf6                Peripherals_Vin_Sense_Sample
+                0x00000b84                Peripherals_ADC_Sample
+ .text          0x00000c3c       0x2e rgb.o
+                0x00000c3c                RGB_Init
+                0x00000c4a                RGB_Set_State
+ .text          0x00000c6a      0x48c sensors.o
+                0x000010ec                Sensors_HDC1080_RH_Get
+                0x00000f26                Sensors_HDC1080_Write_Reg
+                0x00000cc8                Sensors_HDC1080_Timeout_Clear
+                0x00000d9c                Sensors_HDC1080_I2C_Write
+                0x00000d54                Sensors_HDC1080_I2C_Read
+                0x0000107a                Sensors_Sample
+                0x000010e0                Sensors_HDC1080_Error_Get
+                0x000010e6                Sensors_HDC1080_Timeout_Error_Get
+                0x00000ca6                Sensors_I2C_Enable
+                0x00000cd6                Sensors_HDC1080_Timeout
+                0x00000d44                Sensors_HDC1080_I2C_Stop
+                0x00000fe4                Sensors_HDC1080_Read_Humidity_Plain
+                0x00000de2                Sensors_HDC1080_I2C_Read_Nack
+                0x000010d4                Sensors_HDC1080_Status_Get
+                0x000010da                Sensors_HDC1080_Address_Get
+                0x00000c6a                Sensors_HDC1080_Struct_Init
+                0x00000cbe                Sensors_I2C_Disable
+                0x00000e68                Sensors_HDC1080_Read_Reg
+                0x00000d04                Sensors_HDC1080_I2C_Start
+                0x00000c94                Sensors_Init
+                0x00000e2a                Sensors_HDC1080_Find_Address
+                0x00000fa0                Sensors_HDC1080_Trigger_Humidity_Measurement
+ .text          0x000010f6      0xb02 kernel.o
+                0x000019f0                Kernel_Task_Constant_Latency
+                0x00001bec                Kernel_Abs_High_Prio_Task_ID_Get
+                0x000014ba                Kernel_SysTick_Reg_Init
+                0x0000185a                Kernel_Task_Sleep
+                0x00001ba4                Kernel_Task_Sleep_Time_Get
+                0x00001bce                Kernel_Task_Prio_Get
+                0x00001b9e                Kernel_PreSleep_Hook
+                0x00001bde                Kernel_Lowest_Prio_Get
+                0x00001bf2                Kernel_CPU_Usage_Get
+                0x00001bc8                Kernel_NTask_Get
+                0x0000182c                Kernel_Task_Idle
+                0x0000163a                Kernel_Start_Tasks
+                0x00001bb8                Kernel_Task_Status_Get
+                0x000010f6                __vector_7
+                0x000017ce                Kernel_Init
+                0x000012d8                __vector_9
+                0x0000154a                Kernel_Task_Create
+                0x00001a1c                Kernel_Task_Constant_Latency_Sleep
+                0x00001be4                Kernel_High_Prio_Task_ID_Get
+ .text          0x00001bf8        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+ .text          0x00001bf8        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+ .text          0x00001bf8        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text          0x00001bf8        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .text          0x00001bf8        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+                0x00001bf8                . = ALIGN (0x2)
  *(.text.*)
- .text.libgcc   0x000016ee       0x44 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
-                0x000016ee                __udivmodsi4
- .text.libgcc   0x00001732        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x00001732        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
- .text.libgcc   0x00001732        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
-                0x00001732                . = ALIGN (0x2)
+ .text.libgcc   0x00001bf8       0x3e c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+                0x00001bf8                __mulsi3
+ .text.libgcc   0x00001c36       0x44 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+                0x00001c36                __udivmodsi4
+ .text.libgcc   0x00001c7a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x00001c7a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00001c7a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+                0x00001c7a                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00001732        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x00001732                exit
-                0x00001732                _exit
+ .fini9         0x00001c7a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x00001c7a                exit
+                0x00001c7a                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -327,11 +363,11 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00001732        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .fini0         0x00001c7a        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00001736                _etext = .
+                0x00001c7e                _etext = .
 
-.data           0x00800100       0x24 load address 0x00001736
+.data           0x00800100       0x24 load address 0x00001c7e
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
@@ -339,7 +375,10 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  .data          0x00800100        0x0 tasks.o
  .data          0x00800100       0x24 nrf24l01p.o
  .data          0x00800124        0x0 peripherals.o
+ .data          0x00800124        0x0 rgb.o
+ .data          0x00800124        0x0 sensors.o
  .data          0x00800124        0x0 kernel.o
+ .data          0x00800124        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
  .data          0x00800124        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
  .data          0x00800124        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  .data          0x00800124        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
@@ -352,7 +391,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x00800124                _edata = .
                 0x00800124                PROVIDE (__data_end, .)
 
-.bss            0x00800124      0x578
+.bss            0x00800124      0x582
                 0x00800124                PROVIDE (__bss_start, .)
  *(.bss)
  .bss           0x00800124        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
@@ -361,6 +400,8 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  .bss           0x00800124        0x0 nrf24l01p.o
  .bss           0x00800124        0x9 peripherals.o
                 0x00800124                Peripherals
+ .bss           0x0080012d        0x0 rgb.o
+ .bss           0x0080012d        0x0 sensors.o
  .bss           0x0080012d      0x55a kernel.o
                 0x00800187                KerStack
                 0x0080015f                KerSchSts
@@ -369,6 +410,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x0080012d                KerBase
                 0x00800173                KerSchSlp
                 0x00800169                KerSchPr
+ .bss           0x00800687        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
  .bss           0x00800687        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
  .bss           0x00800687        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  .bss           0x00800687        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
@@ -378,16 +420,18 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  COMMON         0x00800687       0x15 nrf24l01p.o
                 0x00800687                nRF24L01P_type
                 0x0080069a                nRF24L01P
-                0x0080069c                PROVIDE (__bss_end, .)
-                0x00001736                __data_load_start = LOADADDR (.data)
-                0x0000175a                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x0080069c        0xa sensors.o
+                0x0080069c                HDC1080
+                0x008006a6                PROVIDE (__bss_end, .)
+                0x00001c7e                __data_load_start = LOADADDR (.data)
+                0x00001ca2                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0080069c        0x0
-                0x0080069c                PROVIDE (__noinit_start, .)
+.noinit         0x008006a6        0x0
+                0x008006a6                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x0080069c                PROVIDE (__noinit_end, .)
-                0x0080069c                _end = .
-                0x0080069c                PROVIDE (__heap_start, .)
+                0x008006a6                PROVIDE (__noinit_end, .)
+                0x008006a6                _end = .
+                0x008006a6                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -405,9 +449,9 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .signature
  *(.signature*)
 
-.stab           0x00000000      0xa5c
+.stab           0x00000000      0xa20
  *(.stab)
- .stab          0x00000000      0xa5c kernel.o
+ .stab          0x00000000      0xa20 kernel.o
 
 .stabstr        0x00000000       0x37
  *(.stabstr)
@@ -440,7 +484,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0x80
+.debug_aranges  0x00000000       0xc0
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x20 main.o
@@ -450,9 +494,13 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x00000040       0x20 nrf24l01p.o
  .debug_aranges
                 0x00000060       0x20 peripherals.o
+ .debug_aranges
+                0x00000080       0x20 rgb.o
+ .debug_aranges
+                0x000000a0       0x20 sensors.o
 
 .debug_pubnames
-                0x00000000      0x6aa
+                0x00000000      0xa00
  *(.debug_pubnames)
  .debug_pubnames
                 0x00000000       0x1b main.o
@@ -461,66 +509,85 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  .debug_pubnames
                 0x0000008e      0x591 nrf24l01p.o
  .debug_pubnames
-                0x0000061f       0x8b peripherals.o
+                0x0000061f       0xf6 peripherals.o
+ .debug_pubnames
+                0x00000715       0x31 rgb.o
+ .debug_pubnames
+                0x00000746      0x2ba sensors.o
 
-.debug_info     0x00000000     0x12b1
+.debug_info     0x00000000     0x19e8
  *(.debug_info)
  .debug_info    0x00000000       0x76 main.o
- .debug_info    0x00000076      0x1f7 tasks.o
- .debug_info    0x0000026d      0xea5 nrf24l01p.o
- .debug_info    0x00001112      0x19f peripherals.o
+ .debug_info    0x00000076      0x22a tasks.o
+ .debug_info    0x000002a0      0xea5 nrf24l01p.o
+ .debug_info    0x00001145      0x1f2 peripherals.o
+ .debug_info    0x00001337       0xb3 rgb.o
+ .debug_info    0x000013ea      0x5fe sensors.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev   0x00000000      0x55a
+.debug_abbrev   0x00000000      0x821
  *(.debug_abbrev)
  .debug_abbrev  0x00000000       0x41 main.o
- .debug_abbrev  0x00000041       0xf2 tasks.o
- .debug_abbrev  0x00000133      0x346 nrf24l01p.o
- .debug_abbrev  0x00000479       0xe1 peripherals.o
+ .debug_abbrev  0x00000041      0x125 tasks.o
+ .debug_abbrev  0x00000166      0x346 nrf24l01p.o
+ .debug_abbrev  0x000004ac       0xe1 peripherals.o
+ .debug_abbrev  0x0000058d       0x70 rgb.o
+ .debug_abbrev  0x000005fd      0x224 sensors.o
 
-.debug_line     0x00000000      0xf92
+.debug_line     0x00000000     0x182f
  *(.debug_line)
  .debug_line    0x00000000       0x88 main.o
- .debug_line    0x00000088      0x1b5 tasks.o
- .debug_line    0x0000023d      0xbfd nrf24l01p.o
- .debug_line    0x00000e3a      0x158 peripherals.o
+ .debug_line    0x00000088      0x218 tasks.o
+ .debug_line    0x000002a0      0xbfd nrf24l01p.o
+ .debug_line    0x00000e9d      0x190 peripherals.o
+ .debug_line    0x0000102d      0x110 rgb.o
+ .debug_line    0x0000113d      0x6f2 sensors.o
 
-.debug_frame    0x00000000      0x3e0
+.debug_frame    0x00000000      0x5b0
  *(.debug_frame)
  .debug_frame   0x00000000       0x20 main.o
  .debug_frame   0x00000020       0x60 tasks.o
  .debug_frame   0x00000080      0x310 nrf24l01p.o
- .debug_frame   0x00000390       0x50 peripherals.o
+ .debug_frame   0x00000390       0x80 peripherals.o
+ .debug_frame   0x00000410       0x30 rgb.o
+ .debug_frame   0x00000440      0x170 sensors.o
 
-.debug_str      0x00000000      0x799
+.debug_str      0x00000000      0xa96
  *(.debug_str)
  .debug_str     0x00000000       0x7c main.o
                                  0xb0 (size before relaxing)
- .debug_str     0x0000007c       0xc2 tasks.o
-                                0x166 (size before relaxing)
- .debug_str     0x0000013e      0x5a5 nrf24l01p.o
+ .debug_str     0x0000007c       0xc9 tasks.o
+                                0x175 (size before relaxing)
+ .debug_str     0x00000145      0x5aa nrf24l01p.o
                                 0x6c9 (size before relaxing)
- .debug_str     0x000006e3       0xb6 peripherals.o
-                                0x184 (size before relaxing)
+ .debug_str     0x000006ef      0x115 peripherals.o
+                                0x1eb (size before relaxing)
+ .debug_str     0x00000804       0x1d rgb.o
+                                 0xc9 (size before relaxing)
+ .debug_str     0x00000821      0x275 sensors.o
+                                0x3b6 (size before relaxing)
 
-.debug_loc      0x00000000      0x693
+.debug_loc      0x00000000      0x8d1
  *(.debug_loc)
- .debug_loc     0x00000000       0x18 tasks.o
- .debug_loc     0x00000018      0x5ca nrf24l01p.o
- .debug_loc     0x000005e2       0xb1 peripherals.o
+ .debug_loc     0x00000000       0x48 tasks.o
+ .debug_loc     0x00000048      0x5ca nrf24l01p.o
+ .debug_loc     0x00000612       0xb1 peripherals.o
+ .debug_loc     0x000006c3      0x20e sensors.o
 
 .debug_macinfo
  *(.debug_macinfo)
 OUTPUT(main.elf elf32-avr)
 LOAD linker stubs
 
-.debug_ranges   0x00000000       0xf0
+.debug_ranges   0x00000000      0x108
  .debug_ranges  0x00000000       0x78 tasks.o
  .debug_ranges  0x00000078       0x78 nrf24l01p.o
+ .debug_ranges  0x000000f0       0x18 sensors.o
 
 Cross Reference Table
 
 Symbol                                            File
+HDC1080                                           sensors.o
 KerBase                                           kernel.o
 KerPSP                                            kernel.o
 KerSSZ                                            kernel.o
@@ -556,9 +623,44 @@ Kernel_Task_Status_Get                            kernel.o
 Peripherals                                       peripherals.o
 Peripherals_ADC_Init                              peripherals.o
 Peripherals_ADC_Sample                            peripherals.o
-Peripherals_Vin_RawADC                            peripherals.o
+Peripherals_Analog_Temp_Get                       peripherals.o
                                                   tasks.o
-Peripherals_Vin_Sense                             peripherals.o
+Peripherals_Digital_RH_Get                        peripherals.o
+                                                  tasks.o
+Peripherals_Digital_Temp_Get                      peripherals.o
+                                                  tasks.o
+Peripherals_Vin_RawADC_Get                        peripherals.o
+                                                  tasks.o
+Peripherals_Vin_Sense_Sample                      peripherals.o
+                                                  tasks.o
+RGB_Init                                          rgb.o
+                                                  tasks.o
+RGB_Set_State                                     rgb.o
+                                                  tasks.o
+Sensors_HDC1080_Address_Get                       sensors.o
+Sensors_HDC1080_Error_Get                         sensors.o
+Sensors_HDC1080_Find_Address                      sensors.o
+Sensors_HDC1080_I2C_Read                          sensors.o
+Sensors_HDC1080_I2C_Read_Nack                     sensors.o
+Sensors_HDC1080_I2C_Start                         sensors.o
+Sensors_HDC1080_I2C_Stop                          sensors.o
+Sensors_HDC1080_I2C_Write                         sensors.o
+Sensors_HDC1080_RH_Get                            sensors.o
+                                                  peripherals.o
+Sensors_HDC1080_Read_Humidity_Plain               sensors.o
+Sensors_HDC1080_Read_Reg                          sensors.o
+Sensors_HDC1080_Status_Get                        sensors.o
+Sensors_HDC1080_Struct_Init                       sensors.o
+Sensors_HDC1080_Timeout                           sensors.o
+Sensors_HDC1080_Timeout_Clear                     sensors.o
+Sensors_HDC1080_Timeout_Error_Get                 sensors.o
+Sensors_HDC1080_Trigger_Humidity_Measurement      sensors.o
+Sensors_HDC1080_Write_Reg                         sensors.o
+Sensors_I2C_Disable                               sensors.o
+Sensors_I2C_Enable                                sensors.o
+Sensors_Init                                      sensors.o
+                                                  tasks.o
+Sensors_Sample                                    sensors.o
                                                   tasks.o
 Task_RGB_LED                                      tasks.o
                                                   main.o
@@ -577,14 +679,18 @@ __data_end                                        c:/winavr-20100110/bin/../lib/
 __data_load_start                                 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
 __data_start                                      c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
 __do_clear_bss                                    c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+                                                  sensors.o
                                                   peripherals.o
                                                   nrf24l01p.o
 __do_copy_data                                    c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
                                                   nrf24l01p.o
 __heap_end                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
 __init                                            c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
+__mulsi3                                          c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+                                                  sensors.o
 __stack                                           c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
 __udivmodsi4                                      c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+                                                  sensors.o
                                                   peripherals.o
 __vector_1                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
 __vector_10                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
@@ -594,7 +700,6 @@ __vector_13                                       c:/winavr-20100110/bin/../lib/
 __vector_14                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
 __vector_15                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
 __vector_16                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
-                                                  kernel.o
 __vector_17                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
 __vector_18                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
 __vector_19                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
@@ -609,11 +714,9 @@ __vector_3                                        c:/winavr-20100110/bin/../lib/
 __vector_4                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
 __vector_5                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
 __vector_6                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
-                                                  kernel.o
 __vector_7                                        kernel.o
                                                   c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
 __vector_8                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
-                                                  kernel.o
 __vector_9                                        kernel.o
                                                   c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
 __vector_default                                  c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
@@ -669,6 +772,7 @@ nRF24L01P_Set_Speed                               nrf24l01p.o
 nRF24L01P_Set_Tx_Power                            nrf24l01p.o
 nRF24L01P_Struct_Init                             nrf24l01p.o
 nRF24L01P_Transmit_Basic                          nrf24l01p.o
+                                                  tasks.o
 nRF24L01P_Transmit_Buffer_Empty                   nrf24l01p.o
 nRF24L01P_Transmit_With_ACK                       nrf24l01p.o
 nRF24L01P_Wait_Till_Transmission_Completes        nrf24l01p.o

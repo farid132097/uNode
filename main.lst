@@ -13,48 +13,53 @@
   21               	/* prologue: function */
   22               	/* frame size = 0 */
   23               	.LM2:
-  24 0000 0E94 0000 		call Kernel_Init
-  25               	.LM3:
-  26 0004 80E0      		ldi r24,lo8(gs(Task_RGB_LED))
-  27 0006 90E0      		ldi r25,hi8(gs(Task_RGB_LED))
-  28 0008 60E0      		ldi r22,lo8(0)
-  29 000a 0E94 0000 		call Kernel_Task_Create
-  30               	.LM4:
-  31 000e 80E0      		ldi r24,lo8(gs(Task_Vin_Sense))
-  32 0010 90E0      		ldi r25,hi8(gs(Task_Vin_Sense))
-  33 0012 61E0      		ldi r22,lo8(1)
-  34 0014 0E94 0000 		call Kernel_Task_Create
-  35               	.LM5:
-  36 0018 80E0      		ldi r24,lo8(gs(Task_Radio))
-  37 001a 90E0      		ldi r25,hi8(gs(Task_Radio))
-  38 001c 62E0      		ldi r22,lo8(2)
-  39 001e 0E94 0000 		call Kernel_Task_Create
-  40               	.LM6:
-  41 0022 80E0      		ldi r24,lo8(gs(Task_Sensor))
-  42 0024 90E0      		ldi r25,hi8(gs(Task_Sensor))
-  43 0026 63E0      		ldi r22,lo8(3)
-  44 0028 0E94 0000 		call Kernel_Task_Create
-  45               	.LM7:
-  46 002c 80E0      		ldi r24,lo8(gs(Tasks_Disable_Peripherals))
-  47 002e 90E0      		ldi r25,hi8(gs(Tasks_Disable_Peripherals))
-  48 0030 0E94 0000 		call Kernel_PreSleep_Hook
+  24 0000 80E0      		ldi r24,lo8(0)
+  25 0002 90E0      		ldi r25,hi8(0)
+  26 0004 0E94 0000 		call Debug_Init
+  27               	.LM3:
+  28 0008 0E94 0000 		call Kernel_Init
+  29               	.LM4:
+  30 000c 80E0      		ldi r24,lo8(gs(Task_RGB_LED))
+  31 000e 90E0      		ldi r25,hi8(gs(Task_RGB_LED))
+  32 0010 60E0      		ldi r22,lo8(0)
+  33 0012 0E94 0000 		call Kernel_Task_Create
+  34               	.LM5:
+  35 0016 80E0      		ldi r24,lo8(gs(Task_Vin_Sense))
+  36 0018 90E0      		ldi r25,hi8(gs(Task_Vin_Sense))
+  37 001a 61E0      		ldi r22,lo8(1)
+  38 001c 0E94 0000 		call Kernel_Task_Create
+  39               	.LM6:
+  40 0020 80E0      		ldi r24,lo8(gs(Task_Radio))
+  41 0022 90E0      		ldi r25,hi8(gs(Task_Radio))
+  42 0024 62E0      		ldi r22,lo8(2)
+  43 0026 0E94 0000 		call Kernel_Task_Create
+  44               	.LM7:
+  45 002a 80E0      		ldi r24,lo8(gs(Task_Sensor))
+  46 002c 90E0      		ldi r25,hi8(gs(Task_Sensor))
+  47 002e 63E0      		ldi r22,lo8(3)
+  48 0030 0E94 0000 		call Kernel_Task_Create
   49               	.LM8:
-  50 0034 0E94 0000 		call Kernel_Start_Tasks
-  51               	.L2:
-  52 0038 00C0      		rjmp .L2
-  53               	.LFE6:
-  79               	.Letext0:
+  50 0034 80E0      		ldi r24,lo8(gs(Tasks_Disable_Peripherals))
+  51 0036 90E0      		ldi r25,hi8(gs(Tasks_Disable_Peripherals))
+  52 0038 0E94 0000 		call Kernel_PreSleep_Hook
+  53               	.LM9:
+  54 003c 0E94 0000 		call Kernel_Start_Tasks
+  55               	.L2:
+  56 0040 00C0      		rjmp .L2
+  57               	.LFE6:
+  83               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\farid\AppData\Local\Temp/ccZrG0Kj.s:2      *ABS*:0000003f __SREG__
-C:\Users\farid\AppData\Local\Temp/ccZrG0Kj.s:3      *ABS*:0000003e __SP_H__
-C:\Users\farid\AppData\Local\Temp/ccZrG0Kj.s:4      *ABS*:0000003d __SP_L__
-C:\Users\farid\AppData\Local\Temp/ccZrG0Kj.s:5      *ABS*:00000034 __CCP__
-C:\Users\farid\AppData\Local\Temp/ccZrG0Kj.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\farid\AppData\Local\Temp/ccZrG0Kj.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\farid\AppData\Local\Temp/ccZrG0Kj.s:18     .text:00000000 main
+C:\Users\farid\AppData\Local\Temp/cchX8c2t.s:2      *ABS*:0000003f __SREG__
+C:\Users\farid\AppData\Local\Temp/cchX8c2t.s:3      *ABS*:0000003e __SP_H__
+C:\Users\farid\AppData\Local\Temp/cchX8c2t.s:4      *ABS*:0000003d __SP_L__
+C:\Users\farid\AppData\Local\Temp/cchX8c2t.s:5      *ABS*:00000034 __CCP__
+C:\Users\farid\AppData\Local\Temp/cchX8c2t.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\farid\AppData\Local\Temp/cchX8c2t.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\farid\AppData\Local\Temp/cchX8c2t.s:18     .text:00000000 main
 
 UNDEFINED SYMBOLS
+Debug_Init
 Kernel_Init
 Task_RGB_LED
 Kernel_Task_Create

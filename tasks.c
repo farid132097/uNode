@@ -7,6 +7,7 @@
 #include "sensors.h"
 #include "kernel.h"
 #include "tasks.h"
+#include "debug.h"
 #include "rgb.h"
 
 void Tasks_Disable_Peripherals(void){
@@ -86,6 +87,19 @@ void Task_Radio(void){
     DRH = Peripherals_Digital_RH_Get();
     buf[6] = DRH >> 8;
     buf[7] = DRH & 0xFF;
+    
+    Debug_Tx_Byte(buf[0]);
+    Debug_Tx_Byte(buf[1]);
+    Debug_Tx_Byte(buf[2]);
+    Debug_Tx_Byte(buf[3]);
+    Debug_Tx_Byte(buf[4]);
+    Debug_Tx_Byte(buf[5]);
+    Debug_Tx_Byte(buf[6]);
+    Debug_Tx_Byte(buf[7]);
+
+    Debug_Tx_Byte(Sensors_HDC1080_Address_Get());
+    Debug_Tx_Byte(Sensors_HDC1080_Status_Get());
+    Debug_Tx_Byte(Sensors_HDC1080_Error_Get());
 
     nRF24L01P_WakeUp();
     nRF24L01P_Transmit_Basic(buf, 8);

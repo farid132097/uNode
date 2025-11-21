@@ -12,6 +12,7 @@ typedef struct hdc1080_t{
   uint16_t RH;
   uint8_t  TimeoutError;
   uint8_t  Error;
+  uint8_t  StickyError;
 }hdc1080_t;
 
 hdc1080_t HDC1080;
@@ -24,6 +25,7 @@ void Sensors_HDC1080_Struct_Init(void){
     HDC1080.RH = 0;
     HDC1080.TimeoutError = 0;
     HDC1080.Error = 0;
+    HDC1080.StickyError = 0;
 }
 
 void Sensors_Init(void){
@@ -50,13 +52,17 @@ void Sensors_I2C_Enable(void){
 }
 
 void Sensors_I2C_Disable(void){
-    TWBR =0x00;
-    TWCR =0x00;
+    TWBR = 0x00;
+    TWCR = 0x00;
 }
 
 void Sensors_HDC1080_Timeout_Clear(void){
-    HDC1080.LoopCnt=0;
-    HDC1080.TimeoutError=0;
+    HDC1080.LoopCnt = 0;
+    HDC1080.TimeoutError = 0;
+}
+
+void Sensors_HDC1080_Error_Clear(void){
+    HDC1080.Error = 0;
 }
 
 uint8_t Sensors_HDC1080_Timeout(void){
@@ -282,11 +288,15 @@ void Sensors_Sample(void){
     Sensors_I2C_Enable();
     _delay_ms(2);
     
+    Sensors_HDC1080_Timeout_Clear();
     Sensors_HDC1080_Find_Address();
     Sensors_HDC1080_Write_Reg(0x02, 0x0000);
 	Sensors_HDC1080_Trigger_Humidity_Measurement();
 	Sensors_HDC1080_Read_Humidity_Plain();
     Sensors_I2C_Disable();
+
+    HDC1080.StickyError = HDC1080.Error;
+    Sensors_HDC1080_Error_Clear();
 
     //Disable Power to sensor module
     SENSORS_PWR_EN_PORT |=  (1<<SENSORS_PWR_EN_PIN);
@@ -295,16 +305,16 @@ void Sensors_Sample(void){
 
 
 
-uint8_t Sensors_HDC1080_Status_Get(void){
-  return HDC1080.Status;
-}
-
 uint8_t Sensors_HDC1080_Address_Get(void){
   return HDC1080.Address;
 }
 
+uint8_t Sensors_HDC1080_Status_Get(void){
+  return HDC1080.Status;
+}
+
 uint8_t Sensors_HDC1080_Error_Get(void){
-  return HDC1080.Error;
+  return HDC1080.StickyError;
 }
 
 uint8_t Sensors_HDC1080_Timeout_Error_Get(void){

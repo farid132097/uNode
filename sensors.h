@@ -16,7 +16,7 @@
 #define  SENSORS_HDC1080_SDA_PIN        4U
 
 #define  SENSORS_HDC1080_CONV_DELAY     20
-#define  SENSORS_HDC1080_SCL_FREQ       50000
+#define  SENSORS_HDC1080_SCL_FREQ       20000
 #define  SENSORS_HDC1080_TWBR_VAL       (((F_CPU/SENSORS_HDC1080_SCL_FREQ)-16)/8)
 
 #define  SENSORS_TWI_START_SENT			0x08 // Start sent
@@ -45,6 +45,7 @@ void     Sensors_Init(void);
 void     Sensors_I2C_Enable(void);
 void     Sensors_I2C_Disable(void);
 void     Sensors_HDC1080_Timeout_Clear(void);
+void     Sensors_HDC1080_Error_Clear(void);
 uint8_t  Sensors_HDC1080_Timeout(void);
 void     Sensors_HDC1080_I2C_Start(void);
 void     Sensors_HDC1080_I2C_Stop(void);
@@ -58,8 +59,8 @@ void     Sensors_HDC1080_Trigger_Humidity_Measurement(void);
 uint16_t Sensors_HDC1080_Read_Humidity_Plain(void);
 void     Sensors_Sample(void);
 
-uint8_t  Sensors_HDC1080_Status_Get(void);
 uint8_t  Sensors_HDC1080_Address_Get(void);
+uint8_t  Sensors_HDC1080_Status_Get(void);
 uint8_t  Sensors_HDC1080_Error_Get(void);
 uint8_t  Sensors_HDC1080_Timeout_Error_Get(void);
 uint16_t Sensors_HDC1080_RH_Get(void);

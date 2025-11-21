@@ -1,5 +1,5 @@
 tasks.o: tasks.c peripherals.h nrf24l01p.h sensors.h kernel.h tasks.h \
-  rgb.h
+  debug.h rgb.h
 
 peripherals.h:
 
@@ -10,5 +10,7 @@ sensors.h:
 kernel.h:
 
 tasks.h:
+
+debug.h:
 
 rgb.h:

@@ -42,6 +42,7 @@ uint16_t Peripherals_ADC_Sample(uint8_t channel, uint8_t nsamples){
   temp &= 0xF0;
   temp |= channel;
   ADMUX = temp;
+  _delay_us(500);
   for(uint8_t i=0; i<nsamples; i++){
     ADCSRA |= (1<<ADSC);
     while (!(ADCSRA & (1<<ADIF))) {

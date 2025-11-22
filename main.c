@@ -11,6 +11,8 @@
 
 int main(void) {
     
+	Kernel_Clock_Prescale(2);
+	
 	Debug_Init(0);
 	Kernel_Init();
 	Kernel_Task_Create(Task_RGB_LED,  0);

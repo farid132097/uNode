@@ -134,6 +134,7 @@ extern void      Kernel_Task_Sleep(uint16_t val);
 extern void      Kernel_Task_Constant_Latency(uint16_t val);
 extern void      Kernel_Task_Constant_Latency_Sleep(void);
 extern void      Kernel_PreSleep_Hook(void (*func)(void));
+extern void      Kernel_Clock_Prescale(uint8_t prescaler_reg_val);
 extern uint16_t  Kernel_Task_Sleep_Time_Get(uint8_t task_id);
 extern uint8_t   Kernel_Task_Status_Get(uint8_t task_id);
 extern uint8_t   Kernel_NTask_Get(void);

@@ -80,6 +80,7 @@
 .equ     SRTIMSK2,        0x70                            ;manually defined TIMSK2 in SRAM     
 .equ     SRTIMSK1,        0x6F                            ;manually defined TIMSK1 in SRAM     
 .equ     SRTIMSK0,        0x6E                            ;manually defined TIMSK0 in SRAM     
+.equ     SRCLKPR ,        0x61                            ;manually defined CLKPR in SRAM     
 .equ     SRWDTCSR,        0x60                            ;manually defined WDTCSR in SRAM     
 .equ     SRSREG  ,        0x5F                            ;manually defined SREG in SRAM       
 .equ     SRSPH   ,        0x5E                            ;manually defined SPH in SRAM        
@@ -186,6 +187,7 @@ KerStack:  .skip KER_STK_SZ*KER_MX_NTSK                   ;KER_STK_SZ bytes for 
 .global  Kernel_Task_Constant_Latency                                                          
 .global  Kernel_Task_Constant_Latency_Sleep                                                    
 .global  Kernel_PreSleep_Hook                                                                  
+.global  Kernel_Clock_Prescale                                                                 
 .global  Kernel_Task_Sleep_Time_Get                                                            
 .global  Kernel_Task_Status_Get                                                                
 .global  Kernel_NTask_Get                                                                      
@@ -1468,6 +1470,25 @@ Kernel_PreSleep_Hook:                                     ;total 1.00uS @8MHz   
 		ICALL                                             ;indirect call          (  3 clocks) 
 		RET                                               ;return from subroutine (  4 clocks) 
 ;;============================kernel call func before sleep end=============================;; 
+
+
+
+
+
+;;========================kernel main clock prescaler set starting==========================;; 
+;used registers          : R18, R24                                                            
+;arg registers           : R24(prescaler reg val)                                              
+;return registers        : None                                                                
+;unsafe access registers : R18, R24                                                            
+Kernel_Clock_Prescale:                                    ;total 1.75uS @8MHz     ( 14 clocks) 
+        LDS   R18                , SRSREG                 ;load sreg              (  2 clocks)
+		CLI                                               ;disable interrupt      (  1 clock )
+		LDI   R19                , 0x80                   ;set CLKPCE             (  1 clock ) 
+		STS   SRCLKPR            , R19                    ;store val              (  2 clocks) 
+		STS   SRCLKPR            , R24                    ;store val              (  2 clocks)
+        STS   SRSREG             , R18                    ;store val              (  2 clocks) 
+		RET                                               ;return from subroutine (  4 clocks) 
+;;==========================kernel main clock prescaler set end=============================;; 
 
 
 

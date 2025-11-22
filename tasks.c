@@ -100,6 +100,7 @@ void Task_Radio(void){
     Debug_Tx_Byte(Sensors_HDC1080_Address_Get());
     Debug_Tx_Byte(Sensors_HDC1080_Status_Get());
     Debug_Tx_Byte(Sensors_HDC1080_Error_Get());
+    Debug_Tx_Byte(Sensors_HDC1080_Sticky_Error_Get());
 
     nRF24L01P_WakeUp();
     nRF24L01P_Transmit_Basic(buf, 8);

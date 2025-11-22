@@ -220,17 +220,17 @@
  293               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 tasks.c
-C:\Users\farid\AppData\Local\Temp/ccjduSEp.s:2      *ABS*:0000003f __SREG__
-C:\Users\farid\AppData\Local\Temp/ccjduSEp.s:3      *ABS*:0000003e __SP_H__
-C:\Users\farid\AppData\Local\Temp/ccjduSEp.s:4      *ABS*:0000003d __SP_L__
-C:\Users\farid\AppData\Local\Temp/ccjduSEp.s:5      *ABS*:00000034 __CCP__
-C:\Users\farid\AppData\Local\Temp/ccjduSEp.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\farid\AppData\Local\Temp/ccjduSEp.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\farid\AppData\Local\Temp/ccjduSEp.s:18     .text:00000000 Tasks_Disable_Peripherals
-C:\Users\farid\AppData\Local\Temp/ccjduSEp.s:30     .text:00000002 Task_Sensor
-C:\Users\farid\AppData\Local\Temp/ccjduSEp.s:49     .text:00000014 Task_Radio
-C:\Users\farid\AppData\Local\Temp/ccjduSEp.s:162    .text:000000d0 Task_Vin_Sense
-C:\Users\farid\AppData\Local\Temp/ccjduSEp.s:183    .text:000000e2 Task_RGB_LED
+C:\Users\farid\AppData\Local\Temp/ccojM6Gn.s:2      *ABS*:0000003f __SREG__
+C:\Users\farid\AppData\Local\Temp/ccojM6Gn.s:3      *ABS*:0000003e __SP_H__
+C:\Users\farid\AppData\Local\Temp/ccojM6Gn.s:4      *ABS*:0000003d __SP_L__
+C:\Users\farid\AppData\Local\Temp/ccojM6Gn.s:5      *ABS*:00000034 __CCP__
+C:\Users\farid\AppData\Local\Temp/ccojM6Gn.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\farid\AppData\Local\Temp/ccojM6Gn.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\farid\AppData\Local\Temp/ccojM6Gn.s:18     .text:00000000 Tasks_Disable_Peripherals
+C:\Users\farid\AppData\Local\Temp/ccojM6Gn.s:30     .text:00000002 Task_Sensor
+C:\Users\farid\AppData\Local\Temp/ccojM6Gn.s:49     .text:00000014 Task_Radio
+C:\Users\farid\AppData\Local\Temp/ccojM6Gn.s:162    .text:000000d0 Task_Vin_Sense
+C:\Users\farid\AppData\Local\Temp/ccojM6Gn.s:183    .text:000000e2 Task_RGB_LED
 
 UNDEFINED SYMBOLS
 Sensors_Init

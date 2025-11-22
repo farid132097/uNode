@@ -7,6 +7,10 @@
 #define  SENSOR_ERROR_I2C_START_NOT_SENT     0x02
 #define  SENSOR_ERROR_I2C_ADDR_SEND_TIMEOUT  0x03
 #define  SENSOR_ERROR_I2C_ADDR_NACK          0x04
+#define  SENSOR_ERROR_I2C_DATA_READ_TIMEOUT  0x05
+#define  SENSOR_ERROR_I2C_DATA_READ_NACK     0x06
+#define  SENSOR_ERROR_I2C_DATA_WRITE_TIMEOUT 0x07
+#define  SENSOR_ERROR_I2C_DATA_WRITE_NACK    0x08
 
 
 typedef struct hdc1080_t{
@@ -128,29 +132,25 @@ void Sensors_HDC1080_I2C_Send_Address(uint8_t addr){
 	        }
         }
         HDC1080.Status = (TWSR & 0xF8);
-        if(HDC1080.Status != SENSORS_TWI_MT_SLAW_ACK){
+        if( !((HDC1080.Status == SENSORS_TWI_MT_SLAW_ACK) || (HDC1080.Status == SENSORS_TWI_MR_SLAR_ACK)) ){
             HDC1080.Error = SENSOR_ERROR_I2C_ADDR_NACK;
         }
     }
 }
 
 
-//need to check later
 uint8_t Sensors_HDC1080_I2C_Read(void){
-    if(HDC1080.TimeoutError==0){
-        TWCR=(1<<TWEN)|(1<<TWINT)|(1<<TWEA);
+    if(HDC1080.Error == 0){
+        TWCR = (1<<TWEN)|(1<<TWINT)|(1<<TWEA);
         Sensors_HDC1080_Timeout_Clear();
-        while(!(TWCR & (1<<TWINT))){
+        while( !(TWCR & (1<<TWINT)) ){
             if(Sensors_HDC1080_Timeout()){
-	            HDC1080.TimeoutError=0xF2;
-	            break;
+	            HDC1080.Error = SENSOR_ERROR_I2C_DATA_READ_TIMEOUT;
+	            return 0;
 	        }
         }
         HDC1080.Status=(TWSR & 0xF8);
         return TWDR;
-    }
-    else{
-        return 0;
     }
 }
 
@@ -159,13 +159,16 @@ void Sensors_HDC1080_I2C_Write(uint8_t data){
         TWDR = data;
         TWCR = (1<<TWEN)|(1<<TWINT)|(1<<TWEA);
         Sensors_HDC1080_Timeout_Clear();
-        while(!(TWCR & (1<<TWINT))){
+        while( !(TWCR & (1<<TWINT)) ){
             if(Sensors_HDC1080_Timeout()){
-	            HDC1080.TimeoutError=0xF1;
-	            break;
+	            HDC1080.Error = SENSOR_ERROR_I2C_DATA_WRITE_TIMEOUT;
+	            return;
 	        }
         }
-        HDC1080.Status=(TWSR & 0xF8);
+        HDC1080.Status = (TWSR & 0xF8);
+        if(HDC1080.Status != SENSORS_TWI_MT_DATA_ACK){
+            HDC1080.Error = SENSOR_ERROR_I2C_DATA_WRITE_NACK;
+        }
     }
 }
 
@@ -209,7 +212,12 @@ uint8_t Sensors_HDC1080_Find_Address(void){
 uint16_t Sensors_HDC1080_Read_Reg(uint8_t addr){
     uint16_t val=0;
     Sensors_HDC1080_I2C_Start();
-    Sensors_HDC1080_I2C_Write(HDC1080.Address<<1);
+    Sensors_HDC1080_I2C_Write(HDC1080.Address << 1);
+    Sensors_HDC1080_I2C_Write(addr);
+    Sensors_HDC1080_I2C_Stop();
+    Sensors_HDC1080_I2C_Start();
+    Sensors_HDC1080_I2C_Write((HDC1080.Address<<1) | 0x01);
+
     if(HDC1080.Status==SENSORS_TWI_MT_SLAW_ACK){
         Sensors_HDC1080_I2C_Write(addr);
 	    if(HDC1080.Status==SENSORS_TWI_MT_DATA_ACK){
@@ -253,49 +261,17 @@ uint16_t Sensors_HDC1080_Read_Reg(uint8_t addr){
 
 void Sensors_HDC1080_Write_Reg(uint8_t addr, uint16_t val){
     Sensors_HDC1080_I2C_Start();
-    Sensors_HDC1080_I2C_Write(HDC1080.Address<<1);
-    if(HDC1080.Status==SENSORS_TWI_MT_SLAW_ACK){
-        Sensors_HDC1080_I2C_Write(addr);
-	    if(HDC1080.Status==SENSORS_TWI_MT_DATA_ACK){
-	        Sensors_HDC1080_I2C_Write(val>>8);
-	        if(HDC1080.Status==SENSORS_TWI_MT_DATA_ACK){
-	            Sensors_HDC1080_I2C_Write(val&0xFF);
-		        if(HDC1080.Status==SENSORS_TWI_MT_DATA_ACK){
-		            HDC1080.Error=0x00;
-		        }
-                else{
-		            HDC1080.Error=0x14;
-		        }
-	        }
-            else{
-	            HDC1080.Error=0x13;
-	        }
-	    }
-        else{
-	        HDC1080.Error=0x12;
-	    }
-    }
-    else{
-        HDC1080.Error=0x11;
-    }
+    Sensors_HDC1080_I2C_Send_Address(0x40 << 1);
+    Sensors_HDC1080_I2C_Write(addr);
+    Sensors_HDC1080_I2C_Write(val >> 8);
+    Sensors_HDC1080_I2C_Write(val & 0xFF);
     Sensors_HDC1080_I2C_Stop();
 }
 
 void Sensors_HDC1080_Trigger_Humidity_Measurement(void){
     Sensors_HDC1080_I2C_Start();
-    Sensors_HDC1080_I2C_Write(HDC1080.Address<<1);
-    if(HDC1080.Status==SENSORS_TWI_MT_SLAW_ACK){
-        Sensors_HDC1080_I2C_Write(0x01);
-	    if(HDC1080.Status==SENSORS_TWI_MT_DATA_ACK){
-	        HDC1080.Error=0x00;
-	    }
-        else{
-	        HDC1080.Error=0x22;
-	    }
-    }
-    else{
-        HDC1080.Error=0x21;
-    }
+    Sensors_HDC1080_I2C_Send_Address(0x40 << 1);
+    Sensors_HDC1080_I2C_Write(0x01);
     Sensors_HDC1080_I2C_Stop();
 }
 
@@ -332,8 +308,15 @@ void Sensors_Sample(void){
     
     Sensors_HDC1080_Error_Reset();
     Sensors_HDC1080_I2C_Start();
-    Sensors_HDC1080_I2C_Send_Address(0x40);
+    Sensors_HDC1080_I2C_Send_Address(0x40 << 1);
+    //Sensors_HDC1080_I2C_Write(0x02);
+    //Sensors_HDC1080_I2C_Write(0x0000 >> 8);
+    //Sensors_HDC1080_I2C_Write(0x0000 & 0xFF);
     Sensors_HDC1080_I2C_Stop();
+
+
+    //Sensors_HDC1080_Write_Reg(0x02, 0x0000);
+    //Sensors_HDC1080_Trigger_Humidity_Measurement();
 
     //Clear errors, send forced stop if necessary
     Sensors_HDC1080_I2C_Forced_Stop_Clear_Error();

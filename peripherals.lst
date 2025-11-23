@@ -67,8 +67,8 @@
   77               	.LBB29:
   78               	.LBB30:
   79               	.LM13:
-  80 0046 8AEF      		ldi r24,lo8(250)
-  81 0048 90E0      		ldi r25,hi8(250)
+  80 0046 84EF      		ldi r24,lo8(500)
+  81 0048 91E0      		ldi r25,hi8(500)
   82               	.LVL3:
   83               	/* #APP */
   84               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
@@ -227,20 +227,20 @@
  320               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 peripherals.c
-C:\Users\farid\AppData\Local\Temp/cc8e56oD.s:2      *ABS*:0000003f __SREG__
-C:\Users\farid\AppData\Local\Temp/cc8e56oD.s:3      *ABS*:0000003e __SP_H__
-C:\Users\farid\AppData\Local\Temp/cc8e56oD.s:4      *ABS*:0000003d __SP_L__
-C:\Users\farid\AppData\Local\Temp/cc8e56oD.s:5      *ABS*:00000034 __CCP__
-C:\Users\farid\AppData\Local\Temp/cc8e56oD.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\farid\AppData\Local\Temp/cc8e56oD.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\farid\AppData\Local\Temp/cc8e56oD.s:18     .text:00000000 Peripherals_ADC_Init
-C:\Users\farid\AppData\Local\Temp/cc8e56oD.s:48     .text:00000028 Peripherals_ADC_Sample
-C:\Users\farid\AppData\Local\Temp/cc8e56oD.s:157    .text:000000a2 Peripherals_Vin_Sense_Sample
-C:\Users\farid\AppData\Local\Temp/cc8e56oD.s:246    .bss:00000000 Peripherals
-C:\Users\farid\AppData\Local\Temp/cc8e56oD.s:187    .text:000000cc Peripherals_Vin_RawADC_Get
-C:\Users\farid\AppData\Local\Temp/cc8e56oD.s:201    .text:000000d6 Peripherals_Analog_Temp_Get
-C:\Users\farid\AppData\Local\Temp/cc8e56oD.s:215    .text:000000dc Peripherals_Digital_Temp_Get
-C:\Users\farid\AppData\Local\Temp/cc8e56oD.s:229    .text:000000e2 Peripherals_Digital_RH_Get
+C:\Users\farid\AppData\Local\Temp/ccIVBDGP.s:2      *ABS*:0000003f __SREG__
+C:\Users\farid\AppData\Local\Temp/ccIVBDGP.s:3      *ABS*:0000003e __SP_H__
+C:\Users\farid\AppData\Local\Temp/ccIVBDGP.s:4      *ABS*:0000003d __SP_L__
+C:\Users\farid\AppData\Local\Temp/ccIVBDGP.s:5      *ABS*:00000034 __CCP__
+C:\Users\farid\AppData\Local\Temp/ccIVBDGP.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\farid\AppData\Local\Temp/ccIVBDGP.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\farid\AppData\Local\Temp/ccIVBDGP.s:18     .text:00000000 Peripherals_ADC_Init
+C:\Users\farid\AppData\Local\Temp/ccIVBDGP.s:48     .text:00000028 Peripherals_ADC_Sample
+C:\Users\farid\AppData\Local\Temp/ccIVBDGP.s:157    .text:000000a2 Peripherals_Vin_Sense_Sample
+C:\Users\farid\AppData\Local\Temp/ccIVBDGP.s:246    .bss:00000000 Peripherals
+C:\Users\farid\AppData\Local\Temp/ccIVBDGP.s:187    .text:000000cc Peripherals_Vin_RawADC_Get
+C:\Users\farid\AppData\Local\Temp/ccIVBDGP.s:201    .text:000000d6 Peripherals_Analog_Temp_Get
+C:\Users\farid\AppData\Local\Temp/ccIVBDGP.s:215    .text:000000dc Peripherals_Digital_Temp_Get
+C:\Users\farid\AppData\Local\Temp/ccIVBDGP.s:229    .text:000000e2 Peripherals_Digital_RH_Get
 
 UNDEFINED SYMBOLS
 __udivmodsi4

@@ -2,26 +2,32 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include "sensors.h"
+#include "cdefs.h"
 
-#define  SENSOR_ERROR_I2C_START_TIMEOUT      0x01
-#define  SENSOR_ERROR_I2C_START_NOT_SENT     0x02
-#define  SENSOR_ERROR_I2C_ADDR_SEND_TIMEOUT  0x03
-#define  SENSOR_ERROR_I2C_ADDR_NACK          0x04
-#define  SENSOR_ERROR_I2C_DATA_READ_TIMEOUT  0x05
-#define  SENSOR_ERROR_I2C_DATA_READ_NACK     0x06
-#define  SENSOR_ERROR_I2C_DATA_WRITE_TIMEOUT 0x07
-#define  SENSOR_ERROR_I2C_DATA_WRITE_NACK    0x08
+
+#define  SENSOR_STATUS_I2C_SLA_W_ACK_REC     0x01
+#define  SENSOR_STATUS_I2C_SLA_W_NACK_REC    0x02
+#define  SENSOR_STATUS_I2C_SLA_R_ACK_REC     0x03
+#define  SENSOR_STATUS_I2C_SLA_R_NACK_REC    0x04
+
+#define  SENSOR_ERROR_I2C_ADDR_W_NACK        0x01
+#define  SENSOR_ERROR_I2C_ADDR_R_NACK        0x02
+#define  SENSOR_ERROR_I2C_DATA_READ_NACK     0x03
+#define  SENSOR_ERROR_I2C_DATA_WRITE_NACK    0x04
 
 
 typedef struct hdc1080_t{
-  uint8_t  Status;
-  uint8_t  Address;
-  uint16_t LoopCnt;
-  int16_t  Temp;
-  uint16_t RH;
-  uint8_t  TimeoutError;
-  uint8_t  Error;
-  uint8_t  StickyError;
+    uint8_t  Status;
+    uint8_t  AckStatus;
+    uint8_t  SCLState;
+    uint8_t  SDAState;
+    uint8_t  Address;
+    uint16_t LoopCnt;
+    int16_t  Temp;
+    uint16_t RH;
+    uint8_t  TimeoutError;
+    uint8_t  Error;
+    uint8_t  StickyError;
 }hdc1080_t;
 
 hdc1080_t HDC1080;
@@ -41,289 +47,258 @@ void Sensors_Init(void){
     Sensors_HDC1080_Struct_Init();
     //Gated with PMOS
     //Output logic high to turn off
-    SENSORS_PWR_EN_PORT |= (1<<SENSORS_PWR_EN_PIN);
+    SENSORS_PWR_EN_PORT |= (1<<SENSORS_PWR_EN_BP);
     //Declare as output pin
-    SENSORS_PWR_EN_DDR  |= (1<<SENSORS_PWR_EN_PIN);
+    SENSORS_PWR_EN_DDR  |= (1<<SENSORS_PWR_EN_BP);
     
     //SCL as input, internal pull-up disabled, HW I2C
-    SENSORS_HDC1080_SCL_PORT &=~ (1<<SENSORS_HDC1080_SCL_PIN);
-    SENSORS_HDC1080_SCL_DDR  &=~ (1<<SENSORS_HDC1080_SCL_PIN);
+    SENSORS_HDC1080_SCL_PORT &=~ (1<<SENSORS_HDC1080_SCL_BP);
+    SENSORS_HDC1080_SCL_DDR  &=~ (1<<SENSORS_HDC1080_SCL_BP);
 
     //SDA as input, internal pull-up disabled, HW I2C
-    SENSORS_HDC1080_SDA_PORT &=~ (1<<SENSORS_HDC1080_SDA_PIN);
-    SENSORS_HDC1080_SDA_DDR  &=~ (1<<SENSORS_HDC1080_SDA_PIN);
+    SENSORS_HDC1080_SDA_PORT &=~ (1<<SENSORS_HDC1080_SDA_BP);
+    SENSORS_HDC1080_SDA_DDR  &=~ (1<<SENSORS_HDC1080_SDA_BP);
 }
 
-void Sensors_I2C_Enable(void){
-    TWBR = SENSORS_HDC1080_TWBR_VAL;
-    TWCR = (1<<TWEN);
-}
-
-void Sensors_I2C_Disable(void){
-    TWCR = 0x00;
-    TWBR = 0x00;
-}
-
-void Sensors_HDC1080_Timeout_Clear(void){
-    HDC1080.LoopCnt = 0;
-    HDC1080.TimeoutError = 0;
-}
-
-void Sensors_HDC1080_Error_Clear(void){
-    HDC1080.Error = 0;
-}
-
-void Sensors_HDC1080_Error_Reset(void){
-    Sensors_HDC1080_Timeout_Clear();
-    Sensors_HDC1080_Error_Clear();
-}
-
-uint8_t Sensors_HDC1080_Timeout(void){
-    _delay_us(10);
-    uint8_t sts = 0;
-    HDC1080.LoopCnt++;
-    if(HDC1080.LoopCnt > 100){
-      HDC1080.LoopCnt = 0;
-	  sts = 1;
+void Sensors_I2C_SCL_State_Set(uint8_t state){
+    if(state == LOGIC_HIGH){
+        SENSORS_HDC1080_SCL_DDR  &=~ (1<<SENSORS_HDC1080_SCL_BP);
+        HDC1080.SCLState = LOGIC_HIGH;
     }
-    return sts;
+    else if(state == LOGIC_LOW){
+        SENSORS_HDC1080_SCL_DDR  |=  (1<<SENSORS_HDC1080_SCL_BP);
+        HDC1080.SCLState = LOGIC_LOW;
+    }
+}
+
+void Sensors_I2C_SDA_State_Set(uint8_t state){
+    if(state == LOGIC_HIGH){
+        SENSORS_HDC1080_SDA_DDR  &=~ (1<<SENSORS_HDC1080_SDA_BP);
+        HDC1080.SDAState = LOGIC_HIGH;
+    }
+    else if(state == LOGIC_LOW){
+        SENSORS_HDC1080_SDA_DDR  |=  (1<<SENSORS_HDC1080_SDA_BP);
+        HDC1080.SDAState = LOGIC_LOW;
+    }
+}
+
+uint8_t Sensors_I2C_SDA_State_Get(void){
+    if(SENSORS_HDC1080_SDA_DDR & (1<<SENSORS_HDC1080_SDA_BP)){
+        SENSORS_HDC1080_SDA_DDR  &=~ (1<<SENSORS_HDC1080_SDA_BP);
+        _delay_us(SENSORS_HDC1080_HALF_BIT);
+    }
+    if(SENSORS_HDC1080_SDA_PIN & (1<<SENSORS_HDC1080_SDA_BP)){
+        return LOGIC_HIGH;
+    }
+    else{
+        return LOGIC_LOW;
+    }
+}
+
+uint8_t Sensors_I2C_Bus_Idle(void){
+    if( ((SENSORS_HDC1080_SCL_DDR & (1<<SENSORS_HDC1080_SCL_BP)) && (SENSORS_HDC1080_SDA_DDR & (1<<SENSORS_HDC1080_SDA_BP))) ){
+        return TRUE;
+    }
+    return FALSE;
 }
 
 void Sensors_HDC1080_I2C_Start(void){
     if(HDC1080.Error == 0){
-        TWCR = (1<<TWEN)|(1<<TWINT)|(1<<TWSTA);
-        Sensors_HDC1080_Timeout_Clear();
-        while( !(TWCR & (1<<TWINT)) ){
-            if(Sensors_HDC1080_Timeout()){
-                HDC1080.Error = SENSOR_ERROR_I2C_START_TIMEOUT;
-	            return;
-	        }
-        }
-        HDC1080.Status = (TWSR & 0xF8);
-        if(HDC1080.Status != SENSORS_TWI_START_SENT){
-            HDC1080.Error = SENSOR_ERROR_I2C_START_NOT_SENT;
-        }
+        Sensors_I2C_SCL_State_Set(LOGIC_HIGH);
+        _delay_us(SENSORS_HDC1080_HALF_BIT);
+        Sensors_I2C_SDA_State_Set(LOGIC_HIGH);
+        _delay_us(SENSORS_HDC1080_HALF_BIT);
+        Sensors_I2C_SDA_State_Set(LOGIC_LOW);
+        _delay_us(SENSORS_HDC1080_HALF_BIT);
+        Sensors_I2C_SCL_State_Set(LOGIC_LOW);
+        _delay_us(SENSORS_HDC1080_HALF_BIT);
     }
 }
 
 void Sensors_HDC1080_I2C_Stop(void){
     if(HDC1080.Error == 0){
-        TWCR = (1<<TWEN)|(1<<TWINT)|(1<<TWSTO);
+        //if SCL logic high
+        if( !(SENSORS_HDC1080_SCL_DDR & (1<<SENSORS_HDC1080_SCL_BP)) ){
+            Sensors_I2C_SCL_State_Set(LOGIC_LOW);
+            _delay_us(SENSORS_HDC1080_HALF_BIT);
+        }
+        //if SDA logic high
+        if( !(SENSORS_HDC1080_SDA_DDR & (1<<SENSORS_HDC1080_SDA_BP)) ){
+            Sensors_I2C_SDA_State_Set(LOGIC_LOW);
+            _delay_us(SENSORS_HDC1080_HALF_BIT);
+        }
+        Sensors_I2C_SCL_State_Set(LOGIC_HIGH);
+        _delay_us(SENSORS_HDC1080_HALF_BIT);
+        Sensors_I2C_SDA_State_Set(LOGIC_HIGH);
+        _delay_us(SENSORS_HDC1080_HALF_BIT);
     }
 }
 
 void Sensors_HDC1080_I2C_Forced_Stop_Clear_Error(void){
     if(HDC1080.Error != 0){
-        TWCR = (1<<TWEN)|(1<<TWINT)|(1<<TWSTO);
+        if ( Sensors_I2C_Bus_Idle() == FALSE ){
+            Sensors_I2C_SCL_State_Set(LOGIC_LOW);
+            _delay_us(SENSORS_HDC1080_HALF_BIT);
+            Sensors_I2C_SDA_State_Set(LOGIC_LOW);
+            _delay_us(SENSORS_HDC1080_HALF_BIT);
+            Sensors_I2C_SCL_State_Set(LOGIC_HIGH);
+            _delay_us(SENSORS_HDC1080_HALF_BIT);
+            Sensors_I2C_SDA_State_Set(LOGIC_HIGH);
+            _delay_us(SENSORS_HDC1080_HALF_BIT);
+        }
         HDC1080.StickyError = HDC1080.Error;
         HDC1080.Error = 0;
     }
 }
 
-void Sensors_HDC1080_I2C_Send_Address(uint8_t addr){
+void Sensors_HDC1080_I2C_Send(uint8_t addr){
     if(HDC1080.Error == 0){
-        TWDR = addr << 1;
-        TWCR = (1<<TWEN)|(1<<TWINT);
-        Sensors_HDC1080_Timeout_Clear();
-        while( !(TWCR & (1<<TWINT)) ){
-            if(Sensors_HDC1080_Timeout()){
-	            HDC1080.Error = SENSOR_ERROR_I2C_ADDR_SEND_TIMEOUT;
-	            return;
-	        }
-        }
-        HDC1080.Status = (TWSR & 0xF8);
-        if( !((HDC1080.Status == SENSORS_TWI_MT_SLAW_ACK) || (HDC1080.Status == SENSORS_TWI_MR_SLAR_ACK)) ){
-            HDC1080.Error = SENSOR_ERROR_I2C_ADDR_NACK;
-        }
-    }
-}
-
-
-uint8_t Sensors_HDC1080_I2C_Read(void){
-    if(HDC1080.Error == 0){
-        TWCR = (1<<TWEN)|(1<<TWINT)|(1<<TWEA);
-        Sensors_HDC1080_Timeout_Clear();
-        while( !(TWCR & (1<<TWINT)) ){
-            if(Sensors_HDC1080_Timeout()){
-	            HDC1080.Error = SENSOR_ERROR_I2C_DATA_READ_TIMEOUT;
-	            return 0;
-	        }
-        }
-        HDC1080.Status=(TWSR & 0xF8);
-        return TWDR;
-    }
-}
-
-void Sensors_HDC1080_I2C_Write(uint8_t data){
-    if(HDC1080.Error == 0){
-        TWDR = data;
-        TWCR = (1<<TWEN)|(1<<TWINT)|(1<<TWEA);
-        Sensors_HDC1080_Timeout_Clear();
-        while( !(TWCR & (1<<TWINT)) ){
-            if(Sensors_HDC1080_Timeout()){
-	            HDC1080.Error = SENSOR_ERROR_I2C_DATA_WRITE_TIMEOUT;
-	            return;
-	        }
-        }
-        HDC1080.Status = (TWSR & 0xF8);
-        if(HDC1080.Status != SENSORS_TWI_MT_DATA_ACK){
-            HDC1080.Error = SENSOR_ERROR_I2C_DATA_WRITE_NACK;
-        }
-    }
-}
-
-uint8_t Sensors_HDC1080_I2C_Read_Nack(void){
-    if(HDC1080.TimeoutError==0){
-        TWCR=(1<<TWEN)|(1<<TWINT);
-        Sensors_HDC1080_Timeout_Clear();
-        while(!(TWCR & (1<<TWINT))){
-            if(Sensors_HDC1080_Timeout()){
-	            HDC1080.TimeoutError=0xF3;
-	            break;
-	        }
-        }
-        HDC1080.Status=(TWSR & 0xF8);
-        return TWDR;
-    }
-    else{
-        return 0;
-    }
-}
-uint8_t Sensors_HDC1080_Find_Address(void){
-    uint8_t addr=0;
-    for(uint8_t i=0;i<127;i++){
-        Sensors_HDC1080_I2C_Start();
-	    Sensors_HDC1080_I2C_Write(i<<1);
-	    Sensors_HDC1080_I2C_Stop();
-	    if(HDC1080.TimeoutError==0){
-	        if(HDC1080.Status==SENSORS_TWI_MT_SLAW_ACK){
-	            addr=i;
-	            HDC1080.Address=i;
-	            break;
-	        }
-	    }
-        else{
-	        addr=0;
-	    }
-    }
-    return addr;
-}
-
-uint16_t Sensors_HDC1080_Read_Reg(uint8_t addr){
-    uint16_t val=0;
-    Sensors_HDC1080_I2C_Start();
-    Sensors_HDC1080_I2C_Write(HDC1080.Address << 1);
-    Sensors_HDC1080_I2C_Write(addr);
-    Sensors_HDC1080_I2C_Stop();
-    Sensors_HDC1080_I2C_Start();
-    Sensors_HDC1080_I2C_Write((HDC1080.Address<<1) | 0x01);
-
-    if(HDC1080.Status==SENSORS_TWI_MT_SLAW_ACK){
-        Sensors_HDC1080_I2C_Write(addr);
-	    if(HDC1080.Status==SENSORS_TWI_MT_DATA_ACK){
-	        Sensors_HDC1080_I2C_Stop();
-	        Sensors_HDC1080_I2C_Start();
-	        Sensors_HDC1080_I2C_Write((HDC1080.Address<<1)|0x01);
-            if(HDC1080.Status==SENSORS_TWI_MR_SLAR_ACK){
-	            val=Sensors_HDC1080_I2C_Read();
-		        if(HDC1080.Status==SENSORS_TWI_MR_DATA_ACK){
-		            val<<=8;
-		            val|=Sensors_HDC1080_I2C_Read_Nack();
-		            if(HDC1080.Status==SENSORS_TWI_MR_DATA_NACK){
-		                HDC1080.Error=0x00;
-		            }
-                    else{
-		                HDC1080.Error=0x05;
-		            }
-		        }
-                else{
-		            HDC1080.Error=0x04;
-		        }
-	        }
+        for(uint8_t i=0;i<8;i++){
+            if(addr & 0x80){
+                Sensors_I2C_SDA_State_Set(LOGIC_HIGH);
+            }
             else{
-	            HDC1080.Error=0x03;
-	        }
-	    }
+                Sensors_I2C_SDA_State_Set(LOGIC_LOW);
+            }
+            _delay_us(SENSORS_HDC1080_HALF_BIT);
+            Sensors_I2C_SCL_State_Set(LOGIC_HIGH);
+            _delay_us(SENSORS_HDC1080_HALF_BIT);
+            Sensors_I2C_SCL_State_Set(LOGIC_LOW);
+            _delay_us(SENSORS_HDC1080_HALF_BIT);
+            addr <<= 1;
+        }
+    }
+}
+
+uint8_t Sensors_HDC1080_I2C_Receive(void){
+    uint8_t val = 0;
+    if(HDC1080.Error == 0){
+        //Set SDA as input
+        Sensors_I2C_SDA_State_Set(LOGIC_HIGH);
+        _delay_us(SENSORS_HDC1080_HALF_BIT);
+        for(uint8_t i=0;i<8;i++){
+            val <<= 1;
+            if(Sensors_I2C_SDA_State_Get() == LOGIC_HIGH){
+                val |= 1;
+            }
+            Sensors_I2C_SCL_State_Set(LOGIC_HIGH);
+            _delay_us(SENSORS_HDC1080_HALF_BIT);
+            Sensors_I2C_SCL_State_Set(LOGIC_LOW);
+            _delay_us(SENSORS_HDC1080_HALF_BIT);
+        }
+    }
+    return val;
+}
+
+void Sensors_HDC1080_I2C_Check_Ack(void){
+    if(HDC1080.Error == 0){
+        //SDA input mode
+        Sensors_I2C_SDA_State_Set(LOGIC_HIGH);
+        _delay_us(SENSORS_HDC1080_QUARTER_BIT);
+        Sensors_I2C_SCL_State_Set(LOGIC_HIGH);
+        _delay_us(SENSORS_HDC1080_QUARTER_BIT);
+        if(Sensors_I2C_SDA_State_Get() == LOGIC_LOW){
+            HDC1080.AckStatus = TRUE;
+        }
         else{
-	        HDC1080.Error=0x02;
-	    }
+            HDC1080.AckStatus = FALSE;
+        }
+        _delay_us(SENSORS_HDC1080_QUARTER_BIT);
+        Sensors_I2C_SCL_State_Set(LOGIC_LOW);
+        _delay_us(SENSORS_HDC1080_QUARTER_BIT);
     }
-    else{
-        HDC1080.Error=0x01;
-    }
-    Sensors_HDC1080_I2C_Stop();
-    if(HDC1080.Error!=0x00){
-        val=0;
-    }
-    return val;
 }
 
-
-void Sensors_HDC1080_Write_Reg(uint8_t addr, uint16_t val){
-    Sensors_HDC1080_I2C_Start();
-    Sensors_HDC1080_I2C_Send_Address(0x40 << 1);
-    Sensors_HDC1080_I2C_Write(addr);
-    Sensors_HDC1080_I2C_Write(val >> 8);
-    Sensors_HDC1080_I2C_Write(val & 0xFF);
-    Sensors_HDC1080_I2C_Stop();
-}
-
-void Sensors_HDC1080_Trigger_Humidity_Measurement(void){
-    Sensors_HDC1080_I2C_Start();
-    Sensors_HDC1080_I2C_Send_Address(0x40 << 1);
-    Sensors_HDC1080_I2C_Write(0x01);
-    Sensors_HDC1080_I2C_Stop();
-}
-
-uint16_t Sensors_HDC1080_Read_Humidity_Plain(void){
-    uint32_t val=0;
-    Sensors_HDC1080_Timeout_Clear();
-    _delay_ms(SENSORS_HDC1080_CONV_DELAY);
-    Sensors_HDC1080_I2C_Start();
-    Sensors_HDC1080_I2C_Write((HDC1080.Address<<1)|0x01);
-    val=Sensors_HDC1080_I2C_Read();
-    val<<=8;
-    val|=Sensors_HDC1080_I2C_Read_Nack();
-    Sensors_HDC1080_I2C_Stop();
-    if(Sensors_HDC1080_Timeout_Error_Get()==0){
-        val*=100;
-        val/=65535;
-        HDC1080.RH = (uint16_t)val;
+void Sensors_HDC1080_I2C_Send_Ack(void){
+    if(HDC1080.Error == 0){
+        //SDA input mode
+        Sensors_I2C_SDA_State_Set(LOGIC_LOW);
+        _delay_us(SENSORS_HDC1080_QUARTER_BIT);
+        Sensors_I2C_SCL_State_Set(LOGIC_HIGH);
+        _delay_us(SENSORS_HDC1080_QUARTER_BIT);
+        _delay_us(SENSORS_HDC1080_QUARTER_BIT);
+        Sensors_I2C_SCL_State_Set(LOGIC_LOW);
+        _delay_us(SENSORS_HDC1080_QUARTER_BIT);
     }
-    else{
-        val=0;
-    }
-    return val;
 }
+
 
 
 
 void Sensors_Sample(void){
+    uint32_t rh_val = 0;
     //Enable Power to sensor module
-    SENSORS_PWR_EN_PORT &=~ (1<<SENSORS_PWR_EN_PIN);
-    //Enable I2C hardware
-    Sensors_I2C_Enable();
+    SENSORS_PWR_EN_PORT &=~ (1<<SENSORS_PWR_EN_BP);
     //Wait until sensor is ready
-    _delay_ms(20);
+    _delay_ms(SENSORS_HDC1080_CONV_DELAY);
     
-    Sensors_HDC1080_Error_Reset();
+    //Clear all errors
+    HDC1080.Error = 0;
+
+    //Config sensor
+    for(uint8_t i = 0; i<50; i++){
+        Sensors_HDC1080_I2C_Start();
+        Sensors_HDC1080_I2C_Send( SENSORS_HDC1080_ADDR << 1 );
+        Sensors_HDC1080_I2C_Check_Ack();
+        if(HDC1080.AckStatus == FALSE){
+            Sensors_HDC1080_I2C_Stop();
+            if(i == 49){
+                HDC1080.Error = SENSOR_ERROR_I2C_ADDR_W_NACK;
+            }
+        }
+        else{
+            break;
+        }
+    }
+    Sensors_HDC1080_I2C_Send(0x02);
+    Sensors_HDC1080_I2C_Check_Ack();
+    Sensors_HDC1080_I2C_Send(0x00);
+    Sensors_HDC1080_I2C_Check_Ack();
+    Sensors_HDC1080_I2C_Send(0x00);
+    Sensors_HDC1080_I2C_Check_Ack();
+    Sensors_HDC1080_I2C_Stop();
+    
+    //Trigger RH measurement
     Sensors_HDC1080_I2C_Start();
-    Sensors_HDC1080_I2C_Send_Address(0x40 << 1);
-    //Sensors_HDC1080_I2C_Write(0x02);
-    //Sensors_HDC1080_I2C_Write(0x0000 >> 8);
-    //Sensors_HDC1080_I2C_Write(0x0000 & 0xFF);
+    Sensors_HDC1080_I2C_Send(SENSORS_HDC1080_ADDR << 1);
+    Sensors_HDC1080_I2C_Check_Ack();
+    Sensors_HDC1080_I2C_Send(0x01);
+    Sensors_HDC1080_I2C_Check_Ack();
     Sensors_HDC1080_I2C_Stop();
 
+    //Read RH
+    
+    for(uint8_t i = 0; i<50; i++){
+        Sensors_HDC1080_I2C_Start();
+        Sensors_HDC1080_I2C_Send( (SENSORS_HDC1080_ADDR << 1) | 1);
+        Sensors_HDC1080_I2C_Check_Ack();
+        if(HDC1080.AckStatus == FALSE){
+            Sensors_HDC1080_I2C_Stop();
+        }
+        else{
+            break;
+        }
+    }
+    rh_val = Sensors_HDC1080_I2C_Receive();
+    Sensors_HDC1080_I2C_Send_Ack();
+    rh_val <<= 8;
+    rh_val |= Sensors_HDC1080_I2C_Receive();
+    Sensors_HDC1080_I2C_Check_Ack();
+    Sensors_HDC1080_I2C_Stop();
 
-    //Sensors_HDC1080_Write_Reg(0x02, 0x0000);
-    //Sensors_HDC1080_Trigger_Humidity_Measurement();
+    if(HDC1080.Error == 0){
+        rh_val*=100;
+        rh_val/=65535;
+        HDC1080.RH = (uint16_t)rh_val;
+    }
+    else{
+        HDC1080.RH = 0;
+    }
 
     //Clear errors, send forced stop if necessary
     Sensors_HDC1080_I2C_Forced_Stop_Clear_Error();
-    //Disable I2C hardware
-    Sensors_I2C_Disable();
     //Disable Power to sensor module
-    SENSORS_PWR_EN_PORT |=  (1<<SENSORS_PWR_EN_PIN);
+    SENSORS_PWR_EN_PORT |=  (1<<SENSORS_PWR_EN_BP);
 }
 
 
@@ -343,10 +318,6 @@ uint8_t Sensors_HDC1080_Error_Get(void){
 
 uint8_t Sensors_HDC1080_Sticky_Error_Get(void){
   return HDC1080.StickyError;
-}
-
-uint8_t Sensors_HDC1080_Timeout_Error_Get(void){
-  return HDC1080.TimeoutError;
 }
 
 uint16_t Sensors_HDC1080_RH_Get(void){

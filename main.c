@@ -11,7 +11,7 @@
 
 int main(void) {
     
-	Kernel_Clock_Prescale(2);
+	Kernel_Clock_Prescale(1);
 	
 	Debug_Init(0);
 	Kernel_Init();

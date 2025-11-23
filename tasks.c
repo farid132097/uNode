@@ -50,7 +50,7 @@ void Task_Vin_Sense(void){
     Peripherals_Vin_Sense_Sample();
     
     //Delay 5000ms
-    Kernel_Task_Sleep(10000/KER_TICK_TIME);
+    Kernel_Task_Sleep(30000/KER_TICK_TIME);
 	
   }
 }
@@ -97,15 +97,10 @@ void Task_Radio(void){
     Debug_Tx_Byte(buf[6]);
     Debug_Tx_Byte(buf[7]);
 
-    Debug_Tx_Byte(Sensors_HDC1080_Address_Get());
-    Debug_Tx_Byte(Sensors_HDC1080_Status_Get());
-    Debug_Tx_Byte(Sensors_HDC1080_Error_Get());
-    Debug_Tx_Byte(Sensors_HDC1080_Sticky_Error_Get());
-
     nRF24L01P_WakeUp();
     nRF24L01P_Transmit_Basic(buf, 8);
     nRF24L01P_Deep_Sleep();
-    Kernel_Task_Sleep(15000/KER_TICK_TIME);
+    Kernel_Task_Sleep(60000/KER_TICK_TIME);
 	  
   }
 }
@@ -117,7 +112,7 @@ void Task_Sensor(void){
   while(1){
 
     Sensors_Sample();
-    Kernel_Task_Sleep(30000/KER_TICK_TIME);
+    Kernel_Task_Sleep(120000/KER_TICK_TIME);
 	
   }
 }

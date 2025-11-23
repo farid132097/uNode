@@ -15,7 +15,7 @@ Allocating common symbols
 Common symbol       size              file
 
 nRF24L01P_type      0x13              nrf24l01p.o
-HDC1080             0xb               sensors.o
+HDC1080             0xe               sensors.o
 nRF24L01P           0x2               nrf24l01p.o
 
 Memory Configuration
@@ -136,7 +136,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x1e0e
+.text           0x00000000     0x1cda
  *(.vectors)
  .vectors       0x00000000       0x68 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
                 0x00000000                __vectors
@@ -218,149 +218,141 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x000000a2                __vector_20
  .text          0x000000a6       0x48 main.o
                 0x000000a6                main
- .text          0x000000ee      0x10e tasks.o
-                0x000001be                Task_Vin_Sense
-                0x000001d0                Task_RGB_LED
+ .text          0x000000ee       0xee tasks.o
+                0x0000019e                Task_Vin_Sense
+                0x000001b0                Task_RGB_LED
                 0x000000f0                Task_Sensor
                 0x00000102                Task_Radio
                 0x000000ee                Tasks_Disable_Peripherals
- .text          0x000001fc      0x9ae nrf24l01p.o
-                0x00000888                nRF24L01P_Init
-                0x00000830                nRF24L01P_Set_Destination_Address
-                0x00000596                nRF24L01P_Set_Mode_Tx
-                0x00000b34                nRF24L01P_Transmit_With_ACK
-                0x00000312                nRF24L01P_SPI_Transfer
-                0x00000350                nRF24L01P_Calcuate_CRC
-                0x000004c0                nRF24L01P_Flush_Receive_Buffer
-                0x0000028e                nRF24L01P_Enable_SPI
-                0x000005ca                nRF24L01P_Set_Mode_Rx
-                0x0000056e                nRF24L01P_Set_Mode_Sleep
-                0x0000084a                nRF24L01P_Set_MaxRetransmission
-                0x0000025e                nRF24L01P_CSN_High
-                0x000006cc                nRF24L01P_Get_Speed
-                0x00000722                nRF24L01P_Set_Speed
-                0x0000037c                nRF24L01P_Calcuate_CRC_Block
-                0x00000784                nRF24L01P_Get_Tx_Power
-                0x000004fa                nRF24L01P_Receive_Buffer_Not_Empty
-                0x0000045c                nRF24L01P_Transmit_Buffer_Empty
-                0x0000029e                nRF24L01P_Enable
-                0x00000262                nRF24L01P_CSN_Low
-                0x000007b6                nRF24L01P_Set_Tx_Power
-                0x000002c6                nRF24L01P_Get_Error
-                0x000002e8                nRF24L01P_Error_Timeout
-                0x00000824                nRF24L01P_Set_Own_Address
-                0x0000083c                nRF24L01P_Set_Receive_Timeout
-                0x000005fa                nRF24L01P_ReadModifyWrite
-                0x00000280                nRF24L01P_Disable_GPIO
-                0x000002ac                nRF24L01P_Disable
-                0x00000a3c                nRF24L01P_Transmit_Basic
-                0x000006a2                nRF24L01P_Set_Channel
-                0x00000676                nRF24L01P_Get_Channel
-                0x000002b6                nRF24L01P_Error_Clear
-                0x0000052c                nRF24L01P_Get_Mode
-                0x0000026e                nRF24L01P_Enable_GPIO
-                0x00000498                nRF24L01P_Wait_Till_Transmission_Completes
-                0x00000a9a                nRF24L01P_Recieve_Basic
-                0x00000440                nRF24L01P_Write_Data_To_Transmit_Buffer
-                0x000002d2                nRF24L01P_No_Error
-                0x00000422                nRF24L01P_Flush_Transmit_Buffer
-                0x00000870                nRF24L01P_WakeUp
-                0x00000b66                nRF24L01P_Recieve_With_ACK
-                0x00000298                nRF24L01P_Disable_SPI
-                0x000001fc                nRF24L01P_Struct_Init
-                0x00000858                nRF24L01P_Deep_Sleep
-                0x00000266                nRF24L01P_CE_High
-                0x0000026a                nRF24L01P_CE_Low
-                0x000004de                nRF24L01P_Read_Data_From_Receive_Buffer
-                0x000003ac                nRF24L01P_ReadWrite_Register
- .text          0x00000baa       0xe8 peripherals.o
-                0x00000c80                Peripherals_Analog_Temp_Get
-                0x00000c76                Peripherals_Vin_RawADC_Get
-                0x00000c86                Peripherals_Digital_Temp_Get
-                0x00000baa                Peripherals_ADC_Init
-                0x00000c8c                Peripherals_Digital_RH_Get
-                0x00000c4c                Peripherals_Vin_Sense_Sample
-                0x00000bd2                Peripherals_ADC_Sample
- .text          0x00000c92       0x2e rgb.o
-                0x00000c92                RGB_Init
-                0x00000ca0                RGB_Set_State
- .text          0x00000cc0      0x4f4 sensors.o
-                0x000011aa                Sensors_HDC1080_RH_Get
-                0x00001036                Sensors_HDC1080_Write_Reg
-                0x00000d2c                Sensors_HDC1080_Error_Reset
-                0x00000dc6                Sensors_HDC1080_I2C_Forced_Stop_Clear_Error
-                0x00000d18                Sensors_HDC1080_Timeout_Clear
-                0x00000e7c                Sensors_HDC1080_I2C_Write
-                0x00000e34                Sensors_HDC1080_I2C_Read
-                0x00001132                Sensors_Sample
-                0x00001198                Sensors_HDC1080_Error_Get
-                0x000011a4                Sensors_HDC1080_Timeout_Error_Get
-                0x00000d00                Sensors_I2C_Enable
-                0x00000d3e                Sensors_HDC1080_Timeout
-                0x00000db6                Sensors_HDC1080_I2C_Stop
-                0x00001094                Sensors_HDC1080_Read_Humidity_Plain
-                0x00000ecc                Sensors_HDC1080_I2C_Read_Nack
-                0x00001192                Sensors_HDC1080_Status_Get
-                0x0000118c                Sensors_HDC1080_Address_Get
-                0x00000dde                Sensors_HDC1080_I2C_Send_Address
-                0x00000cc0                Sensors_HDC1080_Struct_Init
-                0x00000d0e                Sensors_I2C_Disable
-                0x00000f5a                Sensors_HDC1080_Read_Reg
-                0x00000d26                Sensors_HDC1080_Error_Clear
-                0x00000d6c                Sensors_HDC1080_I2C_Start
-                0x00000cee                Sensors_Init
-                0x00000f14                Sensors_HDC1080_Find_Address
-                0x0000119e                Sensors_HDC1080_Sticky_Error_Get
-                0x00001074                Sensors_HDC1080_Trigger_Humidity_Measurement
- .text          0x000011b4      0xb18 kernel.o
-                0x00001aae                Kernel_Task_Constant_Latency
-                0x00001cc0                Kernel_Abs_High_Prio_Task_ID_Get
-                0x00001578                Kernel_SysTick_Reg_Init
-                0x00001918                Kernel_Task_Sleep
-                0x00001c78                Kernel_Task_Sleep_Time_Get
-                0x00001ca2                Kernel_Task_Prio_Get
-                0x00001c5c                Kernel_PreSleep_Hook
-                0x00001cb2                Kernel_Lowest_Prio_Get
-                0x00001cc6                Kernel_CPU_Usage_Get
-                0x00001c9c                Kernel_NTask_Get
-                0x000018ea                Kernel_Task_Idle
-                0x00001c62                Kernel_Clock_Prescale
-                0x000016f8                Kernel_Start_Tasks
-                0x00001c8c                Kernel_Task_Status_Get
-                0x000011b4                __vector_7
-                0x0000188c                Kernel_Init
-                0x00001396                __vector_9
-                0x00001608                Kernel_Task_Create
-                0x00001ada                Kernel_Task_Constant_Latency_Sleep
-                0x00001cb8                Kernel_High_Prio_Task_ID_Get
- .text          0x00001ccc       0xbc debug.o
-                0x00001cec                Debug_Tx_Byte
-                0x00001d2a                Debug_Tx_Word_Conf
-                0x00001d7a                Debug_Tx_RAM_Area
-                0x00001ccc                Debug_Init
-                0x00001d3a                Debug_Tx_DWord_Conf
-                0x00001d62                Debug_Tx_From_RAM
-                0x00001cfe                Debug_Tx_Word
-                0x00001d0e                Debug_Tx_Byte_Conf
- .text          0x00001d88        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
- .text          0x00001d88        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
- .text          0x00001d88        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text          0x00001d88        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
- .text          0x00001d88        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
-                0x00001d88                . = ALIGN (0x2)
+ .text          0x000001dc      0x9ae nrf24l01p.o
+                0x00000868                nRF24L01P_Init
+                0x00000810                nRF24L01P_Set_Destination_Address
+                0x00000576                nRF24L01P_Set_Mode_Tx
+                0x00000b14                nRF24L01P_Transmit_With_ACK
+                0x000002f2                nRF24L01P_SPI_Transfer
+                0x00000330                nRF24L01P_Calcuate_CRC
+                0x000004a0                nRF24L01P_Flush_Receive_Buffer
+                0x0000026e                nRF24L01P_Enable_SPI
+                0x000005aa                nRF24L01P_Set_Mode_Rx
+                0x0000054e                nRF24L01P_Set_Mode_Sleep
+                0x0000082a                nRF24L01P_Set_MaxRetransmission
+                0x0000023e                nRF24L01P_CSN_High
+                0x000006ac                nRF24L01P_Get_Speed
+                0x00000702                nRF24L01P_Set_Speed
+                0x0000035c                nRF24L01P_Calcuate_CRC_Block
+                0x00000764                nRF24L01P_Get_Tx_Power
+                0x000004da                nRF24L01P_Receive_Buffer_Not_Empty
+                0x0000043c                nRF24L01P_Transmit_Buffer_Empty
+                0x0000027e                nRF24L01P_Enable
+                0x00000242                nRF24L01P_CSN_Low
+                0x00000796                nRF24L01P_Set_Tx_Power
+                0x000002a6                nRF24L01P_Get_Error
+                0x000002c8                nRF24L01P_Error_Timeout
+                0x00000804                nRF24L01P_Set_Own_Address
+                0x0000081c                nRF24L01P_Set_Receive_Timeout
+                0x000005da                nRF24L01P_ReadModifyWrite
+                0x00000260                nRF24L01P_Disable_GPIO
+                0x0000028c                nRF24L01P_Disable
+                0x00000a1c                nRF24L01P_Transmit_Basic
+                0x00000682                nRF24L01P_Set_Channel
+                0x00000656                nRF24L01P_Get_Channel
+                0x00000296                nRF24L01P_Error_Clear
+                0x0000050c                nRF24L01P_Get_Mode
+                0x0000024e                nRF24L01P_Enable_GPIO
+                0x00000478                nRF24L01P_Wait_Till_Transmission_Completes
+                0x00000a7a                nRF24L01P_Recieve_Basic
+                0x00000420                nRF24L01P_Write_Data_To_Transmit_Buffer
+                0x000002b2                nRF24L01P_No_Error
+                0x00000402                nRF24L01P_Flush_Transmit_Buffer
+                0x00000850                nRF24L01P_WakeUp
+                0x00000b46                nRF24L01P_Recieve_With_ACK
+                0x00000278                nRF24L01P_Disable_SPI
+                0x000001dc                nRF24L01P_Struct_Init
+                0x00000838                nRF24L01P_Deep_Sleep
+                0x00000246                nRF24L01P_CE_High
+                0x0000024a                nRF24L01P_CE_Low
+                0x000004be                nRF24L01P_Read_Data_From_Receive_Buffer
+                0x0000038c                nRF24L01P_ReadWrite_Register
+ .text          0x00000b8a       0xe8 peripherals.o
+                0x00000c60                Peripherals_Analog_Temp_Get
+                0x00000c56                Peripherals_Vin_RawADC_Get
+                0x00000c66                Peripherals_Digital_Temp_Get
+                0x00000b8a                Peripherals_ADC_Init
+                0x00000c6c                Peripherals_Digital_RH_Get
+                0x00000c2c                Peripherals_Vin_Sense_Sample
+                0x00000bb2                Peripherals_ADC_Sample
+ .text          0x00000c72       0x2e rgb.o
+                0x00000c72                RGB_Init
+                0x00000c80                RGB_Set_State
+ .text          0x00000ca0      0x3e0 sensors.o
+                0x00001076                Sensors_HDC1080_RH_Get
+                0x00000d10                Sensors_I2C_SDA_State_Get
+                0x00000d2e                Sensors_I2C_Bus_Idle
+                0x00000dca                Sensors_HDC1080_I2C_Forced_Stop_Clear_Error
+                0x00000f4a                Sensors_Sample
+                0x0000106a                Sensors_HDC1080_Error_Get
+                0x00000e6e                Sensors_HDC1080_I2C_Receive
+                0x00000d86                Sensors_HDC1080_I2C_Stop
+                0x00000ce0                Sensors_I2C_SCL_State_Set
+                0x00001064                Sensors_HDC1080_Status_Get
+                0x00000f14                Sensors_HDC1080_I2C_Send_Ack
+                0x00000e1a                Sensors_HDC1080_I2C_Send
+                0x0000105e                Sensors_HDC1080_Address_Get
+                0x00000ca0                Sensors_HDC1080_Struct_Init
+                0x00000cf8                Sensors_I2C_SDA_State_Set
+                0x00000d48                Sensors_HDC1080_I2C_Start
+                0x00000ec8                Sensors_HDC1080_I2C_Check_Ack
+                0x00000cce                Sensors_Init
+                0x00001070                Sensors_HDC1080_Sticky_Error_Get
+ .text          0x00001080      0xb18 kernel.o
+                0x0000197a                Kernel_Task_Constant_Latency
+                0x00001b8c                Kernel_Abs_High_Prio_Task_ID_Get
+                0x00001444                Kernel_SysTick_Reg_Init
+                0x000017e4                Kernel_Task_Sleep
+                0x00001b44                Kernel_Task_Sleep_Time_Get
+                0x00001b6e                Kernel_Task_Prio_Get
+                0x00001b28                Kernel_PreSleep_Hook
+                0x00001b7e                Kernel_Lowest_Prio_Get
+                0x00001b92                Kernel_CPU_Usage_Get
+                0x00001b68                Kernel_NTask_Get
+                0x000017b6                Kernel_Task_Idle
+                0x00001b2e                Kernel_Clock_Prescale
+                0x000015c4                Kernel_Start_Tasks
+                0x00001b58                Kernel_Task_Status_Get
+                0x00001080                __vector_7
+                0x00001758                Kernel_Init
+                0x00001262                __vector_9
+                0x000014d4                Kernel_Task_Create
+                0x000019a6                Kernel_Task_Constant_Latency_Sleep
+                0x00001b84                Kernel_High_Prio_Task_ID_Get
+ .text          0x00001b98       0xbc debug.o
+                0x00001bb8                Debug_Tx_Byte
+                0x00001bf6                Debug_Tx_Word_Conf
+                0x00001c46                Debug_Tx_RAM_Area
+                0x00001b98                Debug_Init
+                0x00001c06                Debug_Tx_DWord_Conf
+                0x00001c2e                Debug_Tx_From_RAM
+                0x00001bca                Debug_Tx_Word
+                0x00001bda                Debug_Tx_Byte_Conf
+ .text          0x00001c54        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+ .text          0x00001c54        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+ .text          0x00001c54        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text          0x00001c54        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .text          0x00001c54        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+                0x00001c54                . = ALIGN (0x2)
  *(.text.*)
- .text.libgcc   0x00001d88       0x3e c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
-                0x00001d88                __mulsi3
- .text.libgcc   0x00001dc6       0x44 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
-                0x00001dc6                __udivmodsi4
- .text.libgcc   0x00001e0a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x00001e0a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
- .text.libgcc   0x00001e0a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
-                0x00001e0a                . = ALIGN (0x2)
+ .text.libgcc   0x00001c54       0x3e c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+                0x00001c54                __mulsi3
+ .text.libgcc   0x00001c92       0x44 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+                0x00001c92                __udivmodsi4
+ .text.libgcc   0x00001cd6        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x00001cd6        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00001cd6        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+                0x00001cd6                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00001e0a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x00001e0a                exit
-                0x00001e0a                _exit
+ .fini9         0x00001cd6        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x00001cd6                exit
+                0x00001cd6                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -379,11 +371,11 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00001e0a        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .fini0         0x00001cd6        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00001e0e                _etext = .
+                0x00001cda                _etext = .
 
-.data           0x00800100       0x24 load address 0x00001e0e
+.data           0x00800100       0x24 load address 0x00001cda
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
@@ -408,7 +400,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x00800124                _edata = .
                 0x00800124                PROVIDE (__data_end, .)
 
-.bss            0x00800124      0x583
+.bss            0x00800124      0x586
                 0x00800124                PROVIDE (__bss_start, .)
  *(.bss)
  .bss           0x00800124        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
@@ -438,18 +430,18 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  COMMON         0x00800687       0x15 nrf24l01p.o
                 0x00800687                nRF24L01P_type
                 0x0080069a                nRF24L01P
- COMMON         0x0080069c        0xb sensors.o
+ COMMON         0x0080069c        0xe sensors.o
                 0x0080069c                HDC1080
-                0x008006a7                PROVIDE (__bss_end, .)
-                0x00001e0e                __data_load_start = LOADADDR (.data)
-                0x00001e32                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x008006aa                PROVIDE (__bss_end, .)
+                0x00001cda                __data_load_start = LOADADDR (.data)
+                0x00001cfe                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x008006a7        0x0
-                0x008006a7                PROVIDE (__noinit_start, .)
+.noinit         0x008006aa        0x0
+                0x008006aa                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x008006a7                PROVIDE (__noinit_end, .)
-                0x008006a7                _end = .
-                0x008006a7                PROVIDE (__heap_start, .)
+                0x008006aa                PROVIDE (__noinit_end, .)
+                0x008006aa                _end = .
+                0x008006aa                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -520,7 +512,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x000000a0       0x20 sensors.o
 
 .debug_pubnames
-                0x00000000      0xaba
+                0x00000000      0x9a3
  *(.debug_pubnames)
  .debug_pubnames
                 0x00000000       0x1b main.o
@@ -533,46 +525,46 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  .debug_pubnames
                 0x00000715       0x31 rgb.o
  .debug_pubnames
-                0x00000746      0x374 sensors.o
+                0x00000746      0x25d sensors.o
 
-.debug_info     0x00000000     0x1bec
+.debug_info     0x00000000     0x1efc
  *(.debug_info)
  .debug_info    0x00000000       0x76 main.o
  .debug_info    0x00000076      0x218 tasks.o
  .debug_info    0x0000028e      0xe79 nrf24l01p.o
  .debug_info    0x00001107      0x2f6 peripherals.o
  .debug_info    0x000013fd       0xb3 rgb.o
- .debug_info    0x000014b0      0x73c sensors.o
+ .debug_info    0x000014b0      0xa4c sensors.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev   0x00000000      0x8c5
+.debug_abbrev   0x00000000      0x84d
  *(.debug_abbrev)
  .debug_abbrev  0x00000000       0x41 main.o
  .debug_abbrev  0x00000041      0x125 tasks.o
  .debug_abbrev  0x00000166      0x346 nrf24l01p.o
  .debug_abbrev  0x000004ac      0x154 peripherals.o
  .debug_abbrev  0x00000600       0x70 rgb.o
- .debug_abbrev  0x00000670      0x255 sensors.o
+ .debug_abbrev  0x00000670      0x1dd sensors.o
 
-.debug_line     0x00000000     0x19f2
+.debug_line     0x00000000     0x1952
  *(.debug_line)
  .debug_line    0x00000000       0x98 main.o
- .debug_line    0x00000098      0x277 tasks.o
- .debug_line    0x0000030f      0xbfd nrf24l01p.o
- .debug_line    0x00000f0c      0x1f6 peripherals.o
- .debug_line    0x00001102      0x110 rgb.o
- .debug_line    0x00001212      0x7e0 sensors.o
+ .debug_line    0x00000098      0x256 tasks.o
+ .debug_line    0x000002ee      0xbfd nrf24l01p.o
+ .debug_line    0x00000eeb      0x1f6 peripherals.o
+ .debug_line    0x000010e1      0x110 rgb.o
+ .debug_line    0x000011f1      0x761 sensors.o
 
-.debug_frame    0x00000000      0x600
+.debug_frame    0x00000000      0x580
  *(.debug_frame)
  .debug_frame   0x00000000       0x20 main.o
  .debug_frame   0x00000020       0x60 tasks.o
  .debug_frame   0x00000080      0x310 nrf24l01p.o
  .debug_frame   0x00000390       0x80 peripherals.o
  .debug_frame   0x00000410       0x30 rgb.o
- .debug_frame   0x00000440      0x1c0 sensors.o
+ .debug_frame   0x00000440      0x140 sensors.o
 
-.debug_str      0x00000000      0xb48
+.debug_str      0x00000000      0xa73
  *(.debug_str)
  .debug_str     0x00000000       0x7c main.o
                                  0xb0 (size before relaxing)
@@ -580,29 +572,29 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                                 0x175 (size before relaxing)
  .debug_str     0x00000145      0x5aa nrf24l01p.o
                                 0x6c9 (size before relaxing)
- .debug_str     0x000006ef      0x115 peripherals.o
+ .debug_str     0x000006ef      0x10e peripherals.o
                                 0x242 (size before relaxing)
- .debug_str     0x00000804       0x1d rgb.o
+ .debug_str     0x000007fd       0x1d rgb.o
                                  0xc9 (size before relaxing)
- .debug_str     0x00000821      0x327 sensors.o
-                                0x468 (size before relaxing)
+ .debug_str     0x0000081a      0x259 sensors.o
+                                0x395 (size before relaxing)
 
-.debug_loc      0x00000000      0x903
+.debug_loc      0x00000000      0x9cd
  *(.debug_loc)
  .debug_loc     0x00000000       0x43 tasks.o
  .debug_loc     0x00000043      0x5bb nrf24l01p.o
  .debug_loc     0x000005fe       0xce peripherals.o
- .debug_loc     0x000006cc      0x237 sensors.o
+ .debug_loc     0x000006cc      0x301 sensors.o
 
 .debug_macinfo
  *(.debug_macinfo)
 OUTPUT(main.elf elf32-avr)
 LOAD linker stubs
 
-.debug_ranges   0x00000000       0xa8
+.debug_ranges   0x00000000      0x120
  .debug_ranges  0x00000000       0x48 tasks.o
  .debug_ranges  0x00000048       0x48 nrf24l01p.o
- .debug_ranges  0x00000090       0x18 sensors.o
+ .debug_ranges  0x00000090       0x90 sensors.o
 
 Cross Reference Table
 
@@ -670,35 +662,23 @@ RGB_Init                                          rgb.o
 RGB_Set_State                                     rgb.o
                                                   tasks.o
 Sensors_HDC1080_Address_Get                       sensors.o
-                                                  tasks.o
-Sensors_HDC1080_Error_Clear                       sensors.o
 Sensors_HDC1080_Error_Get                         sensors.o
-                                                  tasks.o
-Sensors_HDC1080_Error_Reset                       sensors.o
-Sensors_HDC1080_Find_Address                      sensors.o
+Sensors_HDC1080_I2C_Check_Ack                     sensors.o
 Sensors_HDC1080_I2C_Forced_Stop_Clear_Error       sensors.o
-Sensors_HDC1080_I2C_Read                          sensors.o
-Sensors_HDC1080_I2C_Read_Nack                     sensors.o
-Sensors_HDC1080_I2C_Send_Address                  sensors.o
+Sensors_HDC1080_I2C_Receive                       sensors.o
+Sensors_HDC1080_I2C_Send                          sensors.o
+Sensors_HDC1080_I2C_Send_Ack                      sensors.o
 Sensors_HDC1080_I2C_Start                         sensors.o
 Sensors_HDC1080_I2C_Stop                          sensors.o
-Sensors_HDC1080_I2C_Write                         sensors.o
 Sensors_HDC1080_RH_Get                            sensors.o
                                                   peripherals.o
-Sensors_HDC1080_Read_Humidity_Plain               sensors.o
-Sensors_HDC1080_Read_Reg                          sensors.o
 Sensors_HDC1080_Status_Get                        sensors.o
-                                                  tasks.o
 Sensors_HDC1080_Sticky_Error_Get                  sensors.o
-                                                  tasks.o
 Sensors_HDC1080_Struct_Init                       sensors.o
-Sensors_HDC1080_Timeout                           sensors.o
-Sensors_HDC1080_Timeout_Clear                     sensors.o
-Sensors_HDC1080_Timeout_Error_Get                 sensors.o
-Sensors_HDC1080_Trigger_Humidity_Measurement      sensors.o
-Sensors_HDC1080_Write_Reg                         sensors.o
-Sensors_I2C_Disable                               sensors.o
-Sensors_I2C_Enable                                sensors.o
+Sensors_I2C_Bus_Idle                              sensors.o
+Sensors_I2C_SCL_State_Set                         sensors.o
+Sensors_I2C_SDA_State_Get                         sensors.o
+Sensors_I2C_SDA_State_Set                         sensors.o
 Sensors_Init                                      sensors.o
                                                   tasks.o
 Sensors_Sample                                    sensors.o

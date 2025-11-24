@@ -35,7 +35,7 @@ void Task_RGB_LED(void){
     RGB_Set_State(0,0,0);
 
     //Delay 5000 ms
-    Kernel_Task_Sleep(5000/KER_TICK_TIME);
+    Kernel_Task_Sleep(10000/KER_TICK_TIME);
 
   }
 }
@@ -44,7 +44,6 @@ void Task_Vin_Sense(void){
   
   //Init VinSense
   DDRD  |= (1<<2);
-
   //Disable VinSense
   PORTD &=~(1<<2);
   //Inrush current prevention at startup
@@ -68,7 +67,7 @@ void Task_Radio(void){
   int16_t  DTemp;
   uint16_t DRH;
   uint8_t  buf[32];
-
+  
   //Radio init with deep sleep
   nRF24L01P_Init();
   //Inrush current prevention at startup
@@ -93,8 +92,7 @@ void Task_Radio(void){
 
     //Process Digital RH Data
     DRH = Peripherals_Digital_RH_Get();
-    buf[6] = DRH >> 8;
-    buf[7] = DRH & 0xFF;
+    buf[6] = DRH ;
     
     Debug_Tx_Byte(buf[0]);
     Debug_Tx_Byte(buf[1]);
@@ -103,10 +101,9 @@ void Task_Radio(void){
     Debug_Tx_Byte(buf[4]);
     Debug_Tx_Byte(buf[5]);
     Debug_Tx_Byte(buf[6]);
-    Debug_Tx_Byte(buf[7]);
 
     nRF24L01P_WakeUp();
-    nRF24L01P_Transmit_Basic(buf, 8);
+    nRF24L01P_Transmit_Basic(buf, 7);
     nRF24L01P_Deep_Sleep();
     Kernel_Task_Sleep(60000/KER_TICK_TIME);
 	  
@@ -121,7 +118,7 @@ void Task_Sensor(void){
   
   while(1){
 
-    Sensors_Sample();
+    Sensors_Sample_Temp_RH();
     Kernel_Task_Sleep(120000/KER_TICK_TIME);
 	
   }

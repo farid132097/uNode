@@ -452,6 +452,7 @@ void nRF24L01P_WakeUp(void){
 void nRF24L01P_Init(void){
   nRF24L01P_Struct_Init();
   nRF24L01P_Enable();
+  //Default config: Channel 2, 250kbps, 0dBm, 32byte max data
   nRF24L01P->TempBuf[0]=0x00;  nRF24L01P_ReadWrite_Register(0x00,0,nRF24L01P->TempBuf,1);
   nRF24L01P->TempBuf[0]=0x00;  nRF24L01P_ReadWrite_Register(0x01,0,nRF24L01P->TempBuf,1);
   nRF24L01P->TempBuf[0]=0x03;  nRF24L01P_ReadWrite_Register(0x02,0,nRF24L01P->TempBuf,1);
@@ -484,8 +485,8 @@ void nRF24L01P_Transmit_Basic(uint8_t *buf, uint8_t len){
   buf[nRF24L01P_PACKET_LEN-4]=nRF24L01P->Address.Dest;
   buf[nRF24L01P_PACKET_LEN-3]=len;
   uint16_t temp=nRF24L01P_Calcuate_CRC_Block(buf, 30);
-  buf[nRF24L01P_PACKET_LEN-2]=(temp & 0xFF00)>>8;
-  buf[nRF24L01P_PACKET_LEN-1]=(temp & 0x00FF);
+  buf[nRF24L01P_PACKET_LEN-2]=(temp >> 8);
+  buf[nRF24L01P_PACKET_LEN-1]=(temp & 0xFF);
   nRF24L01P_Write_Data_To_Transmit_Buffer(buf);
   nRF24L01P_CE_High();
   nRF24L01P_Wait_Till_Transmission_Completes();

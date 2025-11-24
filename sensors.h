@@ -39,12 +39,15 @@ void     Sensors_HDC1080_I2C_Send(uint8_t addr);
 uint8_t  Sensors_HDC1080_I2C_Receive(void);
 void     Sensors_HDC1080_I2C_Check_Ack(void);
 void     Sensors_HDC1080_I2C_Send_Ack(void);
-void     Sensors_Sample(void);
+void     Sensors_HDC1080_Config(uint8_t type);
+void     Sensors_Sample_Temp_RH(void);
+void     Sensors_Sample_RH(void);
 
 uint8_t  Sensors_HDC1080_Address_Get(void);
 uint8_t  Sensors_HDC1080_Status_Get(void);
 uint8_t  Sensors_HDC1080_Error_Get(void);
 uint8_t  Sensors_HDC1080_Sticky_Error_Get(void);
+int16_t  Sensors_HDC1080_Temp_Get(void);
 uint16_t Sensors_HDC1080_RH_Get(void);
 
 #endif

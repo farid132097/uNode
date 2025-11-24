@@ -75,7 +75,7 @@ int16_t Peripherals_Analog_Temp_Get(void){
 }
 
 int16_t Peripherals_Digital_Temp_Get(void){
-  return 0;
+  return Sensors_HDC1080_Temp_Get();
 }
 
 uint16_t Peripherals_Digital_RH_Get(void){

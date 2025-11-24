@@ -222,7 +222,7 @@ void Sensors_HDC1080_I2C_Send_Ack(void){
     }
 }
 
-void Sensors_HDC1080_Config(void){
+void Sensors_HDC1080_Config(uint8_t type){
     //Config sensor
     uint8_t cnt = 0;
     for(;;){
@@ -243,15 +243,88 @@ void Sensors_HDC1080_Config(void){
     }
     Sensors_HDC1080_I2C_Send(0x02);
     Sensors_HDC1080_I2C_Check_Ack();
-    Sensors_HDC1080_I2C_Send(0x00);
+    Sensors_HDC1080_I2C_Send(type);
     Sensors_HDC1080_I2C_Check_Ack();
     Sensors_HDC1080_I2C_Send(0x00);
     Sensors_HDC1080_I2C_Check_Ack();
     Sensors_HDC1080_I2C_Stop();
 }
 
+void Sensors_Sample_Temp_RH(void){
+    uint32_t  temp_val = 0, rh_val = 0;
+    //Enable Power to sensor module
+    SENSORS_PWR_EN_PORT &=~ (1<<SENSORS_PWR_EN_BP);
+    //Wait until sensor is ready
+    _delay_ms(SENSORS_HDC1080_POWER_UP_DELAY);
+    
+    //Clear all errors
+    HDC1080.Error = 0;
+    //Config HDC1080, 1->Temp_RH, 0->RH
+    Sensors_HDC1080_Config(1);
+    
+    //Trigger Temp & RH measurement
+    Sensors_HDC1080_I2C_Start();
+    Sensors_HDC1080_I2C_Send(SENSORS_HDC1080_ADDR << 1);
+    Sensors_HDC1080_I2C_Check_Ack();
+    Sensors_HDC1080_I2C_Send(0x00);
+    Sensors_HDC1080_I2C_Check_Ack();
+    Sensors_HDC1080_I2C_Stop();
 
-void Sensors_Sample(void){
+    //Wait until sensor data is ready
+    _delay_ms(SENSORS_HDC1080_CONV_DELAY);
+
+    //Read RH
+    for(uint8_t i = 0; i<50; i++){
+        Sensors_HDC1080_I2C_Start();
+        Sensors_HDC1080_I2C_Send( (SENSORS_HDC1080_ADDR << 1) | 1);
+        Sensors_HDC1080_I2C_Check_Ack();
+        if(HDC1080.AckStatus == FALSE){
+            Sensors_HDC1080_I2C_Stop();
+        }
+        else{
+            break;
+        }
+    }
+    //Read temp result registers
+    temp_val = Sensors_HDC1080_I2C_Receive();
+    Sensors_HDC1080_I2C_Send_Ack();
+    temp_val <<= 8;
+    temp_val |= Sensors_HDC1080_I2C_Receive();
+    Sensors_HDC1080_I2C_Send_Ack();
+
+    //Read RH result registers
+    rh_val = Sensors_HDC1080_I2C_Receive();
+    Sensors_HDC1080_I2C_Send_Ack();
+    rh_val <<= 8;
+    rh_val |= Sensors_HDC1080_I2C_Receive();
+    Sensors_HDC1080_I2C_Check_Ack();
+    Sensors_HDC1080_I2C_Stop();
+
+
+    //Clear errors, send forced stop if necessary
+    Sensors_HDC1080_I2C_Forced_Stop_Clear_Error();
+    //Disable Power to sensor module
+    SENSORS_PWR_EN_PORT |=  (1<<SENSORS_PWR_EN_BP);
+
+    //Check errors and calculate
+    if(HDC1080.Error == 0){
+        //Temp result is x10
+        temp_val *= 1650;
+        temp_val /= 65535;
+        HDC1080.Temp  = (int16_t) temp_val;
+        HDC1080.Temp -= 400;
+
+        //RH value in %
+        rh_val *= 100;
+        rh_val /= 65535;
+        HDC1080.RH = (uint16_t)rh_val;
+    }
+    else{
+        HDC1080.RH = 0;
+    }
+}
+
+void Sensors_Sample_RH(void){
     uint32_t rh_val = 0;
     //Enable Power to sensor module
     SENSORS_PWR_EN_PORT &=~ (1<<SENSORS_PWR_EN_BP);
@@ -260,8 +333,8 @@ void Sensors_Sample(void){
     
     //Clear all errors
     HDC1080.Error = 0;
-
-    
+    //Config HDC1080, 1->Temp_RH, 0->RH
+    Sensors_HDC1080_Config(0);
     
     //Trigger RH measurement
     Sensors_HDC1080_I2C_Start();
@@ -293,6 +366,13 @@ void Sensors_Sample(void){
     Sensors_HDC1080_I2C_Check_Ack();
     Sensors_HDC1080_I2C_Stop();
 
+
+    //Clear errors, send forced stop if necessary
+    Sensors_HDC1080_I2C_Forced_Stop_Clear_Error();
+    //Disable Power to sensor module
+    SENSORS_PWR_EN_PORT |=  (1<<SENSORS_PWR_EN_BP);
+
+    //Check errors and calculate
     if(HDC1080.Error == 0){
         rh_val*=100;
         rh_val/=65535;
@@ -301,11 +381,6 @@ void Sensors_Sample(void){
     else{
         HDC1080.RH = 0;
     }
-
-    //Clear errors, send forced stop if necessary
-    Sensors_HDC1080_I2C_Forced_Stop_Clear_Error();
-    //Disable Power to sensor module
-    SENSORS_PWR_EN_PORT |=  (1<<SENSORS_PWR_EN_BP);
 }
 
 
@@ -325,6 +400,10 @@ uint8_t Sensors_HDC1080_Error_Get(void){
 
 uint8_t Sensors_HDC1080_Sticky_Error_Get(void){
   return HDC1080.StickyError;
+}
+
+int16_t Sensors_HDC1080_Temp_Get(void){
+    return HDC1080.Temp;
 }
 
 uint16_t Sensors_HDC1080_RH_Get(void){

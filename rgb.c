@@ -7,15 +7,15 @@
 
 void RGB_Init(void){
     //LEDs are active low
-    //Set logic high to turn off
-    RGB_R_PORT |= (1<<RGB_R_PIN);
-    RGB_G_PORT |= (1<<RGB_G_PIN);
-    RGB_B_PORT |= (1<<RGB_B_PIN);
-    
     //Declare pins as output
     RGB_R_DDR  |= (1<<RGB_R_PIN);
     RGB_G_DDR  |= (1<<RGB_G_PIN);
     RGB_G_DDR  |= (1<<RGB_G_PIN);
+    
+    //Set logic high to turn off
+    RGB_R_PORT |= (1<<RGB_R_PIN);
+    RGB_G_PORT |= (1<<RGB_G_PIN);
+    RGB_B_PORT |= (1<<RGB_B_PIN);
 }
 
 void RGB_Set_State(uint8_t r, uint8_t g, uint8_t b){

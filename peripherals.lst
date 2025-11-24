@@ -193,30 +193,30 @@
  209               	/* epilogue start */
  210 00da 0895      		ret
  211               	.LFE10:
- 213               	.global	Peripherals_Digital_Temp_Get
- 215               	Peripherals_Digital_Temp_Get:
- 216               	.LFB11:
+ 213               	.global	Peripherals_Digital_RH_Get
+ 215               	Peripherals_Digital_RH_Get:
+ 216               	.LFB12:
  217               	.LM30:
  218               	/* prologue: function */
  219               	/* frame size = 0 */
  220               	.LM31:
- 221 00dc 80E0      		ldi r24,lo8(0)
- 222 00de 90E0      		ldi r25,hi8(0)
- 223               	/* epilogue start */
+ 221 00dc 0E94 0000 		call Sensors_HDC1080_RH_Get
+ 222               	/* epilogue start */
+ 223               	.LM32:
  224 00e0 0895      		ret
- 225               	.LFE11:
- 227               	.global	Peripherals_Digital_RH_Get
- 229               	Peripherals_Digital_RH_Get:
- 230               	.LFB12:
- 231               	.LM32:
+ 225               	.LFE12:
+ 227               	.global	Peripherals_Digital_Temp_Get
+ 229               	Peripherals_Digital_Temp_Get:
+ 230               	.LFB11:
+ 231               	.LM33:
  232               	/* prologue: function */
  233               	/* frame size = 0 */
- 234               	.LM33:
- 235 00e2 0E94 0000 		call Sensors_HDC1080_RH_Get
+ 234               	.LM34:
+ 235 00e2 0E94 0000 		call Sensors_HDC1080_Temp_Get
  236               	/* epilogue start */
- 237               	.LM34:
+ 237               	.LM35:
  238 00e6 0895      		ret
- 239               	.LFE12:
+ 239               	.LFE11:
  241               	.global	Peripherals
  242               	.global	Peripherals
  243               		.section .bss
@@ -227,22 +227,23 @@
  320               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 peripherals.c
-C:\Users\WALTON\AppData\Local\Temp/cc5bokpc.s:2      *ABS*:0000003f __SREG__
-C:\Users\WALTON\AppData\Local\Temp/cc5bokpc.s:3      *ABS*:0000003e __SP_H__
-C:\Users\WALTON\AppData\Local\Temp/cc5bokpc.s:4      *ABS*:0000003d __SP_L__
-C:\Users\WALTON\AppData\Local\Temp/cc5bokpc.s:5      *ABS*:00000034 __CCP__
-C:\Users\WALTON\AppData\Local\Temp/cc5bokpc.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\WALTON\AppData\Local\Temp/cc5bokpc.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\WALTON\AppData\Local\Temp/cc5bokpc.s:18     .text:00000000 Peripherals_ADC_Init
-C:\Users\WALTON\AppData\Local\Temp/cc5bokpc.s:48     .text:00000028 Peripherals_ADC_Sample
-C:\Users\WALTON\AppData\Local\Temp/cc5bokpc.s:157    .text:000000a2 Peripherals_Vin_Sense_Sample
-C:\Users\WALTON\AppData\Local\Temp/cc5bokpc.s:246    .bss:00000000 Peripherals
-C:\Users\WALTON\AppData\Local\Temp/cc5bokpc.s:187    .text:000000cc Peripherals_Vin_RawADC_Get
-C:\Users\WALTON\AppData\Local\Temp/cc5bokpc.s:201    .text:000000d6 Peripherals_Analog_Temp_Get
-C:\Users\WALTON\AppData\Local\Temp/cc5bokpc.s:215    .text:000000dc Peripherals_Digital_Temp_Get
-C:\Users\WALTON\AppData\Local\Temp/cc5bokpc.s:229    .text:000000e2 Peripherals_Digital_RH_Get
+C:\Users\farid\AppData\Local\Temp/ccbh40X6.s:2      *ABS*:0000003f __SREG__
+C:\Users\farid\AppData\Local\Temp/ccbh40X6.s:3      *ABS*:0000003e __SP_H__
+C:\Users\farid\AppData\Local\Temp/ccbh40X6.s:4      *ABS*:0000003d __SP_L__
+C:\Users\farid\AppData\Local\Temp/ccbh40X6.s:5      *ABS*:00000034 __CCP__
+C:\Users\farid\AppData\Local\Temp/ccbh40X6.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\farid\AppData\Local\Temp/ccbh40X6.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\farid\AppData\Local\Temp/ccbh40X6.s:18     .text:00000000 Peripherals_ADC_Init
+C:\Users\farid\AppData\Local\Temp/ccbh40X6.s:48     .text:00000028 Peripherals_ADC_Sample
+C:\Users\farid\AppData\Local\Temp/ccbh40X6.s:157    .text:000000a2 Peripherals_Vin_Sense_Sample
+C:\Users\farid\AppData\Local\Temp/ccbh40X6.s:246    .bss:00000000 Peripherals
+C:\Users\farid\AppData\Local\Temp/ccbh40X6.s:187    .text:000000cc Peripherals_Vin_RawADC_Get
+C:\Users\farid\AppData\Local\Temp/ccbh40X6.s:201    .text:000000d6 Peripherals_Analog_Temp_Get
+C:\Users\farid\AppData\Local\Temp/ccbh40X6.s:215    .text:000000dc Peripherals_Digital_RH_Get
+C:\Users\farid\AppData\Local\Temp/ccbh40X6.s:229    .text:000000e2 Peripherals_Digital_Temp_Get
 
 UNDEFINED SYMBOLS
 __udivmodsi4
 Sensors_HDC1080_RH_Get
+Sensors_HDC1080_Temp_Get
 __do_clear_bss

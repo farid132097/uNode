@@ -12,7 +12,7 @@
 int main(void) {
     
 	//Enable prescaler 2
-	//System frequency
+	//System frequency 4 MHz
 	Kernel_Clock_Prescale(1);
 	
 	Debug_Init(0);

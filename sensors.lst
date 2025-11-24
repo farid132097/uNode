@@ -122,10 +122,10 @@
  138 0072 00C0      		rjmp .L14
  139               	.LM36:
  140 0074 3C98      		cbi 39-32,4
- 141               	.LBB299:
- 142               	.LBB300:
- 143               	.LBB301:
- 144               	.LBB302:
+ 141               	.LBB312:
+ 142               	.LBB313:
+ 143               	.LBB314:
+ 144               	.LBB315:
  145               	.LM37:
  146 0076 86E0      		ldi r24,lo8(6)
  147               	.LVL2:
@@ -136,10 +136,10 @@
  152               	 ;  0 "" 2
  153               	/* #NOAPP */
  154               	.L14:
- 155               	.LBE302:
- 156               	.LBE301:
- 157               	.LBE300:
- 158               	.LBE299:
+ 155               	.LBE315:
+ 156               	.LBE314:
+ 157               	.LBE313:
+ 158               	.LBE312:
  159               	.LM38:
  160 007c 86B1      		in r24,38-32
  161               	.LVL3:
@@ -191,10 +191,10 @@
  211               	.LM45:
  212 00b2 81E0      		ldi r24,lo8(1)
  213 00b4 0E94 0000 		call Sensors_I2C_SCL_State_Set
- 214               	.LBB303:
- 215               	.LBB304:
- 216               	.LBB305:
- 217               	.LBB306:
+ 214               	.LBB316:
+ 215               	.LBB317:
+ 216               	.LBB318:
+ 217               	.LBB319:
  218               	.LM46:
  219 00b8 16E0      		ldi r17,lo8(6)
  220 00ba 812F      		mov r24,r17
@@ -205,18 +205,18 @@
  225 00be 01F4      		brne 1b
  226               	 ;  0 "" 2
  227               	/* #NOAPP */
- 228               	.LBE306:
- 229               	.LBE305:
- 230               	.LBE304:
- 231               	.LBE303:
+ 228               	.LBE319:
+ 229               	.LBE318:
+ 230               	.LBE317:
+ 231               	.LBE316:
  232               	.LM47:
  233 00c0 81E0      		ldi r24,lo8(1)
  234               	.LVL5:
  235 00c2 0E94 0000 		call Sensors_I2C_SDA_State_Set
- 236               	.LBB307:
- 237               	.LBB308:
- 238               	.LBB309:
- 239               	.LBB310:
+ 236               	.LBB320:
+ 237               	.LBB321:
+ 238               	.LBB322:
+ 239               	.LBB323:
  240               	.LM48:
  241 00c6 812F      		mov r24,r17
  242               	.LVL6:
@@ -226,18 +226,18 @@
  246 00ca 01F4      		brne 1b
  247               	 ;  0 "" 2
  248               	/* #NOAPP */
- 249               	.LBE310:
- 250               	.LBE309:
- 251               	.LBE308:
- 252               	.LBE307:
+ 249               	.LBE323:
+ 250               	.LBE322:
+ 251               	.LBE321:
+ 252               	.LBE320:
  253               	.LM49:
  254 00cc 80E0      		ldi r24,lo8(0)
  255               	.LVL7:
  256 00ce 0E94 0000 		call Sensors_I2C_SDA_State_Set
- 257               	.LBB311:
- 258               	.LBB312:
- 259               	.LBB313:
- 260               	.LBB314:
+ 257               	.LBB324:
+ 258               	.LBB325:
+ 259               	.LBB326:
+ 260               	.LBB327:
  261               	.LM50:
  262 00d2 812F      		mov r24,r17
  263               	.LVL8:
@@ -247,18 +247,18 @@
  267 00d6 01F4      		brne 1b
  268               	 ;  0 "" 2
  269               	/* #NOAPP */
- 270               	.LBE314:
- 271               	.LBE313:
- 272               	.LBE312:
- 273               	.LBE311:
+ 270               	.LBE327:
+ 271               	.LBE326:
+ 272               	.LBE325:
+ 273               	.LBE324:
  274               	.LM51:
  275 00d8 80E0      		ldi r24,lo8(0)
  276               	.LVL9:
  277 00da 0E94 0000 		call Sensors_I2C_SCL_State_Set
- 278               	.LBB315:
- 279               	.LBB316:
- 280               	.LBB317:
- 281               	.LBB318:
+ 278               	.LBB328:
+ 279               	.LBB329:
+ 280               	.LBB330:
+ 281               	.LBB331:
  282               	.LM52:
  283               	/* #APP */
  284               	 ;  83 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
@@ -269,10 +269,10 @@
  289               	/* #NOAPP */
  290               	.L22:
  291               	/* epilogue start */
- 292               	.LBE318:
- 293               	.LBE317:
- 294               	.LBE316:
- 295               	.LBE315:
+ 292               	.LBE331:
+ 293               	.LBE330:
+ 294               	.LBE329:
+ 295               	.LBE328:
  296               	.LM53:
  297 00e2 1F91      		pop r17
  298               	.LVL11:
@@ -294,10 +294,10 @@
  316 00f2 00C0      		rjmp .L25
  317               	.LM57:
  318 00f4 0E94 0000 		call Sensors_I2C_SCL_State_Set
- 319               	.LBB319:
- 320               	.LBB320:
- 321               	.LBB321:
- 322               	.LBB322:
+ 319               	.LBB332:
+ 320               	.LBB333:
+ 321               	.LBB334:
+ 322               	.LBB335:
  323               	.LM58:
  324 00f8 86E0      		ldi r24,lo8(6)
  325               	.LVL12:
@@ -308,10 +308,10 @@
  330               	 ;  0 "" 2
  331               	/* #NOAPP */
  332               	.L25:
- 333               	.LBE322:
- 334               	.LBE321:
- 335               	.LBE320:
- 336               	.LBE319:
+ 333               	.LBE335:
+ 334               	.LBE334:
+ 335               	.LBE333:
+ 336               	.LBE332:
  337               	.LM59:
  338 00fe 3C99      		sbic 39-32,4
  339 0100 00C0      		rjmp .L26
@@ -319,10 +319,10 @@
  341 0102 80E0      		ldi r24,lo8(0)
  342               	.LVL13:
  343 0104 0E94 0000 		call Sensors_I2C_SDA_State_Set
- 344               	.LBB323:
- 345               	.LBB324:
- 346               	.LBB325:
- 347               	.LBB326:
+ 344               	.LBB336:
+ 345               	.LBB337:
+ 346               	.LBB338:
+ 347               	.LBB339:
  348               	.LM61:
  349 0108 86E0      		ldi r24,lo8(6)
  350               	.LVL14:
@@ -334,18 +334,18 @@
  356               	.LVL15:
  357               	/* #NOAPP */
  358               	.L26:
- 359               	.LBE326:
- 360               	.LBE325:
- 361               	.LBE324:
- 362               	.LBE323:
+ 359               	.LBE339:
+ 360               	.LBE338:
+ 361               	.LBE337:
+ 362               	.LBE336:
  363               	.LM62:
  364 010e 81E0      		ldi r24,lo8(1)
  365               	.LVL16:
  366 0110 0E94 0000 		call Sensors_I2C_SCL_State_Set
- 367               	.LBB327:
- 368               	.LBB328:
- 369               	.LBB329:
- 370               	.LBB330:
+ 367               	.LBB340:
+ 368               	.LBB341:
+ 369               	.LBB342:
+ 370               	.LBB343:
  371               	.LM63:
  372 0114 16E0      		ldi r17,lo8(6)
  373 0116 812F      		mov r24,r17
@@ -356,18 +356,18 @@
  378 011a 01F4      		brne 1b
  379               	 ;  0 "" 2
  380               	/* #NOAPP */
- 381               	.LBE330:
- 382               	.LBE329:
- 383               	.LBE328:
- 384               	.LBE327:
+ 381               	.LBE343:
+ 382               	.LBE342:
+ 383               	.LBE341:
+ 384               	.LBE340:
  385               	.LM64:
  386 011c 81E0      		ldi r24,lo8(1)
  387               	.LVL18:
  388 011e 0E94 0000 		call Sensors_I2C_SDA_State_Set
- 389               	.LBB331:
- 390               	.LBB332:
- 391               	.LBB333:
- 392               	.LBB334:
+ 389               	.LBB344:
+ 390               	.LBB345:
+ 391               	.LBB346:
+ 392               	.LBB347:
  393               	.LM65:
  394               	/* #APP */
  395               	 ;  83 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
@@ -378,10 +378,10 @@
  400               	/* #NOAPP */
  401               	.L27:
  402               	/* epilogue start */
- 403               	.LBE334:
- 404               	.LBE333:
- 405               	.LBE332:
- 406               	.LBE331:
+ 403               	.LBE347:
+ 404               	.LBE346:
+ 405               	.LBE345:
+ 406               	.LBE344:
  407               	.LM66:
  408 0126 1F91      		pop r17
  409               	.LVL20:
@@ -404,10 +404,10 @@
  428 013a 01F4      		brne .L30
  429               	.LM70:
  430 013c 0E94 0000 		call Sensors_I2C_SCL_State_Set
- 431               	.LBB335:
- 432               	.LBB336:
- 433               	.LBB337:
- 434               	.LBB338:
+ 431               	.LBB348:
+ 432               	.LBB349:
+ 433               	.LBB350:
+ 434               	.LBB351:
  435               	.LM71:
  436 0140 16E0      		ldi r17,lo8(6)
  437 0142 812F      		mov r24,r17
@@ -418,18 +418,18 @@
  442 0146 01F4      		brne 1b
  443               	 ;  0 "" 2
  444               	/* #NOAPP */
- 445               	.LBE338:
- 446               	.LBE337:
- 447               	.LBE336:
- 448               	.LBE335:
+ 445               	.LBE351:
+ 446               	.LBE350:
+ 447               	.LBE349:
+ 448               	.LBE348:
  449               	.LM72:
  450 0148 80E0      		ldi r24,lo8(0)
  451               	.LVL22:
  452 014a 0E94 0000 		call Sensors_I2C_SDA_State_Set
- 453               	.LBB339:
- 454               	.LBB340:
- 455               	.LBB341:
- 456               	.LBB342:
+ 453               	.LBB352:
+ 454               	.LBB353:
+ 455               	.LBB354:
+ 456               	.LBB355:
  457               	.LM73:
  458 014e 812F      		mov r24,r17
  459               	.LVL23:
@@ -439,18 +439,18 @@
  463 0152 01F4      		brne 1b
  464               	 ;  0 "" 2
  465               	/* #NOAPP */
- 466               	.LBE342:
- 467               	.LBE341:
- 468               	.LBE340:
- 469               	.LBE339:
+ 466               	.LBE355:
+ 467               	.LBE354:
+ 468               	.LBE353:
+ 469               	.LBE352:
  470               	.LM74:
  471 0154 81E0      		ldi r24,lo8(1)
  472               	.LVL24:
  473 0156 0E94 0000 		call Sensors_I2C_SCL_State_Set
- 474               	.LBB343:
- 475               	.LBB344:
- 476               	.LBB345:
- 477               	.LBB346:
+ 474               	.LBB356:
+ 475               	.LBB357:
+ 476               	.LBB358:
+ 477               	.LBB359:
  478               	.LM75:
  479 015a 812F      		mov r24,r17
  480               	.LVL25:
@@ -460,18 +460,18 @@
  484 015e 01F4      		brne 1b
  485               	 ;  0 "" 2
  486               	/* #NOAPP */
- 487               	.LBE346:
- 488               	.LBE345:
- 489               	.LBE344:
- 490               	.LBE343:
+ 487               	.LBE359:
+ 488               	.LBE358:
+ 489               	.LBE357:
+ 490               	.LBE356:
  491               	.LM76:
  492 0160 81E0      		ldi r24,lo8(1)
  493               	.LVL26:
  494 0162 0E94 0000 		call Sensors_I2C_SDA_State_Set
- 495               	.LBB347:
- 496               	.LBB348:
- 497               	.LBB349:
- 498               	.LBB350:
+ 495               	.LBB360:
+ 496               	.LBB361:
+ 497               	.LBB362:
+ 498               	.LBB363:
  499               	.LM77:
  500               	/* #APP */
  501               	 ;  83 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
@@ -481,10 +481,10 @@
  505               	.LVL27:
  506               	/* #NOAPP */
  507               	.L30:
- 508               	.LBE350:
- 509               	.LBE349:
- 510               	.LBE348:
- 511               	.LBE347:
+ 508               	.LBE363:
+ 509               	.LBE362:
+ 510               	.LBE361:
+ 511               	.LBE360:
  512               	.LM78:
  513 016a 8091 0000 		lds r24,HDC1080+12
  514 016e 8093 0000 		sts HDC1080+13,r24
@@ -515,20 +515,20 @@
  541 0188 01F4      		brne .L37
  542 018a 10E0      		ldi r17,lo8(0)
  543               	.LVL31:
- 544               	.LBB351:
- 545               	.LBB352:
- 546               	.LBB353:
- 547               	.LBB354:
- 548               	.LBB355:
+ 544               	.LBB364:
+ 545               	.LBB365:
+ 546               	.LBB366:
+ 547               	.LBB367:
+ 548               	.LBB368:
  549               	.LM83:
  550 018c 46E0      		ldi r20,lo8(6)
  551 018e F42E      		mov r15,r20
  552               	.LVL32:
  553               	.L36:
- 554               	.LBE355:
- 555               	.LBE354:
- 556               	.LBE353:
- 557               	.LBE352:
+ 554               	.LBE368:
+ 555               	.LBE367:
+ 556               	.LBE366:
+ 557               	.LBE365:
  558               	.LM84:
  559 0190 07FF      		sbrs r16,7
  560 0192 00C0      		rjmp .L34
@@ -543,10 +543,10 @@
  569               	.LVL35:
  570               	.L38:
  571 019a 0E94 0000 		call Sensors_I2C_SDA_State_Set
- 572               	.LBB359:
- 573               	.LBB358:
- 574               	.LBB357:
- 575               	.LBB356:
+ 572               	.LBB372:
+ 573               	.LBB371:
+ 574               	.LBB370:
+ 575               	.LBB369:
  576               	.LM87:
  577 019e 8F2D      		mov r24,r15
  578               	.LVL36:
@@ -556,18 +556,18 @@
  582 01a2 01F4      		brne 1b
  583               	 ;  0 "" 2
  584               	/* #NOAPP */
- 585               	.LBE356:
- 586               	.LBE357:
- 587               	.LBE358:
- 588               	.LBE359:
+ 585               	.LBE369:
+ 586               	.LBE370:
+ 587               	.LBE371:
+ 588               	.LBE372:
  589               	.LM88:
  590 01a4 81E0      		ldi r24,lo8(1)
  591               	.LVL37:
  592 01a6 0E94 0000 		call Sensors_I2C_SCL_State_Set
- 593               	.LBB360:
- 594               	.LBB361:
- 595               	.LBB362:
- 596               	.LBB363:
+ 593               	.LBB373:
+ 594               	.LBB374:
+ 595               	.LBB375:
+ 596               	.LBB376:
  597               	.LM89:
  598 01aa 8F2D      		mov r24,r15
  599               	.LVL38:
@@ -577,18 +577,18 @@
  603 01ae 01F4      		brne 1b
  604               	 ;  0 "" 2
  605               	/* #NOAPP */
- 606               	.LBE363:
- 607               	.LBE362:
- 608               	.LBE361:
- 609               	.LBE360:
+ 606               	.LBE376:
+ 607               	.LBE375:
+ 608               	.LBE374:
+ 609               	.LBE373:
  610               	.LM90:
  611 01b0 80E0      		ldi r24,lo8(0)
  612               	.LVL39:
  613 01b2 0E94 0000 		call Sensors_I2C_SCL_State_Set
- 614               	.LBB364:
- 615               	.LBB365:
- 616               	.LBB366:
- 617               	.LBB367:
+ 614               	.LBB377:
+ 615               	.LBB378:
+ 616               	.LBB379:
+ 617               	.LBB380:
  618               	.LM91:
  619 01b6 8F2D      		mov r24,r15
  620               	.LVL40:
@@ -598,10 +598,10 @@
  624 01ba 01F4      		brne 1b
  625               	 ;  0 "" 2
  626               	/* #NOAPP */
- 627               	.LBE367:
- 628               	.LBE366:
- 629               	.LBE365:
- 630               	.LBE364:
+ 627               	.LBE380:
+ 628               	.LBE379:
+ 629               	.LBE378:
+ 630               	.LBE377:
  631               	.LM92:
  632 01bc 1F5F      		subi r17,lo8(-(1))
  633 01be 1830      		cpi r17,lo8(8)
@@ -611,7 +611,7 @@
  637 01c4 00C0      		rjmp .L36
  638               	.L37:
  639               	/* epilogue start */
- 640               	.LBE351:
+ 640               	.LBE364:
  641               	.LM94:
  642 01c6 1F91      		pop r17
  643               	.LVL41:
@@ -641,10 +641,10 @@
  669               	.LM97:
  670 01e0 81E0      		ldi r24,lo8(1)
  671 01e2 0E94 0000 		call Sensors_I2C_SDA_State_Set
- 672               	.LBB368:
- 673               	.LBB369:
- 674               	.LBB370:
- 675               	.LBB371:
+ 672               	.LBB381:
+ 673               	.LBB382:
+ 674               	.LBB383:
+ 675               	.LBB384:
  676               	.LM98:
  677 01e6 86E0      		ldi r24,lo8(6)
  678               	.LVL45:
@@ -658,23 +658,23 @@
  686               	.LVL46:
  687 01ee 00E0      		ldi r16,lo8(0)
  688               	.LVL47:
- 689               	.LBE371:
- 690               	.LBE370:
- 691               	.LBE369:
- 692               	.LBE368:
- 693               	.LBB372:
- 694               	.LBB373:
- 695               	.LBB374:
- 696               	.LBB375:
- 697               	.LBB376:
+ 689               	.LBE384:
+ 690               	.LBE383:
+ 691               	.LBE382:
+ 692               	.LBE381:
+ 693               	.LBB385:
+ 694               	.LBB386:
+ 695               	.LBB387:
+ 696               	.LBB388:
+ 697               	.LBB389:
  698 01f0 56E0      		ldi r21,lo8(6)
  699 01f2 F52E      		mov r15,r21
  700               	.LVL48:
  701               	.L43:
- 702               	.LBE376:
- 703               	.LBE375:
- 704               	.LBE374:
- 705               	.LBE373:
+ 702               	.LBE389:
+ 703               	.LBE388:
+ 704               	.LBE387:
+ 705               	.LBE386:
  706               	.LM99:
  707 01f4 110F      		lsl r17
  708               	.LM100:
@@ -688,10 +688,10 @@
  716               	.LM102:
  717 0200 81E0      		ldi r24,lo8(1)
  718 0202 0E94 0000 		call Sensors_I2C_SCL_State_Set
- 719               	.LBB380:
- 720               	.LBB379:
- 721               	.LBB378:
- 722               	.LBB377:
+ 719               	.LBB393:
+ 720               	.LBB392:
+ 721               	.LBB391:
+ 722               	.LBB390:
  723               	.LM103:
  724 0206 8F2D      		mov r24,r15
  725               	.LVL50:
@@ -701,18 +701,18 @@
  729 020a 01F4      		brne 1b
  730               	 ;  0 "" 2
  731               	/* #NOAPP */
- 732               	.LBE377:
- 733               	.LBE378:
- 734               	.LBE379:
- 735               	.LBE380:
+ 732               	.LBE390:
+ 733               	.LBE391:
+ 734               	.LBE392:
+ 735               	.LBE393:
  736               	.LM104:
  737 020c 80E0      		ldi r24,lo8(0)
  738               	.LVL51:
  739 020e 0E94 0000 		call Sensors_I2C_SCL_State_Set
- 740               	.LBB381:
- 741               	.LBB382:
- 742               	.LBB383:
- 743               	.LBB384:
+ 740               	.LBB394:
+ 741               	.LBB395:
+ 742               	.LBB396:
+ 743               	.LBB397:
  744               	.LM105:
  745 0212 8F2D      		mov r24,r15
  746               	.LVL52:
@@ -722,16 +722,16 @@
  750 0216 01F4      		brne 1b
  751               	 ;  0 "" 2
  752               	/* #NOAPP */
- 753               	.LBE384:
- 754               	.LBE383:
- 755               	.LBE382:
- 756               	.LBE381:
+ 753               	.LBE397:
+ 754               	.LBE396:
+ 755               	.LBE395:
+ 756               	.LBE394:
  757               	.LM106:
  758 0218 0F5F      		subi r16,lo8(-(1))
  759 021a 0830      		cpi r16,lo8(8)
  760 021c 01F4      		brne .L43
  761               	.L41:
- 762               	.LBE372:
+ 762               	.LBE385:
  763               	.LM107:
  764 021e 812F      		mov r24,r17
  765               	.LVL53:
@@ -757,10 +757,10 @@
  787               	.LM110:
  788 0232 81E0      		ldi r24,lo8(1)
  789 0234 0E94 0000 		call Sensors_I2C_SDA_State_Set
- 790               	.LBB385:
- 791               	.LBB386:
- 792               	.LBB387:
- 793               	.LBB388:
+ 790               	.LBB398:
+ 791               	.LBB399:
+ 792               	.LBB400:
+ 793               	.LBB401:
  794               	.LM111:
  795 0238 12E0      		ldi r17,lo8(2)
  796 023a 812F      		mov r24,r17
@@ -771,18 +771,18 @@
  801 023e 01F4      		brne 1b
  802               	 ;  0 "" 2
  803               	/* #NOAPP */
- 804               	.LBE388:
- 805               	.LBE387:
- 806               	.LBE386:
- 807               	.LBE385:
+ 804               	.LBE401:
+ 805               	.LBE400:
+ 806               	.LBE399:
+ 807               	.LBE398:
  808               	.LM112:
  809 0240 81E0      		ldi r24,lo8(1)
  810               	.LVL57:
  811 0242 0E94 0000 		call Sensors_I2C_SCL_State_Set
- 812               	.LBB389:
- 813               	.LBB390:
- 814               	.LBB391:
- 815               	.LBB392:
+ 812               	.LBB402:
+ 813               	.LBB403:
+ 814               	.LBB404:
+ 815               	.LBB405:
  816               	.LM113:
  817               	/* #APP */
  818               	 ;  83 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
@@ -791,10 +791,10 @@
  821               	 ;  0 "" 2
  822               	.LVL58:
  823               	/* #NOAPP */
- 824               	.LBE392:
- 825               	.LBE391:
- 826               	.LBE390:
- 827               	.LBE389:
+ 824               	.LBE405:
+ 825               	.LBE404:
+ 826               	.LBE403:
+ 827               	.LBE402:
  828               	.LM114:
  829 024a 0E94 0000 		call Sensors_I2C_SDA_State_Get
  830 024e 8823      		tst r24
@@ -807,10 +807,10 @@
  837               	.LM116:
  838 025a 1092 0000 		sts HDC1080+1,__zero_reg__
  839               	.L49:
- 840               	.LBB393:
- 841               	.LBB394:
- 842               	.LBB395:
- 843               	.LBB396:
+ 840               	.LBB406:
+ 841               	.LBB407:
+ 842               	.LBB408:
+ 843               	.LBB409:
  844               	.LM117:
  845 025e 12E0      		ldi r17,lo8(2)
  846               	.LVL59:
@@ -822,18 +822,18 @@
  852 0264 01F4      		brne 1b
  853               	 ;  0 "" 2
  854               	/* #NOAPP */
- 855               	.LBE396:
- 856               	.LBE395:
- 857               	.LBE394:
- 858               	.LBE393:
+ 855               	.LBE409:
+ 856               	.LBE408:
+ 857               	.LBE407:
+ 858               	.LBE406:
  859               	.LM118:
  860 0266 80E0      		ldi r24,lo8(0)
  861               	.LVL61:
  862 0268 0E94 0000 		call Sensors_I2C_SCL_State_Set
- 863               	.LBB397:
- 864               	.LBB398:
- 865               	.LBB399:
- 866               	.LBB400:
+ 863               	.LBB410:
+ 864               	.LBB411:
+ 865               	.LBB412:
+ 866               	.LBB413:
  867               	.LM119:
  868               	/* #APP */
  869               	 ;  83 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
@@ -844,10 +844,10 @@
  874               	/* #NOAPP */
  875               	.L50:
  876               	/* epilogue start */
- 877               	.LBE400:
- 878               	.LBE399:
- 879               	.LBE398:
- 880               	.LBE397:
+ 877               	.LBE413:
+ 878               	.LBE412:
+ 879               	.LBE411:
+ 880               	.LBE410:
  881               	.LM120:
  882 0270 1F91      		pop r17
  883               	.LVL63:
@@ -866,10 +866,10 @@
  898 027c 01F4      		brne .L53
  899               	.LM123:
  900 027e 0E94 0000 		call Sensors_I2C_SDA_State_Set
- 901               	.LBB401:
- 902               	.LBB402:
- 903               	.LBB403:
- 904               	.LBB404:
+ 901               	.LBB414:
+ 902               	.LBB415:
+ 903               	.LBB416:
+ 904               	.LBB417:
  905               	.LM124:
  906 0282 12E0      		ldi r17,lo8(2)
  907 0284 812F      		mov r24,r17
@@ -880,18 +880,18 @@
  912 0288 01F4      		brne 1b
  913               	 ;  0 "" 2
  914               	/* #NOAPP */
- 915               	.LBE404:
- 916               	.LBE403:
- 917               	.LBE402:
- 918               	.LBE401:
+ 915               	.LBE417:
+ 916               	.LBE416:
+ 917               	.LBE415:
+ 918               	.LBE414:
  919               	.LM125:
  920 028a 81E0      		ldi r24,lo8(1)
  921               	.LVL65:
  922 028c 0E94 0000 		call Sensors_I2C_SCL_State_Set
- 923               	.LBB405:
- 924               	.LBB406:
- 925               	.LBB407:
- 926               	.LBB408:
+ 923               	.LBB418:
+ 924               	.LBB419:
+ 925               	.LBB420:
+ 926               	.LBB421:
  927               	.LM126:
  928 0290 812F      		mov r24,r17
  929               	.LVL66:
@@ -901,14 +901,14 @@
  933 0294 01F4      		brne 1b
  934               	 ;  0 "" 2
  935               	/* #NOAPP */
- 936               	.LBE408:
- 937               	.LBE407:
- 938               	.LBE406:
- 939               	.LBE405:
- 940               	.LBB409:
- 941               	.LBB410:
- 942               	.LBB411:
- 943               	.LBB412:
+ 936               	.LBE421:
+ 937               	.LBE420:
+ 938               	.LBE419:
+ 939               	.LBE418:
+ 940               	.LBB422:
+ 941               	.LBB423:
+ 942               	.LBB424:
+ 943               	.LBB425:
  944 0296 812F      		mov r24,r17
  945               	.LVL67:
  946               	/* #APP */
@@ -917,18 +917,18 @@
  949 029a 01F4      		brne 1b
  950               	 ;  0 "" 2
  951               	/* #NOAPP */
- 952               	.LBE412:
- 953               	.LBE411:
- 954               	.LBE410:
- 955               	.LBE409:
+ 952               	.LBE425:
+ 953               	.LBE424:
+ 954               	.LBE423:
+ 955               	.LBE422:
  956               	.LM127:
  957 029c 80E0      		ldi r24,lo8(0)
  958               	.LVL68:
  959 029e 0E94 0000 		call Sensors_I2C_SCL_State_Set
- 960               	.LBB413:
- 961               	.LBB414:
- 962               	.LBB415:
- 963               	.LBB416:
+ 960               	.LBB426:
+ 961               	.LBB427:
+ 962               	.LBB428:
+ 963               	.LBB429:
  964               	.LM128:
  965               	/* #APP */
  966               	 ;  83 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
@@ -939,10 +939,10 @@
  971               	/* #NOAPP */
  972               	.L53:
  973               	/* epilogue start */
- 974               	.LBE416:
- 975               	.LBE415:
- 976               	.LBE414:
- 977               	.LBE413:
+ 974               	.LBE429:
+ 975               	.LBE428:
+ 976               	.LBE427:
+ 977               	.LBE426:
  978               	.LM129:
  979 02a6 1F91      		pop r17
  980               	.LVL70:
@@ -952,310 +952,551 @@
  986               	Sensors_HDC1080_Config:
  987               	.LFB19:
  988               	.LM130:
- 989 02aa 0F93      		push r16
- 990 02ac 1F93      		push r17
- 991               	/* prologue: function */
- 992               	/* frame size = 0 */
- 993               	.LM131:
- 994 02ae 10E0      		ldi r17,lo8(0)
- 995               	.LVL71:
- 996               	.LM132:
- 997 02b0 01E0      		ldi r16,lo8(1)
- 998               	.L60:
- 999               	.LM133:
- 1000 02b2 0E94 0000 		call Sensors_HDC1080_I2C_Start
- 1001               	.LM134:
- 1002 02b6 80E8      		ldi r24,lo8(-128)
- 1003 02b8 0E94 0000 		call Sensors_HDC1080_I2C_Send
- 1004               	.LM135:
- 1005 02bc 0E94 0000 		call Sensors_HDC1080_I2C_Check_Ack
- 1006               	.LM136:
- 1007 02c0 8091 0000 		lds r24,HDC1080+1
- 1008 02c4 8823      		tst r24
- 1009 02c6 01F4      		brne .L55
- 1010               	.LM137:
- 1011 02c8 0E94 0000 		call Sensors_HDC1080_I2C_Stop
- 1012               	.LM138:
- 1013 02cc 1F5F      		subi r17,lo8(-(1))
- 1014               	.LM139:
- 1015 02ce 1F31      		cpi r17,lo8(31)
- 1016 02d0 00F0      		brlo .L60
- 1017               	.LM140:
- 1018 02d2 0093 0000 		sts HDC1080+12,r16
- 1019 02d6 00C0      		rjmp .L60
- 1020               	.L55:
- 1021               	.LM141:
- 1022 02d8 82E0      		ldi r24,lo8(2)
- 1023 02da 0E94 0000 		call Sensors_HDC1080_I2C_Send
- 1024               	.LM142:
- 1025 02de 0E94 0000 		call Sensors_HDC1080_I2C_Check_Ack
- 1026               	.LM143:
- 1027 02e2 80E0      		ldi r24,lo8(0)
- 1028 02e4 0E94 0000 		call Sensors_HDC1080_I2C_Send
- 1029               	.LM144:
- 1030 02e8 0E94 0000 		call Sensors_HDC1080_I2C_Check_Ack
- 1031               	.LM145:
- 1032 02ec 80E0      		ldi r24,lo8(0)
- 1033 02ee 0E94 0000 		call Sensors_HDC1080_I2C_Send
- 1034               	.LM146:
- 1035 02f2 0E94 0000 		call Sensors_HDC1080_I2C_Check_Ack
- 1036               	.LM147:
- 1037 02f6 0E94 0000 		call Sensors_HDC1080_I2C_Stop
- 1038               	/* epilogue start */
- 1039               	.LM148:
- 1040 02fa 1F91      		pop r17
- 1041               	.LVL72:
- 1042 02fc 0F91      		pop r16
- 1043 02fe 0895      		ret
- 1044               	.LFE19:
- 1046               	.global	Sensors_Sample
- 1048               	Sensors_Sample:
- 1049               	.LFB20:
- 1050               	.LM149:
- 1051 0300 0F93      		push r16
- 1052 0302 1F93      		push r17
- 1053               	/* prologue: function */
- 1054               	/* frame size = 0 */
- 1055               	.LM150:
- 1056 0304 5B98      		cbi 43-32,3
- 1057               	.LBB417:
- 1058               	.LBB418:
- 1059               	.LBB419:
- 1060               	.LBB420:
- 1061               	.LM151:
- 1062 0306 80E2      		ldi r24,lo8(20000)
- 1063 0308 9EE4      		ldi r25,hi8(20000)
- 1064               	.LVL73:
- 1065               	/* #APP */
- 1066               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
- 1067 030a 0197      		1: sbiw r24,1
- 1068 030c 01F4      		brne 1b
- 1069               	 ;  0 "" 2
- 1070               	/* #NOAPP */
- 1071               	.LBE420:
- 1072               	.LBE419:
- 1073               	.LBE418:
- 1074               	.LBE417:
- 1075               	.LM152:
- 1076 030e 1092 0000 		sts HDC1080+12,__zero_reg__
- 1077               	.LM153:
- 1078 0312 0E94 0000 		call Sensors_HDC1080_I2C_Start
- 1079               	.LVL74:
- 1080               	.LM154:
- 1081 0316 80E8      		ldi r24,lo8(-128)
- 1082 0318 0E94 0000 		call Sensors_HDC1080_I2C_Send
- 1083               	.LM155:
- 1084 031c 0E94 0000 		call Sensors_HDC1080_I2C_Check_Ack
- 1085               	.LM156:
- 1086 0320 81E0      		ldi r24,lo8(1)
- 1087 0322 0E94 0000 		call Sensors_HDC1080_I2C_Send
- 1088               	.LM157:
- 1089 0326 0E94 0000 		call Sensors_HDC1080_I2C_Check_Ack
- 1090               	.LM158:
- 1091 032a 0E94 0000 		call Sensors_HDC1080_I2C_Stop
- 1092               	.LBB421:
- 1093               	.LBB422:
- 1094               	.LBB423:
- 1095               	.LBB424:
- 1096               	.LM159:
- 1097 032e 80E7      		ldi r24,lo8(6000)
- 1098 0330 97E1      		ldi r25,hi8(6000)
- 1099               	.LVL75:
- 1100               	/* #APP */
- 1101               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
- 1102 0332 0197      		1: sbiw r24,1
- 1103 0334 01F4      		brne 1b
- 1104               	 ;  0 "" 2
- 1105               	/* #NOAPP */
- 1106 0336 10E0      		ldi r17,lo8(0)
- 1107               	.LVL76:
- 1108               	.L63:
- 1109               	.LBE424:
- 1110               	.LBE423:
- 1111               	.LBE422:
- 1112               	.LBE421:
- 1113               	.LBB425:
- 1114               	.LM160:
- 1115 0338 0E94 0000 		call Sensors_HDC1080_I2C_Start
- 1116               	.LVL77:
- 1117               	.LM161:
- 1118 033c 81E8      		ldi r24,lo8(-127)
- 1119 033e 0E94 0000 		call Sensors_HDC1080_I2C_Send
- 1120               	.LM162:
- 1121 0342 0E94 0000 		call Sensors_HDC1080_I2C_Check_Ack
- 1122               	.LM163:
- 1123 0346 8091 0000 		lds r24,HDC1080+1
- 1124 034a 8823      		tst r24
- 1125 034c 01F4      		brne .L62
- 1126               	.LM164:
- 1127 034e 0E94 0000 		call Sensors_HDC1080_I2C_Stop
- 1128               	.LM165:
- 1129 0352 1F5F      		subi r17,lo8(-(1))
- 1130 0354 1233      		cpi r17,lo8(50)
- 1131 0356 01F4      		brne .L63
- 1132               	.L62:
- 1133               	.LBE425:
- 1134               	.LM166:
- 1135 0358 0E94 0000 		call Sensors_HDC1080_I2C_Receive
- 1136 035c 082F      		mov r16,r24
- 1137               	.LM167:
- 1138 035e 0E94 0000 		call Sensors_HDC1080_I2C_Send_Ack
- 1139               	.LM168:
- 1140 0362 0E94 0000 		call Sensors_HDC1080_I2C_Receive
- 1141 0366 182F      		mov r17,r24
- 1142               	.LVL78:
- 1143               	.LM169:
- 1144 0368 0E94 0000 		call Sensors_HDC1080_I2C_Check_Ack
- 1145               	.LM170:
- 1146 036c 0E94 0000 		call Sensors_HDC1080_I2C_Stop
- 1147               	.LM171:
- 1148 0370 8091 0000 		lds r24,HDC1080+12
- 1149 0374 8823      		tst r24
- 1150 0376 01F4      		brne .L64
- 1151               	.LM172:
- 1152 0378 602F      		mov r22,r16
- 1153               	.LVL79:
- 1154 037a 70E0      		ldi r23,lo8(0)
- 1155               	.LVL80:
- 1156 037c 80E0      		ldi r24,lo8(0)
- 1157 037e 90E0      		ldi r25,hi8(0)
- 1158               	.LVL81:
- 1159               	.LM173:
- 1160 0380 982F      		mov r25,r24
- 1161 0382 872F      		mov r24,r23
- 1162 0384 762F      		mov r23,r22
- 1163 0386 6627      		clr r22
- 1164               	.LVL82:
+ 989               	.LVL71:
+ 990 02aa FF92      		push r15
+ 991 02ac 0F93      		push r16
+ 992 02ae 1F93      		push r17
+ 993               	/* prologue: function */
+ 994               	/* frame size = 0 */
+ 995 02b0 082F      		mov r16,r24
+ 996               	.LM131:
+ 997 02b2 10E0      		ldi r17,lo8(0)
+ 998               	.LVL72:
+ 999               	.LM132:
+ 1000 02b4 FF24      		clr r15
+ 1001 02b6 F394      		inc r15
+ 1002               	.LVL73:
+ 1003               	.L60:
+ 1004               	.LM133:
+ 1005 02b8 0E94 0000 		call Sensors_HDC1080_I2C_Start
+ 1006               	.LM134:
+ 1007 02bc 80E8      		ldi r24,lo8(-128)
+ 1008 02be 0E94 0000 		call Sensors_HDC1080_I2C_Send
+ 1009               	.LM135:
+ 1010 02c2 0E94 0000 		call Sensors_HDC1080_I2C_Check_Ack
+ 1011               	.LM136:
+ 1012 02c6 8091 0000 		lds r24,HDC1080+1
+ 1013 02ca 8823      		tst r24
+ 1014 02cc 01F4      		brne .L55
+ 1015               	.LM137:
+ 1016 02ce 0E94 0000 		call Sensors_HDC1080_I2C_Stop
+ 1017               	.LM138:
+ 1018 02d2 1F5F      		subi r17,lo8(-(1))
+ 1019               	.LM139:
+ 1020 02d4 1F31      		cpi r17,lo8(31)
+ 1021 02d6 00F0      		brlo .L60
+ 1022               	.LM140:
+ 1023 02d8 F092 0000 		sts HDC1080+12,r15
+ 1024 02dc 00C0      		rjmp .L60
+ 1025               	.L55:
+ 1026               	.LM141:
+ 1027 02de 82E0      		ldi r24,lo8(2)
+ 1028 02e0 0E94 0000 		call Sensors_HDC1080_I2C_Send
+ 1029               	.LM142:
+ 1030 02e4 0E94 0000 		call Sensors_HDC1080_I2C_Check_Ack
+ 1031               	.LM143:
+ 1032 02e8 802F      		mov r24,r16
+ 1033 02ea 0E94 0000 		call Sensors_HDC1080_I2C_Send
+ 1034               	.LM144:
+ 1035 02ee 0E94 0000 		call Sensors_HDC1080_I2C_Check_Ack
+ 1036               	.LM145:
+ 1037 02f2 80E0      		ldi r24,lo8(0)
+ 1038 02f4 0E94 0000 		call Sensors_HDC1080_I2C_Send
+ 1039               	.LM146:
+ 1040 02f8 0E94 0000 		call Sensors_HDC1080_I2C_Check_Ack
+ 1041               	.LM147:
+ 1042 02fc 0E94 0000 		call Sensors_HDC1080_I2C_Stop
+ 1043               	/* epilogue start */
+ 1044               	.LM148:
+ 1045 0300 1F91      		pop r17
+ 1046               	.LVL74:
+ 1047 0302 0F91      		pop r16
+ 1048               	.LVL75:
+ 1049 0304 FF90      		pop r15
+ 1050 0306 0895      		ret
+ 1051               	.LFE19:
+ 1053               	.global	Sensors_Sample_Temp_RH
+ 1055               	Sensors_Sample_Temp_RH:
+ 1056               	.LFB20:
+ 1057               	.LM149:
+ 1058 0308 EF92      		push r14
+ 1059 030a FF92      		push r15
+ 1060 030c 0F93      		push r16
+ 1061 030e 1F93      		push r17
+ 1062               	/* prologue: function */
+ 1063               	/* frame size = 0 */
+ 1064               	.LM150:
+ 1065 0310 5B98      		cbi 43-32,3
+ 1066               	.LBB430:
+ 1067               	.LBB431:
+ 1068               	.LBB432:
+ 1069               	.LBB433:
+ 1070               	.LM151:
+ 1071 0312 80E2      		ldi r24,lo8(20000)
+ 1072 0314 9EE4      		ldi r25,hi8(20000)
+ 1073               	.LVL76:
+ 1074               	/* #APP */
+ 1075               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 1076 0316 0197      		1: sbiw r24,1
+ 1077 0318 01F4      		brne 1b
+ 1078               	 ;  0 "" 2
+ 1079               	/* #NOAPP */
+ 1080               	.LBE433:
+ 1081               	.LBE432:
+ 1082               	.LBE431:
+ 1083               	.LBE430:
+ 1084               	.LM152:
+ 1085 031a 1092 0000 		sts HDC1080+12,__zero_reg__
+ 1086               	.LM153:
+ 1087 031e 81E0      		ldi r24,lo8(1)
+ 1088               	.LVL77:
+ 1089 0320 0E94 0000 		call Sensors_HDC1080_Config
+ 1090               	.LM154:
+ 1091 0324 0E94 0000 		call Sensors_HDC1080_I2C_Start
+ 1092               	.LM155:
+ 1093 0328 80E8      		ldi r24,lo8(-128)
+ 1094 032a 0E94 0000 		call Sensors_HDC1080_I2C_Send
+ 1095               	.LM156:
+ 1096 032e 0E94 0000 		call Sensors_HDC1080_I2C_Check_Ack
+ 1097               	.LM157:
+ 1098 0332 80E0      		ldi r24,lo8(0)
+ 1099 0334 0E94 0000 		call Sensors_HDC1080_I2C_Send
+ 1100               	.LM158:
+ 1101 0338 0E94 0000 		call Sensors_HDC1080_I2C_Check_Ack
+ 1102               	.LM159:
+ 1103 033c 0E94 0000 		call Sensors_HDC1080_I2C_Stop
+ 1104               	.LBB434:
+ 1105               	.LBB435:
+ 1106               	.LBB436:
+ 1107               	.LBB437:
+ 1108               	.LM160:
+ 1109 0340 80E7      		ldi r24,lo8(6000)
+ 1110 0342 97E1      		ldi r25,hi8(6000)
+ 1111               	.LVL78:
+ 1112               	/* #APP */
+ 1113               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 1114 0344 0197      		1: sbiw r24,1
+ 1115 0346 01F4      		brne 1b
+ 1116               	 ;  0 "" 2
+ 1117               	/* #NOAPP */
+ 1118 0348 10E0      		ldi r17,lo8(0)
+ 1119               	.LVL79:
+ 1120               	.L63:
+ 1121               	.LBE437:
+ 1122               	.LBE436:
+ 1123               	.LBE435:
+ 1124               	.LBE434:
+ 1125               	.LBB438:
+ 1126               	.LM161:
+ 1127 034a 0E94 0000 		call Sensors_HDC1080_I2C_Start
+ 1128               	.LVL80:
+ 1129               	.LM162:
+ 1130 034e 81E8      		ldi r24,lo8(-127)
+ 1131 0350 0E94 0000 		call Sensors_HDC1080_I2C_Send
+ 1132               	.LM163:
+ 1133 0354 0E94 0000 		call Sensors_HDC1080_I2C_Check_Ack
+ 1134               	.LM164:
+ 1135 0358 8091 0000 		lds r24,HDC1080+1
+ 1136 035c 8823      		tst r24
+ 1137 035e 01F4      		brne .L62
+ 1138               	.LM165:
+ 1139 0360 0E94 0000 		call Sensors_HDC1080_I2C_Stop
+ 1140               	.LM166:
+ 1141 0364 1F5F      		subi r17,lo8(-(1))
+ 1142 0366 1233      		cpi r17,lo8(50)
+ 1143 0368 01F4      		brne .L63
+ 1144               	.L62:
+ 1145               	.LBE438:
+ 1146               	.LM167:
+ 1147 036a 0E94 0000 		call Sensors_HDC1080_I2C_Receive
+ 1148 036e 082F      		mov r16,r24
+ 1149               	.LM168:
+ 1150 0370 0E94 0000 		call Sensors_HDC1080_I2C_Send_Ack
+ 1151               	.LM169:
+ 1152 0374 0E94 0000 		call Sensors_HDC1080_I2C_Receive
+ 1153 0378 182F      		mov r17,r24
+ 1154               	.LVL81:
+ 1155               	.LM170:
+ 1156 037a 0E94 0000 		call Sensors_HDC1080_I2C_Send_Ack
+ 1157               	.LM171:
+ 1158 037e 0E94 0000 		call Sensors_HDC1080_I2C_Receive
+ 1159 0382 E82E      		mov r14,r24
+ 1160               	.LM172:
+ 1161 0384 0E94 0000 		call Sensors_HDC1080_I2C_Send_Ack
+ 1162               	.LM173:
+ 1163 0388 0E94 0000 		call Sensors_HDC1080_I2C_Receive
+ 1164 038c F82E      		mov r15,r24
  1165               	.LM174:
- 1166 0388 212F      		mov r18,r17
- 1167 038a 30E0      		ldi r19,lo8(0)
- 1168 038c 40E0      		ldi r20,lo8(0)
- 1169 038e 50E0      		ldi r21,hi8(0)
- 1170 0390 622B      		or r22,r18
- 1171 0392 732B      		or r23,r19
- 1172 0394 842B      		or r24,r20
- 1173 0396 952B      		or r25,r21
- 1174               	.LM175:
- 1175 0398 24E6      		ldi r18,lo8(100)
- 1176 039a 30E0      		ldi r19,hi8(100)
- 1177 039c 40E0      		ldi r20,hlo8(100)
- 1178 039e 50E0      		ldi r21,hhi8(100)
- 1179 03a0 0E94 0000 		call __mulsi3
- 1180               	.LVL83:
- 1181               	.LM176:
- 1182 03a4 2FEF      		ldi r18,lo8(65535)
- 1183 03a6 3FEF      		ldi r19,hi8(65535)
- 1184 03a8 40E0      		ldi r20,hlo8(65535)
- 1185 03aa 50E0      		ldi r21,hhi8(65535)
- 1186 03ac 0E94 0000 		call __udivmodsi4
- 1187 03b0 3093 0000 		sts (HDC1080+9)+1,r19
- 1188 03b4 2093 0000 		sts HDC1080+9,r18
- 1189 03b8 00C0      		rjmp .L65
- 1190               	.LVL84:
- 1191               	.L64:
- 1192               	.LM177:
- 1193 03ba 1092 0000 		sts (HDC1080+9)+1,__zero_reg__
- 1194 03be 1092 0000 		sts HDC1080+9,__zero_reg__
- 1195               	.LVL85:
- 1196               	.L65:
- 1197               	.LM178:
- 1198 03c2 0E94 0000 		call Sensors_HDC1080_I2C_Forced_Stop_Clear_Error
- 1199               	.LVL86:
- 1200               	.LM179:
- 1201 03c6 5B9A      		sbi 43-32,3
- 1202               	/* epilogue start */
- 1203               	.LM180:
- 1204 03c8 1F91      		pop r17
- 1205 03ca 0F91      		pop r16
- 1206 03cc 0895      		ret
- 1207               	.LFE20:
- 1209               	.global	Sensors_HDC1080_Address_Get
- 1211               	Sensors_HDC1080_Address_Get:
- 1212               	.LFB21:
- 1213               	.LM181:
- 1214               	/* prologue: function */
- 1215               	/* frame size = 0 */
- 1216               	.LM182:
- 1217 03ce 8091 0000 		lds r24,HDC1080+4
- 1218               	/* epilogue start */
- 1219 03d2 0895      		ret
- 1220               	.LFE21:
- 1222               	.global	Sensors_HDC1080_Status_Get
- 1224               	Sensors_HDC1080_Status_Get:
- 1225               	.LFB22:
- 1226               	.LM183:
- 1227               	/* prologue: function */
- 1228               	/* frame size = 0 */
- 1229               	.LM184:
- 1230 03d4 8091 0000 		lds r24,HDC1080
- 1231               	/* epilogue start */
- 1232 03d8 0895      		ret
- 1233               	.LFE22:
- 1235               	.global	Sensors_HDC1080_Error_Get
- 1237               	Sensors_HDC1080_Error_Get:
- 1238               	.LFB23:
- 1239               	.LM185:
- 1240               	/* prologue: function */
- 1241               	/* frame size = 0 */
- 1242               	.LM186:
- 1243 03da 8091 0000 		lds r24,HDC1080+12
- 1244               	/* epilogue start */
- 1245 03de 0895      		ret
- 1246               	.LFE23:
- 1248               	.global	Sensors_HDC1080_Sticky_Error_Get
- 1250               	Sensors_HDC1080_Sticky_Error_Get:
- 1251               	.LFB24:
- 1252               	.LM187:
- 1253               	/* prologue: function */
- 1254               	/* frame size = 0 */
- 1255               	.LM188:
- 1256 03e0 8091 0000 		lds r24,HDC1080+13
- 1257               	/* epilogue start */
- 1258 03e4 0895      		ret
- 1259               	.LFE24:
- 1261               	.global	Sensors_HDC1080_RH_Get
- 1263               	Sensors_HDC1080_RH_Get:
- 1264               	.LFB25:
- 1265               	.LM189:
- 1266               	/* prologue: function */
- 1267               	/* frame size = 0 */
- 1268               	.LM190:
- 1269 03e6 8091 0000 		lds r24,HDC1080+9
- 1270 03ea 9091 0000 		lds r25,HDC1080+10
- 1271               	/* epilogue start */
- 1272 03ee 0895      		ret
- 1273               	.LFE25:
- 1275               		.comm HDC1080,14,1
- 1452               	.Letext0:
+ 1166 038e 0E94 0000 		call Sensors_HDC1080_I2C_Check_Ack
+ 1167               	.LM175:
+ 1168 0392 0E94 0000 		call Sensors_HDC1080_I2C_Stop
+ 1169               	.LM176:
+ 1170 0396 0E94 0000 		call Sensors_HDC1080_I2C_Forced_Stop_Clear_Error
+ 1171               	.LM177:
+ 1172 039a 5B9A      		sbi 43-32,3
+ 1173               	.LM178:
+ 1174 039c 8091 0000 		lds r24,HDC1080+12
+ 1175 03a0 8823      		tst r24
+ 1176 03a2 01F0      		breq .+2
+ 1177 03a4 00C0      		rjmp .L64
+ 1178               	.LM179:
+ 1179 03a6 602F      		mov r22,r16
+ 1180               	.LVL82:
+ 1181 03a8 70E0      		ldi r23,lo8(0)
+ 1182               	.LVL83:
+ 1183 03aa 80E0      		ldi r24,lo8(0)
+ 1184 03ac 90E0      		ldi r25,hi8(0)
+ 1185               	.LVL84:
+ 1186               	.LM180:
+ 1187 03ae 982F      		mov r25,r24
+ 1188 03b0 872F      		mov r24,r23
+ 1189 03b2 762F      		mov r23,r22
+ 1190 03b4 6627      		clr r22
+ 1191               	.LVL85:
+ 1192               	.LM181:
+ 1193 03b6 212F      		mov r18,r17
+ 1194 03b8 30E0      		ldi r19,lo8(0)
+ 1195 03ba 40E0      		ldi r20,lo8(0)
+ 1196 03bc 50E0      		ldi r21,hi8(0)
+ 1197 03be 622B      		or r22,r18
+ 1198 03c0 732B      		or r23,r19
+ 1199 03c2 842B      		or r24,r20
+ 1200 03c4 952B      		or r25,r21
+ 1201               	.LM182:
+ 1202 03c6 22E7      		ldi r18,lo8(1650)
+ 1203 03c8 36E0      		ldi r19,hi8(1650)
+ 1204 03ca 40E0      		ldi r20,hlo8(1650)
+ 1205 03cc 50E0      		ldi r21,hhi8(1650)
+ 1206 03ce 0E94 0000 		call __mulsi3
+ 1207               	.LVL86:
+ 1208               	.LM183:
+ 1209 03d2 2FEF      		ldi r18,lo8(65535)
+ 1210 03d4 3FEF      		ldi r19,hi8(65535)
+ 1211 03d6 40E0      		ldi r20,hlo8(65535)
+ 1212 03d8 50E0      		ldi r21,hhi8(65535)
+ 1213 03da 0E94 0000 		call __udivmodsi4
+ 1214 03de 2059      		subi r18,lo8(-(-400))
+ 1215 03e0 3140      		sbci r19,hi8(-(-400))
+ 1216 03e2 3093 0000 		sts (HDC1080+7)+1,r19
+ 1217 03e6 2093 0000 		sts HDC1080+7,r18
+ 1218               	.LM184:
+ 1219 03ea 6E2D      		mov r22,r14
+ 1220               	.LVL87:
+ 1221 03ec 70E0      		ldi r23,lo8(0)
+ 1222               	.LVL88:
+ 1223 03ee 80E0      		ldi r24,lo8(0)
+ 1224 03f0 90E0      		ldi r25,hi8(0)
+ 1225               	.LVL89:
+ 1226               	.LM185:
+ 1227 03f2 982F      		mov r25,r24
+ 1228 03f4 872F      		mov r24,r23
+ 1229 03f6 762F      		mov r23,r22
+ 1230 03f8 6627      		clr r22
+ 1231               	.LVL90:
+ 1232               	.LM186:
+ 1233 03fa 2F2D      		mov r18,r15
+ 1234 03fc 30E0      		ldi r19,lo8(0)
+ 1235 03fe 40E0      		ldi r20,lo8(0)
+ 1236 0400 50E0      		ldi r21,hi8(0)
+ 1237 0402 622B      		or r22,r18
+ 1238 0404 732B      		or r23,r19
+ 1239 0406 842B      		or r24,r20
+ 1240 0408 952B      		or r25,r21
+ 1241               	.LM187:
+ 1242 040a 24E6      		ldi r18,lo8(100)
+ 1243 040c 30E0      		ldi r19,hi8(100)
+ 1244 040e 40E0      		ldi r20,hlo8(100)
+ 1245 0410 50E0      		ldi r21,hhi8(100)
+ 1246 0412 0E94 0000 		call __mulsi3
+ 1247               	.LVL91:
+ 1248               	.LM188:
+ 1249 0416 2FEF      		ldi r18,lo8(65535)
+ 1250 0418 3FEF      		ldi r19,hi8(65535)
+ 1251 041a 40E0      		ldi r20,hlo8(65535)
+ 1252 041c 50E0      		ldi r21,hhi8(65535)
+ 1253 041e 0E94 0000 		call __udivmodsi4
+ 1254 0422 3093 0000 		sts (HDC1080+9)+1,r19
+ 1255 0426 2093 0000 		sts HDC1080+9,r18
+ 1256 042a 00C0      		rjmp .L66
+ 1257               	.LVL92:
+ 1258               	.L64:
+ 1259               	.LM189:
+ 1260 042c 1092 0000 		sts (HDC1080+9)+1,__zero_reg__
+ 1261 0430 1092 0000 		sts HDC1080+9,__zero_reg__
+ 1262               	.LVL93:
+ 1263               	.L66:
+ 1264               	/* epilogue start */
+ 1265               	.LM190:
+ 1266 0434 1F91      		pop r17
+ 1267 0436 0F91      		pop r16
+ 1268 0438 FF90      		pop r15
+ 1269 043a EF90      		pop r14
+ 1270 043c 0895      		ret
+ 1271               	.LFE20:
+ 1273               	.global	Sensors_Sample_RH
+ 1275               	Sensors_Sample_RH:
+ 1276               	.LFB21:
+ 1277               	.LM191:
+ 1278 043e 0F93      		push r16
+ 1279 0440 1F93      		push r17
+ 1280               	/* prologue: function */
+ 1281               	/* frame size = 0 */
+ 1282               	.LM192:
+ 1283 0442 5B98      		cbi 43-32,3
+ 1284               	.LBB439:
+ 1285               	.LBB440:
+ 1286               	.LBB441:
+ 1287               	.LBB442:
+ 1288               	.LM193:
+ 1289 0444 80E2      		ldi r24,lo8(20000)
+ 1290 0446 9EE4      		ldi r25,hi8(20000)
+ 1291               	.LVL94:
+ 1292               	/* #APP */
+ 1293               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 1294 0448 0197      		1: sbiw r24,1
+ 1295 044a 01F4      		brne 1b
+ 1296               	 ;  0 "" 2
+ 1297               	/* #NOAPP */
+ 1298               	.LBE442:
+ 1299               	.LBE441:
+ 1300               	.LBE440:
+ 1301               	.LBE439:
+ 1302               	.LM194:
+ 1303 044c 1092 0000 		sts HDC1080+12,__zero_reg__
+ 1304               	.LM195:
+ 1305 0450 80E0      		ldi r24,lo8(0)
+ 1306               	.LVL95:
+ 1307 0452 0E94 0000 		call Sensors_HDC1080_Config
+ 1308               	.LM196:
+ 1309 0456 0E94 0000 		call Sensors_HDC1080_I2C_Start
+ 1310               	.LM197:
+ 1311 045a 80E8      		ldi r24,lo8(-128)
+ 1312 045c 0E94 0000 		call Sensors_HDC1080_I2C_Send
+ 1313               	.LM198:
+ 1314 0460 0E94 0000 		call Sensors_HDC1080_I2C_Check_Ack
+ 1315               	.LM199:
+ 1316 0464 81E0      		ldi r24,lo8(1)
+ 1317 0466 0E94 0000 		call Sensors_HDC1080_I2C_Send
+ 1318               	.LM200:
+ 1319 046a 0E94 0000 		call Sensors_HDC1080_I2C_Check_Ack
+ 1320               	.LM201:
+ 1321 046e 0E94 0000 		call Sensors_HDC1080_I2C_Stop
+ 1322               	.LBB443:
+ 1323               	.LBB444:
+ 1324               	.LBB445:
+ 1325               	.LBB446:
+ 1326               	.LM202:
+ 1327 0472 80E7      		ldi r24,lo8(6000)
+ 1328 0474 97E1      		ldi r25,hi8(6000)
+ 1329               	.LVL96:
+ 1330               	/* #APP */
+ 1331               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 1332 0476 0197      		1: sbiw r24,1
+ 1333 0478 01F4      		brne 1b
+ 1334               	 ;  0 "" 2
+ 1335               	/* #NOAPP */
+ 1336 047a 10E0      		ldi r17,lo8(0)
+ 1337               	.LVL97:
+ 1338               	.L70:
+ 1339               	.LBE446:
+ 1340               	.LBE445:
+ 1341               	.LBE444:
+ 1342               	.LBE443:
+ 1343               	.LBB447:
+ 1344               	.LM203:
+ 1345 047c 0E94 0000 		call Sensors_HDC1080_I2C_Start
+ 1346               	.LVL98:
+ 1347               	.LM204:
+ 1348 0480 81E8      		ldi r24,lo8(-127)
+ 1349 0482 0E94 0000 		call Sensors_HDC1080_I2C_Send
+ 1350               	.LM205:
+ 1351 0486 0E94 0000 		call Sensors_HDC1080_I2C_Check_Ack
+ 1352               	.LM206:
+ 1353 048a 8091 0000 		lds r24,HDC1080+1
+ 1354 048e 8823      		tst r24
+ 1355 0490 01F4      		brne .L69
+ 1356               	.LM207:
+ 1357 0492 0E94 0000 		call Sensors_HDC1080_I2C_Stop
+ 1358               	.LM208:
+ 1359 0496 1F5F      		subi r17,lo8(-(1))
+ 1360 0498 1233      		cpi r17,lo8(50)
+ 1361 049a 01F4      		brne .L70
+ 1362               	.L69:
+ 1363               	.LBE447:
+ 1364               	.LM209:
+ 1365 049c 0E94 0000 		call Sensors_HDC1080_I2C_Receive
+ 1366 04a0 082F      		mov r16,r24
+ 1367               	.LM210:
+ 1368 04a2 0E94 0000 		call Sensors_HDC1080_I2C_Send_Ack
+ 1369               	.LM211:
+ 1370 04a6 0E94 0000 		call Sensors_HDC1080_I2C_Receive
+ 1371 04aa 182F      		mov r17,r24
+ 1372               	.LVL99:
+ 1373               	.LM212:
+ 1374 04ac 0E94 0000 		call Sensors_HDC1080_I2C_Check_Ack
+ 1375               	.LM213:
+ 1376 04b0 0E94 0000 		call Sensors_HDC1080_I2C_Stop
+ 1377               	.LM214:
+ 1378 04b4 0E94 0000 		call Sensors_HDC1080_I2C_Forced_Stop_Clear_Error
+ 1379               	.LM215:
+ 1380 04b8 5B9A      		sbi 43-32,3
+ 1381               	.LM216:
+ 1382 04ba 8091 0000 		lds r24,HDC1080+12
+ 1383 04be 8823      		tst r24
+ 1384 04c0 01F4      		brne .L71
+ 1385               	.LM217:
+ 1386 04c2 602F      		mov r22,r16
+ 1387               	.LVL100:
+ 1388 04c4 70E0      		ldi r23,lo8(0)
+ 1389               	.LVL101:
+ 1390 04c6 80E0      		ldi r24,lo8(0)
+ 1391 04c8 90E0      		ldi r25,hi8(0)
+ 1392               	.LVL102:
+ 1393               	.LM218:
+ 1394 04ca 982F      		mov r25,r24
+ 1395 04cc 872F      		mov r24,r23
+ 1396 04ce 762F      		mov r23,r22
+ 1397 04d0 6627      		clr r22
+ 1398               	.LVL103:
+ 1399               	.LM219:
+ 1400 04d2 212F      		mov r18,r17
+ 1401 04d4 30E0      		ldi r19,lo8(0)
+ 1402 04d6 40E0      		ldi r20,lo8(0)
+ 1403 04d8 50E0      		ldi r21,hi8(0)
+ 1404 04da 622B      		or r22,r18
+ 1405 04dc 732B      		or r23,r19
+ 1406 04de 842B      		or r24,r20
+ 1407 04e0 952B      		or r25,r21
+ 1408               	.LM220:
+ 1409 04e2 24E6      		ldi r18,lo8(100)
+ 1410 04e4 30E0      		ldi r19,hi8(100)
+ 1411 04e6 40E0      		ldi r20,hlo8(100)
+ 1412 04e8 50E0      		ldi r21,hhi8(100)
+ 1413 04ea 0E94 0000 		call __mulsi3
+ 1414               	.LVL104:
+ 1415               	.LM221:
+ 1416 04ee 2FEF      		ldi r18,lo8(65535)
+ 1417 04f0 3FEF      		ldi r19,hi8(65535)
+ 1418 04f2 40E0      		ldi r20,hlo8(65535)
+ 1419 04f4 50E0      		ldi r21,hhi8(65535)
+ 1420 04f6 0E94 0000 		call __udivmodsi4
+ 1421 04fa 3093 0000 		sts (HDC1080+9)+1,r19
+ 1422 04fe 2093 0000 		sts HDC1080+9,r18
+ 1423 0502 00C0      		rjmp .L73
+ 1424               	.LVL105:
+ 1425               	.L71:
+ 1426               	.LM222:
+ 1427 0504 1092 0000 		sts (HDC1080+9)+1,__zero_reg__
+ 1428 0508 1092 0000 		sts HDC1080+9,__zero_reg__
+ 1429               	.LVL106:
+ 1430               	.L73:
+ 1431               	/* epilogue start */
+ 1432               	.LM223:
+ 1433 050c 1F91      		pop r17
+ 1434 050e 0F91      		pop r16
+ 1435 0510 0895      		ret
+ 1436               	.LFE21:
+ 1438               	.global	Sensors_HDC1080_Address_Get
+ 1440               	Sensors_HDC1080_Address_Get:
+ 1441               	.LFB22:
+ 1442               	.LM224:
+ 1443               	/* prologue: function */
+ 1444               	/* frame size = 0 */
+ 1445               	.LM225:
+ 1446 0512 8091 0000 		lds r24,HDC1080+4
+ 1447               	/* epilogue start */
+ 1448 0516 0895      		ret
+ 1449               	.LFE22:
+ 1451               	.global	Sensors_HDC1080_Status_Get
+ 1453               	Sensors_HDC1080_Status_Get:
+ 1454               	.LFB23:
+ 1455               	.LM226:
+ 1456               	/* prologue: function */
+ 1457               	/* frame size = 0 */
+ 1458               	.LM227:
+ 1459 0518 8091 0000 		lds r24,HDC1080
+ 1460               	/* epilogue start */
+ 1461 051c 0895      		ret
+ 1462               	.LFE23:
+ 1464               	.global	Sensors_HDC1080_Error_Get
+ 1466               	Sensors_HDC1080_Error_Get:
+ 1467               	.LFB24:
+ 1468               	.LM228:
+ 1469               	/* prologue: function */
+ 1470               	/* frame size = 0 */
+ 1471               	.LM229:
+ 1472 051e 8091 0000 		lds r24,HDC1080+12
+ 1473               	/* epilogue start */
+ 1474 0522 0895      		ret
+ 1475               	.LFE24:
+ 1477               	.global	Sensors_HDC1080_Sticky_Error_Get
+ 1479               	Sensors_HDC1080_Sticky_Error_Get:
+ 1480               	.LFB25:
+ 1481               	.LM230:
+ 1482               	/* prologue: function */
+ 1483               	/* frame size = 0 */
+ 1484               	.LM231:
+ 1485 0524 8091 0000 		lds r24,HDC1080+13
+ 1486               	/* epilogue start */
+ 1487 0528 0895      		ret
+ 1488               	.LFE25:
+ 1490               	.global	Sensors_HDC1080_Temp_Get
+ 1492               	Sensors_HDC1080_Temp_Get:
+ 1493               	.LFB26:
+ 1494               	.LM232:
+ 1495               	/* prologue: function */
+ 1496               	/* frame size = 0 */
+ 1497               	.LM233:
+ 1498 052a 8091 0000 		lds r24,HDC1080+7
+ 1499 052e 9091 0000 		lds r25,HDC1080+8
+ 1500               	/* epilogue start */
+ 1501 0532 0895      		ret
+ 1502               	.LFE26:
+ 1504               	.global	Sensors_HDC1080_RH_Get
+ 1506               	Sensors_HDC1080_RH_Get:
+ 1507               	.LFB27:
+ 1508               	.LM234:
+ 1509               	/* prologue: function */
+ 1510               	/* frame size = 0 */
+ 1511               	.LM235:
+ 1512 0534 8091 0000 		lds r24,HDC1080+9
+ 1513 0538 9091 0000 		lds r25,HDC1080+10
+ 1514               	/* epilogue start */
+ 1515 053c 0895      		ret
+ 1516               	.LFE27:
+ 1518               		.comm HDC1080,14,1
+ 1711               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 sensors.c
-C:\Users\WALTON\AppData\Local\Temp/ccIjblBb.s:2      *ABS*:0000003f __SREG__
-C:\Users\WALTON\AppData\Local\Temp/ccIjblBb.s:3      *ABS*:0000003e __SP_H__
-C:\Users\WALTON\AppData\Local\Temp/ccIjblBb.s:4      *ABS*:0000003d __SP_L__
-C:\Users\WALTON\AppData\Local\Temp/ccIjblBb.s:5      *ABS*:00000034 __CCP__
-C:\Users\WALTON\AppData\Local\Temp/ccIjblBb.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\WALTON\AppData\Local\Temp/ccIjblBb.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\WALTON\AppData\Local\Temp/ccIjblBb.s:18     .text:00000000 Sensors_HDC1080_Struct_Init
+C:\Users\farid\AppData\Local\Temp/cch8kXlk.s:2      *ABS*:0000003f __SREG__
+C:\Users\farid\AppData\Local\Temp/cch8kXlk.s:3      *ABS*:0000003e __SP_H__
+C:\Users\farid\AppData\Local\Temp/cch8kXlk.s:4      *ABS*:0000003d __SP_L__
+C:\Users\farid\AppData\Local\Temp/cch8kXlk.s:5      *ABS*:00000034 __CCP__
+C:\Users\farid\AppData\Local\Temp/cch8kXlk.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\farid\AppData\Local\Temp/cch8kXlk.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\farid\AppData\Local\Temp/cch8kXlk.s:18     .text:00000000 Sensors_HDC1080_Struct_Init
                             *COM*:0000000e HDC1080
-C:\Users\WALTON\AppData\Local\Temp/ccIjblBb.s:49     .text:0000002e Sensors_Init
-C:\Users\WALTON\AppData\Local\Temp/ccIjblBb.s:75     .text:00000040 Sensors_I2C_SCL_State_Set
-C:\Users\WALTON\AppData\Local\Temp/ccIjblBb.s:103    .text:00000058 Sensors_I2C_SDA_State_Set
-C:\Users\WALTON\AppData\Local\Temp/ccIjblBb.s:131    .text:00000070 Sensors_I2C_SDA_State_Get
-C:\Users\WALTON\AppData\Local\Temp/ccIjblBb.s:176    .text:0000008e Sensors_I2C_Bus_Idle
-C:\Users\WALTON\AppData\Local\Temp/ccIjblBb.s:201    .text:000000a8 Sensors_HDC1080_I2C_Start
-C:\Users\WALTON\AppData\Local\Temp/ccIjblBb.s:304    .text:000000e6 Sensors_HDC1080_I2C_Stop
-C:\Users\WALTON\AppData\Local\Temp/ccIjblBb.s:415    .text:0000012a Sensors_HDC1080_I2C_Forced_Stop_Clear_Error
-C:\Users\WALTON\AppData\Local\Temp/ccIjblBb.s:527    .text:0000017a Sensors_HDC1080_I2C_Send
-C:\Users\WALTON\AppData\Local\Temp/ccIjblBb.s:652    .text:000001ce Sensors_HDC1080_I2C_Receive
-C:\Users\WALTON\AppData\Local\Temp/ccIjblBb.s:777    .text:00000228 Sensors_HDC1080_I2C_Check_Ack
-C:\Users\WALTON\AppData\Local\Temp/ccIjblBb.s:889    .text:00000274 Sensors_HDC1080_I2C_Send_Ack
-C:\Users\WALTON\AppData\Local\Temp/ccIjblBb.s:986    .text:000002aa Sensors_HDC1080_Config
-C:\Users\WALTON\AppData\Local\Temp/ccIjblBb.s:1048   .text:00000300 Sensors_Sample
-C:\Users\WALTON\AppData\Local\Temp/ccIjblBb.s:1211   .text:000003ce Sensors_HDC1080_Address_Get
-C:\Users\WALTON\AppData\Local\Temp/ccIjblBb.s:1224   .text:000003d4 Sensors_HDC1080_Status_Get
-C:\Users\WALTON\AppData\Local\Temp/ccIjblBb.s:1237   .text:000003da Sensors_HDC1080_Error_Get
-C:\Users\WALTON\AppData\Local\Temp/ccIjblBb.s:1250   .text:000003e0 Sensors_HDC1080_Sticky_Error_Get
-C:\Users\WALTON\AppData\Local\Temp/ccIjblBb.s:1263   .text:000003e6 Sensors_HDC1080_RH_Get
+C:\Users\farid\AppData\Local\Temp/cch8kXlk.s:49     .text:0000002e Sensors_Init
+C:\Users\farid\AppData\Local\Temp/cch8kXlk.s:75     .text:00000040 Sensors_I2C_SCL_State_Set
+C:\Users\farid\AppData\Local\Temp/cch8kXlk.s:103    .text:00000058 Sensors_I2C_SDA_State_Set
+C:\Users\farid\AppData\Local\Temp/cch8kXlk.s:131    .text:00000070 Sensors_I2C_SDA_State_Get
+C:\Users\farid\AppData\Local\Temp/cch8kXlk.s:176    .text:0000008e Sensors_I2C_Bus_Idle
+C:\Users\farid\AppData\Local\Temp/cch8kXlk.s:201    .text:000000a8 Sensors_HDC1080_I2C_Start
+C:\Users\farid\AppData\Local\Temp/cch8kXlk.s:304    .text:000000e6 Sensors_HDC1080_I2C_Stop
+C:\Users\farid\AppData\Local\Temp/cch8kXlk.s:415    .text:0000012a Sensors_HDC1080_I2C_Forced_Stop_Clear_Error
+C:\Users\farid\AppData\Local\Temp/cch8kXlk.s:527    .text:0000017a Sensors_HDC1080_I2C_Send
+C:\Users\farid\AppData\Local\Temp/cch8kXlk.s:652    .text:000001ce Sensors_HDC1080_I2C_Receive
+C:\Users\farid\AppData\Local\Temp/cch8kXlk.s:777    .text:00000228 Sensors_HDC1080_I2C_Check_Ack
+C:\Users\farid\AppData\Local\Temp/cch8kXlk.s:889    .text:00000274 Sensors_HDC1080_I2C_Send_Ack
+C:\Users\farid\AppData\Local\Temp/cch8kXlk.s:986    .text:000002aa Sensors_HDC1080_Config
+C:\Users\farid\AppData\Local\Temp/cch8kXlk.s:1055   .text:00000308 Sensors_Sample_Temp_RH
+C:\Users\farid\AppData\Local\Temp/cch8kXlk.s:1275   .text:0000043e Sensors_Sample_RH
+C:\Users\farid\AppData\Local\Temp/cch8kXlk.s:1440   .text:00000512 Sensors_HDC1080_Address_Get
+C:\Users\farid\AppData\Local\Temp/cch8kXlk.s:1453   .text:00000518 Sensors_HDC1080_Status_Get
+C:\Users\farid\AppData\Local\Temp/cch8kXlk.s:1466   .text:0000051e Sensors_HDC1080_Error_Get
+C:\Users\farid\AppData\Local\Temp/cch8kXlk.s:1479   .text:00000524 Sensors_HDC1080_Sticky_Error_Get
+C:\Users\farid\AppData\Local\Temp/cch8kXlk.s:1492   .text:0000052a Sensors_HDC1080_Temp_Get
+C:\Users\farid\AppData\Local\Temp/cch8kXlk.s:1506   .text:00000534 Sensors_HDC1080_RH_Get
 
 UNDEFINED SYMBOLS
 __mulsi3

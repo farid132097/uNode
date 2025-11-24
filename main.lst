@@ -42,8 +42,8 @@
   50 0034 63E0      		ldi r22,lo8(3)
   51 0036 0E94 0000 		call Kernel_Task_Create
   52               	.LM9:
-  53 003a 80E0      		ldi r24,lo8(gs(Tasks_Disable_Peripherals))
-  54 003c 90E0      		ldi r25,hi8(gs(Tasks_Disable_Peripherals))
+  53 003a 80E0      		ldi r24,lo8(gs(Task_Disable_Peripherals))
+  54 003c 90E0      		ldi r25,hi8(gs(Task_Disable_Peripherals))
   55 003e 0E94 0000 		call Kernel_PreSleep_Hook
   56               	.LM10:
   57 0042 0E94 0000 		call Kernel_Start_Tasks
@@ -53,13 +53,13 @@
   86               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\farid\AppData\Local\Temp/cc06WT8u.s:2      *ABS*:0000003f __SREG__
-C:\Users\farid\AppData\Local\Temp/cc06WT8u.s:3      *ABS*:0000003e __SP_H__
-C:\Users\farid\AppData\Local\Temp/cc06WT8u.s:4      *ABS*:0000003d __SP_L__
-C:\Users\farid\AppData\Local\Temp/cc06WT8u.s:5      *ABS*:00000034 __CCP__
-C:\Users\farid\AppData\Local\Temp/cc06WT8u.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\farid\AppData\Local\Temp/cc06WT8u.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\farid\AppData\Local\Temp/cc06WT8u.s:18     .text:00000000 main
+C:\Users\WALTON\AppData\Local\Temp/ccHH8rXV.s:2      *ABS*:0000003f __SREG__
+C:\Users\WALTON\AppData\Local\Temp/ccHH8rXV.s:3      *ABS*:0000003e __SP_H__
+C:\Users\WALTON\AppData\Local\Temp/ccHH8rXV.s:4      *ABS*:0000003d __SP_L__
+C:\Users\WALTON\AppData\Local\Temp/ccHH8rXV.s:5      *ABS*:00000034 __CCP__
+C:\Users\WALTON\AppData\Local\Temp/ccHH8rXV.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\WALTON\AppData\Local\Temp/ccHH8rXV.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\WALTON\AppData\Local\Temp/ccHH8rXV.s:18     .text:00000000 main
 
 UNDEFINED SYMBOLS
 Kernel_Clock_Prescale
@@ -70,6 +70,6 @@ Kernel_Task_Create
 Task_Vin_Sense
 Task_Radio
 Task_Sensor
-Tasks_Disable_Peripherals
+Task_Disable_Peripherals
 Kernel_PreSleep_Hook
 Kernel_Start_Tasks

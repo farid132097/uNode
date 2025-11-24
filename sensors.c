@@ -222,27 +222,18 @@ void Sensors_HDC1080_I2C_Send_Ack(void){
     }
 }
 
-
-
-
-void Sensors_Sample(void){
-    uint32_t rh_val = 0;
-    //Enable Power to sensor module
-    SENSORS_PWR_EN_PORT &=~ (1<<SENSORS_PWR_EN_BP);
-    //Wait until sensor is ready
-    _delay_ms(SENSORS_HDC1080_CONV_DELAY);
-    
-    //Clear all errors
-    HDC1080.Error = 0;
-
+void Sensors_HDC1080_Config(void){
     //Config sensor
-    for(uint8_t i = 0; i<50; i++){
+    uint8_t cnt = 0;
+    for(;;){
         Sensors_HDC1080_I2C_Start();
         Sensors_HDC1080_I2C_Send( SENSORS_HDC1080_ADDR << 1 );
         Sensors_HDC1080_I2C_Check_Ack();
         if(HDC1080.AckStatus == FALSE){
             Sensors_HDC1080_I2C_Stop();
-            if(i == 49){
+            cnt++;
+            if(cnt > 30){
+                //Set error flag to stop next communications
                 HDC1080.Error = SENSOR_ERROR_I2C_ADDR_W_NACK;
             }
         }
@@ -257,6 +248,20 @@ void Sensors_Sample(void){
     Sensors_HDC1080_I2C_Send(0x00);
     Sensors_HDC1080_I2C_Check_Ack();
     Sensors_HDC1080_I2C_Stop();
+}
+
+
+void Sensors_Sample(void){
+    uint32_t rh_val = 0;
+    //Enable Power to sensor module
+    SENSORS_PWR_EN_PORT &=~ (1<<SENSORS_PWR_EN_BP);
+    //Wait until sensor is ready
+    _delay_ms(SENSORS_HDC1080_POWER_UP_DELAY);
+    
+    //Clear all errors
+    HDC1080.Error = 0;
+
+    
     
     //Trigger RH measurement
     Sensors_HDC1080_I2C_Start();
@@ -266,8 +271,10 @@ void Sensors_Sample(void){
     Sensors_HDC1080_I2C_Check_Ack();
     Sensors_HDC1080_I2C_Stop();
 
+    //Wait until sensor data is ready
+    _delay_ms(SENSORS_HDC1080_CONV_DELAY);
+
     //Read RH
-    
     for(uint8_t i = 0; i<50; i++){
         Sensors_HDC1080_I2C_Start();
         Sensors_HDC1080_I2C_Send( (SENSORS_HDC1080_ADDR << 1) | 1);

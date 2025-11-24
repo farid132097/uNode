@@ -10,15 +10,19 @@
 #include "debug.h"
 #include "rgb.h"
 
-void Tasks_Disable_Peripherals(void){
+void Task_Disable_Peripherals(void){
   //ADC and Analog comparator will be
   //turned off automatically by the kernel
 }
 
 void Task_RGB_LED(void){
-
-  RGB_Init();
   
+  //Init RGB GPIOs
+  RGB_Init();
+  //Inrush current prevention at startup
+  Kernel_Task_Sleep(2000/KER_TICK_TIME);
+
+
   while(1){
 
     //Red LED on
@@ -43,6 +47,8 @@ void Task_Vin_Sense(void){
 
   //Disable VinSense
   PORTD &=~(1<<2);
+  //Inrush current prevention at startup
+  Kernel_Task_Sleep(2000/KER_TICK_TIME);
 
   while(1){
 
@@ -65,6 +71,8 @@ void Task_Radio(void){
 
   //Radio init with deep sleep
   nRF24L01P_Init();
+  //Inrush current prevention at startup
+  Kernel_Task_Sleep(2000/KER_TICK_TIME);
 
   while(1){
     
@@ -108,6 +116,8 @@ void Task_Radio(void){
 void Task_Sensor(void){
   
   Sensors_Init();
+  //Inrush current prevention at startup
+  Kernel_Task_Sleep(2000/KER_TICK_TIME);
   
   while(1){
 
@@ -116,3 +126,4 @@ void Task_Sensor(void){
 	
   }
 }
+

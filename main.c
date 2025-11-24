@@ -11,6 +11,8 @@
 
 int main(void) {
     
+	//Enable prescaler 2
+	//System frequency
 	Kernel_Clock_Prescale(1);
 	
 	Debug_Init(0);
@@ -19,12 +21,14 @@ int main(void) {
 	Kernel_Task_Create(Task_Vin_Sense,  1);
 	Kernel_Task_Create(Task_Radio,  2);
 	Kernel_Task_Create(Task_Sensor,  3);
-	Kernel_PreSleep_Hook(Tasks_Disable_Peripherals);
+	Kernel_PreSleep_Hook(Task_Disable_Peripherals);
 	Kernel_Start_Tasks();
 	
     while(1){
+
 		//Nothing to do here
 		//All tasks are handled by kernel
+
     }
 }
 

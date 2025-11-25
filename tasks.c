@@ -76,7 +76,7 @@ void Task_Radio(void){
   while(1){
     
     //Process Vin Data
-    Vin = Peripherals_Vin_RawADC_Get();
+    Vin = Peripherals_Vin_Get();
     buf[0] = Vin >> 8;
     buf[1] = Vin & 0xFF;
 

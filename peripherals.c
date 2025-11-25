@@ -8,9 +8,9 @@
 typedef struct peripherals_t{
   uint8_t  Status;
   uint16_t VinRawADC;
-  uint16_t VinSense;
+  uint32_t VinSense;
   uint16_t V3V3RawADC;
-  uint16_t V3V3Sense;
+  uint32_t V3V3Sense;
 }peripherals_t;
 
 
@@ -63,11 +63,21 @@ void Peripherals_Vin_Sense_Sample(void){
   Peripherals.VinRawADC = Peripherals_ADC_Sample(6, 4);
   //Disable VinSense
   PORTD &=~(1<<2);
+  //Reference in mV
+  Peripherals.VinSense  = 1100;
+  //Voltage divider factor
+  Peripherals.VinSense *= 21;
+  Peripherals.VinSense *= Peripherals.VinRawADC;
+  Peripherals.VinSense >>= 10;
   Peripherals.Status &=~(1<<0);
 }
 
 uint16_t Peripherals_Vin_RawADC_Get(void){
   return Peripherals.VinRawADC;
+}
+
+uint16_t Peripherals_Vin_Get(void){
+  return (uint16_t)Peripherals.VinSense;
 }
 
 int16_t Peripherals_Analog_Temp_Get(void){

@@ -30,7 +30,14 @@ typedef struct hdc1080_t{
     uint8_t  StickyError;
 }hdc1080_t;
 
+typedef struct ntc_t{
+    int32_t  RawADC;
+    int32_t  Temp;
+}ntc_t;
+
 hdc1080_t HDC1080;
+ntc_t     NTC;
+
 
 void Sensors_HDC1080_Struct_Init(void){
     HDC1080.Status = 0;
@@ -41,6 +48,8 @@ void Sensors_HDC1080_Struct_Init(void){
     HDC1080.TimeoutError = 0;
     HDC1080.Error = 0;
     HDC1080.StickyError = 0;
+    NTC.RawADC = 0;
+    NTC.Temp = 0;
 }
 
 void Sensors_Init(void){
@@ -259,14 +268,47 @@ void Sensors_Sample_Temp_RH(void){
     
     //Clear all errors
     HDC1080.Error = 0;
-    //Config HDC1080, 1->Temp_RH, 0->RH
-    Sensors_HDC1080_Config(1);
+    //Config HDC1080, 1->Temp_RH, 0->Temp/RH
+    Sensors_HDC1080_Config(0);
     
-    //Trigger Temp & RH measurement
+    //Trigger Temp measurement
     Sensors_HDC1080_I2C_Start();
     Sensors_HDC1080_I2C_Send(SENSORS_HDC1080_ADDR << 1);
     Sensors_HDC1080_I2C_Check_Ack();
     Sensors_HDC1080_I2C_Send(0x00);
+    Sensors_HDC1080_I2C_Check_Ack();
+    Sensors_HDC1080_I2C_Stop();
+
+    //Wait until sensor data is ready
+    _delay_ms(SENSORS_HDC1080_CONV_DELAY);
+
+    //Read Temp
+    for(uint8_t i = 0; i<50; i++){
+        Sensors_HDC1080_I2C_Start();
+        Sensors_HDC1080_I2C_Send( (SENSORS_HDC1080_ADDR << 1) | 1);
+        Sensors_HDC1080_I2C_Check_Ack();
+        if(HDC1080.AckStatus == FALSE){
+            Sensors_HDC1080_I2C_Stop();
+        }
+        else{
+            break;
+        }
+    }
+    //Read temp result registers
+    temp_val = Sensors_HDC1080_I2C_Receive();
+    Sensors_HDC1080_I2C_Send_Ack();
+    temp_val <<= 8;
+    temp_val |= Sensors_HDC1080_I2C_Receive();
+    Sensors_HDC1080_I2C_Check_Ack();
+    Sensors_HDC1080_I2C_Stop();
+
+
+
+    //Trigger RH measurement
+    Sensors_HDC1080_I2C_Start();
+    Sensors_HDC1080_I2C_Send(SENSORS_HDC1080_ADDR << 1);
+    Sensors_HDC1080_I2C_Check_Ack();
+    Sensors_HDC1080_I2C_Send(0x01);
     Sensors_HDC1080_I2C_Check_Ack();
     Sensors_HDC1080_I2C_Stop();
 
@@ -285,12 +327,6 @@ void Sensors_Sample_Temp_RH(void){
             break;
         }
     }
-    //Read temp result registers
-    temp_val = Sensors_HDC1080_I2C_Receive();
-    Sensors_HDC1080_I2C_Send_Ack();
-    temp_val <<= 8;
-    temp_val |= Sensors_HDC1080_I2C_Receive();
-    Sensors_HDC1080_I2C_Send_Ack();
 
     //Read RH result registers
     rh_val = Sensors_HDC1080_I2C_Receive();
@@ -408,4 +444,8 @@ int16_t Sensors_HDC1080_Temp_Get(void){
 
 uint16_t Sensors_HDC1080_RH_Get(void){
     return HDC1080.RH;
+}
+
+int16_t Sensors_NTC_Temp_Get(void){
+    return NTC.Temp;
 }

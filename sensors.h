@@ -49,6 +49,7 @@ uint8_t  Sensors_HDC1080_Error_Get(void);
 uint8_t  Sensors_HDC1080_Sticky_Error_Get(void);
 int16_t  Sensors_HDC1080_Temp_Get(void);
 uint16_t Sensors_HDC1080_RH_Get(void);
+int16_t  Sensors_NTC_Temp_Get(void);
 
 #endif
 

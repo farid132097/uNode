@@ -66,7 +66,7 @@
   78 0040 1F4F      		sbci r17,hi8(-(1))
   79               	.L8:
   80               	.LM12:
-  81 0042 0E94 0000 		call Peripherals_Vin_RawADC_Get
+  81 0042 0E94 0000 		call Peripherals_Vin_Get
   82               	.LM13:
   83 0046 9983      		std Y+1,r25
   84               	.LM14:
@@ -217,24 +217,24 @@
  290               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 tasks.c
-C:\Users\farid\AppData\Local\Temp/ccDlcAWR.s:2      *ABS*:0000003f __SREG__
-C:\Users\farid\AppData\Local\Temp/ccDlcAWR.s:3      *ABS*:0000003e __SP_H__
-C:\Users\farid\AppData\Local\Temp/ccDlcAWR.s:4      *ABS*:0000003d __SP_L__
-C:\Users\farid\AppData\Local\Temp/ccDlcAWR.s:5      *ABS*:00000034 __CCP__
-C:\Users\farid\AppData\Local\Temp/ccDlcAWR.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\farid\AppData\Local\Temp/ccDlcAWR.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\farid\AppData\Local\Temp/ccDlcAWR.s:18     .text:00000000 Task_Disable_Peripherals
-C:\Users\farid\AppData\Local\Temp/ccDlcAWR.s:30     .text:00000002 Task_Sensor
-C:\Users\farid\AppData\Local\Temp/ccDlcAWR.s:52     .text:00000018 Task_Radio
-C:\Users\farid\AppData\Local\Temp/ccDlcAWR.s:152    .text:000000b4 Task_Vin_Sense
-C:\Users\farid\AppData\Local\Temp/ccDlcAWR.s:176    .text:000000ca Task_RGB_LED
+C:\Users\farid\AppData\Local\Temp/ccGV25LE.s:2      *ABS*:0000003f __SREG__
+C:\Users\farid\AppData\Local\Temp/ccGV25LE.s:3      *ABS*:0000003e __SP_H__
+C:\Users\farid\AppData\Local\Temp/ccGV25LE.s:4      *ABS*:0000003d __SP_L__
+C:\Users\farid\AppData\Local\Temp/ccGV25LE.s:5      *ABS*:00000034 __CCP__
+C:\Users\farid\AppData\Local\Temp/ccGV25LE.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\farid\AppData\Local\Temp/ccGV25LE.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\farid\AppData\Local\Temp/ccGV25LE.s:18     .text:00000000 Task_Disable_Peripherals
+C:\Users\farid\AppData\Local\Temp/ccGV25LE.s:30     .text:00000002 Task_Sensor
+C:\Users\farid\AppData\Local\Temp/ccGV25LE.s:52     .text:00000018 Task_Radio
+C:\Users\farid\AppData\Local\Temp/ccGV25LE.s:152    .text:000000b4 Task_Vin_Sense
+C:\Users\farid\AppData\Local\Temp/ccGV25LE.s:176    .text:000000ca Task_RGB_LED
 
 UNDEFINED SYMBOLS
 Sensors_Init
 Kernel_Task_Sleep
 Sensors_Sample_Temp_RH
 nRF24L01P_Init
-Peripherals_Vin_RawADC_Get
+Peripherals_Vin_Get
 Peripherals_Analog_Temp_Get
 Peripherals_Digital_Temp_Get
 Peripherals_Digital_RH_Get

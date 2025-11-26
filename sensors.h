@@ -18,6 +18,7 @@
 #define  SENSORS_HDC1080_SDA_PIN        PINC
 #define  SENSORS_HDC1080_SDA_BP         4U
 
+#define  SENSORS_HDC1080_ACK_MAX_RETRY  30
 #define  SENSORS_HDC1080_POWER_UP_DELAY 20
 #define  SENSORS_HDC1080_CONV_DELAY     6
 #define  SENSORS_HDC1080_SCL_FREQ       50000
@@ -34,14 +35,15 @@ uint8_t  Sensors_I2C_SDA_State_Get(void);
 uint8_t  Sensors_I2C_Bus_Idle(void);
 void     Sensors_HDC1080_I2C_Start(void);
 void     Sensors_HDC1080_I2C_Stop(void);
-void     Sensors_HDC1080_I2C_Forced_Stop_Clear_Error(void);
+void     Sensors_HDC1080_I2C_Forced_Stop(void);
 void     Sensors_HDC1080_I2C_Send(uint8_t addr);
 uint8_t  Sensors_HDC1080_I2C_Receive(void);
 void     Sensors_HDC1080_I2C_Check_Ack(void);
 void     Sensors_HDC1080_I2C_Send_Ack(void);
+uint8_t  Sensors_HDC1080_Slave_Addr_Send(uint8_t addr);
+
 void     Sensors_HDC1080_Config(uint8_t type);
 void     Sensors_Sample_Temp_RH(void);
-void     Sensors_Sample_RH(void);
 
 uint8_t  Sensors_HDC1080_Address_Get(void);
 uint8_t  Sensors_HDC1080_Status_Get(void);

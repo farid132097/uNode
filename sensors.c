@@ -164,7 +164,7 @@ void Sensors_HDC1080_I2C_Forced_Stop(void){
 
 void Sensors_HDC1080_I2C_Send(uint8_t addr){
     if(HDC1080.Error == 0){
-        for(uint8_t i=0;i<8;i++){
+        for(uint8_t i = 0; i < 8; i++){
             if(addr & 0x80){
                 Sensors_I2C_SDA_State_Set(LOGIC_HIGH);
             }
@@ -187,7 +187,7 @@ uint8_t Sensors_HDC1080_I2C_Receive(void){
         //Set SDA as input
         Sensors_I2C_SDA_State_Set(LOGIC_HIGH);
         _delay_us(SENSORS_HDC1080_HALF_BIT);
-        for(uint8_t i=0;i<8;i++){
+        for(uint8_t i = 0; i < 8; i++){
             val <<= 1;
             if(Sensors_I2C_SDA_State_Get() == LOGIC_HIGH){
                 val |= 1;
@@ -235,7 +235,7 @@ void Sensors_HDC1080_I2C_Send_Ack(void){
 
 uint8_t Sensors_HDC1080_Slave_Addr_Send(uint8_t addr){
     uint8_t cnt = 0, sts;
-    for(;;){
+    while(1){
         Sensors_HDC1080_I2C_Start();
         Sensors_HDC1080_I2C_Send( addr );
         Sensors_HDC1080_I2C_Check_Ack();

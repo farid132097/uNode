@@ -4,7 +4,7 @@
  ; Author        : MD. Faridul Islam (faridmdislam@gmail.com)
  ; Description   : AVR kernel for bare-metal RTOS
  ; Created       : Jul 27, 2025, 09:30 PM
- ; Last Modified : Nov 20, 2025, 04:59 AM
+ ; Last Modified : Nov 29, 2025, 11:32 PM
 
 
 
@@ -175,13 +175,10 @@ KerStack:  .skip KER_STK_SZ*KER_MX_NTSK                   ;KER_STK_SZ bytes for 
 
 
 ;;==============================define global functions starting============================;; 
-.global  Kernel_SysTick_Reg_Init                                                               
-.global  Kernel_SysTick_Val_Get                                                                
-.global  Kernel_SysTick_Val_Safely_Get                                                         
-.global  Kernel_Interrupt_Sts_Get                                                              
-.global  Kernel_Init                                                                           
+.global  Kernel_Tick_Init                                                                      
 .global  Kernel_Task_Create                                                                    
 .global  Kernel_Start_Tasks                                                                    
+.global  Kernel_Init                                                                           
 .global  Kernel_Task_Idle                                                                      
 .global  Kernel_Task_Sleep                                                                     
 .global  Kernel_Task_Constant_Latency                                                          
@@ -196,6 +193,8 @@ KerStack:  .skip KER_STK_SZ*KER_MX_NTSK                   ;KER_STK_SZ bytes for 
 .global  Kernel_High_Prio_Task_ID_Get                                                          
 .global  Kernel_Abs_High_Prio_Task_ID_Get                                                      
 .global  Kernel_CPU_Usage_Get                                                                  
+.global  Kernel_Tick_Val_Get                                                                
+.global  Kernel_Tick_Val_Safely_Get                                                         
 ;;================================define global functions end===============================;; 
 
 
@@ -1171,7 +1170,7 @@ KerStack:  .skip KER_STK_SZ*KER_MX_NTSK                   ;KER_STK_SZ bytes for 
 ;arg registers           : R24(Prescaler), R22(ReloadVal)                                      
 ;return registers        : None                                                                
 ;unsafe access registers : R18, R19, R22, R24, R26(XL), R27(XH), R30(ZL), R31(ZH)              
-Kernel_SysTick_Reg_Init:                                  ;total 11.50uS @8MHz    ( 92 clocks) 
+Kernel_Tick_Init:                                         ;total 11.50uS @8MHz    ( 92 clocks) 
         CLI                                               ;disable global int     (  1 clock ) 
 		KER_DEBUG_PIN_INIT                                ;debug pin init         (  4 clocks) 
         KER_PUSH_MSP_ZP                                   ;push MSP and ZP        ( 18 clocks) 
@@ -1336,7 +1335,7 @@ Kernel_Init:                                              ;total 39.75uS @8MHz  
 		;init timer for kernel                                                                 
 		LDI   R24                , 0x03                   ;set prescaler          (  1 clock ) 
 		LDI   R22                , 0x82                   ;set reload val         (  1 clock ) 
-		CALL  Kernel_SysTick_Reg_Init                     ;init timer             ( 92 clocks) 
+		CALL  Kernel_Tick_Init                            ;init timer             ( 92 clocks) 
 		;create idle task at task_id 0, priority 0xFF (lowest)                                 
 		LDI   R24                , lo8(Kernel_Task_Idle)  ;load func addr low     (  1 clock ) 
 		LDI   R25                , hi8(Kernel_Task_Idle)  ;load func addr high    (  1 clock ) 
@@ -1625,4 +1624,23 @@ Kernel_CPU_Usage_Get:                                     ;total 0.75uS @8MHz   
 		RET                                               ;return from subroutine (  4 clocks) 
 ;;==================================kernel cpu usage get end================================;; 
 
+
+
+
+
+;;=================================kernel tick val get starting=============================;; 
+;used registers          : R22, R23, R24, R25                                                  
+;arg registers           : None                                                                
+;return registers        : R25:R22(TickVal)                                                    
+;unsafe access registers : R22, R23, R24, R25                                                  
+Kernel_Tick_Val_Get:                                      ;total 0.75uS @8MHz     (  6 clocks) 
+		;get cpu usage, return R24                                                             
+		CLI                                               ;disable interrupt      (  1 clock ) 
+		LDS   R22                , KerBase+OFB_TICK0      ;load tick count        (  2 clocks) 
+		LDS   R23                , KerBase+OFB_TICK1      ;load tick count        (  2 clocks) 
+		LDS   R24                , KerBase+OFB_TICK2      ;load tick count        (  2 clocks) 
+		LDS   R25                , KerBase+OFB_TICK3      ;load tick count        (  2 clocks) 
+		SEI                                               ;disable interrupt      (  1 clock ) 
+		RET                                               ;return from subroutine (  4 clocks) 
+;;===================================kernel tick val get end================================;; 
 

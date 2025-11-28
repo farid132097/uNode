@@ -50,6 +50,8 @@ void     nRF24L01P_Transmit_Basic(uint8_t *buf, uint8_t len);
 uint8_t  nRF24L01P_Recieve_Basic(uint8_t *buf);
 uint8_t  nRF24L01P_Transmit_With_ACK(uint8_t *buf, uint8_t len);
 uint8_t  nRF24L01P_Recieve_With_ACK(uint8_t *buf);
+void     nRF24L01P_Error_Handler(void);
+
 
 #endif
 

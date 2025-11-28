@@ -15,7 +15,7 @@ int main(void) {
 	//System frequency 4 MHz
 	Kernel_Clock_Prescale(1);
 	
-	Debug_Init(0);
+	//Debug_Init(0);
 	Kernel_Init();
 	Kernel_Task_Create(Task_RGB_LED,  0);
 	Kernel_Task_Create(Task_Vin_Sense,  1);

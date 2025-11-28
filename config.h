@@ -1,0 +1,8 @@
+
+
+#define DEVICE_NODE_ID              0x10
+#define RGB_LED_TASK_SLEEP_DUR_MS   30000
+#define VIN_TASK_SLEEP_DUR_MS       60000
+#define RADIO_TASK_SLEEP_DUR_MS     300000
+#define SENSOR_TASK_SLEEP_DUR_MS    300000
+

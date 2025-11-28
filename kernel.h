@@ -4,7 +4,7 @@
  * Author        : MD. Faridul Islam (faridmdislam@gmail.com)
  * Description   : AVR kernel for bare-metal RTOS
  * Created       : Jul 27, 2025, 9:30 PM
- * Last Modified : Oct 30, 2025, 9:16 PM
+ * Last Modified : Nov 29, 2025, 11:32 PM
  */
 
 
@@ -122,13 +122,10 @@
 
 
 #ifndef __ASSEMBLER__           //Only accessible via C
-extern void      Kernel_SysTick_Reg_Init(uint8_t presclaer_reg, uint8_t reload_val);
-extern uint64_t  Kernel_SysTick_Val_Get(void);
-extern uint64_t  Kernel_SysTick_Val_Safely_Get(void);
-extern uint8_t   Kernel_Interrupt_Sts_Get(void);
-extern void      Kernel_Init(void);
+extern void      Kernel_Tick_Init(uint8_t presclaer_reg, uint8_t reload_val);
 extern void      Kernel_Task_Create(void (*func)(void), uint8_t priority);
 extern void      Kernel_Start_Tasks(void);
+extern void      Kernel_Init(void);
 extern void      Kernel_Task_Idle(void);
 extern void      Kernel_Task_Sleep(uint16_t val);
 extern void      Kernel_Task_Constant_Latency(uint16_t val);
@@ -143,8 +140,13 @@ extern uint8_t   Kernel_Lowest_Prio_Get(void);
 extern uint8_t   Kernel_High_Prio_Task_ID_Get(void);
 extern uint8_t   Kernel_Abs_High_Prio_Task_ID_Get(void);
 extern uint8_t   Kernel_CPU_Usage_Get(void);
+extern uint32_t  Kernel_Tick_Val_Get(void);
+extern uint32_t  Kernel_Tick_Val_Safely_Get(void);
+
 #endif
 
 
 
 #endif
+
+

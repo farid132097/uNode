@@ -11,6 +11,8 @@ typedef struct peripherals_t{
   uint32_t VinSense;
   uint16_t V3V3RawADC;
   uint32_t V3V3Sense;
+  uint8_t  Error;
+  uint8_t  StickyError;
 }peripherals_t;
 
 
@@ -19,38 +21,62 @@ peripherals_t Peripherals ={
   .VinRawADC  = 0,
   .VinSense   = 0,
   .V3V3RawADC = 0,
-  .V3V3Sense  = 0
+  .V3V3Sense  = 0,
+  .Error      = 0,
+  .StickyError= 0
 };
 
 
 void Peripherals_ADC_Init(void){
+  uint8_t tout = 0;
   if( !(ADCSRA & (1<<ADEN)) ){
     ADMUX   = (1<<REFS1)|(1<<REFS0)|0x0F;
     ADCSRA  = (1<<ADPS1)|(1<<ADPS2);
     ADCSRA |= (1<<ADEN) |(1<<ADSC);
     while (!(ADCSRA & (1<<ADIF))) {
       //add timeout management
+      tout++;
+      _delay_us(10);
+      if(tout > 200){
+        Peripherals.Error = 0x01;
+        break;
+      }
+
     }
   }
 }
 
 uint16_t Peripherals_ADC_Sample(uint8_t channel, uint8_t nsamples){
-  uint8_t  temp;
+  uint8_t  temp, tout;
   uint32_t val = 0;
   Peripherals_ADC_Init();
-  temp  = ADMUX;
-  temp &= 0xF0;
-  temp |= channel;
-  ADMUX = temp;
-  _delay_us(500);
-  for(uint8_t i=0; i<nsamples; i++){
-    ADCSRA |= (1<<ADSC);
-    while (!(ADCSRA & (1<<ADIF))) {
-      //add timeout management
+  if(Peripherals.Error == 0){
+    temp  = ADMUX;
+    temp &= 0xF0;
+    temp |= channel;
+    ADMUX = temp;
+    _delay_us(500);
+    for(uint8_t i=0; i<nsamples; i++){
+      tout = 0;
+      ADCSRA |= (1<<ADSC);
+      while (!(ADCSRA & (1<<ADIF))) {
+        //add timeout management
+        tout++;
+        _delay_us(10);
+        if(tout > 200){
+          Peripherals.Error = 0x01;
+          break;
+        }
+      }
+      val += ADCW;
     }
-    val += ADCW;
+    val /= nsamples;
   }
-  val /= nsamples;
+  else{
+    Peripherals.StickyError = Peripherals.Error;
+    Peripherals.Error = 0;
+    Peripherals_ADC_Init();
+  }
   return (uint16_t)val;
 }
 

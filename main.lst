@@ -16,54 +16,49 @@
   24 0000 81E0      		ldi r24,lo8(1)
   25 0002 0E94 0000 		call Kernel_Clock_Prescale
   26               	.LM3:
-  27 0006 80E0      		ldi r24,lo8(0)
-  28 0008 90E0      		ldi r25,hi8(0)
-  29 000a 0E94 0000 		call Debug_Init
-  30               	.LM4:
-  31 000e 0E94 0000 		call Kernel_Init
-  32               	.LM5:
-  33 0012 80E0      		ldi r24,lo8(gs(Task_RGB_LED))
-  34 0014 90E0      		ldi r25,hi8(gs(Task_RGB_LED))
-  35 0016 60E0      		ldi r22,lo8(0)
-  36 0018 0E94 0000 		call Kernel_Task_Create
-  37               	.LM6:
-  38 001c 80E0      		ldi r24,lo8(gs(Task_Vin_Sense))
-  39 001e 90E0      		ldi r25,hi8(gs(Task_Vin_Sense))
-  40 0020 61E0      		ldi r22,lo8(1)
-  41 0022 0E94 0000 		call Kernel_Task_Create
-  42               	.LM7:
-  43 0026 80E0      		ldi r24,lo8(gs(Task_Radio))
-  44 0028 90E0      		ldi r25,hi8(gs(Task_Radio))
-  45 002a 62E0      		ldi r22,lo8(2)
-  46 002c 0E94 0000 		call Kernel_Task_Create
-  47               	.LM8:
-  48 0030 80E0      		ldi r24,lo8(gs(Task_Sensor))
-  49 0032 90E0      		ldi r25,hi8(gs(Task_Sensor))
-  50 0034 63E0      		ldi r22,lo8(3)
-  51 0036 0E94 0000 		call Kernel_Task_Create
+  27 0006 0E94 0000 		call Kernel_Init
+  28               	.LM4:
+  29 000a 80E0      		ldi r24,lo8(gs(Task_RGB_LED))
+  30 000c 90E0      		ldi r25,hi8(gs(Task_RGB_LED))
+  31 000e 60E0      		ldi r22,lo8(0)
+  32 0010 0E94 0000 		call Kernel_Task_Create
+  33               	.LM5:
+  34 0014 80E0      		ldi r24,lo8(gs(Task_Vin_Sense))
+  35 0016 90E0      		ldi r25,hi8(gs(Task_Vin_Sense))
+  36 0018 61E0      		ldi r22,lo8(1)
+  37 001a 0E94 0000 		call Kernel_Task_Create
+  38               	.LM6:
+  39 001e 80E0      		ldi r24,lo8(gs(Task_Radio))
+  40 0020 90E0      		ldi r25,hi8(gs(Task_Radio))
+  41 0022 62E0      		ldi r22,lo8(2)
+  42 0024 0E94 0000 		call Kernel_Task_Create
+  43               	.LM7:
+  44 0028 80E0      		ldi r24,lo8(gs(Task_Sensor))
+  45 002a 90E0      		ldi r25,hi8(gs(Task_Sensor))
+  46 002c 63E0      		ldi r22,lo8(3)
+  47 002e 0E94 0000 		call Kernel_Task_Create
+  48               	.LM8:
+  49 0032 80E0      		ldi r24,lo8(gs(Task_Disable_Peripherals))
+  50 0034 90E0      		ldi r25,hi8(gs(Task_Disable_Peripherals))
+  51 0036 0E94 0000 		call Kernel_PreSleep_Hook
   52               	.LM9:
-  53 003a 80E0      		ldi r24,lo8(gs(Task_Disable_Peripherals))
-  54 003c 90E0      		ldi r25,hi8(gs(Task_Disable_Peripherals))
-  55 003e 0E94 0000 		call Kernel_PreSleep_Hook
-  56               	.LM10:
-  57 0042 0E94 0000 		call Kernel_Start_Tasks
-  58               	.L2:
-  59 0046 00C0      		rjmp .L2
-  60               	.LFE6:
-  86               	.Letext0:
+  53 003a 0E94 0000 		call Kernel_Start_Tasks
+  54               	.L2:
+  55 003e 00C0      		rjmp .L2
+  56               	.LFE6:
+  82               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\farid\AppData\Local\Temp/ccgRHsiB.s:2      *ABS*:0000003f __SREG__
-C:\Users\farid\AppData\Local\Temp/ccgRHsiB.s:3      *ABS*:0000003e __SP_H__
-C:\Users\farid\AppData\Local\Temp/ccgRHsiB.s:4      *ABS*:0000003d __SP_L__
-C:\Users\farid\AppData\Local\Temp/ccgRHsiB.s:5      *ABS*:00000034 __CCP__
-C:\Users\farid\AppData\Local\Temp/ccgRHsiB.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\farid\AppData\Local\Temp/ccgRHsiB.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\farid\AppData\Local\Temp/ccgRHsiB.s:18     .text:00000000 main
+C:\Users\farid\AppData\Local\Temp/cccsIK9h.s:2      *ABS*:0000003f __SREG__
+C:\Users\farid\AppData\Local\Temp/cccsIK9h.s:3      *ABS*:0000003e __SP_H__
+C:\Users\farid\AppData\Local\Temp/cccsIK9h.s:4      *ABS*:0000003d __SP_L__
+C:\Users\farid\AppData\Local\Temp/cccsIK9h.s:5      *ABS*:00000034 __CCP__
+C:\Users\farid\AppData\Local\Temp/cccsIK9h.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\farid\AppData\Local\Temp/cccsIK9h.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\farid\AppData\Local\Temp/cccsIK9h.s:18     .text:00000000 main
 
 UNDEFINED SYMBOLS
 Kernel_Clock_Prescale
-Debug_Init
 Kernel_Init
 Task_RGB_LED
 Kernel_Task_Create

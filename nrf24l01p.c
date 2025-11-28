@@ -13,6 +13,13 @@
 #define nRF24L01P_CE_bp            1
 
 #define nRF24L01P_PACKET_LEN       32
+#define nRF24L01P_CRC_CALC_LEN     nRF24L01P_PACKET_LEN-2
+#define nRF24L01P_CRC16_L_POS      nRF24L01P_PACKET_LEN-1
+#define nRF24L01P_CRC16_H_POS      nRF24L01P_PACKET_LEN-2
+#define nRF24L01P_DATA_LEN_POS     nRF24L01P_PACKET_LEN-3
+#define nRF24L01P_DST_ADDR_POS     nRF24L01P_PACKET_LEN-4
+#define nRF24L01P_SRC_ADDR_POS     nRF24L01P_PACKET_LEN-5
+
 
 typedef struct nrf24l01p_address_t{
   uint8_t              Own           ;
@@ -191,10 +198,10 @@ void nRF24L01P_ReadWrite_Register(uint8_t reg, uint8_t rw, uint8_t *data, uint8_
     nRF24L01P_CSN_Low();
     if(rw==0){
       reg|=0x20;
-	  nRF24L01P_SPI_Transfer(reg);
-	  for(uint8_t i=0;i<len;i++){
-	    nRF24L01P_SPI_Transfer(data[i]);
-	  }
+	    nRF24L01P_SPI_Transfer(reg);
+	    for(uint8_t i=0;i<len;i++){
+	      nRF24L01P_SPI_Transfer(data[i]);
+	    }
     }else{
       nRF24L01P_SPI_Transfer(reg);
       for(uint8_t i=0;i<len;i++){
@@ -481,12 +488,12 @@ void nRF24L01P_Init(void){
 void nRF24L01P_Transmit_Basic(uint8_t *buf, uint8_t len){
   nRF24L01P_Error_Clear();
   nRF24L01P_Set_Mode_Tx();
-  buf[nRF24L01P_PACKET_LEN-5]=nRF24L01P->Address.Own;
-  buf[nRF24L01P_PACKET_LEN-4]=nRF24L01P->Address.Dest;
-  buf[nRF24L01P_PACKET_LEN-3]=len;
+  buf[nRF24L01P_SRC_ADDR_POS]=nRF24L01P->Address.Own;
+  buf[nRF24L01P_DST_ADDR_POS]=nRF24L01P->Address.Dest;
+  buf[nRF24L01P_DATA_LEN_POS]=len;
   uint16_t temp=nRF24L01P_Calcuate_CRC_Block(buf, 30);
-  buf[nRF24L01P_PACKET_LEN-2]=(temp >> 8);
-  buf[nRF24L01P_PACKET_LEN-1]=(temp & 0xFF);
+  buf[nRF24L01P_CRC16_H_POS]=(temp >> 8);
+  buf[nRF24L01P_CRC16_L_POS]=(temp & 0xFF);
   nRF24L01P_Write_Data_To_Transmit_Buffer(buf);
   nRF24L01P_CE_High();
   nRF24L01P_Wait_Till_Transmission_Completes();
@@ -496,20 +503,21 @@ void nRF24L01P_Transmit_Basic(uint8_t *buf, uint8_t len){
 
 uint8_t nRF24L01P_Recieve_Basic(uint8_t *buf){
   uint8_t sts=0;
+  uint16_t rec_crc, calc_crc;
   nRF24L01P_Error_Clear();
   nRF24L01P->Config.RxTicks=0;
   nRF24L01P_Set_Mode_Rx();
   while(nRF24L01P->Config.RxTicks < nRF24L01P->Config.RxTimeout){
     if(nRF24L01P_Receive_Buffer_Not_Empty()){
       nRF24L01P_Read_Data_From_Receive_Buffer(buf);
-	  uint16_t rec_crc=buf[nRF24L01P_PACKET_LEN-2];
-	  rec_crc<<=8;
-	  rec_crc|=buf[nRF24L01P_PACKET_LEN-1];
-      uint16_t calc_crc=nRF24L01P_Calcuate_CRC_Block(buf, nRF24L01P_PACKET_LEN-2);
+	    rec_crc=buf[nRF24L01P_CRC16_H_POS];
+	    rec_crc<<=8;
+	    rec_crc|=buf[nRF24L01P_CRC16_L_POS];
+      calc_crc=nRF24L01P_Calcuate_CRC_Block(buf, nRF24L01P_CRC_CALC_LEN);
       if(rec_crc == calc_crc){
-		sts=1;
-		break;
-	  }
+		    sts=1;
+		    break;
+	    }
     }
     _delay_us(100);
     nRF24L01P->Config.RxTicks++;
@@ -670,3 +678,12 @@ void loop() {
   delay(500);
 
 }*/
+
+
+void nRF24L01P_Error_Handler(void){
+  if(nRF24L01P_No_Error() == 0){
+    nRF24L01P_Error_Clear();
+    nRF24L01P_Disable();
+    nRF24L01P_Init();
+  }
+}

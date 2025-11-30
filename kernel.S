@@ -418,8 +418,10 @@ KerStack:  .skip KER_STK_SZ*KER_MX_NTSK                   ;KER_STK_SZ bytes for 
 ;return registers        : None                                                                
 ;unsafe access registers : R18                                                                 
 .macro  KER_COUNTER_RELOAD                                ;total 0.5uS @8MHz      (  4 clocks) 
+        #ifdef KER_TIMER0_AS_TICK_SRC                                                          
         LDS   R18                , KerBase+OFB_RLD        ;load reload value      (  2 clocks) 
 		STS   SRTCNT0            , R18                    ;Set value to TCNT0     (  2 clocks) 
+		#endif                                                                                 
 .endm                                                                                          
 ;;=================================reload counter value end=================================;; 
 
@@ -1634,13 +1636,13 @@ Kernel_CPU_Usage_Get:                                     ;total 0.75uS @8MHz   
 ;return registers        : R25:R22(TickVal)                                                    
 ;unsafe access registers : R22, R23, R24, R25                                                  
 Kernel_Tick_Val_Get:                                      ;total 0.75uS @8MHz     (  6 clocks) 
-		;get cpu usage, return R24                                                             
+        IN    R18                , IOSREG                 ;save SREG              (  1 clock ) 
 		CLI                                               ;disable interrupt      (  1 clock ) 
 		LDS   R22                , KerBase+OFB_TICK0      ;load tick count        (  2 clocks) 
 		LDS   R23                , KerBase+OFB_TICK1      ;load tick count        (  2 clocks) 
 		LDS   R24                , KerBase+OFB_TICK2      ;load tick count        (  2 clocks) 
 		LDS   R25                , KerBase+OFB_TICK3      ;load tick count        (  2 clocks) 
-		SEI                                               ;disable interrupt      (  1 clock ) 
+		OUT   IOSREG             , R18                    ;restore SREG           (  1 clock ) 
 		RET                                               ;return from subroutine (  4 clocks) 
 ;;===================================kernel tick val get end================================;; 
 

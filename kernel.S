@@ -119,7 +119,7 @@
 
 
 ;;===============================define vector section starting=============================;; 
-;.section .vectors, "ax", @progbits                                                             
+.section .vectors, "ax", @progbits                                                             
                                                                                                
 ;.org    0x000C                                            ;isr location for wdt                
 ;        JMP   __vector_6                                                                       
@@ -756,23 +756,24 @@ KerStack:  .skip KER_STK_SZ*KER_MX_NTSK                   ;KER_STK_SZ bytes for 
 ;arg registers           : None                                                                
 ;return registers        : None                                                                
 ;unsafe access registers : R18, R19                                                            
-.macro  KER_TICK_INCREMENT                                ;total 3.25uS @8MHz     ( 26 clocks) 
-		LDS   R18                , KerBase+OFB_TICK0      ;load Byte0             (  2 clocks) 
-		INC   R18                                         ;add 1 with Byte0       (  1 clock ) 
-		STS   KerBase+OFB_TICK0  , R18                    ;set Byte0              (  2 clocks) 
-		LDI   R19                , 0x00                   ;clear reg              (  1 clock ) 
-		LDS   R18                , KerBase+OFB_TICK1      ;load Byte1             (  2 clocks) 
-		ADC   R18                , R19                    ;add carry with Byte1   (  1 clock ) 
-		STS   KerBase+OFB_TICK1  , R18                    ;set Byte1              (  2 clocks) 
-		LDS   R18                , KerBase+OFB_TICK2      ;load Byte2             (  2 clocks) 
-		ADC   R18                , R19                    ;add carry with Byte2   (  1 clock ) 
-		STS   KerBase+OFB_TICK2  , R18                    ;set Byte2              (  2 clocks) 
-		LDS   R18                , KerBase+OFB_TICK3      ;load Byte3             (  2 clocks) 
-		ADC   R18                , R19                    ;add carry with Byte3   (  1 clock ) 
-		STS   KerBase+OFB_TICK3  , R18                    ;set Byte3              (  2 clocks) 
-		LDS   R18                , KerBase+OFB_TICK4      ;load Byte4             (  2 clocks) 
-		ADC   R18                , R19                    ;add carry with Byte4   (  1 clock ) 
-		STS   KerBase+OFB_TICK4  , R18                    ;set Byte4              (  2 clocks) 
+.macro  KER_TICK_INCREMENT                                ;total 3.25uS @8MHz     ( 27 clocks) 
+        LDI   R18                , 0x01                   ;load 1                 (  1 clock ) 
+		LDS   R19                , KerBase+OFB_TICK0      ;load Byte0             (  2 clocks) 
+		ADD   R19                , R18                    ;add 1 with current val (  1 clock ) 
+		STS   KerBase+OFB_TICK0  , R19                    ;set Byte0              (  2 clocks) 
+		LDI   R18                , 0x00                   ;clear reg              (  1 clock ) 
+		LDS   R19                , KerBase+OFB_TICK1      ;load Byte1             (  2 clocks) 
+		ADC   R19                , R18                    ;add carry with Byte1   (  1 clock ) 
+		STS   KerBase+OFB_TICK1  , R19                    ;set Byte1              (  2 clocks) 
+		LDS   R19                , KerBase+OFB_TICK2      ;load Byte2             (  2 clocks) 
+		ADC   R19                , R18                    ;add carry with Byte2   (  1 clock ) 
+		STS   KerBase+OFB_TICK2  , R19                    ;set Byte2              (  2 clocks) 
+		LDS   R19                , KerBase+OFB_TICK3      ;load Byte3             (  2 clocks) 
+		ADC   R19                , R18                    ;add carry with Byte3   (  1 clock ) 
+		STS   KerBase+OFB_TICK3  , R19                    ;set Byte3              (  2 clocks) 
+		LDS   R19                , KerBase+OFB_TICK4      ;load Byte4             (  2 clocks) 
+		ADC   R19                , R18                    ;add carry with Byte4   (  1 clock ) 
+		STS   KerBase+OFB_TICK4  , R19                    ;set Byte4              (  2 clocks) 
 .endm                                                                                          
 ;;=================================increment tick counter end===============================;; 
 

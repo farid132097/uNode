@@ -103,7 +103,7 @@ __attribute__((noreturn)) void Task_Radio(void){
     TaskData.Vin    = Peripherals_Vin_Get();
     TaskData.Buf[5] = TaskData.Vin >> 8;
     TaskData.Buf[6] = TaskData.Vin & 0xFF;
-
+    
     //Process Analog Temp Data
     TaskData.ATemp  = Peripherals_Analog_Temp_Get(); 
     TaskData.Buf[7] = TaskData.ATemp >> 8;
@@ -113,12 +113,12 @@ __attribute__((noreturn)) void Task_Radio(void){
     TaskData.DTemp  = Peripherals_Digital_Temp_Get();
     TaskData.Buf[9]  = TaskData.DTemp >> 8;
     TaskData.Buf[10] = TaskData.DTemp & 0xFF;
-
+    
     //Process Digital RH Data
     TaskData.DRH    = Peripherals_Digital_RH_Get();
     TaskData.Buf[11] = TaskData.DRH ;
-
-
+    
+    
     Debug_Tx_Byte(TaskData.Buf[0]);
     Debug_Tx_Byte(TaskData.Buf[1]);
     Debug_Tx_Byte(TaskData.Buf[2]);
@@ -156,3 +156,22 @@ __attribute__((noreturn)) void Task_Sensor(void){
   }
 }
 
+__attribute__((noreturn)) void Task_Print_Test(void){
+  
+  uint8_t tmp[4];
+  Debug_Init(0);
+  
+  while(1){
+    
+    tmp[1] = (Kernel_Tick_Val_Get() >> 24) & 0xFF;
+    tmp[2] = (Kernel_Tick_Val_Get() >> 16) & 0xFF;
+    tmp[3] = (Kernel_Tick_Val_Get() >>  8) & 0xFF;
+    tmp[4] = (Kernel_Tick_Val_Get() >>  0) & 0xFF;
+    Debug_Tx_Byte(tmp[0]);
+    Debug_Tx_Byte(tmp[1]);
+    Debug_Tx_Byte(tmp[2]);
+    Debug_Tx_Byte(tmp[3]);
+    Kernel_Task_Sleep(3000/KER_TICK_TIME);
+	
+  }
+}

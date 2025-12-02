@@ -87,6 +87,10 @@ __attribute__((noreturn)) void Task_Radio(void){
   //Inrush current prevention at startup
   Kernel_Task_Sleep(2000/KER_TICK_TIME);
 
+  #ifdef DEBUG_ENABLE_WITH_UBRR_VAL
+  Debug_Init(DEBUG_ENABLE_WITH_UBRR_VAL);
+  #endif
+
   while(1){
     
     //Process Node ID
@@ -110,15 +114,15 @@ __attribute__((noreturn)) void Task_Radio(void){
     TaskData.Buf[8] = TaskData.ATemp & 0xFF;
     
     //Process Digital Temp Data
-    TaskData.DTemp  = Peripherals_Digital_Temp_Get();
+    TaskData.DTemp   = Peripherals_Digital_Temp_Get();
     TaskData.Buf[9]  = TaskData.DTemp >> 8;
     TaskData.Buf[10] = TaskData.DTemp & 0xFF;
     
     //Process Digital RH Data
-    TaskData.DRH    = Peripherals_Digital_RH_Get();
+    TaskData.DRH     = Peripherals_Digital_RH_Get();
     TaskData.Buf[11] = TaskData.DRH ;
     
-    
+    #ifdef DEBUG_ENABLE_WITH_UBRR_VAL
     Debug_Tx_Byte(TaskData.Buf[0]);
     Debug_Tx_Byte(TaskData.Buf[1]);
     Debug_Tx_Byte(TaskData.Buf[2]);
@@ -131,7 +135,7 @@ __attribute__((noreturn)) void Task_Radio(void){
     Debug_Tx_Byte(TaskData.Buf[9]);
     Debug_Tx_Byte(TaskData.Buf[10]);
     Debug_Tx_Byte(TaskData.Buf[11]);
-
+    #endif
 
     nRF24L01P_WakeUp();
     nRF24L01P_Transmit_Basic(TaskData.Buf, 12);
@@ -156,22 +160,3 @@ __attribute__((noreturn)) void Task_Sensor(void){
   }
 }
 
-__attribute__((noreturn)) void Task_Print_Test(void){
-  
-  uint8_t tmp[4];
-  Debug_Init(0);
-  
-  while(1){
-    
-    tmp[1] = (Kernel_Tick_Val_Get() >> 24) & 0xFF;
-    tmp[2] = (Kernel_Tick_Val_Get() >> 16) & 0xFF;
-    tmp[3] = (Kernel_Tick_Val_Get() >>  8) & 0xFF;
-    tmp[4] = (Kernel_Tick_Val_Get() >>  0) & 0xFF;
-    Debug_Tx_Byte(tmp[0]);
-    Debug_Tx_Byte(tmp[1]);
-    Debug_Tx_Byte(tmp[2]);
-    Debug_Tx_Byte(tmp[3]);
-    Kernel_Task_Sleep(3000/KER_TICK_TIME);
-	
-  }
-}

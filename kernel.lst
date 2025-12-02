@@ -7,7 +7,7 @@
    4               	 ; Author        : MD. Faridul Islam (faridmdislam@gmail.com)
    5               	 ; Description   : AVR kernel for bare-metal RTOS
    6               	 ; Created       : Jul 27, 2025, 09:30 PM
-   7               	 ; Last Modified : Nov 29, 2025, 11:32 PM
+   7               	 ; Last Modified : Dec 03, 2025, 01:18 AM
    8               	
    9               	
   10               	
@@ -550,7 +550,7 @@
  119               	
  120               	
  121               	;;===============================define vector section starting=============================;; 
- 122               	.section .vectors, "ax", @progbits                                                             
+ 122               	;.section .vectors, "ax", @progbits                                                             
  123               	                                                                                               
  124               	;.org    0x000C                                            ;isr location for wdt                
  125               	;        JMP   __vector_6                                                                       

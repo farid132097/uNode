@@ -11,7 +11,6 @@ void     Task_RGB_LED(void);
 void     Task_Vin_Sense(void);
 void     Task_Radio(void);
 void     Task_Sensor(void);
-void     Task_Print_Test(void);
 
 #endif
 

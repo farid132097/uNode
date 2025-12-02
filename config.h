@@ -6,3 +6,4 @@
 #define RADIO_TASK_SLEEP_DUR_MS     300000
 #define SENSOR_TASK_SLEEP_DUR_MS    300000
 
+//#define DEBUG_ENABLE_WITH_UBRR_VAL  0                

@@ -4,7 +4,7 @@
  * Author        : MD. Faridul Islam (faridmdislam@gmail.com)
  * Description   : AVR kernel for bare-metal RTOS
  * Created       : Jul 27, 2025, 9:30 PM
- * Last Modified : Dec 03, 2025, 01:18 AM
+ * Last Modified : Dec 08, 2025, 12:19 AM
  */
 
 
@@ -18,15 +18,15 @@
 //#define  KER_DBG_ENABLE
 
 //Uncomment only one
-//#define  KER_TIMER0_AS_TICK_SRC
+//#define  KER_TIMER2_AS_TICK_SRC
 //#define  KER_WDT_AS_TICK_SRC
-#define  KER_TOSC_AS_TICK_SRC
+#define  KER_TIMER2_ASYNC_AS_TICK_SRC
 
 //Uncomment only one
 //#define  KER_WDT_TICK_16MS
 //#define  KER_WDT_TICK_32MS
 //#define  KER_WDT_TICK_64MS
-#define  KER_WDT_TICK_125MS
+//#define  KER_WDT_TICK_125MS
 //#define  KER_WDT_TICK_250MS
 //#define  KER_WDT_TICK_500MS
 //#define  KER_WDT_TICK_1000MS
@@ -61,61 +61,69 @@
 
 
 //Do not change below section
-#ifdef KER_TIMER0_AS_TICK_SRC
-#define  KER_SLEEP_MODE_IDLE
-#define KER_TICK_TIME 1U
-#endif
 
-#ifdef KER_WDT_AS_TICK_SRC
+//Timer2 is used as tick source
+//High performance, higher power consumption
+//Timer2 is occupied, No external component required
+#ifdef KER_TIMER2_AS_TICK_SRC
+#define  KER_SLEEP_MODE_IDLE
+#define  KER_TICK_TIME 1U
+
+//WDT is used as tick source
+//Lower performance, lower power consumption
+//WDT is occupied, No external component required
+#elif defined(KER_WDT_AS_TICK_SRC)
 #define  KER_SLEEP_MODE_POWER_DOWN
 #ifdef KER_WDT_TICK_16MS
-#define KER_TICK_TIME 16U
-#endif
-#ifdef KER_WDT_TICK_32MS
-#define KER_TICK_TIME 32U
-#endif
-#ifdef KER_WDT_TICK_64MS
-#define KER_TICK_TIME 64U
-#endif
-#ifdef KER_WDT_TICK_125MS
-#define KER_TICK_TIME 125U
-#endif
-#ifdef KER_WDT_TICK_250MS
-#define KER_TICK_TIME 250U
-#endif
-#ifdef KER_WDT_TICK_500MS
-#define KER_TICK_TIME 500L
-#endif
-#ifdef KER_WDT_TICK_1000MS
-#define KER_TICK_TIME 1000L
-#endif
+#define  KER_TICK_TIME 16U
+#elif defined(KER_WDT_TICK_32MS)
+#define  KER_TICK_TIME 32U
+#elif defined(KER_WDT_TICK_64MS)
+#define  KER_TICK_TIME 64U
+#elif defined(KER_WDT_TICK_125MS)
+#define  KER_TICK_TIME 125U
+#elif defined(KER_WDT_TICK_250MS)
+#define  KER_TICK_TIME 250U
+#elif defined(KER_WDT_TICK_500MS)
+#define  KER_TICK_TIME 500L
+#elif defined(KER_WDT_TICK_1000MS)
+#define  KER_TICK_TIME 1000L
+#else
+#define  KER_TICK_TIME 16U
 #endif
 
-//Do not change below section
-#ifdef KER_TOSC_AS_TICK_SRC
+//Timer2 Async is used as tick source
+//Balanced performance, lowest power consumption
+//Timer2 is occupied, external 32.768KHz crystal required
+#elif defined(KER_TIMER2_ASYNC_AS_TICK_SRC)
 #define  KER_SLEEP_MODE_POWER_SAVE
 #ifdef KER_TOSC_TICK_1MS
-#define KER_TICK_TIME 1U
+#define  KER_TICK_TIME 1U
+#elif defined(KER_TOSC_TICK_10MS)
+#define  KER_TICK_TIME 10U
+#elif defined(KER_TOSC_TICK_50MS)
+#define  KER_TICK_TIME 50U
+#elif defined(KER_TOSC_TICK_100MS)
+#define  KER_TICK_TIME 100U
+#elif defined(KER_TOSC_TICK_250MS)
+#define  KER_TICK_TIME 250L
+#elif defined(KER_TOSC_TICK_500MS)
+#define  KER_TICK_TIME 500L
+#elif defined(KER_TOSC_TICK_1000MS)
+#define  KER_TICK_TIME 1000L
+#else
+#define  KER_TICK_TIME 1U
 #endif
-#ifdef KER_TOSC_TICK_10MS
-#define KER_TICK_TIME 10U
+
+//Default: Timer2 is used as tick source
+//High performance, higher power consumption
+//Timer2 is occupied, No external component required
+#else
+#define  KER_SLEEP_MODE_IDLE
+#define  KER_TICK_TIME 1U
+#define  KER_IDLE_AS_SLEEP
 #endif
-#ifdef KER_TOSC_TICK_50MS
-#define KER_TICK_TIME 50U
-#endif
-#ifdef KER_TOSC_TICK_100MS
-#define KER_TICK_TIME 100U
-#endif
-#ifdef KER_TOSC_TICK_250MS
-#define KER_TICK_TIME 250L
-#endif
-#ifdef KER_TOSC_TICK_500MS
-#define KER_TICK_TIME 500L
-#endif
-#ifdef KER_TOSC_TICK_1000MS
-#define KER_TICK_TIME 1000L
-#endif
-#endif
+
 
 
 
@@ -148,5 +156,4 @@ extern uint32_t  Kernel_Tick_Val_Safely_Get(void);
 
 
 #endif
-
 

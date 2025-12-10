@@ -19,6 +19,7 @@ typedef struct task_data_t
   uint16_t DRH;
   uint8_t  Buf[32];
   uint32_t uptime;
+  uint16_t CRC16;
 }task_data_t;
 
 task_data_t TaskData;
@@ -121,6 +122,11 @@ __attribute__((noreturn)) void Task_Radio(void){
     //Process Digital RH Data
     TaskData.DRH     = Peripherals_Digital_RH_Get();
     TaskData.Buf[11] = TaskData.DRH ;
+
+    //Process CRC16
+    TaskData.CRC16   = nRF24L01P_Calcuate_CRC_Block(TaskData.Buf, 11);
+    TaskData.Buf[12] = TaskData.CRC16 >> 8;
+    TaskData.Buf[13] = TaskData.CRC16 & 0xFF;
     
     #ifdef DEBUG_ENABLE_WITH_UBRR_VAL
     Debug_Tx_Byte(TaskData.Buf[0]);
@@ -135,10 +141,12 @@ __attribute__((noreturn)) void Task_Radio(void){
     Debug_Tx_Byte(TaskData.Buf[9]);
     Debug_Tx_Byte(TaskData.Buf[10]);
     Debug_Tx_Byte(TaskData.Buf[11]);
+    Debug_Tx_Byte(TaskData.Buf[12]);
+    Debug_Tx_Byte(TaskData.Buf[13]);
     #endif
 
     nRF24L01P_WakeUp();
-    nRF24L01P_Transmit_Basic(TaskData.Buf, 12);
+    nRF24L01P_Transmit_Basic(TaskData.Buf, 14);
     nRF24L01P_Deep_Sleep();
     nRF24L01P_Error_Handler();
     Kernel_Task_Sleep(RADIO_TASK_SLEEP_DUR_MS/KER_TICK_TIME);

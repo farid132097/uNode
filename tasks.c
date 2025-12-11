@@ -124,7 +124,7 @@ __attribute__((noreturn)) void Task_Radio(void){
     TaskData.Buf[11] = TaskData.DRH ;
 
     //Process CRC16
-    TaskData.CRC16   = nRF24L01P_Calcuate_CRC_Block(TaskData.Buf, 11);
+    TaskData.CRC16   = nRF24L01P_Calcuate_CRC_Block(TaskData.Buf, 12);
     TaskData.Buf[12] = TaskData.CRC16 >> 8;
     TaskData.Buf[13] = TaskData.CRC16 & 0xFF;
     

@@ -138,7 +138,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x1d66
+.text           0x00000000     0x1d72
  *(.vectors)
  .vectors       0x00000000       0x68 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
                 0x00000000                __vectors
@@ -277,91 +277,91 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x000002ba                nRF24L01P_CE_Low
                 0x0000052e                nRF24L01P_Read_Data_From_Receive_Buffer
                 0x000003fc                nRF24L01P_ReadWrite_Register
- .text          0x00000c18      0x182 peripherals.o
-                0x00000d88                Peripherals_Analog_Temp_Get
-                0x00000d74                Peripherals_Vin_RawADC_Get
-                0x00000d7e                Peripherals_Vin_Get
-                0x00000d94                Peripherals_Digital_Temp_Get
+ .text          0x00000c18      0x18e peripherals.o
+                0x00000d94                Peripherals_Analog_Temp_Get
+                0x00000d80                Peripherals_Vin_RawADC_Get
+                0x00000d8a                Peripherals_Vin_Get
+                0x00000da0                Peripherals_Digital_Temp_Get
                 0x00000c18                Peripherals_ADC_Init
-                0x00000d8e                Peripherals_Digital_RH_Get
+                0x00000d9a                Peripherals_Digital_RH_Get
                 0x00000d18                Peripherals_Vin_Sense_Sample
                 0x00000c5a                Peripherals_ADC_Sample
- .text          0x00000d9a       0x2e rgb.o
-                0x00000d9a                RGB_Init
-                0x00000da8                RGB_Set_State
- .text          0x00000dc8      0x50c sensors.o
-                0x000012c0                Sensors_HDC1080_RH_Get
-                0x00000e58                Sensors_I2C_SDA_State_Get
-                0x00000e76                Sensors_I2C_Bus_Idle
-                0x000012b6                Sensors_HDC1080_Temp_Get
-                0x000012ca                Sensors_NTC_Temp_Get
-                0x00001080                Sensors_HDC1080_Slave_Addr_Send
-                0x000010ba                Sensors_HDC1080_Config
-                0x000012aa                Sensors_HDC1080_Error_Get
-                0x00000f0c                Sensors_HDC1080_I2C_Forced_Stop
-                0x00000fa4                Sensors_HDC1080_I2C_Receive
-                0x00000ec8                Sensors_HDC1080_I2C_Stop
-                0x00000e28                Sensors_I2C_SCL_State_Set
-                0x000012a4                Sensors_HDC1080_Status_Get
-                0x0000104a                Sensors_HDC1080_I2C_Send_Ack
-                0x0000111a                Sensors_Sample_Temp_RH
-                0x00000f50                Sensors_HDC1080_I2C_Send
-                0x0000129e                Sensors_HDC1080_Address_Get
-                0x00000dc8                Sensors_HDC1080_Struct_Init
-                0x00000e40                Sensors_I2C_SDA_State_Set
-                0x00000e8a                Sensors_HDC1080_I2C_Start
-                0x00000ffe                Sensors_HDC1080_I2C_Check_Ack
-                0x00000e16                Sensors_Init
-                0x000012b0                Sensors_HDC1080_Sticky_Error_Get
- .text          0x000012d4      0x950 kernel.o
-                0x000014b0                Kernel_Tick_Init
-                0x000019ee                Kernel_Task_Constant_Latency
-                0x00001c00                Kernel_Abs_High_Prio_Task_ID_Get
-                0x00001c0c                Kernel_Tick_Val_Get
-                0x00001858                Kernel_Task_Sleep
-                0x00001bb8                Kernel_Task_Sleep_Time_Get
-                0x00001be2                Kernel_Task_Prio_Get
-                0x00001b9c                Kernel_PreSleep_Hook
-                0x00001bf2                Kernel_Lowest_Prio_Get
-                0x00001c06                Kernel_CPU_Usage_Get
-                0x00001bdc                Kernel_NTask_Get
-                0x0000182a                Kernel_Task_Idle
-                0x00001ba2                Kernel_Clock_Prescale
-                0x0000163a                Kernel_Start_Tasks
-                0x00001bcc                Kernel_Task_Status_Get
-                0x000012d4                __vector_7
-                0x000017cc                Kernel_Init
-                0x0000154a                Kernel_Task_Create
-                0x00001a1a                Kernel_Task_Constant_Latency_Sleep
-                0x00001bf8                Kernel_High_Prio_Task_ID_Get
- .text          0x00001c24       0xbc debug.o
-                0x00001c44                Debug_Tx_Byte
-                0x00001c82                Debug_Tx_Word_Conf
-                0x00001cd2                Debug_Tx_RAM_Area
-                0x00001c24                Debug_Init
-                0x00001c92                Debug_Tx_DWord_Conf
-                0x00001cba                Debug_Tx_From_RAM
-                0x00001c56                Debug_Tx_Word
-                0x00001c66                Debug_Tx_Byte_Conf
- .text          0x00001ce0        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
- .text          0x00001ce0        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
- .text          0x00001ce0        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text          0x00001ce0        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
- .text          0x00001ce0        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
-                0x00001ce0                . = ALIGN (0x2)
+ .text          0x00000da6       0x2e rgb.o
+                0x00000da6                RGB_Init
+                0x00000db4                RGB_Set_State
+ .text          0x00000dd4      0x50c sensors.o
+                0x000012cc                Sensors_HDC1080_RH_Get
+                0x00000e64                Sensors_I2C_SDA_State_Get
+                0x00000e82                Sensors_I2C_Bus_Idle
+                0x000012c2                Sensors_HDC1080_Temp_Get
+                0x000012d6                Sensors_NTC_Temp_Get
+                0x0000108c                Sensors_HDC1080_Slave_Addr_Send
+                0x000010c6                Sensors_HDC1080_Config
+                0x000012b6                Sensors_HDC1080_Error_Get
+                0x00000f18                Sensors_HDC1080_I2C_Forced_Stop
+                0x00000fb0                Sensors_HDC1080_I2C_Receive
+                0x00000ed4                Sensors_HDC1080_I2C_Stop
+                0x00000e34                Sensors_I2C_SCL_State_Set
+                0x000012b0                Sensors_HDC1080_Status_Get
+                0x00001056                Sensors_HDC1080_I2C_Send_Ack
+                0x00001126                Sensors_Sample_Temp_RH
+                0x00000f5c                Sensors_HDC1080_I2C_Send
+                0x000012aa                Sensors_HDC1080_Address_Get
+                0x00000dd4                Sensors_HDC1080_Struct_Init
+                0x00000e4c                Sensors_I2C_SDA_State_Set
+                0x00000e96                Sensors_HDC1080_I2C_Start
+                0x0000100a                Sensors_HDC1080_I2C_Check_Ack
+                0x00000e22                Sensors_Init
+                0x000012bc                Sensors_HDC1080_Sticky_Error_Get
+ .text          0x000012e0      0x950 kernel.o
+                0x000014bc                Kernel_Tick_Init
+                0x000019fa                Kernel_Task_Constant_Latency
+                0x00001c0c                Kernel_Abs_High_Prio_Task_ID_Get
+                0x00001c18                Kernel_Tick_Val_Get
+                0x00001864                Kernel_Task_Sleep
+                0x00001bc4                Kernel_Task_Sleep_Time_Get
+                0x00001bee                Kernel_Task_Prio_Get
+                0x00001ba8                Kernel_PreSleep_Hook
+                0x00001bfe                Kernel_Lowest_Prio_Get
+                0x00001c12                Kernel_CPU_Usage_Get
+                0x00001be8                Kernel_NTask_Get
+                0x00001836                Kernel_Task_Idle
+                0x00001bae                Kernel_Clock_Prescale
+                0x00001646                Kernel_Start_Tasks
+                0x00001bd8                Kernel_Task_Status_Get
+                0x000012e0                __vector_7
+                0x000017d8                Kernel_Init
+                0x00001556                Kernel_Task_Create
+                0x00001a26                Kernel_Task_Constant_Latency_Sleep
+                0x00001c04                Kernel_High_Prio_Task_ID_Get
+ .text          0x00001c30       0xbc debug.o
+                0x00001c50                Debug_Tx_Byte
+                0x00001c8e                Debug_Tx_Word_Conf
+                0x00001cde                Debug_Tx_RAM_Area
+                0x00001c30                Debug_Init
+                0x00001c9e                Debug_Tx_DWord_Conf
+                0x00001cc6                Debug_Tx_From_RAM
+                0x00001c62                Debug_Tx_Word
+                0x00001c72                Debug_Tx_Byte_Conf
+ .text          0x00001cec        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+ .text          0x00001cec        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+ .text          0x00001cec        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text          0x00001cec        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .text          0x00001cec        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+                0x00001cec                . = ALIGN (0x2)
  *(.text.*)
- .text.libgcc   0x00001ce0       0x3e c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
-                0x00001ce0                __mulsi3
- .text.libgcc   0x00001d1e       0x44 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
-                0x00001d1e                __udivmodsi4
- .text.libgcc   0x00001d62        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x00001d62        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
- .text.libgcc   0x00001d62        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
-                0x00001d62                . = ALIGN (0x2)
+ .text.libgcc   0x00001cec       0x3e c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+                0x00001cec                __mulsi3
+ .text.libgcc   0x00001d2a       0x44 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+                0x00001d2a                __udivmodsi4
+ .text.libgcc   0x00001d6e        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x00001d6e        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00001d6e        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+                0x00001d6e                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00001d62        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x00001d62                exit
-                0x00001d62                _exit
+ .fini9         0x00001d6e        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x00001d6e                exit
+                0x00001d6e                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -380,11 +380,11 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00001d62        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .fini0         0x00001d6e        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00001d66                _etext = .
+                0x00001d72                _etext = .
 
-.data           0x00800100       0x24 load address 0x00001d66
+.data           0x00800100       0x24 load address 0x00001d72
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328p.o
@@ -445,8 +445,8 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x008006d0                NTC
                 0x008006d8                HDC1080
                 0x008006e6                PROVIDE (__bss_end, .)
-                0x00001d66                __data_load_start = LOADADDR (.data)
-                0x00001d8a                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00001d72                __data_load_start = LOADADDR (.data)
+                0x00001d96                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x008006e6        0x0
                 0x008006e6                PROVIDE (__noinit_start, .)

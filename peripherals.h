@@ -3,6 +3,8 @@
 #ifndef  _PERIPHERALS_H_
 #define  _PERIPHERALS_H_
 
+#define  PERIPHERAL_ADC_VREFINT_MV          1180
+#define  PERIPHERAL_ADC_SCALING_FACTOR_X10  210
 
 void     Peripherals_ADC_Init(void);
 uint16_t Peripherals_ADC_Sample(uint8_t channel, uint8_t nsamples);

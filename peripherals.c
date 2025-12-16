@@ -90,11 +90,12 @@ void Peripherals_Vin_Sense_Sample(void){
   //Disable VinSense
   PORTD &=~(1<<2);
   //Reference in mV
-  Peripherals.VinSense  = 1100;
+  Peripherals.VinSense  = PERIPHERAL_ADC_VREFINT_MV;
   //Voltage divider factor
-  Peripherals.VinSense *= 21;
-  Peripherals.VinSense *= Peripherals.VinRawADC;
+  Peripherals.VinSense  *= PERIPHERAL_ADC_SCALING_FACTOR_X10;
+  Peripherals.VinSense  *= Peripherals.VinRawADC;
   Peripherals.VinSense >>= 10;
+  Peripherals.VinSense  /= 10;
   Peripherals.Status &=~(1<<0);
 }
 

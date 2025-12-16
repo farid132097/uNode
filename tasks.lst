@@ -254,18 +254,18 @@
  327               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 tasks.c
-C:\Users\farid\AppData\Local\Temp/ccpG87m0.s:2      *ABS*:0000003f __SREG__
-C:\Users\farid\AppData\Local\Temp/ccpG87m0.s:3      *ABS*:0000003e __SP_H__
-C:\Users\farid\AppData\Local\Temp/ccpG87m0.s:4      *ABS*:0000003d __SP_L__
-C:\Users\farid\AppData\Local\Temp/ccpG87m0.s:5      *ABS*:00000034 __CCP__
-C:\Users\farid\AppData\Local\Temp/ccpG87m0.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\farid\AppData\Local\Temp/ccpG87m0.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\farid\AppData\Local\Temp/ccpG87m0.s:18     .text:00000000 Task_Disable_Peripherals
-C:\Users\farid\AppData\Local\Temp/ccpG87m0.s:30     .text:00000002 Task_Sensor
-C:\Users\farid\AppData\Local\Temp/ccpG87m0.s:52     .text:00000018 Task_Radio
+C:\Users\farid\AppData\Local\Temp/cchHvGlb.s:2      *ABS*:0000003f __SREG__
+C:\Users\farid\AppData\Local\Temp/cchHvGlb.s:3      *ABS*:0000003e __SP_H__
+C:\Users\farid\AppData\Local\Temp/cchHvGlb.s:4      *ABS*:0000003d __SP_L__
+C:\Users\farid\AppData\Local\Temp/cchHvGlb.s:5      *ABS*:00000034 __CCP__
+C:\Users\farid\AppData\Local\Temp/cchHvGlb.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\farid\AppData\Local\Temp/cchHvGlb.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\farid\AppData\Local\Temp/cchHvGlb.s:18     .text:00000000 Task_Disable_Peripherals
+C:\Users\farid\AppData\Local\Temp/cchHvGlb.s:30     .text:00000002 Task_Sensor
+C:\Users\farid\AppData\Local\Temp/cchHvGlb.s:52     .text:00000018 Task_Radio
                             *COM*:0000002e TaskData
-C:\Users\farid\AppData\Local\Temp/ccpG87m0.s:178    .text:0000010e Task_Vin_Sense
-C:\Users\farid\AppData\Local\Temp/ccpG87m0.s:202    .text:00000124 Task_RGB_LED
+C:\Users\farid\AppData\Local\Temp/cchHvGlb.s:178    .text:0000010e Task_Vin_Sense
+C:\Users\farid\AppData\Local\Temp/cchHvGlb.s:202    .text:00000124 Task_RGB_LED
 
 UNDEFINED SYMBOLS
 Sensors_Init

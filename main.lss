@@ -2755,8 +2755,8 @@ void Peripherals_Vin_Sense_Sample(void){
      d38:	b0 e0       	ldi	r27, 0x00	; 0
      d3a:	bc 01       	movw	r22, r24
      d3c:	cd 01       	movw	r24, r26
-     d3e:	28 ef       	ldi	r18, 0xF8	; 248
-     d40:	37 ec       	ldi	r19, 0xC7	; 199
+     d3e:	24 ec       	ldi	r18, 0xC4	; 196
+     d40:	3f eb       	ldi	r19, 0xBF	; 191
      d42:	43 e0       	ldi	r20, 0x03	; 3
      d44:	50 e0       	ldi	r21, 0x00	; 0
      d46:	0e 94 76 0e 	call	0x1cec	; 0x1cec <__mulsi3>

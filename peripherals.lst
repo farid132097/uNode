@@ -280,10 +280,10 @@
  292 0120 B0E0      		ldi r27,hi8(0)
  293 0122 BC01      		movw r22,r24
  294 0124 CD01      		movw r24,r26
- 295 0126 28EF      		ldi r18,lo8(247800)
- 296 0128 37EC      		ldi r19,hi8(247800)
- 297 012a 43E0      		ldi r20,hlo8(247800)
- 298 012c 50E0      		ldi r21,hhi8(247800)
+ 295 0126 24EC      		ldi r18,lo8(245700)
+ 296 0128 3FEB      		ldi r19,hi8(245700)
+ 297 012a 43E0      		ldi r20,hlo8(245700)
+ 298 012c 50E0      		ldi r21,hhi8(245700)
  299 012e 0E94 0000 		call __mulsi3
  300 0132 2AE0      		ldi r18,10
  301 0134 9695      	1:	lsr r25
@@ -380,21 +380,21 @@
  482               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 peripherals.c
-C:\Users\farid\AppData\Local\Temp/ccfbsQyk.s:2      *ABS*:0000003f __SREG__
-C:\Users\farid\AppData\Local\Temp/ccfbsQyk.s:3      *ABS*:0000003e __SP_H__
-C:\Users\farid\AppData\Local\Temp/ccfbsQyk.s:4      *ABS*:0000003d __SP_L__
-C:\Users\farid\AppData\Local\Temp/ccfbsQyk.s:5      *ABS*:00000034 __CCP__
-C:\Users\farid\AppData\Local\Temp/ccfbsQyk.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\farid\AppData\Local\Temp/ccfbsQyk.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\farid\AppData\Local\Temp/ccfbsQyk.s:18     .text:00000000 Peripherals_ADC_Init
-C:\Users\farid\AppData\Local\Temp/ccfbsQyk.s:400    .bss:00000000 Peripherals
-C:\Users\farid\AppData\Local\Temp/ccfbsQyk.s:91     .text:00000042 Peripherals_ADC_Sample
-C:\Users\farid\AppData\Local\Temp/ccfbsQyk.s:271    .text:00000100 Peripherals_Vin_Sense_Sample
-C:\Users\farid\AppData\Local\Temp/ccfbsQyk.s:327    .text:00000168 Peripherals_Vin_RawADC_Get
-C:\Users\farid\AppData\Local\Temp/ccfbsQyk.s:341    .text:00000172 Peripherals_Vin_Get
-C:\Users\farid\AppData\Local\Temp/ccfbsQyk.s:355    .text:0000017c Peripherals_Analog_Temp_Get
-C:\Users\farid\AppData\Local\Temp/ccfbsQyk.s:369    .text:00000182 Peripherals_Digital_RH_Get
-C:\Users\farid\AppData\Local\Temp/ccfbsQyk.s:383    .text:00000188 Peripherals_Digital_Temp_Get
+C:\Users\farid\AppData\Local\Temp/ccizdQTi.s:2      *ABS*:0000003f __SREG__
+C:\Users\farid\AppData\Local\Temp/ccizdQTi.s:3      *ABS*:0000003e __SP_H__
+C:\Users\farid\AppData\Local\Temp/ccizdQTi.s:4      *ABS*:0000003d __SP_L__
+C:\Users\farid\AppData\Local\Temp/ccizdQTi.s:5      *ABS*:00000034 __CCP__
+C:\Users\farid\AppData\Local\Temp/ccizdQTi.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\farid\AppData\Local\Temp/ccizdQTi.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\farid\AppData\Local\Temp/ccizdQTi.s:18     .text:00000000 Peripherals_ADC_Init
+C:\Users\farid\AppData\Local\Temp/ccizdQTi.s:400    .bss:00000000 Peripherals
+C:\Users\farid\AppData\Local\Temp/ccizdQTi.s:91     .text:00000042 Peripherals_ADC_Sample
+C:\Users\farid\AppData\Local\Temp/ccizdQTi.s:271    .text:00000100 Peripherals_Vin_Sense_Sample
+C:\Users\farid\AppData\Local\Temp/ccizdQTi.s:327    .text:00000168 Peripherals_Vin_RawADC_Get
+C:\Users\farid\AppData\Local\Temp/ccizdQTi.s:341    .text:00000172 Peripherals_Vin_Get
+C:\Users\farid\AppData\Local\Temp/ccizdQTi.s:355    .text:0000017c Peripherals_Analog_Temp_Get
+C:\Users\farid\AppData\Local\Temp/ccizdQTi.s:369    .text:00000182 Peripherals_Digital_RH_Get
+C:\Users\farid\AppData\Local\Temp/ccizdQTi.s:383    .text:00000188 Peripherals_Digital_Temp_Get
 
 UNDEFINED SYMBOLS
 __udivmodsi4

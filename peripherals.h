@@ -3,7 +3,7 @@
 #ifndef  _PERIPHERALS_H_
 #define  _PERIPHERALS_H_
 
-#define  PERIPHERAL_ADC_VREFINT_MV          1180
+#define  PERIPHERAL_ADC_VREFINT_MV          1170
 #define  PERIPHERAL_ADC_SCALING_FACTOR_X10  210
 
 void     Peripherals_ADC_Init(void);

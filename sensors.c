@@ -259,7 +259,7 @@ uint8_t Sensors_HDC1080_Slave_Addr_Send(uint8_t addr){
 
 void Sensors_HDC1080_Config(uint8_t type){
     //Config sensor
-    uint8_t cnt = 0, sts;
+    uint8_t sts;
     Sensors_HDC1080_Slave_Addr_Send(SENSORS_HDC1080_ADDR << 1);
     Sensors_HDC1080_I2C_Send(0x02);
     Sensors_HDC1080_I2C_Check_Ack();

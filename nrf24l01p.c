@@ -459,14 +459,14 @@ void nRF24L01P_WakeUp(void){
 void nRF24L01P_Init(void){
   nRF24L01P_Struct_Init();
   nRF24L01P_Enable();
-  //Default config: Channel 2, 250kbps, 0dBm, 32byte max data
+  //Default config: Channel 2, 1Mbps, 0dBm, 32byte max data
   nRF24L01P->TempBuf[0]=0x00;  nRF24L01P_ReadWrite_Register(0x00,0,nRF24L01P->TempBuf,1);
   nRF24L01P->TempBuf[0]=0x00;  nRF24L01P_ReadWrite_Register(0x01,0,nRF24L01P->TempBuf,1);
   nRF24L01P->TempBuf[0]=0x03;  nRF24L01P_ReadWrite_Register(0x02,0,nRF24L01P->TempBuf,1);
   nRF24L01P->TempBuf[0]=0x01;  nRF24L01P_ReadWrite_Register(0x03,0,nRF24L01P->TempBuf,1);
   nRF24L01P->TempBuf[0]=0x00;  nRF24L01P_ReadWrite_Register(0x04,0,nRF24L01P->TempBuf,1);
   nRF24L01P->TempBuf[0]=0x02;  nRF24L01P_ReadWrite_Register(0x05,0,nRF24L01P->TempBuf,1);
-  nRF24L01P->TempBuf[0]=0x26;  nRF24L01P_ReadWrite_Register(0x06,0,nRF24L01P->TempBuf,1); 
+  nRF24L01P->TempBuf[0]=0x06;  nRF24L01P_ReadWrite_Register(0x06,0,nRF24L01P->TempBuf,1); 
   nRF24L01P->TempBuf[0]=0x70;  nRF24L01P_ReadWrite_Register(0x07,0,nRF24L01P->TempBuf,1);
   nRF24L01P->TempBuf[0]=nRF24L01P_PACKET_LEN;  
   nRF24L01P_ReadWrite_Register(0x11,0,nRF24L01P->TempBuf,1);

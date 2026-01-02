@@ -69,13 +69,13 @@
  112               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 rgb.c
-C:\Users\farid\AppData\Local\Temp/ccAwD2cm.s:2      *ABS*:0000003f __SREG__
-C:\Users\farid\AppData\Local\Temp/ccAwD2cm.s:3      *ABS*:0000003e __SP_H__
-C:\Users\farid\AppData\Local\Temp/ccAwD2cm.s:4      *ABS*:0000003d __SP_L__
-C:\Users\farid\AppData\Local\Temp/ccAwD2cm.s:5      *ABS*:00000034 __CCP__
-C:\Users\farid\AppData\Local\Temp/ccAwD2cm.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\farid\AppData\Local\Temp/ccAwD2cm.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\farid\AppData\Local\Temp/ccAwD2cm.s:18     .text:00000000 RGB_Init
-C:\Users\farid\AppData\Local\Temp/ccAwD2cm.s:42     .text:0000000e RGB_Set_State
+C:\Users\farid\AppData\Local\Temp/ccskFIFT.s:2      *ABS*:0000003f __SREG__
+C:\Users\farid\AppData\Local\Temp/ccskFIFT.s:3      *ABS*:0000003e __SP_H__
+C:\Users\farid\AppData\Local\Temp/ccskFIFT.s:4      *ABS*:0000003d __SP_L__
+C:\Users\farid\AppData\Local\Temp/ccskFIFT.s:5      *ABS*:00000034 __CCP__
+C:\Users\farid\AppData\Local\Temp/ccskFIFT.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\farid\AppData\Local\Temp/ccskFIFT.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\farid\AppData\Local\Temp/ccskFIFT.s:18     .text:00000000 RGB_Init
+C:\Users\farid\AppData\Local\Temp/ccskFIFT.s:42     .text:0000000e RGB_Set_State
 
 NO UNDEFINED SYMBOLS

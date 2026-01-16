@@ -29,6 +29,8 @@
 #define  SENSORS_HDC1080_ADDR           0x40
 
 void     Sensors_Init(void);
+void     Sensors_Power_Enable(void);
+void     Sensors_Power_Disable(void);
 void     Sensors_I2C_SCL_State_Set(uint8_t state);
 void     Sensors_I2C_SDA_State_Set(uint8_t state);
 uint8_t  Sensors_I2C_SDA_State_Get(void);
@@ -44,6 +46,7 @@ uint8_t  Sensors_HDC1080_Slave_Addr_Send(uint8_t addr);
 
 void     Sensors_HDC1080_Config(uint8_t type);
 void     Sensors_Sample_Temp_RH(void);
+void     Sensors_HDC1080_Calculate(void);
 
 uint8_t  Sensors_HDC1080_Address_Get(void);
 uint8_t  Sensors_HDC1080_Status_Get(void);

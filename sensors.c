@@ -26,7 +26,9 @@ typedef struct hdc1080_t{
     uint8_t  SDAState;
     uint8_t  Address;
     uint16_t LoopCnt;
+    uint32_t TempReg;
     int16_t  Temp;
+    uint32_t RHReg;
     uint16_t RH;
     uint8_t  TimeoutError;
     uint8_t  Error;
@@ -46,7 +48,9 @@ void Sensors_HDC1080_Struct_Init(void){
     HDC1080.Status = 0;
     HDC1080.Address = 0;
     HDC1080.LoopCnt = 0;
+    HDC1080.TempReg = 0;
     HDC1080.Temp = 0;
+    HDC1080.RHReg = 0;
     HDC1080.RH = 0;
     HDC1080.TimeoutError = 0;
     HDC1080.Error = 0;
@@ -67,6 +71,14 @@ void Sensors_Init(void){
     //SDA as input, internal pull-up disabled, Software I2C
     SENSORS_HDC1080_SDA_PORT &=~ (1<<SENSORS_HDC1080_SDA_BP);
     SENSORS_HDC1080_SDA_DDR  &=~ (1<<SENSORS_HDC1080_SDA_BP);
+}
+
+void Sensors_Power_Enable(void){
+    SENSORS_PWR_EN_PORT &=~ (1<<SENSORS_PWR_EN_BP);
+}
+
+void Sensors_Power_Disable(void){
+    SENSORS_PWR_EN_PORT |=  (1<<SENSORS_PWR_EN_BP);
 }
 
 void Sensors_I2C_SCL_State_Set(uint8_t state){
@@ -278,9 +290,7 @@ void Sensors_HDC1080_Config(uint8_t type){
 
 void Sensors_Sample_Temp_RH(void){
     uint8_t   sts;
-    uint32_t  temp_val = 0, rh_val = 0;
-    //Enable Power to sensor module
-    SENSORS_PWR_EN_PORT &=~ (1<<SENSORS_PWR_EN_BP);
+
     //Wait until sensor is ready
     _delay_ms(SENSORS_HDC1080_POWER_UP_DELAY);
     
@@ -302,17 +312,16 @@ void Sensors_Sample_Temp_RH(void){
         HDC1080.Error = SENSOR_ERROR_I2C_TEMP_MES_TRIG_FAILED;
     }
 
-
     //Wait until sensor data is ready
     _delay_ms(SENSORS_HDC1080_CONV_DELAY);
     
     //Read Temp
     Sensors_HDC1080_Slave_Addr_Send( (SENSORS_HDC1080_ADDR << 1) | 1);
     //Read temp result registers
-    temp_val = Sensors_HDC1080_I2C_Receive();
+    HDC1080.TempReg = Sensors_HDC1080_I2C_Receive();
     Sensors_HDC1080_I2C_Send_Ack();
-    temp_val <<= 8;
-    temp_val |= Sensors_HDC1080_I2C_Receive();
+    HDC1080.TempReg <<= 8;
+    HDC1080.TempReg |= Sensors_HDC1080_I2C_Receive();
     //Send NACK
     Sensors_HDC1080_I2C_Check_Ack();
     Sensors_HDC1080_I2C_Stop();
@@ -338,31 +347,30 @@ void Sensors_Sample_Temp_RH(void){
     //Read RH
     Sensors_HDC1080_Slave_Addr_Send( (SENSORS_HDC1080_ADDR << 1) | 1);
     //Read RH result registers
-    rh_val = Sensors_HDC1080_I2C_Receive();
+    HDC1080.RHReg = Sensors_HDC1080_I2C_Receive();
     Sensors_HDC1080_I2C_Send_Ack();
-    rh_val <<= 8;
-    rh_val |= Sensors_HDC1080_I2C_Receive();
+    HDC1080.RHReg <<= 8;
+    HDC1080.RHReg |= Sensors_HDC1080_I2C_Receive();
     Sensors_HDC1080_I2C_Check_Ack();
     Sensors_HDC1080_I2C_Stop();
 
-
     //Send forced stop if necessary
     Sensors_HDC1080_I2C_Forced_Stop();
-    //Disable Power to sensor module
-    SENSORS_PWR_EN_PORT |=  (1<<SENSORS_PWR_EN_BP);
+}
 
+void Sensors_HDC1080_Calculate(void){
     //Check errors and calculate
     if(HDC1080.Error == 0){
         //Temp result is x10
-        temp_val *= 1650;
-        temp_val /= 65535;
-        HDC1080.Temp  = (int16_t) temp_val;
+        HDC1080.TempReg *= 1650;
+        HDC1080.TempReg /= 65536;
+        HDC1080.Temp  = (int16_t) HDC1080.TempReg;
         HDC1080.Temp -= 400;
 
         //RH value in %
-        rh_val *= 100;
-        rh_val /= 65535;
-        HDC1080.RH = (uint16_t)rh_val;
+        HDC1080.RHReg *= 100;
+        HDC1080.RHReg /= 65536;
+        HDC1080.RH = (uint16_t)HDC1080.RHReg;
     }
     else{
         HDC1080.StickyError = HDC1080.Error;

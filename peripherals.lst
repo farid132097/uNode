@@ -309,92 +309,169 @@
  321               	.LM40:
  322 0166 0895      		ret
  323               	.LFE8:
- 325               	.global	Peripherals_Vin_RawADC_Get
- 327               	Peripherals_Vin_RawADC_Get:
+ 325               	.global	Peripherals_V3V3_Sense_Sample
+ 327               	Peripherals_V3V3_Sense_Sample:
  328               	.LFB9:
  329               	.LM41:
  330               	/* prologue: function */
  331               	/* frame size = 0 */
  332               	.LM42:
- 333 0168 8091 0000 		lds r24,Peripherals+1
- 334 016c 9091 0000 		lds r25,Peripherals+2
- 335               	/* epilogue start */
- 336 0170 0895      		ret
- 337               	.LFE9:
- 339               	.global	Peripherals_Vin_Get
- 341               	Peripherals_Vin_Get:
- 342               	.LFB10:
- 343               	.LM43:
- 344               	/* prologue: function */
- 345               	/* frame size = 0 */
- 346               	.LM44:
- 347 0172 8091 0000 		lds r24,Peripherals+3
- 348 0176 9091 0000 		lds r25,Peripherals+4
- 349               	/* epilogue start */
- 350 017a 0895      		ret
- 351               	.LFE10:
- 353               	.global	Peripherals_Analog_Temp_Get
- 355               	Peripherals_Analog_Temp_Get:
- 356               	.LFB11:
- 357               	.LM45:
- 358               	/* prologue: function */
- 359               	/* frame size = 0 */
- 360               	.LM46:
- 361 017c 80E0      		ldi r24,lo8(0)
- 362 017e 90E0      		ldi r25,hi8(0)
- 363               	/* epilogue start */
- 364 0180 0895      		ret
- 365               	.LFE11:
- 367               	.global	Peripherals_Digital_RH_Get
- 369               	Peripherals_Digital_RH_Get:
- 370               	.LFB13:
- 371               	.LM47:
- 372               	/* prologue: function */
- 373               	/* frame size = 0 */
- 374               	.LM48:
- 375 0182 0E94 0000 		call Sensors_HDC1080_RH_Get
- 376               	/* epilogue start */
- 377               	.LM49:
- 378 0186 0895      		ret
- 379               	.LFE13:
- 381               	.global	Peripherals_Digital_Temp_Get
- 383               	Peripherals_Digital_Temp_Get:
- 384               	.LFB12:
- 385               	.LM50:
- 386               	/* prologue: function */
- 387               	/* frame size = 0 */
- 388               	.LM51:
- 389 0188 0E94 0000 		call Sensors_HDC1080_Temp_Get
- 390               	/* epilogue start */
- 391               	.LM52:
- 392 018c 0895      		ret
- 393               	.LFE12:
- 395               	.global	Peripherals
- 396               	.global	Peripherals
- 397               		.section .bss
- 400               	Peripherals:
- 401 0000 0000 0000 		.skip 15,0
- 401      0000 0000 
- 401      0000 0000 
- 401      0000 00
- 482               	.Letext0:
+ 333 0168 8091 0000 		lds r24,Peripherals
+ 334 016c 8260      		ori r24,lo8(2)
+ 335 016e 8093 0000 		sts Peripherals,r24
+ 336               	.LM43:
+ 337 0172 87E0      		ldi r24,lo8(7)
+ 338 0174 64E0      		ldi r22,lo8(4)
+ 339 0176 0E94 0000 		call Peripherals_ADC_Sample
+ 340 017a 9093 0000 		sts (Peripherals+7)+1,r25
+ 341 017e 8093 0000 		sts Peripherals+7,r24
+ 342               	.LM44:
+ 343 0182 A0E0      		ldi r26,lo8(0)
+ 344 0184 B0E0      		ldi r27,hi8(0)
+ 345 0186 BC01      		movw r22,r24
+ 346 0188 CD01      		movw r24,r26
+ 347 018a 2CEB      		ldi r18,lo8(128700)
+ 348 018c 36EF      		ldi r19,hi8(128700)
+ 349 018e 41E0      		ldi r20,hlo8(128700)
+ 350 0190 50E0      		ldi r21,hhi8(128700)
+ 351 0192 0E94 0000 		call __mulsi3
+ 352 0196 3AE0      		ldi r19,10
+ 353 0198 9695      	1:	lsr r25
+ 354 019a 8795      		ror r24
+ 355 019c 7795      		ror r23
+ 356 019e 6795      		ror r22
+ 357 01a0 3A95      		dec r19
+ 358 01a2 01F4      		brne 1b
+ 359 01a4 2AE0      		ldi r18,lo8(10)
+ 360 01a6 30E0      		ldi r19,hi8(10)
+ 361 01a8 40E0      		ldi r20,hlo8(10)
+ 362 01aa 50E0      		ldi r21,hhi8(10)
+ 363 01ac 0E94 0000 		call __udivmodsi4
+ 364 01b0 2093 0000 		sts Peripherals+9,r18
+ 365 01b4 3093 0000 		sts (Peripherals+9)+1,r19
+ 366 01b8 4093 0000 		sts (Peripherals+9)+2,r20
+ 367 01bc 5093 0000 		sts (Peripherals+9)+3,r21
+ 368               	.LM45:
+ 369 01c0 8091 0000 		lds r24,Peripherals
+ 370 01c4 8D7F      		andi r24,lo8(-3)
+ 371 01c6 8093 0000 		sts Peripherals,r24
+ 372               	/* epilogue start */
+ 373               	.LM46:
+ 374 01ca 0895      		ret
+ 375               	.LFE9:
+ 377               	.global	Peripherals_Vin_RawADC_Get
+ 379               	Peripherals_Vin_RawADC_Get:
+ 380               	.LFB10:
+ 381               	.LM47:
+ 382               	/* prologue: function */
+ 383               	/* frame size = 0 */
+ 384               	.LM48:
+ 385 01cc 8091 0000 		lds r24,Peripherals+1
+ 386 01d0 9091 0000 		lds r25,Peripherals+2
+ 387               	/* epilogue start */
+ 388 01d4 0895      		ret
+ 389               	.LFE10:
+ 391               	.global	Peripherals_Vin_Get
+ 393               	Peripherals_Vin_Get:
+ 394               	.LFB11:
+ 395               	.LM49:
+ 396               	/* prologue: function */
+ 397               	/* frame size = 0 */
+ 398               	.LM50:
+ 399 01d6 8091 0000 		lds r24,Peripherals+3
+ 400 01da 9091 0000 		lds r25,Peripherals+4
+ 401               	/* epilogue start */
+ 402 01de 0895      		ret
+ 403               	.LFE11:
+ 405               	.global	Peripherals_V3V3_RawADC_Get
+ 407               	Peripherals_V3V3_RawADC_Get:
+ 408               	.LFB12:
+ 409               	.LM51:
+ 410               	/* prologue: function */
+ 411               	/* frame size = 0 */
+ 412               	.LM52:
+ 413 01e0 8091 0000 		lds r24,Peripherals+7
+ 414 01e4 9091 0000 		lds r25,Peripherals+8
+ 415               	/* epilogue start */
+ 416 01e8 0895      		ret
+ 417               	.LFE12:
+ 419               	.global	Peripherals_V3V3_Get
+ 421               	Peripherals_V3V3_Get:
+ 422               	.LFB13:
+ 423               	.LM53:
+ 424               	/* prologue: function */
+ 425               	/* frame size = 0 */
+ 426               	.LM54:
+ 427 01ea 8091 0000 		lds r24,Peripherals+9
+ 428 01ee 9091 0000 		lds r25,Peripherals+10
+ 429               	/* epilogue start */
+ 430 01f2 0895      		ret
+ 431               	.LFE13:
+ 433               	.global	Peripherals_Analog_Temp_Get
+ 435               	Peripherals_Analog_Temp_Get:
+ 436               	.LFB14:
+ 437               	.LM55:
+ 438               	/* prologue: function */
+ 439               	/* frame size = 0 */
+ 440               	.LM56:
+ 441 01f4 80E0      		ldi r24,lo8(0)
+ 442 01f6 90E0      		ldi r25,hi8(0)
+ 443               	/* epilogue start */
+ 444 01f8 0895      		ret
+ 445               	.LFE14:
+ 447               	.global	Peripherals_Digital_RH_Get
+ 449               	Peripherals_Digital_RH_Get:
+ 450               	.LFB16:
+ 451               	.LM57:
+ 452               	/* prologue: function */
+ 453               	/* frame size = 0 */
+ 454               	.LM58:
+ 455 01fa 0E94 0000 		call Sensors_HDC1080_RH_Get
+ 456               	/* epilogue start */
+ 457               	.LM59:
+ 458 01fe 0895      		ret
+ 459               	.LFE16:
+ 461               	.global	Peripherals_Digital_Temp_Get
+ 463               	Peripherals_Digital_Temp_Get:
+ 464               	.LFB15:
+ 465               	.LM60:
+ 466               	/* prologue: function */
+ 467               	/* frame size = 0 */
+ 468               	.LM61:
+ 469 0200 0E94 0000 		call Sensors_HDC1080_Temp_Get
+ 470               	/* epilogue start */
+ 471               	.LM62:
+ 472 0204 0895      		ret
+ 473               	.LFE15:
+ 475               	.global	Peripherals
+ 476               	.global	Peripherals
+ 477               		.section .bss
+ 480               	Peripherals:
+ 481 0000 0000 0000 		.skip 15,0
+ 481      0000 0000 
+ 481      0000 0000 
+ 481      0000 00
+ 586               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 peripherals.c
-C:\Users\farid\AppData\Local\Temp/cckU1Q8L.s:2      *ABS*:0000003f __SREG__
-C:\Users\farid\AppData\Local\Temp/cckU1Q8L.s:3      *ABS*:0000003e __SP_H__
-C:\Users\farid\AppData\Local\Temp/cckU1Q8L.s:4      *ABS*:0000003d __SP_L__
-C:\Users\farid\AppData\Local\Temp/cckU1Q8L.s:5      *ABS*:00000034 __CCP__
-C:\Users\farid\AppData\Local\Temp/cckU1Q8L.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\farid\AppData\Local\Temp/cckU1Q8L.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\farid\AppData\Local\Temp/cckU1Q8L.s:18     .text:00000000 Peripherals_ADC_Init
-C:\Users\farid\AppData\Local\Temp/cckU1Q8L.s:400    .bss:00000000 Peripherals
-C:\Users\farid\AppData\Local\Temp/cckU1Q8L.s:91     .text:00000042 Peripherals_ADC_Sample
-C:\Users\farid\AppData\Local\Temp/cckU1Q8L.s:271    .text:00000100 Peripherals_Vin_Sense_Sample
-C:\Users\farid\AppData\Local\Temp/cckU1Q8L.s:327    .text:00000168 Peripherals_Vin_RawADC_Get
-C:\Users\farid\AppData\Local\Temp/cckU1Q8L.s:341    .text:00000172 Peripherals_Vin_Get
-C:\Users\farid\AppData\Local\Temp/cckU1Q8L.s:355    .text:0000017c Peripherals_Analog_Temp_Get
-C:\Users\farid\AppData\Local\Temp/cckU1Q8L.s:369    .text:00000182 Peripherals_Digital_RH_Get
-C:\Users\farid\AppData\Local\Temp/cckU1Q8L.s:383    .text:00000188 Peripherals_Digital_Temp_Get
+C:\Users\farid\AppData\Local\Temp/cci1AIXE.s:2      *ABS*:0000003f __SREG__
+C:\Users\farid\AppData\Local\Temp/cci1AIXE.s:3      *ABS*:0000003e __SP_H__
+C:\Users\farid\AppData\Local\Temp/cci1AIXE.s:4      *ABS*:0000003d __SP_L__
+C:\Users\farid\AppData\Local\Temp/cci1AIXE.s:5      *ABS*:00000034 __CCP__
+C:\Users\farid\AppData\Local\Temp/cci1AIXE.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\farid\AppData\Local\Temp/cci1AIXE.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\farid\AppData\Local\Temp/cci1AIXE.s:18     .text:00000000 Peripherals_ADC_Init
+C:\Users\farid\AppData\Local\Temp/cci1AIXE.s:480    .bss:00000000 Peripherals
+C:\Users\farid\AppData\Local\Temp/cci1AIXE.s:91     .text:00000042 Peripherals_ADC_Sample
+C:\Users\farid\AppData\Local\Temp/cci1AIXE.s:271    .text:00000100 Peripherals_Vin_Sense_Sample
+C:\Users\farid\AppData\Local\Temp/cci1AIXE.s:327    .text:00000168 Peripherals_V3V3_Sense_Sample
+C:\Users\farid\AppData\Local\Temp/cci1AIXE.s:379    .text:000001cc Peripherals_Vin_RawADC_Get
+C:\Users\farid\AppData\Local\Temp/cci1AIXE.s:393    .text:000001d6 Peripherals_Vin_Get
+C:\Users\farid\AppData\Local\Temp/cci1AIXE.s:407    .text:000001e0 Peripherals_V3V3_RawADC_Get
+C:\Users\farid\AppData\Local\Temp/cci1AIXE.s:421    .text:000001ea Peripherals_V3V3_Get
+C:\Users\farid\AppData\Local\Temp/cci1AIXE.s:435    .text:000001f4 Peripherals_Analog_Temp_Get
+C:\Users\farid\AppData\Local\Temp/cci1AIXE.s:449    .text:000001fa Peripherals_Digital_RH_Get
+C:\Users\farid\AppData\Local\Temp/cci1AIXE.s:463    .text:00000200 Peripherals_Digital_Temp_Get
 
 UNDEFINED SYMBOLS
 __udivmodsi4

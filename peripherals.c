@@ -81,22 +81,37 @@ uint16_t Peripherals_ADC_Sample(uint8_t channel, uint8_t nsamples){
 }
 
 void Peripherals_Vin_Sense_Sample(void){
-  //Status bit 0 indicates Vinsense is active
-  Peripherals.Status |= (1<<0);
+  //Status bit 0 indicates Vinsense measurement is active
+  Peripherals.Status    |= (1<<0);
   //Enable VinSense
   PORTD |= (1<<2);
   //Sample ADC
-  Peripherals.VinRawADC = Peripherals_ADC_Sample(6, 4);
+  Peripherals.VinRawADC  = Peripherals_ADC_Sample(6, 4);
   //Disable VinSense
   PORTD &=~(1<<2);
   //Reference in mV
-  Peripherals.VinSense  = PERIPHERAL_ADC_VREFINT_MV;
+  Peripherals.VinSense   = PERIPHERAL_ADC_VREFINT_MV;
   //Voltage divider factor
-  Peripherals.VinSense  *= PERIPHERAL_ADC_SCALING_FACTOR_X10;
+  Peripherals.VinSense  *= PERIPHERAL_ADC_VIN_SCALING_FACTOR_X10;
   Peripherals.VinSense  *= Peripherals.VinRawADC;
   Peripherals.VinSense >>= 10;
   Peripherals.VinSense  /= 10;
-  Peripherals.Status &=~(1<<0);
+  Peripherals.Status    &=~(1<<0);
+}
+
+void Peripherals_V3V3_Sense_Sample(void){
+  //Status bit 0 indicates V3V3 measurement is active
+  Peripherals.Status    |= (1<<1);
+  //Sample ADC
+  Peripherals.V3V3RawADC = Peripherals_ADC_Sample(7, 4);
+  //Reference in mV
+  Peripherals.V3V3Sense  = PERIPHERAL_ADC_VREFINT_MV;
+  //Voltage divider factor
+  Peripherals.V3V3Sense  *= PERIPHERAL_ADC_V3V3_SCALING_FACTOR_X10;
+  Peripherals.V3V3Sense  *= Peripherals.V3V3RawADC;
+  Peripherals.V3V3Sense >>= 10;
+  Peripherals.V3V3Sense  /= 10;
+  Peripherals.Status     &=~(1<<1);
 }
 
 uint16_t Peripherals_Vin_RawADC_Get(void){
@@ -105,6 +120,14 @@ uint16_t Peripherals_Vin_RawADC_Get(void){
 
 uint16_t Peripherals_Vin_Get(void){
   return (uint16_t)Peripherals.VinSense;
+}
+
+uint16_t Peripherals_V3V3_RawADC_Get(void){
+  return Peripherals.V3V3RawADC;
+}
+
+uint16_t Peripherals_V3V3_Get(void){
+  return (uint16_t)Peripherals.V3V3Sense;
 }
 
 int16_t Peripherals_Analog_Temp_Get(void){

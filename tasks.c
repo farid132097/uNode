@@ -135,20 +135,9 @@ __attribute__((noreturn)) void Task_Radio(void){
     TaskData.Buf[15] = TaskData.CRC16 & 0xFF;
     
     #ifdef DEBUG_ENABLE_WITH_UBRR_VAL
-    Debug_Tx_Byte(TaskData.Buf[0]);
-    Debug_Tx_Byte(TaskData.Buf[1]);
-    Debug_Tx_Byte(TaskData.Buf[2]);
-    Debug_Tx_Byte(TaskData.Buf[3]);
-    Debug_Tx_Byte(TaskData.Buf[4]);
-    Debug_Tx_Byte(TaskData.Buf[5]);
-    Debug_Tx_Byte(TaskData.Buf[6]);
-    Debug_Tx_Byte(TaskData.Buf[7]);
-    Debug_Tx_Byte(TaskData.Buf[8]);
-    Debug_Tx_Byte(TaskData.Buf[9]);
-    Debug_Tx_Byte(TaskData.Buf[10]);
-    Debug_Tx_Byte(TaskData.Buf[11]);
-    Debug_Tx_Byte(TaskData.Buf[12]);
-    Debug_Tx_Byte(TaskData.Buf[13]);
+    for(uint8_t i=0; i<16; i++){
+      Debug_Tx_Byte(TaskData.Buf[i]);
+    }
     #endif
     
     nRF24L01P_WakeUp();

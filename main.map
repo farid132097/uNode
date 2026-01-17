@@ -582,20 +582,20 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  .debug_frame   0x00000460       0x30 rgb.o
  .debug_frame   0x00000490      0x1b0 sensors.o
 
-.debug_str      0x00000000      0xbc8
+.debug_str      0x00000000      0xbc7
  *(.debug_str)
- .debug_str     0x00000000       0x7c main.o
-                                 0xb0 (size before relaxing)
- .debug_str     0x0000007c       0xfb tasks.o
-                                0x1a7 (size before relaxing)
- .debug_str     0x00000177      0x5bb nrf24l01p.o
-                                0x6e1 (size before relaxing)
- .debug_str     0x00000732      0x179 peripherals.o
-                                0x2bc (size before relaxing)
- .debug_str     0x000008ab       0x1d rgb.o
-                                 0xc9 (size before relaxing)
- .debug_str     0x000008c8      0x300 sensors.o
-                                0x45c (size before relaxing)
+ .debug_str     0x00000000       0x7b main.o
+                                 0xaf (size before relaxing)
+ .debug_str     0x0000007b       0xfb tasks.o
+                                0x1a6 (size before relaxing)
+ .debug_str     0x00000176      0x5bb nrf24l01p.o
+                                0x6e0 (size before relaxing)
+ .debug_str     0x00000731      0x179 peripherals.o
+                                0x2bb (size before relaxing)
+ .debug_str     0x000008aa       0x1d rgb.o
+                                 0xc8 (size before relaxing)
+ .debug_str     0x000008c7      0x300 sensors.o
+                                0x45b (size before relaxing)
 
 .debug_loc      0x00000000      0xac7
  *(.debug_loc)

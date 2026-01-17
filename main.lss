@@ -147,8 +147,8 @@ int main(void) {
       e4:	ff cf       	rjmp	.-2      	; 0xe4 <SRUDR0+0x1e>
 
 000000e6 <Task_Disable_Peripherals>:
-
-
+  sleep, add disabling tasks inside this function. 
+*/
 void Task_Disable_Peripherals(void){
   //ADC and Analog comparator will be
   //turned off automatically by the kernel
@@ -156,9 +156,9 @@ void Task_Disable_Peripherals(void){
       e6:	08 95       	ret
 
 000000e8 <Task_Sensor>:
-  }
-}
-
+  Also measures the bus voltage of the sensor block.
+  Add Kernel_Task_Sleep() if delay is necessary.
+*/
 __attribute__((noreturn)) void Task_Sensor(void){
   
   Sensors_Init();
@@ -193,8 +193,8 @@ __attribute__((noreturn)) void Task_Sensor(void){
      10c:	f1 cf       	rjmp	.-30     	; 0xf0 <Task_Sensor+0x8>
 
 0000010e <Task_Radio>:
-}
-
+  Add Kernel_Task_Sleep() if delay is necessary.
+*/
 __attribute__((noreturn)) void Task_Radio(void){
   
   //Radio init with deep sleep
@@ -380,8 +380,8 @@ __attribute__((noreturn)) void Task_Radio(void){
      220:	8d cf       	rjmp	.-230    	; 0x13c <Task_Radio+0x2e>
 
 00000222 <Task_Vin_Sense>:
-}
-
+  Add Kernel_Task_Sleep() if delay is necessary.
+*/
 __attribute__((noreturn)) void Task_Vin_Sense(void){
   
   //Init VinSense
@@ -408,8 +408,8 @@ __attribute__((noreturn)) void Task_Vin_Sense(void){
      236:	f9 cf       	rjmp	.-14     	; 0x22a <Task_Vin_Sense+0x8>
 
 00000238 <Task_RGB_LED>:
-}
-
+  Add Kernel_Task_Sleep() if delay is necessary.
+*/
 __attribute__((noreturn)) void Task_RGB_LED(void){
   
   //Init RGB GPIOs

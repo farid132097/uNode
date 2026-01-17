@@ -26,12 +26,23 @@ typedef struct task_data_t
 task_data_t TaskData;
 
 
-
+/*
+  If some peripherals need to be disabled before
+  sleep, add disabling tasks inside this function. 
+*/
 void Task_Disable_Peripherals(void){
   //ADC and Analog comparator will be
   //turned off automatically by the kernel
 }
 
+
+
+
+
+/*
+  RGB LED related tasks will be executed inside this function.
+  Add Kernel_Task_Sleep() if delay is necessary.
+*/
 __attribute__((noreturn)) void Task_RGB_LED(void){
   
   //Init RGB GPIOs
@@ -50,7 +61,6 @@ __attribute__((noreturn)) void Task_RGB_LED(void){
       RGB_Set_State(1,0,0);
     }
     
-    
     //Blocking delay
     _delay_us(1000);
     
@@ -63,6 +73,16 @@ __attribute__((noreturn)) void Task_RGB_LED(void){
   }
 }
 
+
+
+
+
+/*
+  Input voltage sense related tasks will be executed inside this function.
+  Enables voltage divider and takes adc sample to measure input voltage.
+  Disables voltage divider once measurement is completed.
+  Add Kernel_Task_Sleep() if delay is necessary.
+*/
 __attribute__((noreturn)) void Task_Vin_Sense(void){
   
   //Init VinSense
@@ -82,6 +102,16 @@ __attribute__((noreturn)) void Task_Vin_Sense(void){
   }
 }
 
+
+
+
+
+
+/*
+  Radio related tasks will be executed inside this function.
+  Converts system data into an array of data, sends via RF.
+  Add Kernel_Task_Sleep() if delay is necessary.
+*/
 __attribute__((noreturn)) void Task_Radio(void){
   
   //Radio init with deep sleep
@@ -151,6 +181,16 @@ __attribute__((noreturn)) void Task_Radio(void){
   }
 }
 
+
+
+
+
+/*
+  Sensor related tasks will be executed inside this function.
+  Power enable to the sensor block, take measurement.
+  Also measures the bus voltage of the sensor block.
+  Add Kernel_Task_Sleep() if delay is necessary.
+*/
 __attribute__((noreturn)) void Task_Sensor(void){
   
   Sensors_Init();

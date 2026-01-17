@@ -286,18 +286,18 @@
  359               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 tasks.c
-C:\Users\WALTON\AppData\Local\Temp/ccXHGhhS.s:2      *ABS*:0000003f __SREG__
-C:\Users\WALTON\AppData\Local\Temp/ccXHGhhS.s:3      *ABS*:0000003e __SP_H__
-C:\Users\WALTON\AppData\Local\Temp/ccXHGhhS.s:4      *ABS*:0000003d __SP_L__
-C:\Users\WALTON\AppData\Local\Temp/ccXHGhhS.s:5      *ABS*:00000034 __CCP__
-C:\Users\WALTON\AppData\Local\Temp/ccXHGhhS.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\WALTON\AppData\Local\Temp/ccXHGhhS.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\WALTON\AppData\Local\Temp/ccXHGhhS.s:18     .text:00000000 Task_Disable_Peripherals
-C:\Users\WALTON\AppData\Local\Temp/ccXHGhhS.s:30     .text:00000002 Task_Sensor
-C:\Users\WALTON\AppData\Local\Temp/ccXHGhhS.s:60     .text:00000028 Task_Radio
+C:\Users\farid\AppData\Local\Temp/ccwpxWCL.s:2      *ABS*:0000003f __SREG__
+C:\Users\farid\AppData\Local\Temp/ccwpxWCL.s:3      *ABS*:0000003e __SP_H__
+C:\Users\farid\AppData\Local\Temp/ccwpxWCL.s:4      *ABS*:0000003d __SP_L__
+C:\Users\farid\AppData\Local\Temp/ccwpxWCL.s:5      *ABS*:00000034 __CCP__
+C:\Users\farid\AppData\Local\Temp/ccwpxWCL.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\farid\AppData\Local\Temp/ccwpxWCL.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\farid\AppData\Local\Temp/ccwpxWCL.s:18     .text:00000000 Task_Disable_Peripherals
+C:\Users\farid\AppData\Local\Temp/ccwpxWCL.s:30     .text:00000002 Task_Sensor
+C:\Users\farid\AppData\Local\Temp/ccwpxWCL.s:60     .text:00000028 Task_Radio
                             *COM*:00000030 TaskData
-C:\Users\WALTON\AppData\Local\Temp/ccXHGhhS.s:201    .text:0000013c Task_Vin_Sense
-C:\Users\WALTON\AppData\Local\Temp/ccXHGhhS.s:225    .text:00000152 Task_RGB_LED
+C:\Users\farid\AppData\Local\Temp/ccwpxWCL.s:201    .text:0000013c Task_Vin_Sense
+C:\Users\farid\AppData\Local\Temp/ccwpxWCL.s:225    .text:00000152 Task_RGB_LED
 
 UNDEFINED SYMBOLS
 Sensors_Init

@@ -85,6 +85,8 @@ void Peripherals_Vin_Sense_Sample(void){
   Peripherals.Status    |= (1<<0);
   //Enable VinSense
   PORTD |= (1<<2);
+  //Dummy ample to remove noise
+  Peripherals_ADC_Sample(6, 2);
   //Sample ADC
   Peripherals.VinRawADC  = Peripherals_ADC_Sample(6, 4);
   //Disable VinSense
@@ -102,6 +104,8 @@ void Peripherals_Vin_Sense_Sample(void){
 void Peripherals_V3V3_Sense_Sample(void){
   //Status bit 0 indicates V3V3 measurement is active
   Peripherals.Status    |= (1<<1);
+  //Dummy ample to remove noise
+  Peripherals_ADC_Sample(7, 2);
   //Sample ADC
   Peripherals.V3V3RawADC = Peripherals_ADC_Sample(7, 4);
   //Reference in mV

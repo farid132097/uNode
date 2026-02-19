@@ -11,8 +11,7 @@
 #include "debug.h"
 #include "rgb.h"
 
-typedef struct task_data_t
-{
+typedef struct task_data_t{
   uint16_t Vin;
   uint16_t VSensor;
   int16_t  ATemp;
@@ -23,8 +22,21 @@ typedef struct task_data_t
   uint16_t CRC16;
 }task_data_t;
 
-task_data_t TaskData;
+typedef struct otau_t{
+  //Buffer for storing paged data
+  uint8_t  Buf[256];
+  //New Paged Data Available Flag
+  uint8_t  NPDAF;
+  //Current Sub-Page Number
+  uint8_t  CSPN;
+  //Current Page Number
+  uint8_t  CPN;
+  //CRC for data vaidation
+  uint16_t CRC16;
+}otau_t;
 
+task_data_t TaskData;
+otau_t      OTAU;
 
 /*
   If some peripherals need to be disabled before
@@ -215,3 +227,30 @@ __attribute__((noreturn)) void Task_Sensor(void){
   }
 }
 
+
+
+
+
+/*
+  Over-The-Air-Update related tasks will be executed inside this function.
+  Add Kernel_Task_Sleep() if delay is necessary.
+  Flash Memory Map:
+  0x0000 - 0x37FF > F0_Main_Code 
+  0x3800 - 0x6FFF > F1_OTA_Reservoir 
+  0x7000 - 0x7FFF > F2_Bootlaoder
+*/
+__attribute__((noreturn)) void Task_OTAU(void){
+  
+  
+  
+  //Inrush current prevention at startup
+  Kernel_Task_Sleep(2000/KER_TICK_TIME);
+  
+  while(1){
+    
+    
+    //Kernel Delay
+    Kernel_Task_Sleep(SENSOR_TASK_SLEEP_DUR_MS/KER_TICK_TIME);
+	  
+  }
+}

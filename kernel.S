@@ -31,7 +31,7 @@
 .equ     KER_PRS,         0x03                            ;For prescaler 64, manually select   
 .equ     KER_RLD,         0x82                            ;KER_RLD=0xFF-(F_CPU/KER_PRS/KER_TR) 
 .equ     KER_STK_SZ,      128                             ;stack size in bytes for each task   
-.equ     KER_MX_NTSK,     10                              ;max number of tasks                 
+.equ     KER_MX_NTSK,     8                               ;max number of tasks                 
 ;;==============================define user address or macro end============================;; 
 
 

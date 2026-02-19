@@ -461,7 +461,7 @@
   31               	.equ     KER_PRS,         0x03                            ;For prescaler 64, manually select   
   32               	.equ     KER_RLD,         0x82                            ;KER_RLD=0xFF-(F_CPU/KER_PRS/KER_TR) 
   33               	.equ     KER_STK_SZ,      128                             ;stack size in bytes for each task   
-  34               	.equ     KER_MX_NTSK,     10                              ;max number of tasks                 
+  34               	.equ     KER_MX_NTSK,     8                               ;max number of tasks                 
   35               	;;==============================define user address or macro end============================;; 
   36               	
   37               	
@@ -562,33 +562,29 @@
  128      0000 0000 
  128      0000 0000 
  128      0000 0000 
- 128      0000 0000 
  129               	                                                                                               
  130               	.global    KerSSZ                                         ;stack for main stack pointers       
- 131 0024 0000 0000 	KerSSZ:    .skip 14                                       ;stack_ptr(2), MSPZPn(4)             
+ 131 0020 0000 0000 	KerSSZ:    .skip 14                                       ;stack_ptr(2), MSPZPn(4)             
  131      0000 0000 
  131      0000 0000 
  131      0000 
  132               	                                                                                               
  133               	.global    KerSchSts                                      ;space for scheduler status          
- 134 0032 0000 0000 	KerSchSts: .skip KER_MX_NTSK*1                            ;status(1)                           
+ 134 002e 0000 0000 	KerSchSts: .skip KER_MX_NTSK*1                            ;status(1)                           
  134      0000 0000 
- 134      0000 
  135               	                                                                                               
  136               	.global    KerSchPr                                       ;space for scheduler priority        
- 137 003c 0000 0000 	KerSchPr:  .skip KER_MX_NTSK*1                            ;priority(1)                         
+ 137 0036 0000 0000 	KerSchPr:  .skip KER_MX_NTSK*1                            ;priority(1)                         
  137      0000 0000 
- 137      0000 
  138               	                                                                                               
  139               	.global    KerSchSlp                                      ;space for task sleep                
- 140 0046 0000 0000 	KerSchSlp: .skip KER_MX_NTSK*2                            ;timing(2)                           
- 140      0000 0000 
+ 140 003e 0000 0000 	KerSchSlp: .skip KER_MX_NTSK*2                            ;timing(2)                           
  140      0000 0000 
  140      0000 0000 
  140      0000 0000 
  141               	                                                                                               
  142               	.global    KerStack                                       ;space for stack                     
- 143 005a 0000 0000 	KerStack:  .skip KER_STK_SZ*KER_MX_NTSK                   ;KER_STK_SZ bytes for each task      
+ 143 004e 0000 0000 	KerStack:  .skip KER_STK_SZ*KER_MX_NTSK                   ;KER_STK_SZ bytes for each task      
  143      0000 0000 
  143      0000 0000 
  143      0000 0000 
@@ -2119,7 +2115,7 @@ DEFINED SYMBOLS
             kernel.S:31     *ABS*:00000003 KER_PRS
             kernel.S:32     *ABS*:00000082 KER_RLD
             kernel.S:33     *ABS*:00000080 KER_STK_SZ
-            kernel.S:34     *ABS*:0000000a KER_MX_NTSK
+            kernel.S:34     *ABS*:00000008 KER_MX_NTSK
             kernel.S:42     *ABS*:00000000 OFB_TICK0
             kernel.S:43     *ABS*:00000001 OFB_TICK1
             kernel.S:44     *ABS*:00000002 OFB_TICK2
@@ -2179,11 +2175,11 @@ DEFINED SYMBOLS
             kernel.S:114    *ABS*:00000015 IOTIFR0
             kernel.S:125    .bss:00000000 KerBase
             kernel.S:128    .bss:00000010 KerPSP
-            kernel.S:131    .bss:00000024 KerSSZ
-            kernel.S:134    .bss:00000032 KerSchSts
-            kernel.S:137    .bss:0000003c KerSchPr
-            kernel.S:140    .bss:00000046 KerSchSlp
-            kernel.S:143    .bss:0000005a KerStack
+            kernel.S:131    .bss:00000020 KerSSZ
+            kernel.S:134    .bss:0000002e KerSchSts
+            kernel.S:137    .bss:00000036 KerSchPr
+            kernel.S:140    .bss:0000003e KerSchSlp
+            kernel.S:143    .bss:0000004e KerStack
             kernel.S:1117   .text:000001dc Kernel_Tick_Init
             kernel.S:1163   .text:00000276 Kernel_Task_Create
             kernel.S:1230   .text:00000366 Kernel_Start_Tasks

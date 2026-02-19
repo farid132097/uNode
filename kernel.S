@@ -4,7 +4,7 @@
  ; Author        : MD. Faridul Islam (faridmdislam@gmail.com)
  ; Description   : AVR kernel for bare-metal RTOS
  ; Created       : Jul 27, 2025, 09:30 PM
- ; Last Modified : Dec 08, 2025, 12:19 AM
+ ; Last Modified : Feb 19, 2026, 11:39 AM
 
 
 
@@ -31,7 +31,7 @@
 .equ     KER_PRS,         0x03                            ;For prescaler 64, manually select   
 .equ     KER_RLD,         0x82                            ;KER_RLD=0xFF-(F_CPU/KER_PRS/KER_TR) 
 .equ     KER_STK_SZ,      128                             ;stack size in bytes for each task   
-.equ     KER_MX_NTSK,     8                               ;max number of tasks                 
+.equ     KER_MX_NTSK,     KER_MAX_TASK+1                  ;max number of tasks                 
 ;;==============================define user address or macro end============================;; 
 
 
@@ -85,11 +85,8 @@
 .equ     SRTCCR2B,        0xB1                            ;manually defined TCCR2B in SRAM     
 .equ     SRTCCR2A,        0xB0                            ;manually defined TCCR2A in SRAM     
 .equ     SRADMUX ,        0x7C                            ;manually defined ADMUX in SRAM      
-.equ     SRADCSRB,        0x7B                            ;manually defined ADCSRB in SRAM     
 .equ     SRADCSRA,        0x7A                            ;manually defined ADCSRA in SRAM     
 .equ     SRTIMSK2,        0x70                            ;manually defined TIMSK2 in SRAM     
-.equ     SRTIMSK1,        0x6F                            ;manually defined TIMSK1 in SRAM     
-.equ     SRTIMSK0,        0x6E                            ;manually defined TIMSK0 in SRAM     
 .equ     SRCLKPR ,        0x61                            ;manually defined CLKPR in SRAM      
 .equ     SRWDTCSR,        0x60                            ;manually defined WDTCSR in SRAM     
 .equ     SRSREG  ,        0x5F                            ;manually defined SREG in SRAM       
@@ -100,8 +97,6 @@
 .equ     SRSMCR  ,        0x53                            ;manually defined SMCR in SRAM       
 .equ     SRACSR  ,        0x50                            ;manually defined ACSR in SRAM       
 .equ     SRTIFR2 ,        0x37                            ;manually defined TIFR2 in SRAM      
-.equ     SRTIFR1 ,        0x36                            ;manually defined TIFR1 in SRAM      
-.equ     SRTIFR0 ,        0x35                            ;manually defined TIFR0 in SRAM      
 ;IO Mapped Addresses, IN/OUT commands can be used                                              
 .equ     IOSREG  ,        0x3F                            ;manually defined SREG in IO         
 .equ     IOSPH   ,        0x3E                            ;manually defined SPH in IO          
@@ -110,8 +105,6 @@
 .equ     IOMCUSR ,        0x34                            ;manually defined MCUSR in IO        
 .equ     IOSMCR  ,        0x33                            ;manually defined SMCR in IO         
 .equ     IOTIFR2 ,        0x17                            ;manually defined TIFR2 in IO        
-.equ     IOTIFR1 ,        0x16                            ;manually defined TIFR1 in IO        
-.equ     IOTIFR0 ,        0x15                            ;manually defined TIFR0 in IO        
 ;;==============================define hardware reg address end=============================;; 
 
 
@@ -725,6 +718,7 @@ KerStack:  .skip KER_STK_SZ*KER_MX_NTSK                   ;KER_STK_SZ bytes for 
 ;return registers        : None                                                                
 ;unsafe access registers : R18, R19                                                            
 .macro  KER_TICK_INCREMENT                                ;total 3.25uS @8MHz     ( 27 clocks) 
+        #ifdef KER_TICK_CNTR_ENABLE                                                            
         LDI   R18                , 0x01                   ;load 1                 (  1 clock ) 
 		LDS   R19                , KerBase+OFB_TICK0      ;load Byte0             (  2 clocks) 
 		ADD   R19                , R18                    ;add 1 with current val (  1 clock ) 
@@ -742,6 +736,7 @@ KerStack:  .skip KER_STK_SZ*KER_MX_NTSK                   ;KER_STK_SZ bytes for 
 		LDS   R19                , KerBase+OFB_TICK4      ;load Byte4             (  2 clocks) 
 		ADC   R19                , R18                    ;add carry with Byte4   (  1 clock ) 
 		STS   KerBase+OFB_TICK4  , R19                    ;set Byte4              (  2 clocks) 
+		#endif                                                                                 
 .endm                                                                                          
 ;;=================================increment tick counter end===============================;; 
 
@@ -941,6 +936,7 @@ KerStack:  .skip KER_STK_SZ*KER_MX_NTSK                   ;KER_STK_SZ bytes for 
 ;return registers        : None                                                                
 ;unsafe access registers : R18, R19                                                            
 .macro  KER_CPU_USAGE                                     ;total 3.25uS @8MHz     ( 26 clocks) 
+        #ifdef KER_CPU_USAGE_CALC_ENABLE                                                       
         ;check if current target task is idle task or not                                      
         LDS    R18               , KerBase+OFB_TID        ;load target task_id    (  2 clocks) 
 		TST    R18                                        ;check if idle task     (  1 clock ) 
@@ -960,6 +956,7 @@ KerStack:  .skip KER_STK_SZ*KER_MX_NTSK                   ;KER_STK_SZ bytes for 
 		STS    KerBase+OFB_UATC  , R19                    ;clear active tick cnt  (  2 clocks) 
 	_KER_USG_UTC_SV\@:                                                                         
 		STS    KerBase+OFB_UTC   , R18                    ;store new val          (  2 clocks) 
+		#endif                                                                                 
 .endm                                                                                          
 ;;===================================calc cpu usage end=====================================;; 
 
@@ -973,7 +970,7 @@ KerStack:  .skip KER_STK_SZ*KER_MX_NTSK                   ;KER_STK_SZ bytes for 
 ;return registers        : None                                                                
 ;unsafe access registers : None                                                                
 .macro KER_DISABLE_ANALOG_DOMAIN                          ;total 0.75uS @8MHz     ( 10 clocks) 
-    #ifdef KER_IDLE_AS_SLEEP                                                                   
+    #if defined(KER_IDLE_AS_SLEEP) && defined(KER_AUTO_DISABLE_ADC_AC_BEFORE_SLEEP)            
 		LDS   R18                , SRADCSRA               ;load ADCSRA            (  2 clocks) 
 		ANDI  R18                , 0x7F                   ;clear ADEN             (  1 clock ) 
 		STS   SRADCSRA           , R18                    ;set val                (  2 clocks) 
@@ -1557,6 +1554,7 @@ Kernel_CPU_Usage_Get:                                     ;total 0.75uS @8MHz   
 ;return registers        : R25:R22(TickVal)                                                    
 ;unsafe access registers : R22, R23, R24, R25                                                  
 Kernel_Tick_Val_Get:                                      ;total 0.75uS @8MHz     (  6 clocks) 
+        #ifdef KER_TICK_CNTR_ENABLE                                                            
         IN    R18                , IOSREG                 ;save SREG              (  1 clock ) 
 		CLI                                               ;disable interrupt      (  1 clock ) 
 		LDS   R22                , KerBase+OFB_TICK0      ;load tick count        (  2 clocks) 
@@ -1564,5 +1562,10 @@ Kernel_Tick_Val_Get:                                      ;total 0.75uS @8MHz   
 		LDS   R24                , KerBase+OFB_TICK2      ;load tick count        (  2 clocks) 
 		LDS   R25                , KerBase+OFB_TICK3      ;load tick count        (  2 clocks) 
 		OUT   IOSREG             , R18                    ;restore SREG           (  1 clock ) 
+		#endif                                                                                 
 		RET                                               ;return from subroutine (  4 clocks) 
 ;;===================================kernel tick val get end================================;; 
+
+
+
+

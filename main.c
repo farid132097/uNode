@@ -21,7 +21,7 @@ int main(void) {
 	Kernel_Task_Create(Task_Radio,  2);
 	Kernel_Task_Create(Task_Sensor,  3);
 	//Kernel_Task_Create(Task_OTAU,  4);
-	Kernel_PreSleep_Hook(Task_Disable_Peripherals);
+	//Kernel_PreSleep_Hook(Task_Disable_Peripherals);
 	Kernel_Start_Tasks();
 	
     while(1){

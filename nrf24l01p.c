@@ -1,5 +1,5 @@
 
-///TX long wire
+
 
 #include <avr/io.h>
 #include <util/delay.h>
@@ -294,7 +294,8 @@ uint8_t nRF24L01P_Get_Mode(void){
   
 void nRF24L01P_Set_Mode_Sleep(void){
   if(nRF24L01P_No_Error()){
-    nRF24L01P->TempBuf[0]=0x00;
+    //Unmask interrupt sources
+    nRF24L01P->TempBuf[0]=0x70;
     nRF24L01P_ReadWrite_Register(0x00,0,nRF24L01P->TempBuf,1);
     nRF24L01P->Mode=0x00;
   }
@@ -302,6 +303,7 @@ void nRF24L01P_Set_Mode_Sleep(void){
 
 void nRF24L01P_Set_Mode_Tx(void){
   if(nRF24L01P_No_Error()){
+    //Unmask interrupt sources
     nRF24L01P->TempBuf[0]=0x72;
     nRF24L01P_CE_Low();
     nRF24L01P_ReadWrite_Register(0x00,0,nRF24L01P->TempBuf,1);
@@ -312,6 +314,7 @@ void nRF24L01P_Set_Mode_Tx(void){
 
 void nRF24L01P_Set_Mode_Rx(void){
   if(nRF24L01P_No_Error()){
+    //Unmask interrupt sources
     nRF24L01P->TempBuf[0]=0x73;
     nRF24L01P_CE_High();
     nRF24L01P_ReadWrite_Register(0x00,0,nRF24L01P->TempBuf,1);
@@ -460,7 +463,7 @@ void nRF24L01P_Init(void){
   nRF24L01P_Struct_Init();
   nRF24L01P_Enable();
   //Default config: Channel 2, 1Mbps, 0dBm, 32byte max data
-  nRF24L01P->TempBuf[0]=0x00;  nRF24L01P_ReadWrite_Register(0x00,0,nRF24L01P->TempBuf,1);
+  nRF24L01P->TempBuf[0]=0x70;  nRF24L01P_ReadWrite_Register(0x00,0,nRF24L01P->TempBuf,1);
   nRF24L01P->TempBuf[0]=0x00;  nRF24L01P_ReadWrite_Register(0x01,0,nRF24L01P->TempBuf,1);
   nRF24L01P->TempBuf[0]=0x03;  nRF24L01P_ReadWrite_Register(0x02,0,nRF24L01P->TempBuf,1);
   nRF24L01P->TempBuf[0]=0x01;  nRF24L01P_ReadWrite_Register(0x03,0,nRF24L01P->TempBuf,1);
@@ -525,6 +528,8 @@ uint8_t nRF24L01P_Recieve_Basic(uint8_t *buf){
   return sts;
 }
 
+
+/*
 uint8_t nRF24L01P_Transmit_With_ACK(uint8_t *buf, uint8_t len){
   uint8_t sts=0;
   if(nRF24L01P->Packet.ACKReq){
@@ -555,7 +560,10 @@ uint8_t nRF24L01P_Recieve_With_ACK(uint8_t *buf){
   return sts;
 }
 
-/*
+
+
+
+
 uint8_t nRF24L01P_Transmit_No_Retry(uint8_t *buf, uint8_t len){
   uint8_t sts=0;
   if(nRF24L01P_Transmit_With_ACK(buf,len)){
@@ -648,37 +656,7 @@ uint8_t nRF24L01P_Block_Receive(uint8_t *buf, uint16_t *len){
   }
   return sts;
 }
-
-///TX long wire
-
-uint8_t len=1;
-
-void setup() {
-
-  nRF24L01P_Init(110);
-  nRF24L01P_Set_Own_Address(0x5E);
-  nRF24L01P_Set_Destination_Address(0x5D);
-  Serial.begin(9600);
-  
-}
-
-void loop() {
-  
-  uint8_t data[26]="abcdefghijklmnopqrstuvwxyz";
-  if(nRF24L01P_Transmit(data, len)){
-    Serial.println("ack"); 
-  }else{
-    Serial.println("nack");    
-  }
-
-  len++;
-  if(len>26){
-    len=1;
-  }
-  delay(500);
-
-}*/
-
+*/
 
 void nRF24L01P_Error_Handler(void){
   if(nRF24L01P_No_Error() == 0){
@@ -687,3 +665,8 @@ void nRF24L01P_Error_Handler(void){
     nRF24L01P_Init();
   }
 }
+  
+
+
+
+

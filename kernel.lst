@@ -2104,7 +2104,7 @@
 1562:kernel.S      **** 		LDS   R24                , KerBase+OFB_TICK2      ;load tick count        (  2 clocks) 
 1563:kernel.S      **** 		LDS   R25                , KerBase+OFB_TICK3      ;load tick count        (  2 clocks) 
 1564:kernel.S      **** 		OUT   IOSREG             , R18                    ;restore SREG           (  1 clock ) 
-1565:kernel.S      **** 		#endif                                                                                 
+ 1565               			#endif                                                                                 
 1566:kernel.S      **** 		RET                                               ;return from subroutine (  4 clocks) 
  1567               	;;===================================kernel tick val get end================================;; 
 DEFINED SYMBOLS
@@ -2170,64 +2170,64 @@ DEFINED SYMBOLS
             kernel.S:130    .bss:00000030 KerSchPr
             kernel.S:133    .bss:00000036 KerSchSlp
             kernel.S:136    .bss:00000042 KerStack
-            kernel.S:1114   .text:00000176 Kernel_Tick_Init
-            kernel.S:1160   .text:00000210 Kernel_Task_Create
-            kernel.S:1227   .text:00000300 Kernel_Start_Tasks
-            kernel.S:1247   .text:00000492 Kernel_Init
-            kernel.S:1280   .text:000004f0 Kernel_Task_Idle
-            kernel.S:1300   .text:0000051e Kernel_Task_Sleep
-            kernel.S:1333   .text:000006b4 Kernel_Task_Constant_Latency
-            kernel.S:1360   .text:000006e0 Kernel_Task_Constant_Latency_Sleep
-            kernel.S:1387   .text:00000862 Kernel_PreSleep_Hook
-            kernel.S:1402   .text:00000868 Kernel_Clock_Prescale
-            kernel.S:1421   .text:0000087e Kernel_Task_Sleep_Time_Get
-            kernel.S:1443   .text:00000892 Kernel_Task_Status_Get
-            kernel.S:1463   .text:000008a2 Kernel_NTask_Get
-            kernel.S:1477   .text:000008a8 Kernel_Task_Prio_Get
-            kernel.S:1498   .text:000008b8 Kernel_Lowest_Prio_Get
-            kernel.S:1512   .text:000008be Kernel_High_Prio_Task_ID_Get
-            kernel.S:1527   .text:000008c6 Kernel_Abs_High_Prio_Task_ID_Get
-            kernel.S:1541   .text:000008cc Kernel_CPU_Usage_Get
-            kernel.S:1556   .text:000008d2 Kernel_Tick_Val_Get
+            kernel.S:1114   .text:000001ac Kernel_Tick_Init
+            kernel.S:1160   .text:00000246 Kernel_Task_Create
+            kernel.S:1227   .text:00000336 Kernel_Start_Tasks
+            kernel.S:1247   .text:000004c8 Kernel_Init
+            kernel.S:1280   .text:00000526 Kernel_Task_Idle
+            kernel.S:1300   .text:00000554 Kernel_Task_Sleep
+            kernel.S:1333   .text:000006ea Kernel_Task_Constant_Latency
+            kernel.S:1360   .text:00000716 Kernel_Task_Constant_Latency_Sleep
+            kernel.S:1387   .text:00000898 Kernel_PreSleep_Hook
+            kernel.S:1402   .text:0000089e Kernel_Clock_Prescale
+            kernel.S:1421   .text:000008b4 Kernel_Task_Sleep_Time_Get
+            kernel.S:1443   .text:000008c8 Kernel_Task_Status_Get
+            kernel.S:1463   .text:000008d8 Kernel_NTask_Get
+            kernel.S:1477   .text:000008de Kernel_Task_Prio_Get
+            kernel.S:1498   .text:000008ee Kernel_Lowest_Prio_Get
+            kernel.S:1512   .text:000008f4 Kernel_High_Prio_Task_ID_Get
+            kernel.S:1527   .text:000008fc Kernel_Abs_High_Prio_Task_ID_Get
+            kernel.S:1541   .text:00000902 Kernel_CPU_Usage_Get
+            kernel.S:1556   .text:00000908 Kernel_Tick_Val_Get
             kernel.S:1074   .text:00000000 __vector_7
-            kernel.S:1081   .text:00000078 _KER_SCH_LOOP8
-            kernel.S:1081   .text:000000ae _VAL_NULL9
-            kernel.S:1081   .text:000000c2 _VAL_NOT_NULL9
-            kernel.S:1081   .text:000000d2 _EXIT_SLP_TIME9
-            kernel.S:1081   .text:000000dc _KER_CALC_PRIO8
-            kernel.S:1081   .text:00000100 _KER_SCH_NEXT8
-            kernel.S:1081   .text:00000110 _KER_SCH_EXIT8
-            kernel.S:1229   .text:00000310 _KER_SCH_LOOP32
-            kernel.S:1229   .text:00000346 _VAL_NULL33
-            kernel.S:1229   .text:0000035a _VAL_NOT_NULL33
-            kernel.S:1229   .text:0000036a _EXIT_SLP_TIME33
-            kernel.S:1229   .text:00000374 _KER_CALC_PRIO32
-            kernel.S:1229   .text:00000398 _KER_SCH_NEXT32
-            kernel.S:1229   .text:000003a8 _KER_SCH_EXIT32
-            kernel.S:310    .text:00000438 _KER_TC2_AUB44
-            kernel.S:310    .text:00000440 _KER_TC2_BUB44
-            kernel.S:310    .text:00000448 _KER_OC2_AUB44
-            kernel.S:310    .text:00000450 _KER_OC2_BUB44
-            kernel.S:310    .text:00000458 _KER_TC2_UB44
-            kernel.S:310    .text:00000460 _KER_TC2_TOV244
-            kernel.S:310    .text:0000046e _KER_TC2_OCF2A44
-            kernel.S:310    .text:0000047c _KER_TC2_OCF2B44
-            kernel.S:310    .text:0000048a _KER_TC2_INTEN44
-            kernel.S:1282   .text:000004fa _IDLE_LOOP
-            kernel.S:1318   .text:000005b4 _KER_SCH_LOOP57
-            kernel.S:1318   .text:000005ea _VAL_NULL58
-            kernel.S:1318   .text:000005fe _VAL_NOT_NULL58
-            kernel.S:1318   .text:0000060e _EXIT_SLP_TIME58
-            kernel.S:1318   .text:00000618 _KER_CALC_PRIO57
-            kernel.S:1318   .text:0000063c _KER_SCH_NEXT57
-            kernel.S:1318   .text:0000064c _KER_SCH_EXIT57
-            kernel.S:1372   .text:00000762 _KER_SCH_LOOP76
-            kernel.S:1372   .text:00000798 _VAL_NULL77
-            kernel.S:1372   .text:000007ac _VAL_NOT_NULL77
-            kernel.S:1372   .text:000007bc _EXIT_SLP_TIME77
-            kernel.S:1372   .text:000007c6 _KER_CALC_PRIO76
-            kernel.S:1372   .text:000007ea _KER_SCH_NEXT76
-            kernel.S:1372   .text:000007fa _KER_SCH_EXIT76
+            kernel.S:1081   .text:000000ae _KER_SCH_LOOP8
+            kernel.S:1081   .text:000000e4 _VAL_NULL9
+            kernel.S:1081   .text:000000f8 _VAL_NOT_NULL9
+            kernel.S:1081   .text:00000108 _EXIT_SLP_TIME9
+            kernel.S:1081   .text:00000112 _KER_CALC_PRIO8
+            kernel.S:1081   .text:00000136 _KER_SCH_NEXT8
+            kernel.S:1081   .text:00000146 _KER_SCH_EXIT8
+            kernel.S:1229   .text:00000346 _KER_SCH_LOOP32
+            kernel.S:1229   .text:0000037c _VAL_NULL33
+            kernel.S:1229   .text:00000390 _VAL_NOT_NULL33
+            kernel.S:1229   .text:000003a0 _EXIT_SLP_TIME33
+            kernel.S:1229   .text:000003aa _KER_CALC_PRIO32
+            kernel.S:1229   .text:000003ce _KER_SCH_NEXT32
+            kernel.S:1229   .text:000003de _KER_SCH_EXIT32
+            kernel.S:310    .text:0000046e _KER_TC2_AUB44
+            kernel.S:310    .text:00000476 _KER_TC2_BUB44
+            kernel.S:310    .text:0000047e _KER_OC2_AUB44
+            kernel.S:310    .text:00000486 _KER_OC2_BUB44
+            kernel.S:310    .text:0000048e _KER_TC2_UB44
+            kernel.S:310    .text:00000496 _KER_TC2_TOV244
+            kernel.S:310    .text:000004a4 _KER_TC2_OCF2A44
+            kernel.S:310    .text:000004b2 _KER_TC2_OCF2B44
+            kernel.S:310    .text:000004c0 _KER_TC2_INTEN44
+            kernel.S:1282   .text:00000530 _IDLE_LOOP
+            kernel.S:1318   .text:000005ea _KER_SCH_LOOP57
+            kernel.S:1318   .text:00000620 _VAL_NULL58
+            kernel.S:1318   .text:00000634 _VAL_NOT_NULL58
+            kernel.S:1318   .text:00000644 _EXIT_SLP_TIME58
+            kernel.S:1318   .text:0000064e _KER_CALC_PRIO57
+            kernel.S:1318   .text:00000672 _KER_SCH_NEXT57
+            kernel.S:1318   .text:00000682 _KER_SCH_EXIT57
+            kernel.S:1372   .text:00000798 _KER_SCH_LOOP76
+            kernel.S:1372   .text:000007ce _VAL_NULL77
+            kernel.S:1372   .text:000007e2 _VAL_NOT_NULL77
+            kernel.S:1372   .text:000007f2 _EXIT_SLP_TIME77
+            kernel.S:1372   .text:000007fc _KER_CALC_PRIO76
+            kernel.S:1372   .text:00000820 _KER_SCH_NEXT76
+            kernel.S:1372   .text:00000830 _KER_SCH_EXIT76
 
 UNDEFINED SYMBOLS
 Kernel_Tick_Val_Safely_Get

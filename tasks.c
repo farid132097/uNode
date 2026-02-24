@@ -11,33 +11,6 @@
 #include "debug.h"
 #include "rgb.h"
 
-typedef struct task_data_t{
-  uint16_t Vin;
-  uint16_t VSensor;
-  int16_t  ATemp;
-  int16_t  DTemp;
-  uint16_t DRH;
-  uint8_t  Buf[32];
-  uint32_t uptime;
-  uint16_t CRC16;
-}task_data_t;
-
-typedef struct otau_t{
-  //Buffer for storing paged data
-  uint8_t  Buf[256];
-  //New Paged Data Available Flag
-  uint8_t  NPDAF;
-  //Current Sub-Page Number
-  uint8_t  CSPN;
-  //Current Page Number
-  uint8_t  CPN;
-  //CRC for data vaidation
-  uint16_t CRC16;
-}otau_t;
-
-task_data_t TaskData;
-otau_t      OTAU;
-
 /*
   If some peripherals need to be disabled before
   sleep, add disabling tasks inside this function. 
@@ -124,6 +97,20 @@ __attribute__((noreturn)) void Task_Vin_Sense(void){
   Converts system data into an array of data, sends via RF.
   Add Kernel_Task_Sleep() if delay is necessary.
 */
+
+typedef struct task_data_t{
+  uint16_t Vin;
+  uint16_t VSensor;
+  int16_t  ATemp;
+  int16_t  DTemp;
+  uint16_t DRH;
+  uint8_t  Buf[32];
+  uint32_t uptime;
+  uint16_t CRC16;
+}task_data_t;
+
+task_data_t TaskData;
+
 __attribute__((noreturn)) void Task_Radio(void){
   
   //Radio init with deep sleep
@@ -239,6 +226,22 @@ __attribute__((noreturn)) void Task_Sensor(void){
   0x3800 - 0x6FFF > F1_OTA_Reservoir 
   0x7000 - 0x7FFF > F2_Bootlaoder
 */
+
+typedef struct otau_t{
+  //Buffer for storing paged data
+  uint8_t  Buf[256];
+  //New Paged Data Available Flag
+  uint8_t  NPDAF;
+  //Current Sub-Page Number
+  uint8_t  CSPN;
+  //Current Page Number
+  uint8_t  CPN;
+  //CRC for data vaidation
+  uint16_t CRC16;
+}otau_t;
+
+otau_t      OTAU;
+
 __attribute__((noreturn)) void Task_OTAU(void){
   
   

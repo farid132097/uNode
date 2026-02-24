@@ -18,7 +18,7 @@
 //#define  KER_DBG_ENABLE
 
 //Enable or disable kernel tick counter
-//#define  KER_TICK_CNTR_ENABLE
+#define  KER_TICK_CNTR_ENABLE
 
 //Enable or disable kernel cpu usage calculation
 //#define  KER_CPU_USAGE_CALC_ENABLE

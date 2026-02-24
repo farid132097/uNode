@@ -303,19 +303,19 @@
  386               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 tasks.c
-C:\Users\farid\AppData\Local\Temp/ccApk50d.s:2      *ABS*:0000003f __SREG__
-C:\Users\farid\AppData\Local\Temp/ccApk50d.s:3      *ABS*:0000003e __SP_H__
-C:\Users\farid\AppData\Local\Temp/ccApk50d.s:4      *ABS*:0000003d __SP_L__
-C:\Users\farid\AppData\Local\Temp/ccApk50d.s:5      *ABS*:00000034 __CCP__
-C:\Users\farid\AppData\Local\Temp/ccApk50d.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\farid\AppData\Local\Temp/ccApk50d.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\farid\AppData\Local\Temp/ccApk50d.s:18     .text:00000000 Task_Disable_Peripherals
-C:\Users\farid\AppData\Local\Temp/ccApk50d.s:30     .text:00000002 Task_OTAU
-C:\Users\farid\AppData\Local\Temp/ccApk50d.s:48     .text:00000010 Task_Sensor
-C:\Users\farid\AppData\Local\Temp/ccApk50d.s:78     .text:00000036 Task_Radio
+C:\Users\farid\AppData\Local\Temp/ccnwh2LJ.s:2      *ABS*:0000003f __SREG__
+C:\Users\farid\AppData\Local\Temp/ccnwh2LJ.s:3      *ABS*:0000003e __SP_H__
+C:\Users\farid\AppData\Local\Temp/ccnwh2LJ.s:4      *ABS*:0000003d __SP_L__
+C:\Users\farid\AppData\Local\Temp/ccnwh2LJ.s:5      *ABS*:00000034 __CCP__
+C:\Users\farid\AppData\Local\Temp/ccnwh2LJ.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\farid\AppData\Local\Temp/ccnwh2LJ.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\farid\AppData\Local\Temp/ccnwh2LJ.s:18     .text:00000000 Task_Disable_Peripherals
+C:\Users\farid\AppData\Local\Temp/ccnwh2LJ.s:30     .text:00000002 Task_OTAU
+C:\Users\farid\AppData\Local\Temp/ccnwh2LJ.s:48     .text:00000010 Task_Sensor
+C:\Users\farid\AppData\Local\Temp/ccnwh2LJ.s:78     .text:00000036 Task_Radio
                             *COM*:00000030 TaskData
-C:\Users\farid\AppData\Local\Temp/ccApk50d.s:219    .text:0000014a Task_Vin_Sense
-C:\Users\farid\AppData\Local\Temp/ccApk50d.s:243    .text:00000160 Task_RGB_LED
+C:\Users\farid\AppData\Local\Temp/ccnwh2LJ.s:219    .text:0000014a Task_Vin_Sense
+C:\Users\farid\AppData\Local\Temp/ccnwh2LJ.s:243    .text:00000160 Task_RGB_LED
                             *COM*:00000105 OTAU
 
 UNDEFINED SYMBOLS

@@ -1,0 +1,47 @@
+   1               		.file	"otau.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	OTAU_Init
+  18               	OTAU_Init:
+  19               	.LFB6:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 2098      		cbi 36-32,0
+  25               	/* epilogue start */
+  26               	.LM3:
+  27 0002 0895      		ret
+  28               	.LFE6:
+  30               	.global	OTAU_Button_Pressed
+  32               	OTAU_Button_Pressed:
+  33               	.LFB7:
+  34               	.LM4:
+  35               	/* prologue: function */
+  36               	/* frame size = 0 */
+  37               	.LM5:
+  38 0004 83B1      		in r24,35-32
+  39 0006 8095      		com r24
+  40               	.LM6:
+  41 0008 8170      		andi r24,lo8(1)
+  42               	/* epilogue start */
+  43 000a 0895      		ret
+  44               	.LFE7:
+  78               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 otau.c
+C:\Users\farid\AppData\Local\Temp/ccymDYqQ.s:2      *ABS*:0000003f __SREG__
+C:\Users\farid\AppData\Local\Temp/ccymDYqQ.s:3      *ABS*:0000003e __SP_H__
+C:\Users\farid\AppData\Local\Temp/ccymDYqQ.s:4      *ABS*:0000003d __SP_L__
+C:\Users\farid\AppData\Local\Temp/ccymDYqQ.s:5      *ABS*:00000034 __CCP__
+C:\Users\farid\AppData\Local\Temp/ccymDYqQ.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\farid\AppData\Local\Temp/ccymDYqQ.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\farid\AppData\Local\Temp/ccymDYqQ.s:18     .text:00000000 OTAU_Init
+C:\Users\farid\AppData\Local\Temp/ccymDYqQ.s:32     .text:00000004 OTAU_Button_Pressed
+
+NO UNDEFINED SYMBOLS

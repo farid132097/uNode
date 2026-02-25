@@ -9,6 +9,7 @@
 #include "config.h"
 #include "tasks.h"
 #include "debug.h"
+#include "otau.h"
 #include "rgb.h"
 
 /*
@@ -240,20 +241,23 @@ typedef struct otau_t{
   uint16_t CRC16;
 }otau_t;
 
+
 otau_t      OTAU;
 
 __attribute__((noreturn)) void Task_OTAU(void){
   
-  
-  
+  //Init OTAU
+  OTAU_Init();
   //Inrush current prevention at startup
   Kernel_Task_Sleep(2000/KER_TICK_TIME);
   
   while(1){
     
-    
+    if(OTAU_Button_Pressed()){
+      //blink led
+    }
     //Kernel Delay
-    Kernel_Task_Sleep(SENSOR_TASK_SLEEP_DUR_MS/KER_TICK_TIME);
+    Kernel_Task_Sleep(OTAU_TASK_SLEEP_DUR_MS/KER_TICK_TIME);
 	  
   }
 }

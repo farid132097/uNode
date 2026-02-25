@@ -5,5 +5,6 @@
 #define VIN_TASK_SLEEP_DUR_MS       60000
 #define RADIO_TASK_SLEEP_DUR_MS     300000
 #define SENSOR_TASK_SLEEP_DUR_MS    300000
+#define OTAU_TASK_SLEEP_DUR_MS      3000
 
 //#define DEBUG_ENABLE_WITH_UBRR_VAL  0                

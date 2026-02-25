@@ -23,303 +23,309 @@
   33               	/* prologue: function */
   34               	/* frame size = 0 */
   35               	.LM4:
-  36 0002 82E0      		ldi r24,lo8(2)
-  37 0004 90E0      		ldi r25,hi8(2)
-  38               	.L6:
-  39 0006 0E94 0000 		call Kernel_Task_Sleep
-  40               	.LM5:
-  41 000a 8CE2      		ldi r24,lo8(300)
-  42 000c 91E0      		ldi r25,hi8(300)
-  43 000e 00C0      		rjmp .L6
-  44               	.LFE11:
-  46               	.global	Task_Sensor
-  48               	Task_Sensor:
-  49               	.LFB10:
-  50               	.LM6:
-  51               	/* prologue: function */
-  52               	/* frame size = 0 */
-  53               	.LM7:
-  54 0010 0E94 0000 		call Sensors_Init
-  55               	.LM8:
-  56 0014 82E0      		ldi r24,lo8(2)
-  57 0016 90E0      		ldi r25,hi8(2)
-  58               	.L10:
-  59 0018 0E94 0000 		call Kernel_Task_Sleep
-  60               	.LM9:
-  61 001c 0E94 0000 		call Sensors_Power_Enable
-  62               	.LM10:
-  63 0020 0E94 0000 		call Sensors_Sample_Temp_RH
+  36 0002 0E94 0000 		call OTAU_Init
+  37               	.LM5:
+  38 0006 82E0      		ldi r24,lo8(2)
+  39 0008 90E0      		ldi r25,hi8(2)
+  40               	.L6:
+  41 000a 0E94 0000 		call Kernel_Task_Sleep
+  42               	.LM6:
+  43 000e 0E94 0000 		call OTAU_Button_Pressed
+  44               	.LM7:
+  45 0012 83E0      		ldi r24,lo8(3)
+  46 0014 90E0      		ldi r25,hi8(3)
+  47 0016 00C0      		rjmp .L6
+  48               	.LFE11:
+  50               	.global	Task_Sensor
+  52               	Task_Sensor:
+  53               	.LFB10:
+  54               	.LM8:
+  55               	/* prologue: function */
+  56               	/* frame size = 0 */
+  57               	.LM9:
+  58 0018 0E94 0000 		call Sensors_Init
+  59               	.LM10:
+  60 001c 82E0      		ldi r24,lo8(2)
+  61 001e 90E0      		ldi r25,hi8(2)
+  62               	.L10:
+  63 0020 0E94 0000 		call Kernel_Task_Sleep
   64               	.LM11:
-  65 0024 0E94 0000 		call Peripherals_V3V3_Sense_Sample
+  65 0024 0E94 0000 		call Sensors_Power_Enable
   66               	.LM12:
-  67 0028 0E94 0000 		call Sensors_Power_Disable
+  67 0028 0E94 0000 		call Sensors_Sample_Temp_RH
   68               	.LM13:
-  69 002c 0E94 0000 		call Sensors_HDC1080_Calculate
+  69 002c 0E94 0000 		call Peripherals_V3V3_Sense_Sample
   70               	.LM14:
-  71 0030 8CE2      		ldi r24,lo8(300)
-  72 0032 91E0      		ldi r25,hi8(300)
-  73 0034 00C0      		rjmp .L10
-  74               	.LFE10:
-  76               	.global	Task_Radio
-  78               	Task_Radio:
-  79               	.LFB9:
-  80               	.LM15:
-  81               	/* prologue: function */
-  82               	/* frame size = 0 */
-  83               	.LM16:
-  84 0036 0E94 0000 		call nRF24L01P_Init
-  85               	.LM17:
-  86 003a 82E0      		ldi r24,lo8(2)
-  87 003c 90E0      		ldi r25,hi8(2)
-  88 003e 0E94 0000 		call Kernel_Task_Sleep
-  89               	.LM18:
-  90 0042 B0E1      		ldi r27,lo8(16)
-  91 0044 BB2E      		mov r11,r27
-  92               	.LM19:
-  93 0046 C0E0      		ldi r28,lo8(TaskData)
-  94 0048 D0E0      		ldi r29,hi8(TaskData)
-  95               	.LM20:
-  96 004a A2E0      		ldi r26,lo8(2)
-  97 004c CA2E      		mov r12,r26
-  98 004e D12C      		mov r13,__zero_reg__
-  99 0050 CC0E      		add r12,r28
- 100 0052 DD1E      		adc r13,r29
- 101               	.LM21:
- 102 0054 F8E0      		ldi r31,lo8(8)
- 103 0056 EF2E      		mov r14,r31
- 104 0058 F12C      		mov r15,__zero_reg__
- 105 005a EC0E      		add r14,r28
- 106 005c FD1E      		adc r15,r29
- 107               	.LM22:
- 108 005e 8E01      		movw r16,r28
- 109 0060 025D      		subi r16,lo8(-(46))
- 110 0062 1F4F      		sbci r17,hi8(-(46))
- 111               	.L12:
- 112               	.LM23:
- 113 0064 B092 0000 		sts TaskData+10,r11
- 114               	.LM24:
- 115 0068 0E94 0000 		call Kernel_Tick_Val_Get
- 116 006c 6093 0000 		sts TaskData+42,r22
- 117 0070 7093 0000 		sts (TaskData+42)+1,r23
- 118 0074 8093 0000 		sts (TaskData+42)+2,r24
- 119 0078 9093 0000 		sts (TaskData+42)+3,r25
- 120               	.LM25:
- 121 007c 292F      		mov r18,r25
- 122 007e 3327      		clr r19
- 123 0080 4427      		clr r20
- 124 0082 5527      		clr r21
- 125 0084 2093 0000 		sts TaskData+11,r18
- 126               	.LM26:
- 127 0088 9C01      		movw r18,r24
- 128 008a 4427      		clr r20
- 129 008c 5527      		clr r21
- 130 008e 2093 0000 		sts TaskData+12,r18
- 131               	.LM27:
- 132 0092 272F      		mov r18,r23
- 133 0094 382F      		mov r19,r24
- 134 0096 492F      		mov r20,r25
- 135 0098 5527      		clr r21
- 136 009a 2093 0000 		sts TaskData+13,r18
- 137               	.LM28:
- 138 009e 6093 0000 		sts TaskData+14,r22
- 139               	.LM29:
- 140 00a2 0E94 0000 		call Peripherals_Vin_Get
- 141 00a6 8093 0000 		sts TaskData,r24
- 142 00aa 9983      		std Y+1,r25
- 143               	.LM30:
- 144 00ac 9093 0000 		sts TaskData+15,r25
- 145               	.LM31:
- 146 00b0 8093 0000 		sts TaskData+16,r24
+  71 0030 0E94 0000 		call Sensors_Power_Disable
+  72               	.LM15:
+  73 0034 0E94 0000 		call Sensors_HDC1080_Calculate
+  74               	.LM16:
+  75 0038 8CE2      		ldi r24,lo8(300)
+  76 003a 91E0      		ldi r25,hi8(300)
+  77 003c 00C0      		rjmp .L10
+  78               	.LFE10:
+  80               	.global	Task_Radio
+  82               	Task_Radio:
+  83               	.LFB9:
+  84               	.LM17:
+  85               	/* prologue: function */
+  86               	/* frame size = 0 */
+  87               	.LM18:
+  88 003e 0E94 0000 		call nRF24L01P_Init
+  89               	.LM19:
+  90 0042 82E0      		ldi r24,lo8(2)
+  91 0044 90E0      		ldi r25,hi8(2)
+  92 0046 0E94 0000 		call Kernel_Task_Sleep
+  93               	.LM20:
+  94 004a B0E1      		ldi r27,lo8(16)
+  95 004c BB2E      		mov r11,r27
+  96               	.LM21:
+  97 004e C0E0      		ldi r28,lo8(TaskData)
+  98 0050 D0E0      		ldi r29,hi8(TaskData)
+  99               	.LM22:
+ 100 0052 A2E0      		ldi r26,lo8(2)
+ 101 0054 CA2E      		mov r12,r26
+ 102 0056 D12C      		mov r13,__zero_reg__
+ 103 0058 CC0E      		add r12,r28
+ 104 005a DD1E      		adc r13,r29
+ 105               	.LM23:
+ 106 005c F8E0      		ldi r31,lo8(8)
+ 107 005e EF2E      		mov r14,r31
+ 108 0060 F12C      		mov r15,__zero_reg__
+ 109 0062 EC0E      		add r14,r28
+ 110 0064 FD1E      		adc r15,r29
+ 111               	.LM24:
+ 112 0066 8E01      		movw r16,r28
+ 113 0068 025D      		subi r16,lo8(-(46))
+ 114 006a 1F4F      		sbci r17,hi8(-(46))
+ 115               	.L12:
+ 116               	.LM25:
+ 117 006c B092 0000 		sts TaskData+10,r11
+ 118               	.LM26:
+ 119 0070 0E94 0000 		call Kernel_Tick_Val_Get
+ 120 0074 6093 0000 		sts TaskData+42,r22
+ 121 0078 7093 0000 		sts (TaskData+42)+1,r23
+ 122 007c 8093 0000 		sts (TaskData+42)+2,r24
+ 123 0080 9093 0000 		sts (TaskData+42)+3,r25
+ 124               	.LM27:
+ 125 0084 292F      		mov r18,r25
+ 126 0086 3327      		clr r19
+ 127 0088 4427      		clr r20
+ 128 008a 5527      		clr r21
+ 129 008c 2093 0000 		sts TaskData+11,r18
+ 130               	.LM28:
+ 131 0090 9C01      		movw r18,r24
+ 132 0092 4427      		clr r20
+ 133 0094 5527      		clr r21
+ 134 0096 2093 0000 		sts TaskData+12,r18
+ 135               	.LM29:
+ 136 009a 272F      		mov r18,r23
+ 137 009c 382F      		mov r19,r24
+ 138 009e 492F      		mov r20,r25
+ 139 00a0 5527      		clr r21
+ 140 00a2 2093 0000 		sts TaskData+13,r18
+ 141               	.LM30:
+ 142 00a6 6093 0000 		sts TaskData+14,r22
+ 143               	.LM31:
+ 144 00aa 0E94 0000 		call Peripherals_Vin_Get
+ 145 00ae 8093 0000 		sts TaskData,r24
+ 146 00b2 9983      		std Y+1,r25
  147               	.LM32:
- 148 00b4 0E94 0000 		call Peripherals_V3V3_Get
- 149 00b8 8093 0000 		sts TaskData+2,r24
- 150 00bc F601      		movw r30,r12
- 151 00be 9183      		std Z+1,r25
- 152               	.LM33:
- 153 00c0 9093 0000 		sts TaskData+17,r25
- 154               	.LM34:
- 155 00c4 8093 0000 		sts TaskData+18,r24
+ 148 00b4 9093 0000 		sts TaskData+15,r25
+ 149               	.LM33:
+ 150 00b8 8093 0000 		sts TaskData+16,r24
+ 151               	.LM34:
+ 152 00bc 0E94 0000 		call Peripherals_V3V3_Get
+ 153 00c0 8093 0000 		sts TaskData+2,r24
+ 154 00c4 F601      		movw r30,r12
+ 155 00c6 9183      		std Z+1,r25
  156               	.LM35:
- 157 00c8 0E94 0000 		call Peripherals_Analog_Temp_Get
- 158 00cc 9093 0000 		sts (TaskData+4)+1,r25
- 159 00d0 8093 0000 		sts TaskData+4,r24
- 160               	.LM36:
- 161 00d4 292F      		mov r18,r25
- 162 00d6 3327      		clr r19
- 163 00d8 27FD      		sbrc r18,7
- 164 00da 3A95      		dec r19
- 165 00dc 2093 0000 		sts TaskData+19,r18
- 166               	.LM37:
- 167 00e0 8093 0000 		sts TaskData+20,r24
- 168               	.LM38:
- 169 00e4 0E94 0000 		call Peripherals_Digital_Temp_Get
- 170 00e8 9093 0000 		sts (TaskData+6)+1,r25
- 171 00ec 8093 0000 		sts TaskData+6,r24
- 172               	.LM39:
- 173 00f0 292F      		mov r18,r25
- 174 00f2 3327      		clr r19
- 175 00f4 27FD      		sbrc r18,7
- 176 00f6 3A95      		dec r19
- 177 00f8 2093 0000 		sts TaskData+21,r18
- 178               	.LM40:
- 179 00fc 8093 0000 		sts TaskData+22,r24
- 180               	.LM41:
- 181 0100 0E94 0000 		call Peripherals_Digital_RH_Get
- 182 0104 8093 0000 		sts TaskData+8,r24
- 183 0108 F701      		movw r30,r14
- 184 010a 9183      		std Z+1,r25
- 185               	.LM42:
- 186 010c 8093 0000 		sts TaskData+23,r24
- 187               	.LM43:
- 188 0110 80E0      		ldi r24,lo8(TaskData+10)
- 189 0112 90E0      		ldi r25,hi8(TaskData+10)
- 190 0114 6EE0      		ldi r22,lo8(14)
- 191 0116 0E94 0000 		call nRF24L01P_Calcuate_CRC_Block
- 192 011a 8093 0000 		sts TaskData+46,r24
- 193 011e F801      		movw r30,r16
- 194 0120 9183      		std Z+1,r25
- 195               	.LM44:
- 196 0122 9093 0000 		sts TaskData+24,r25
- 197               	.LM45:
- 198 0126 8093 0000 		sts TaskData+25,r24
+ 157 00c8 9093 0000 		sts TaskData+17,r25
+ 158               	.LM36:
+ 159 00cc 8093 0000 		sts TaskData+18,r24
+ 160               	.LM37:
+ 161 00d0 0E94 0000 		call Peripherals_Analog_Temp_Get
+ 162 00d4 9093 0000 		sts (TaskData+4)+1,r25
+ 163 00d8 8093 0000 		sts TaskData+4,r24
+ 164               	.LM38:
+ 165 00dc 292F      		mov r18,r25
+ 166 00de 3327      		clr r19
+ 167 00e0 27FD      		sbrc r18,7
+ 168 00e2 3A95      		dec r19
+ 169 00e4 2093 0000 		sts TaskData+19,r18
+ 170               	.LM39:
+ 171 00e8 8093 0000 		sts TaskData+20,r24
+ 172               	.LM40:
+ 173 00ec 0E94 0000 		call Peripherals_Digital_Temp_Get
+ 174 00f0 9093 0000 		sts (TaskData+6)+1,r25
+ 175 00f4 8093 0000 		sts TaskData+6,r24
+ 176               	.LM41:
+ 177 00f8 292F      		mov r18,r25
+ 178 00fa 3327      		clr r19
+ 179 00fc 27FD      		sbrc r18,7
+ 180 00fe 3A95      		dec r19
+ 181 0100 2093 0000 		sts TaskData+21,r18
+ 182               	.LM42:
+ 183 0104 8093 0000 		sts TaskData+22,r24
+ 184               	.LM43:
+ 185 0108 0E94 0000 		call Peripherals_Digital_RH_Get
+ 186 010c 8093 0000 		sts TaskData+8,r24
+ 187 0110 F701      		movw r30,r14
+ 188 0112 9183      		std Z+1,r25
+ 189               	.LM44:
+ 190 0114 8093 0000 		sts TaskData+23,r24
+ 191               	.LM45:
+ 192 0118 80E0      		ldi r24,lo8(TaskData+10)
+ 193 011a 90E0      		ldi r25,hi8(TaskData+10)
+ 194 011c 6EE0      		ldi r22,lo8(14)
+ 195 011e 0E94 0000 		call nRF24L01P_Calcuate_CRC_Block
+ 196 0122 8093 0000 		sts TaskData+46,r24
+ 197 0126 F801      		movw r30,r16
+ 198 0128 9183      		std Z+1,r25
  199               	.LM46:
- 200 012a 0E94 0000 		call nRF24L01P_WakeUp
+ 200 012a 9093 0000 		sts TaskData+24,r25
  201               	.LM47:
- 202 012e 80E0      		ldi r24,lo8(TaskData+10)
- 203 0130 90E0      		ldi r25,hi8(TaskData+10)
- 204 0132 60E1      		ldi r22,lo8(16)
- 205 0134 0E94 0000 		call nRF24L01P_Transmit_Basic
- 206               	.LM48:
- 207 0138 0E94 0000 		call nRF24L01P_Deep_Sleep
- 208               	.LM49:
- 209 013c 0E94 0000 		call nRF24L01P_Error_Handler
+ 202 012e 8093 0000 		sts TaskData+25,r24
+ 203               	.LM48:
+ 204 0132 0E94 0000 		call nRF24L01P_WakeUp
+ 205               	.LM49:
+ 206 0136 80E0      		ldi r24,lo8(TaskData+10)
+ 207 0138 90E0      		ldi r25,hi8(TaskData+10)
+ 208 013a 60E1      		ldi r22,lo8(16)
+ 209 013c 0E94 0000 		call nRF24L01P_Transmit_Basic
  210               	.LM50:
- 211 0140 8CE2      		ldi r24,lo8(300)
- 212 0142 91E0      		ldi r25,hi8(300)
- 213 0144 0E94 0000 		call Kernel_Task_Sleep
- 214 0148 00C0      		rjmp .L12
- 215               	.LFE9:
- 217               	.global	Task_Vin_Sense
- 219               	Task_Vin_Sense:
- 220               	.LFB8:
- 221               	.LM51:
- 222               	/* prologue: function */
- 223               	/* frame size = 0 */
- 224               	.LM52:
- 225 014a 529A      		sbi 42-32,2
- 226               	.LM53:
- 227 014c 5A98      		cbi 43-32,2
+ 211 0140 0E94 0000 		call nRF24L01P_Deep_Sleep
+ 212               	.LM51:
+ 213 0144 0E94 0000 		call nRF24L01P_Error_Handler
+ 214               	.LM52:
+ 215 0148 8CE2      		ldi r24,lo8(300)
+ 216 014a 91E0      		ldi r25,hi8(300)
+ 217 014c 0E94 0000 		call Kernel_Task_Sleep
+ 218 0150 00C0      		rjmp .L12
+ 219               	.LFE9:
+ 221               	.global	Task_Vin_Sense
+ 223               	Task_Vin_Sense:
+ 224               	.LFB8:
+ 225               	.LM53:
+ 226               	/* prologue: function */
+ 227               	/* frame size = 0 */
  228               	.LM54:
- 229 014e 82E0      		ldi r24,lo8(2)
- 230 0150 90E0      		ldi r25,hi8(2)
- 231               	.L17:
- 232 0152 0E94 0000 		call Kernel_Task_Sleep
- 233               	.LM55:
- 234 0156 0E94 0000 		call Peripherals_Vin_Sense_Sample
- 235               	.LM56:
- 236 015a 8CE3      		ldi r24,lo8(60)
- 237 015c 90E0      		ldi r25,hi8(60)
- 238 015e 00C0      		rjmp .L17
- 239               	.LFE8:
- 241               	.global	Task_RGB_LED
- 243               	Task_RGB_LED:
- 244               	.LFB7:
- 245               	.LM57:
- 246               	/* prologue: function */
- 247               	/* frame size = 0 */
- 248               	.LM58:
- 249 0160 0E94 0000 		call RGB_Init
- 250               	.LM59:
- 251 0164 82E0      		ldi r24,lo8(2)
- 252 0166 90E0      		ldi r25,hi8(2)
- 253 0168 0E94 0000 		call Kernel_Task_Sleep
- 254               	.LBB24:
- 255               	.LBB25:
- 256               	.LBB26:
- 257               	.LBB27:
- 258               	.LBB28:
- 259               	.LBB29:
- 260               	.LM60:
- 261 016c C8EE      		ldi r28,lo8(1000)
- 262 016e D3E0      		ldi r29,hi8(1000)
- 263               	.L21:
- 264               	.LBE29:
- 265               	.LBE28:
- 266               	.LBE27:
- 267               	.LBE26:
- 268               	.LBE25:
- 269               	.LBE24:
- 270               	.LM61:
- 271 0170 0E94 0000 		call Peripherals_Vin_Get
- 272 0174 815F      		subi r24,lo8(2801)
- 273 0176 9A40      		sbci r25,hi8(2801)
- 274 0178 00F0      		brlo .L19
- 275               	.LM62:
- 276 017a 80E0      		ldi r24,lo8(0)
- 277 017c 61E0      		ldi r22,lo8(1)
- 278 017e 00C0      		rjmp .L23
- 279               	.L19:
- 280               	.LM63:
- 281 0180 81E0      		ldi r24,lo8(1)
- 282 0182 60E0      		ldi r22,lo8(0)
- 283               	.L23:
- 284 0184 40E0      		ldi r20,lo8(0)
- 285 0186 0E94 0000 		call RGB_Set_State
- 286               	.LBB35:
- 287               	.LBB34:
- 288               	.LBB33:
- 289               	.LBB32:
- 290               	.LBB31:
- 291               	.LBB30:
- 292               	.LM64:
- 293 018a CE01      		movw r24,r28
- 294               	.LVL0:
- 295               	/* #APP */
- 296               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
- 297 018c 0197      		1: sbiw r24,1
- 298 018e 01F4      		brne 1b
- 299               	 ;  0 "" 2
- 300               	/* #NOAPP */
- 301               	.LBE30:
- 302               	.LBE31:
- 303               	.LBE32:
- 304               	.LBE33:
- 305               	.LBE34:
- 306               	.LBE35:
- 307               	.LM65:
- 308 0190 80E0      		ldi r24,lo8(0)
- 309               	.LVL1:
- 310 0192 60E0      		ldi r22,lo8(0)
- 311 0194 40E0      		ldi r20,lo8(0)
- 312 0196 0E94 0000 		call RGB_Set_State
- 313               	.LM66:
- 314 019a 8EE1      		ldi r24,lo8(30)
- 315 019c 90E0      		ldi r25,hi8(30)
- 316 019e 0E94 0000 		call Kernel_Task_Sleep
- 317 01a2 00C0      		rjmp .L21
- 318               	.LFE7:
- 320               		.comm TaskData,48,1
- 321               		.comm OTAU,261,1
- 386               	.Letext0:
+ 229 0152 529A      		sbi 42-32,2
+ 230               	.LM55:
+ 231 0154 5A98      		cbi 43-32,2
+ 232               	.LM56:
+ 233 0156 82E0      		ldi r24,lo8(2)
+ 234 0158 90E0      		ldi r25,hi8(2)
+ 235               	.L17:
+ 236 015a 0E94 0000 		call Kernel_Task_Sleep
+ 237               	.LM57:
+ 238 015e 0E94 0000 		call Peripherals_Vin_Sense_Sample
+ 239               	.LM58:
+ 240 0162 8CE3      		ldi r24,lo8(60)
+ 241 0164 90E0      		ldi r25,hi8(60)
+ 242 0166 00C0      		rjmp .L17
+ 243               	.LFE8:
+ 245               	.global	Task_RGB_LED
+ 247               	Task_RGB_LED:
+ 248               	.LFB7:
+ 249               	.LM59:
+ 250               	/* prologue: function */
+ 251               	/* frame size = 0 */
+ 252               	.LM60:
+ 253 0168 0E94 0000 		call RGB_Init
+ 254               	.LM61:
+ 255 016c 82E0      		ldi r24,lo8(2)
+ 256 016e 90E0      		ldi r25,hi8(2)
+ 257 0170 0E94 0000 		call Kernel_Task_Sleep
+ 258               	.LBB24:
+ 259               	.LBB25:
+ 260               	.LBB26:
+ 261               	.LBB27:
+ 262               	.LBB28:
+ 263               	.LBB29:
+ 264               	.LM62:
+ 265 0174 C8EE      		ldi r28,lo8(1000)
+ 266 0176 D3E0      		ldi r29,hi8(1000)
+ 267               	.L21:
+ 268               	.LBE29:
+ 269               	.LBE28:
+ 270               	.LBE27:
+ 271               	.LBE26:
+ 272               	.LBE25:
+ 273               	.LBE24:
+ 274               	.LM63:
+ 275 0178 0E94 0000 		call Peripherals_Vin_Get
+ 276 017c 815F      		subi r24,lo8(2801)
+ 277 017e 9A40      		sbci r25,hi8(2801)
+ 278 0180 00F0      		brlo .L19
+ 279               	.LM64:
+ 280 0182 80E0      		ldi r24,lo8(0)
+ 281 0184 61E0      		ldi r22,lo8(1)
+ 282 0186 00C0      		rjmp .L23
+ 283               	.L19:
+ 284               	.LM65:
+ 285 0188 81E0      		ldi r24,lo8(1)
+ 286 018a 60E0      		ldi r22,lo8(0)
+ 287               	.L23:
+ 288 018c 40E0      		ldi r20,lo8(0)
+ 289 018e 0E94 0000 		call RGB_Set_State
+ 290               	.LBB35:
+ 291               	.LBB34:
+ 292               	.LBB33:
+ 293               	.LBB32:
+ 294               	.LBB31:
+ 295               	.LBB30:
+ 296               	.LM66:
+ 297 0192 CE01      		movw r24,r28
+ 298               	.LVL0:
+ 299               	/* #APP */
+ 300               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 301 0194 0197      		1: sbiw r24,1
+ 302 0196 01F4      		brne 1b
+ 303               	 ;  0 "" 2
+ 304               	/* #NOAPP */
+ 305               	.LBE30:
+ 306               	.LBE31:
+ 307               	.LBE32:
+ 308               	.LBE33:
+ 309               	.LBE34:
+ 310               	.LBE35:
+ 311               	.LM67:
+ 312 0198 80E0      		ldi r24,lo8(0)
+ 313               	.LVL1:
+ 314 019a 60E0      		ldi r22,lo8(0)
+ 315 019c 40E0      		ldi r20,lo8(0)
+ 316 019e 0E94 0000 		call RGB_Set_State
+ 317               	.LM68:
+ 318 01a2 8EE1      		ldi r24,lo8(30)
+ 319 01a4 90E0      		ldi r25,hi8(30)
+ 320 01a6 0E94 0000 		call Kernel_Task_Sleep
+ 321 01aa 00C0      		rjmp .L21
+ 322               	.LFE7:
+ 324               		.comm TaskData,48,1
+ 325               		.comm OTAU,261,1
+ 390               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 tasks.c
-C:\Users\farid\AppData\Local\Temp/ccnwh2LJ.s:2      *ABS*:0000003f __SREG__
-C:\Users\farid\AppData\Local\Temp/ccnwh2LJ.s:3      *ABS*:0000003e __SP_H__
-C:\Users\farid\AppData\Local\Temp/ccnwh2LJ.s:4      *ABS*:0000003d __SP_L__
-C:\Users\farid\AppData\Local\Temp/ccnwh2LJ.s:5      *ABS*:00000034 __CCP__
-C:\Users\farid\AppData\Local\Temp/ccnwh2LJ.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\farid\AppData\Local\Temp/ccnwh2LJ.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\farid\AppData\Local\Temp/ccnwh2LJ.s:18     .text:00000000 Task_Disable_Peripherals
-C:\Users\farid\AppData\Local\Temp/ccnwh2LJ.s:30     .text:00000002 Task_OTAU
-C:\Users\farid\AppData\Local\Temp/ccnwh2LJ.s:48     .text:00000010 Task_Sensor
-C:\Users\farid\AppData\Local\Temp/ccnwh2LJ.s:78     .text:00000036 Task_Radio
+C:\Users\farid\AppData\Local\Temp/ccY902Jc.s:2      *ABS*:0000003f __SREG__
+C:\Users\farid\AppData\Local\Temp/ccY902Jc.s:3      *ABS*:0000003e __SP_H__
+C:\Users\farid\AppData\Local\Temp/ccY902Jc.s:4      *ABS*:0000003d __SP_L__
+C:\Users\farid\AppData\Local\Temp/ccY902Jc.s:5      *ABS*:00000034 __CCP__
+C:\Users\farid\AppData\Local\Temp/ccY902Jc.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\farid\AppData\Local\Temp/ccY902Jc.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\farid\AppData\Local\Temp/ccY902Jc.s:18     .text:00000000 Task_Disable_Peripherals
+C:\Users\farid\AppData\Local\Temp/ccY902Jc.s:30     .text:00000002 Task_OTAU
+C:\Users\farid\AppData\Local\Temp/ccY902Jc.s:52     .text:00000018 Task_Sensor
+C:\Users\farid\AppData\Local\Temp/ccY902Jc.s:82     .text:0000003e Task_Radio
                             *COM*:00000030 TaskData
-C:\Users\farid\AppData\Local\Temp/ccnwh2LJ.s:219    .text:0000014a Task_Vin_Sense
-C:\Users\farid\AppData\Local\Temp/ccnwh2LJ.s:243    .text:00000160 Task_RGB_LED
+C:\Users\farid\AppData\Local\Temp/ccY902Jc.s:223    .text:00000152 Task_Vin_Sense
+C:\Users\farid\AppData\Local\Temp/ccY902Jc.s:247    .text:00000168 Task_RGB_LED
                             *COM*:00000105 OTAU
 
 UNDEFINED SYMBOLS
+OTAU_Init
 Kernel_Task_Sleep
+OTAU_Button_Pressed
 Sensors_Init
 Sensors_Power_Enable
 Sensors_Sample_Temp_RH
